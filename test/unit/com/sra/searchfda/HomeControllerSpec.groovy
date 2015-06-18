@@ -1,4 +1,6 @@
-package com.sra
+package com.sra.searchfda
+
+import com.sra.searchfda.HomeController;
 
 import grails.test.mixin.TestFor
 import spock.lang.*

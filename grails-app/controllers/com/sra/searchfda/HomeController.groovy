@@ -1,4 +1,4 @@
-package com.sra
+package com.sra.searchfda
 
 import grails.plugin.springsecurity.annotation.Secured
 

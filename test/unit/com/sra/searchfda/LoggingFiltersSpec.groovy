@@ -1,4 +1,6 @@
-package com.sra
+package com.sra.searchfda
+
+import com.sra.LoggingFilters;
 
 import grails.test.mixin.Mock
 import spock.lang.Specification

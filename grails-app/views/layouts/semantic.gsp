@@ -7,7 +7,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title><g:layoutTitle default="Single Tenant Base"/></title>
+		<title><g:layoutTitle default="Search FDA"/></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.4/semantic.min.js"></script>
@@ -74,7 +74,7 @@
 
 		<div class="menu-wrapper">
 			<div class="ui segment" style="margin-bottom: 15px;">
-				<b>Single Tenant Base ${grailsApplication.metadata['app.version']}</b>
+				<b>Search FDA ${grailsApplication.metadata['app.version']}</b>
 			</div>
 		</div>
 

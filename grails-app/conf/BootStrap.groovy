@@ -1,6 +1,6 @@
-import com.sra.Role
-import com.sra.User
-import com.sra.UserRole
+import com.sra.searchfda.Role
+import com.sra.searchfda.User
+import com.sra.searchfda.UserRole
 
 class BootStrap {
 

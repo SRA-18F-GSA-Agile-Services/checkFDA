@@ -85,17 +85,17 @@ log4j = {
 	}
 
 	warn 'warn': [
-		'grails.app.controllers.com.sra',
-		'grails.app.services.com.sra',
-		'grails.app.conf.com.sra',
-		'grails.app.domain.com.sra'
+		'grails.app.controllers.com.sra.searchfda',
+		'grails.app.services.com.sra.searchfda',
+		'grails.app.conf.com.sra.searchfda',
+		'grails.app.domain.com.sra.searchfda'
 	]
 
 	info 'info': [
-		'grails.app.controllers.com.sra',
-		'grails.app.services.com.sra',
-		'grails.app.conf.com.sra',
-		'grails.app.domain.com.sra'
+		'grails.app.controllers.com.sra.searchfda',
+		'grails.app.services.com.sra.searchfda',
+		'grails.app.conf.com.sra.searchfda',
+		'grails.app.domain.com.sra.searchfda'
 	]
 
 	info	activity:  ['grails.app.filters.com.sra.LoggingFilters']
@@ -110,14 +110,11 @@ grails.plugin.springsecurity.providerNames = [
 	'rememberMeAuthenticationProvider'
 ]
 
-// SRA Plugins
-grails.plugin.dbbackups.stem = 'sample'
-
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.logout.postOnly = false
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.sra.User'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.sra.UserRole'
-grails.plugin.springsecurity.authority.className = 'com.sra.Role'
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.sra.searchfda.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.sra.searchfda.UserRole'
+grails.plugin.springsecurity.authority.className = 'com.sra.searchfda.Role'
 
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**':								['permitAll'],
