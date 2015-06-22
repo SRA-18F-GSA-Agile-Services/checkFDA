@@ -58,6 +58,7 @@ module.exports = function(gulp) {
         .pipe(header(banner, settings.header))
         .pipe(gulp.dest(output.packaged))
         .pipe(print(log.created))
+        .pipe(gulp.dest("../grails-app/assets/stylesheets"))
     ;
   });
 
@@ -71,6 +72,7 @@ module.exports = function(gulp) {
         .pipe(header(banner, settings.header))
         .pipe(gulp.dest(output.packaged))
         .pipe(print(log.created))
+        .pipe(gulp.dest("../grails-app/assets/stylesheets"))
     ;
   });
 
@@ -83,6 +85,7 @@ module.exports = function(gulp) {
         .pipe(gulpif(config.hasPermission, chmod(config.permission)))
         .pipe(gulp.dest(output.packaged))
         .pipe(print(log.created))
+        .pipe(gulp.dest("../grails-app/assets/javascripts"))
     ;
   });
 
@@ -96,6 +99,7 @@ module.exports = function(gulp) {
         .pipe(gulpif(config.hasPermission, chmod(config.permission)))
         .pipe(gulp.dest(output.packaged))
         .pipe(print(log.created))
+        .pipe(gulp.dest("../grails-app/assets/javascripts"))
     ;
   });
 
