@@ -76,7 +76,7 @@ codenarc.reports = {
 	}
 }
 codenarc.ruleSetFiles="file:grails-app/conf/CodeNarcRules.groovy"
-// codenarc.processViews = true
+codenarc.processViews = true
 
 //controls what happens when the maximum number of violations are exceeded
 codenarc.systemExitOnBuildException = false
