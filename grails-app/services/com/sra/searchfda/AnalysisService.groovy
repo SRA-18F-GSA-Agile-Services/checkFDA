@@ -57,13 +57,19 @@ class AnalysisService {
 	}
 	
 	Map<String,Integer> countMap=new TreeMap<String,Integer>()
+	Map<String,Integer> wordMap=new TreeMap<String,Integer>()
 	
 	def analyzeInit() {
 		countMap.clear()
+		wordMap.clear()
 	}
 	
 	def analyzeFinish() {
 		countMap.each {k,v ->
+			println(k+"="+v)
+		}
+		Map sorted=wordMap.sort { a,b -> a.value <=> b.value}
+		sorted.each {k,v ->
 			println(k+"="+v)
 		}
 	}
@@ -74,6 +80,14 @@ class AnalysisService {
 			countMap.put(entry.recall_initiation_date,1)
         } else {
 		    countMap.put(entry.recall_initiation_date,count+1)
+		}
+		entry.product_description.tokenize().each {
+			count=wordMap.get(it)
+			if (count==null) {
+				wordMap.put(it,1)
+			} else {
+				wordMap.put(it,count+1)
+			}
 		}
 	}
 
