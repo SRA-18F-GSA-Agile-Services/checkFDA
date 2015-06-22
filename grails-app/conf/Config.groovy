@@ -36,9 +36,6 @@ grails.mime.types = [
 // URL Mapping Cache Max Size, defaults to 5000
 //grails.urlmapping.cache.maxsize = 1000
 
-// What URL patterns should be processed by the resources plugin
-grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*']
-
 // The default codec used to encode data with ${}
 grails.views.default.codec = "none" // none, html, base64
 grails.views.gsp.encoding = "UTF-8"
@@ -73,6 +70,9 @@ environments {
     production {
         grails.logging.jul.usebridge = false
     }
+	searchfdadev {
+		grails.logging.jul.usebridge = true
+	}
 }
 
 log4j = {
@@ -101,8 +101,6 @@ log4j = {
 	off 'org.grails.plugin.resource.ResourceMeta'
 }
 
-grails.resources.resourceLocatorEnabled = true
-
 grails.app.context="/"
 
 grails.plugin.springsecurity.providerNames = [
@@ -120,6 +118,7 @@ grails.plugin.springsecurity.authority.className = 'com.sra.searchfda.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**':								['permitAll'],
 	'/searchable/**':					['ROLE_ADMIN'],
+	'/query/**':						['ROLE_ADMIN'],
 	'/user/**':							['ROLE_ADMIN'],
 	'/role/**':							['ROLE_ADMIN'],
 	'/registrationCode/**':				['ROLE_ADMIN'],

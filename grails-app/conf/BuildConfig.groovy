@@ -47,7 +47,7 @@ grails.project.dependency.resolution = {
 
     plugins {
         compile ":hibernate:3.6.10.17"
-        runtime ":resources:1.2.14"
+        compile ":asset-pipeline:2.3.2"
 		compile ":quartz:1.0.1"
 		compile ":scaffolding:2.1.0"
 		compile ":searchable:0.6.7"
@@ -60,6 +60,7 @@ grails.project.dependency.resolution = {
 		compile ":jquery-ui:1.10.4"
 
 		test ":codenarc:0.22"
+        test ":code-coverage:2.0.3-3"
     }
 }
 codenarc.reports = {
@@ -75,8 +76,12 @@ codenarc.reports = {
 		title = 'Search FDA html Report'
 	}
 }
-codenarc.ruleSetFiles="file:grails-app/conf/CodeNarcRules.groovy"
-// codenarc.processViews = true
+codenarc.ruleSetFiles="file:test/CodeNarcRules.groovy"
+codenarc.processViews = true
 
 //controls what happens when the maximum number of violations are exceeded
 codenarc.systemExitOnBuildException = false
+
+coverage {
+    enabledByDefault = false
+}
