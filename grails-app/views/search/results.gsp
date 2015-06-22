@@ -5,9 +5,17 @@
 		<title>Results - ${ query }</title>
 	</head>
 	<body>
-		<div class="ui segment">
-			<h1 class="ui header">Results - ${ query }</h1>
+		<div class="ui large fluid action labeled input">
+			<div class="ui label">
+				Query
+			</div>
+			<g:field type="text" name="query" value="${ query }" />
+			<div class="ui large primary right labeled icon button">
+				Search
+				<i class="right arrow icon"></i>
+			</div>
 		</div>
+		<div class="ui divider"></div>
 		<div class="ui four doubling cards">
 			<g:each in="${ 0..7 }">
 				<g:render template="/layouts/example-card" />
