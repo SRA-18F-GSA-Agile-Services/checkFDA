@@ -30,7 +30,7 @@
 		</div>
 		<g:layoutBody/>
 		<div class="footer right-aligned" role="contentinfo">
-			<b>Version ${ grailsApplication.metadata['app.version'] }</b>
+			<b><g:message code="default.layout.app" /> ${ grailsApplication.metadata['app.version'] }</b>
 		</div>
 		<g:javascript library="application"/>
 	</body>
