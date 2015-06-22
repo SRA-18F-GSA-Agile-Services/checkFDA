@@ -8,25 +8,28 @@ class SearchService {
 
 	def grailsApplication
 	def OpenFDAService
-	List<String> datasets=[ //dataset names
-		"food/enforcement",
-		"drug/label",
-		"drug/event",
-		"drug/enforcement",
-		"device/event",
-		"device/enforcement"
+	List<Map> datasets=[ //dataset names
+		[path:"food/enforcement",group:"recalls"],
+		[path:"drug/label",group:"labels"],
+		[path:"drug/event",group:"events"],
+		[path:"drug/enforcement",group:"recalls"],
+		[path:"device/event",group:"events"],
+		[path:"device/enforcement]",group:"recalls"]
 	]
 
 	/**
 	 * Perform a federated search across the 6 Open FDA datasets using
-	 * a string-based natural language query.  Returns a JSON list of results.
+	 * a string-based natural language query.  Returns a JSON object with a map
+	 * from group names to list of objects for those groups.
 	 */
 	def String federatedSearch(String query) {
-		List<Map> results=[] //accumulate results  
+		Map<List<Map>> results=new HashMap<List<Map>>()
 		datasets.each { ds -> //iterate across each dataset
-			List<Map> result=search(ds,query) //get search results for the dataset
+			List<Map> result=search(ds.path,query) //get search results for the dataset
+			String group=ds.group
+			if (results[group]==null) results[group]=[]
 			//println(ds+" has "+result.size())
-			results+=result //append list to our overall result
+			results[group]+=result
 		}
 		return((results as JSON).toString()) //return the result as JSON
 	}
