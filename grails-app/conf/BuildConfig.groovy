@@ -58,6 +58,8 @@ grails.project.dependency.resolution = {
 		compile ":spring-security-ui:1.0-RC2"
 		compile ":spring-security-core:2.0-RC4"
 		compile ":jquery-ui:1.10.4"
+
+		test ":codenarc:0.22"
     }
 }
 codenarc.reports = {
@@ -74,16 +76,7 @@ codenarc.reports = {
 	}
 }
 codenarc.ruleSetFiles="file:grails-app/conf/CodeNarcRules.groovy"
-//example of configuring the Codenarc properties
-codenarc.properties = {
-	// Each property definition is of the form:  RULE.PROPERTY-NAME = PROPERTY-VALUE
-	GrailsPublicControllerMethod.enabled = false
-	EmptyIfStatement.priority = 1
-}
-//set the maximum number of priority X violations allowed without causing a failure.
-codenarc.maxPriority1Violations = 50
-codenarc.maxPriority2Violations = 100
-codenarc.maxPriority3Violations = 100
+// codenarc.processViews = true
 
 //controls what happens when the maximum number of violations are exceeded
 codenarc.systemExitOnBuildException = false

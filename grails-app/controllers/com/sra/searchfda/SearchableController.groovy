@@ -34,18 +34,16 @@ class SearchableController {
         }
         try {
 			params.withHighlighter = { highlighter, index, sr ->
-				def me = sr.results[index];
-				if (!sr.highlights) {
-					sr.highlights = [];
-				}
-				Collection highlights = [];
+				def me = sr.results[index]
+                sr.highlights = sr.highlights ?: []
+				Collection highlights = []
 				me.highlight().grep { me[it] }.each {
-					def matchedFragment = highlighter.fragment(it);
+					def matchedFragment = highlighter.fragment(it)
 					if (matchedFragment) {
-						highlights.push('...' + (matchedFragment ?: '') + '...');
+						highlights.push('...' + (matchedFragment ?: '') + '...')
 					}
 				}
-				sr.highlights[index] = highlights;
+				sr.highlights[index] = highlights
 			}
             return [searchResult: searchableService.search(params.q, params)]
         } catch (SearchEngineQueryParseException ex) {
