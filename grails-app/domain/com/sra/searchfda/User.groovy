@@ -1,6 +1,15 @@
 package com.sra.searchfda
 
-class User {
+import groovy.transform.EqualsAndHashCode
+import groovy.transform.ToString
+
+
+@EqualsAndHashCode(includes = 'username')
+@ToString(includeNames = true, includes = 'username')
+@SuppressWarnings('GrailsDomainWithServiceReference')
+class User implements Serializable {
+
+	private static final long serialVersionUID = 1
 
 	transient springSecurityService
 
@@ -14,8 +23,8 @@ class User {
 	static transients = ['springSecurityService']
 
 	static constraints = {
-		username blank: false, unique: true
-		password blank: false
+		username nullable: false, unique: true
+		password nullable: false
 	}
 
 	static mapping = {
@@ -23,7 +32,7 @@ class User {
 	}
 
 	Set<Role> getAuthorities() {
-		UserRole.findAllByUser(this).collect { it.role } as Set
+		UserRole.findAllByUser(this)*.role as Set
 	}
 
 	def beforeInsert() {

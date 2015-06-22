@@ -5,6 +5,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(["ROLE_ADMIN","ROLE_USER"])
 class HomeController {
 
+    @SuppressWarnings("EmptyMethod")
 	def index() { }
 	
 	def health() {
@@ -17,7 +18,6 @@ class HomeController {
 	
 	def springSecurityService
 	def passwordEncoder
-	def DBBackupService
 	
 	def updatePassword = {
 		String username = springSecurityService.principal.username

@@ -1,6 +1,13 @@
 package com.sra.searchfda
 
-class Role {
+import groovy.transform.EqualsAndHashCode
+import groovy.transform.ToString
+
+@EqualsAndHashCode(includes = 'authority')
+@ToString(includeNames = true)
+class Role implements Serializable {
+
+    private static final long serialVersionUID = 1
 
 	String authority
 
@@ -9,6 +16,6 @@ class Role {
 	}
 
 	static constraints = {
-		authority blank: false, unique: true
+		authority nullable: false, unique: true
 	}
 }

@@ -1,392 +1,306 @@
+import org.codenarc.rule.generic.IllegalRegexRule
+import org.codenarc.rule.generic.RequiredRegexRule
+
 ruleset {
+    description 'Specific CodeNarc settings for SearchFDA.'
 
-    description '''
-        A Sample Groovy RuleSet containing all CodeNarc Rules, grouped by category.
-        You can use this as a template for your own custom RuleSet.
-        Just delete the rules that you don't want to include.
-        '''
+    ruleset('rulesets/basic.xml')
 
-    // rulesets/basic.xml
-    AssertWithinFinallyBlock 
-    AssignmentInConditional 
-    BigDecimalInstantiation 
-    BitwiseOperatorInConditional 
-    BooleanGetBoolean 
-    BrokenNullCheck 
-    BrokenOddnessCheck 
-    ClassForName 
-    ComparisonOfTwoConstants 
-    ComparisonWithSelf 
-    ConstantAssertExpression 
-    ConstantIfExpression 
-    ConstantTernaryExpression 
-    DeadCode 
-    DoubleNegative 
-    DuplicateCaseStatement 
-    DuplicateMapKey 
-    DuplicateSetValue 
-    EmptyCatchBlock 
-    EmptyClass 
-    EmptyElseBlock 
-    EmptyFinallyBlock 
-    EmptyForStatement 
-    EmptyIfStatement 
-    EmptyInstanceInitializer 
-    EmptyMethod 
-    EmptyStaticInitializer 
-    EmptySwitchStatement 
-    EmptySynchronizedStatement 
-    EmptyTryBlock 
-    EmptyWhileStatement 
-    EqualsAndHashCode 
-    EqualsOverloaded 
-    ExplicitGarbageCollection 
-    ForLoopShouldBeWhileLoop 
-    HardCodedWindowsFileSeparator 
-    HardCodedWindowsRootDirectory 
-    IntegerGetInteger 
-    MultipleUnaryOperators 
-    RandomDoubleCoercedToZero 
-    RemoveAllOnSelf 
-    ReturnFromFinallyBlock 
-    ThrowExceptionFromFinallyBlock 
-    
-    // rulesets/braces.xml
-    ElseBlockBraces 
-    ForStatementBraces 
-    IfStatementBraces 
-    WhileStatementBraces 
-    
-    // rulesets/concurrency.xml
-    BusyWait 
-    DoubleCheckedLocking 
-    InconsistentPropertyLocking 
-    InconsistentPropertySynchronization 
-    NestedSynchronization 
-    StaticCalendarField 
-    StaticConnection 
-    StaticDateFormatField 
-    StaticMatcherField 
-    StaticSimpleDateFormatField 
-    SynchronizedMethod 
-    SynchronizedOnBoxedPrimitive 
-    SynchronizedOnGetClass 
-    SynchronizedOnReentrantLock 
-    SynchronizedOnString 
-    SynchronizedOnThis 
-    SynchronizedReadObjectMethod 
-    SystemRunFinalizersOnExit 
-    ThisReferenceEscapesConstructor 
-    ThreadGroup 
-    ThreadLocalNotStaticFinal 
-    ThreadYield 
-    UseOfNotifyMethod 
-    VolatileArrayField 
-    VolatileLongOrDoubleField 
-    WaitOutsideOfWhileLoop 
-    
-    // rulesets/convention.xml
-    ConfusingTernary 
-    CouldBeElvis 
-    HashtableIsObsolete 
-    IfStatementCouldBeTernary 
-    InvertedIfElse 
-    LongLiteralWithLowerCaseL 
-    ParameterReassignment 
-    TernaryCouldBeElvis 
-    VectorIsObsolete 
-    
-    // rulesets/design.xml
-    AbstractClassWithPublicConstructor 
-    AbstractClassWithoutAbstractMethod 
-    BooleanMethodReturnsNull 
-    BuilderMethodWithSideEffects 
-    CloneableWithoutClone 
-    CloseWithoutCloseable 
-    CompareToWithoutComparable 
-    ConstantsOnlyInterface 
-    EmptyMethodInAbstractClass 
-    FinalClassWithProtectedMember 
-    ImplementationAsType 
-    LocaleSetDefault 
-    PrivateFieldCouldBeFinal 
-    PublicInstanceField 
-    ReturnsNullInsteadOfEmptyArray 
-    ReturnsNullInsteadOfEmptyCollection 
-    SimpleDateFormatMissingLocale 
-    StatelessSingleton 
-    ToStringReturnsNull 
-    
-    // rulesets/dry.xml
-    DuplicateListLiteral 
-    DuplicateMapLiteral 
-    DuplicateNumberLiteral 
-    DuplicateStringLiteral 
-    
-    // rulesets/enhanced.xml
-    CloneWithoutCloneable 
-    JUnitAssertEqualsConstantActualValue 
-    UnsafeImplementationAsMap 
-    
-    // rulesets/exceptions.xml
-    CatchArrayIndexOutOfBoundsException 
-    CatchError 
-    CatchException 
-    CatchIllegalMonitorStateException 
-    CatchIndexOutOfBoundsException 
-    CatchNullPointerException 
-    CatchRuntimeException 
-    CatchThrowable 
-    ConfusingClassNamedException 
-    ExceptionExtendsError 
-    ExceptionExtendsThrowable 
-    ExceptionNotThrown 
-    MissingNewInThrowStatement 
-    ReturnNullFromCatchBlock 
-    SwallowThreadDeath 
-    ThrowError 
-    ThrowException 
-    ThrowNullPointerException 
-    ThrowRuntimeException 
-    ThrowThrowable 
-    
-    // rulesets/formatting.xml
-    BlankLineBeforePackage 
-    BracesForClass 
-    BracesForForLoop 
-    BracesForIfElse 
-    BracesForMethod 
-    BracesForTryCatchFinally 
-    ClassJavadoc 
-    ClosureStatementOnOpeningLineOfMultipleLineClosure 
-    ConsecutiveBlankLines 
-    FileEndsWithoutNewline 
-    LineLength 
-    MissingBlankLineAfterImports 
-    MissingBlankLineAfterPackage 
-    SpaceAfterCatch 
-    SpaceAfterClosingBrace 
-    SpaceAfterComma 
-    SpaceAfterFor 
-    SpaceAfterIf 
-    SpaceAfterOpeningBrace 
-    SpaceAfterSemicolon 
-    SpaceAfterSwitch 
-    SpaceAfterWhile 
-    SpaceAroundClosureArrow 
-    SpaceAroundMapEntryColon 
-    SpaceAroundOperator 
-    SpaceBeforeClosingBrace 
-    SpaceBeforeOpeningBrace 
-    TrailingWhitespace 
-    
-    // rulesets/generic.xml
-    IllegalClassMember 
-    IllegalClassReference 
-    IllegalPackageReference 
-    IllegalRegex 
-    IllegalString 
-    IllegalSubclass 
-    RequiredRegex 
-    RequiredString 
-    StatelessClass 
-    
-    // rulesets/grails.xml
-    GrailsDomainHasEquals 
-    GrailsDomainHasToString 
-    GrailsDomainReservedSqlKeywordName 
-    GrailsDomainWithServiceReference 
-    GrailsDuplicateConstraint 
-    GrailsDuplicateMapping 
-    GrailsMassAssignment 
-    GrailsPublicControllerMethod 
-    GrailsServletContextReference 
-    GrailsSessionReference   // DEPRECATED
-    GrailsStatelessService 
-    
-    // rulesets/groovyism.xml
-    AssignCollectionSort 
-    AssignCollectionUnique 
-    ClosureAsLastMethodParameter 
-    CollectAllIsDeprecated 
-    ConfusingMultipleReturns 
-    ExplicitArrayListInstantiation 
-    ExplicitCallToAndMethod 
-    ExplicitCallToCompareToMethod 
-    ExplicitCallToDivMethod 
-    ExplicitCallToEqualsMethod 
-    ExplicitCallToGetAtMethod 
-    ExplicitCallToLeftShiftMethod 
-    ExplicitCallToMinusMethod 
-    ExplicitCallToModMethod 
-    ExplicitCallToMultiplyMethod 
-    ExplicitCallToOrMethod 
-    ExplicitCallToPlusMethod 
-    ExplicitCallToPowerMethod 
-    ExplicitCallToRightShiftMethod 
-    ExplicitCallToXorMethod 
-    ExplicitHashMapInstantiation 
-    ExplicitHashSetInstantiation 
-    ExplicitLinkedHashMapInstantiation 
-    ExplicitLinkedListInstantiation 
-    ExplicitStackInstantiation 
-    ExplicitTreeSetInstantiation 
-    GStringAsMapKey 
-    GStringExpressionWithinString 
-    GetterMethodCouldBeProperty 
-    GroovyLangImmutable 
-    UseCollectMany 
-    UseCollectNested 
-    
-    // rulesets/imports.xml
-    DuplicateImport 
-    ImportFromSamePackage 
-    ImportFromSunPackages 
-    MisorderedStaticImports 
-    NoWildcardImports 
-    UnnecessaryGroovyImport 
-    UnusedImport 
-    
-    // rulesets/jdbc.xml
-    DirectConnectionManagement 
-    JdbcConnectionReference 
-    JdbcResultSetReference 
-    JdbcStatementReference 
-    
-    // rulesets/junit.xml
-    ChainedTest 
-    CoupledTestCase 
-    JUnitAssertAlwaysFails 
-    JUnitAssertAlwaysSucceeds 
-    JUnitFailWithoutMessage 
-    JUnitLostTest 
-    JUnitPublicField 
-    JUnitPublicNonTestMethod 
-    JUnitPublicProperty 
-    JUnitSetUpCallsSuper 
-    JUnitStyleAssertions 
-    JUnitTearDownCallsSuper 
-    JUnitTestMethodWithoutAssert 
-    JUnitUnnecessarySetUp 
-    JUnitUnnecessaryTearDown 
-    JUnitUnnecessaryThrowsException 
-    SpockIgnoreRestUsed 
-    UnnecessaryFail 
-    UseAssertEqualsInsteadOfAssertTrue 
-    UseAssertFalseInsteadOfNegation 
-    UseAssertNullInsteadOfAssertEquals 
-    UseAssertSameInsteadOfAssertTrue 
-    UseAssertTrueInsteadOfAssertEquals 
-    UseAssertTrueInsteadOfNegation 
-    
-    // rulesets/logging.xml
-    LoggerForDifferentClass 
-    LoggerWithWrongModifiers 
-    LoggingSwallowsStacktrace 
-    MultipleLoggers 
-    PrintStackTrace 
-    Println 
-    SystemErrPrint 
-    SystemOutPrint 
-    
-    // rulesets/naming.xml
-    AbstractClassName 
-    ClassName 
-    ClassNameSameAsFilename 
-    ConfusingMethodName 
-    FactoryMethodName 
-    FieldName 
-    InterfaceName 
-    MethodName 
-    ObjectOverrideMisspelledMethodName 
-    PackageName 
-    ParameterName 
-    PropertyName 
-    VariableName 
-    
-    // rulesets/security.xml
-    FileCreateTempFile 
-    InsecureRandom 
-    JavaIoPackageAccess 
-    NonFinalPublicField 
-    NonFinalSubclassOfSensitiveInterface 
-    ObjectFinalize 
-    PublicFinalizeMethod 
-    SystemExit 
-    UnsafeArrayDeclaration 
-    
-    // rulesets/serialization.xml
-    EnumCustomSerializationIgnored 
-    SerialPersistentFields 
-    SerialVersionUID 
-    SerializableClassMustDefineSerialVersionUID 
-    
-    // rulesets/size.xml
-    AbcComplexity   // DEPRECATED: Use the AbcMetric rule instead. Requires the GMetrics jar
-    AbcMetric   // Requires the GMetrics jar
-    ClassSize 
-    CrapMetric   // Requires the GMetrics jar and a Cobertura coverage file
-    CyclomaticComplexity   // Requires the GMetrics jar
-    MethodCount 
-    MethodSize 
-    NestedBlockDepth 
-    
-    // rulesets/unnecessary.xml
-    AddEmptyString 
-    ConsecutiveLiteralAppends 
-    ConsecutiveStringConcatenation 
-    UnnecessaryBigDecimalInstantiation 
-    UnnecessaryBigIntegerInstantiation 
-    UnnecessaryBooleanExpression 
-    UnnecessaryBooleanInstantiation 
-    UnnecessaryCallForLastElement 
-    UnnecessaryCallToSubstring 
-    UnnecessaryCast 
-    UnnecessaryCatchBlock 
-    UnnecessaryCollectCall 
-    UnnecessaryCollectionCall 
-    UnnecessaryConstructor 
-    UnnecessaryDefInFieldDeclaration 
-    UnnecessaryDefInMethodDeclaration 
-    UnnecessaryDefInVariableDeclaration 
-    UnnecessaryDotClass 
-    UnnecessaryDoubleInstantiation 
-    UnnecessaryElseStatement 
-    UnnecessaryFinalOnPrivateMethod 
-    UnnecessaryFloatInstantiation 
-    UnnecessaryGString 
-    UnnecessaryGetter 
-    UnnecessaryIfStatement 
-    UnnecessaryInstanceOfCheck 
-    UnnecessaryInstantiationToGetClass 
-    UnnecessaryIntegerInstantiation 
-    UnnecessaryLongInstantiation 
-    UnnecessaryModOne 
-    UnnecessaryNullCheck 
-    UnnecessaryNullCheckBeforeInstanceOf 
-    UnnecessaryObjectReferences 
-    UnnecessaryOverridingMethod 
-    UnnecessaryPackageReference 
-    UnnecessaryParenthesesForMethodCallWithClosure 
-    UnnecessaryPublicModifier 
-    UnnecessaryReturnKeyword 
-    UnnecessarySelfAssignment 
-    UnnecessarySemicolon 
-    UnnecessaryStringInstantiation 
-    UnnecessarySubstring 
-    UnnecessaryTernaryExpression 
-    UnnecessaryToString 
-    UnnecessaryTransientModifier 
-    
-    // rulesets/unused.xml
-    UnusedArray 
-    UnusedMethodParameter 
-    UnusedObject 
-    UnusedPrivateField 
-    UnusedPrivateMethod 
-    UnusedPrivateMethodParameter 
-    UnusedVariable 
-    
-    
+    ruleset('rulesets/braces.xml')
+
+    ruleset('rulesets/concurrency.xml')
+
+    ruleset('rulesets/convention.xml') {
+        'ParameterReassignment' {
+            enabled = false
+        }
+        'IfStatementCouldBeTernary' {
+            // Ok in case of controllers because of CommandObject constraint blocks
+            doNotApplyToFileNames = "*Controller*,*Command*"
+        }
+        'NoDef' {
+            // Some defs are expected in Grails
+            doNotApplyToFileNames = "*Tests.groovy,*Specification.groovy,*Spec.groovy,*Controller.groovy,*TagLib.groovy"
+            excludeRegex = /(beforeInsert|afterInsert|beforeUpdate|afterUpdate|beforeDelete|afterDelete|beforeValidate|onLoad)/
+        }
+    }
+
+    ruleset('rulesets/design.xml') {
+        'Instanceof' {
+            doNotApplyToFileNames = "*Tests.groovy,*Specification.groovy,*Spec.groovy"
+        }
+    }
+
+    // Conceding defeat on this one. Duplicate string and number literals are too prevalent in Grails to easily control.
+    //    ruleset('rulesets/dry.xml')
+
+    ruleset('rulesets/enhanced.xml')
+
+    ruleset('rulesets/exceptions.xml')
+
+    ruleset('rulesets/formatting.xml') {
+        'LineLength' {
+            enabled = false
+        }
+        // Rules turned off in formatting ruleset
+        'SpaceBeforeOpeningBrace' {
+            enabled = false
+        }
+        'SpaceAfterOpeningBrace' {
+            enabled = false
+        }
+        'SpaceBeforeClosingBrace' {
+            enabled = false
+        }
+        'SpaceAfterClosingBrace' {
+            enabled = false
+        }
+        'SpaceAroundOperator' {
+            enabled = false
+        }
+        'SpaceAfterIf' {
+            enabled = false
+        }
+        'SpaceAfterComma' {
+            enabled = false
+        }
+        'SpaceAfterCatch' {
+            enabled = false
+        }
+        'SpaceAfterWhile' {
+            enabled = false
+        }
+        'SpaceAfterSwitch' {
+            enabled = false
+        }
+        'SpaceAfterFor' {
+            enabled = false
+        }
+        'SpaceAroundMapEntryColon' {
+            enabled = false
+        }
+        'SpaceAroundClosureArrow' {
+            enabled = false
+        }
+        'ClassJavadoc' {
+            enabled = false
+        }
+        'ConsecutiveBlankLines' {
+            enabled = false
+        }
+        'FileEndsWithoutNewline' {
+            enabled = false
+        }
+        'TrailingWhitespace' {
+            enabled = false
+        }
+
+    }
+
+    ruleset('rulesets/generic.xml') {
+        'StatelessClass' {
+            enabled = false
+        }
+    }
+
+    ruleset('rulesets/grails.xml') {
+        'GrailsStatelessService' {
+            addToIgnoreFieldNames = 'applicationContext, messageSource, grailsApplication, sessionFactory'
+            priority = 1
+        }
+        'GrailsPublicControllerMethod' {
+            // In Grails2, actions are public methods instead of closures
+            enabled = false
+        }
+        'GrailsDomainHasToString' {
+            enabled = false
+        }
+        'GrailsDomainHasEquals' {
+            enabled = false
+        }
+        'GrailsDomainReservedSqlKeywordName' {
+            enabled = false
+        }
+    }
+
+    ruleset('rulesets/groovyism.xml') {
+        'ExplicitCallToEqualsMethod' {
+            ignoreThisReference = true
+        }
+        'GStringExpressionWithinString' {
+            // Ok in case of tag tests because of we need " s to construct the tag
+            doNotApplyToFileNames = "*Tag*Tests*"
+        }
+    }
+
+    ruleset('rulesets/imports.xml') {
+        'NoWildcardImports' {
+            enabled = false
+        }
+    }
+
+    ruleset('rulesets/jdbc.xml')
+
+    ruleset('rulesets/junit.xml') {
+        'JUnitStyleAssertions' {
+            enabled = false
+        }
+        'JUnitLostTest' {
+            enabled = false
+        }
+        'JUnitPublicProperty' {
+            enabled = false
+        }
+    }
+
+    ruleset('rulesets/logging.xml') {
+        'Println' {
+            doNotApplyToClassNames = "*Tests"
+        }
+    }
+
+    ruleset('rulesets/naming.xml') {
+        'FactoryMethodName' {
+            enabled = false
+        }
+        'FieldName' {
+            finalRegex = null
+            staticRegex = /[A-Z][A-Z0-9_]*/
+        }
+        'MethodName' {
+            doNotApplyToClassNames = "*Specification,*Spec"
+        }
+        'VariableName' {
+            finalRegex = /[a-z][a-zA-Z0-9]*/
+        }
+    }
+
+    ruleset("rulesets/security.xml")
+
+    ruleset("rulesets/serialization.xml") {
+        'SerializableClassMustDefineSerialVersionUID' {
+            enabled = false
+        }
+    }
+
+    ruleset("rulesets/size.xml") {
+        'AbcMetric' {
+            doNotApplyToClassNames = "*Tests,*Specification,*Spec"
+            enabled = false
+        }
+        'ClassSize' {
+            doNotApplyToClassNames = "*Tests,*Specification,*Spec"
+        }
+        'CyclomaticComplexity' {
+            doNotApplyToClassNames = "*Tests,*Specification,*Spec"
+        }
+        'MethodCount' {
+            doNotApplyToClassNames = "*Tests,*Specification,*Spec"
+            maxMethods = 40
+        }
+        'MethodSize' {
+            doNotApplyToClassNames = "*Tests,*Specification,*Spec"
+        }
+        'NestedBlockDepth' {
+            doNotApplyToClassNames = "*Tests,*Specification,*Spec"
+        }
+    }
+
+    ruleset("rulesets/unnecessary.xml") {
+        'UnnecessaryReturnKeyword' {
+            enabled = false
+        }
+        'UnnecessaryObjectReferences' {
+            enabled = false
+        }
+        'UnnecessaryGetter' {
+            enabled = false
+        }
+        'UnnecessaryGString' {
+            enabled = false
+        }
+        'UnnecessarySemicolon' {
+            doNotApplyToFileNames = '*.gsp'
+        }
+    }
+
+    ruleset('rulesets/unused.xml')
+
+    rule(RequiredRegexRule) {
+        name = 'GrailsDomainHasToString'
+        regex = /(@ToString|enum)/
+        description = 'Domain classes must have an ToString annotation.'
+        priority = 2
+        applyToFilesMatching = /.*grails-app\/domain\/.*/
+        doNotApplyToFileNames = "*Code.groovy"
+    }
+
+    rule(RequiredRegexRule) {
+        name = 'GrailsDomainEqualsHashCode'
+        regex = /(@EqualsAndHashCode|enum)/
+        description = 'Domain classes must have an EqualsAndHashCode annotation.'
+        priority = 2
+        applyToFilesMatching = /.*grails-app\/domain\/.*/
+        doNotApplyToFileNames = "*Code.groovy"
+    }
+
+    rule(IllegalRegexRule) {
+        name = 'NoInlineStylingAttributes'
+        regex = /style=/
+        description = 'Do not use the inline styling attributes in tags in GSPs.'
+        priority = 2
+        applyToFilesMatching = /.*grails-app\/views\/.*/
+        applyToFileNames = "*.gsp"
+    }
+
+    rule(IllegalRegexRule) {
+        name = 'UseCsrfSafeFormOnlyInGsps'
+        regex = /(<g:form\s)|(g.form\()/
+        description = 'Do not use the g:form tag in GSPs, use the csrf:form tag instead, to enable CSRF protection.'
+        priority = 2
+        applyToFilesMatching = /.*grails-app\/views\/.*/
+        applyToFileNames = "*.gsp"
+    }
+
+    rule(IllegalRegexRule) {
+        name = 'UseCsrfSafeFormOnlyInTaglibs'
+        regex = /\sg.form\(/
+        description = 'Do not use the g.form method in taglibs, use the csrf.form method instead, to enable CSRF protection.'
+        priority = 2
+        applyToFilesMatching = /.*grails-app\/taglib\/.*/
+    }
+
+//    rule(IllegalRegexRule) {
+//        name = 'NoBlankConstraintDomainClass'
+//        regex = /blank\:/
+//        description = 'Since upgrade to Grails 2.3.5 handles blanks coming in from web, we do not need blank constraints in domain classes anymore.'
+//        priority = 2
+//        applyToFilesMatching = /.*grails-app\/domain\/.*/
+//    }
+
+    rule(IllegalRegexRule) {
+        name = 'NoBlankConstraintDomainClass'
+        regex = /blank\:/
+        description = 'Since upgrade to Grails 2.3.5 handles blanks coming in from web, we do not need blank constraints in command objects anymore.'
+        priority = 2
+        applyToFilesMatching = /.*grails-app\/(controllers|domain)\/.*/
+    }
+
+    // Will only catch a single annotation that is placed right above the private method.
+    rule(IllegalRegexRule) {
+        name = 'NoRequiresPermissionsAnnotationOnPrivateMethod'
+        regex = /@RequiresPermissions\(.*\).*\s*private/
+        description = 'RequiresPermissions annotations on private service methods are not intercepted.  These are programming errors.'
+        priority = 2
+        applyToFilesMatching = /.*grails-app\/services\/.*/
+    }
+
+    // Will only catch a single annotation that is placed right above the private method.
+    rule(IllegalRegexRule) {
+        name = 'NoTransactionalAnnotationOnPrivateMethod'
+        regex = /@Transactional\(.*\).*\s*private/
+        description = 'Transactional annotations on private service methods are not intercepted.  These are programming errors.'
+        priority = 2
+        applyToFilesMatching = /.*grails-app\/services\/.*/
+    }
 }
-	
