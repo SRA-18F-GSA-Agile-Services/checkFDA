@@ -37,9 +37,6 @@ grails.mime.types = [
 // URL Mapping Cache Max Size, defaults to 5000
 //grails.urlmapping.cache.maxsize = 1000
 
-// What URL patterns should be processed by the resources plugin
-grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*']
-
 // The default codec used to encode data with ${}
 grails.views.default.codec = "none" // none, html, base64
 grails.views.gsp.encoding = "UTF-8"
@@ -101,8 +98,6 @@ log4j = {
 	info	activity:  ['grails.app.filters.com.sra.LoggingFilters']
 	off 'org.grails.plugin.resource.ResourceMeta'
 }
-
-grails.resources.resourceLocatorEnabled = true
 
 grails.app.context="/"
 
