@@ -56,7 +56,29 @@ class AnalysisService {
 		return(analyzeDataset("food/enforcement"))
 	}
 	
+	Map<String,Integer> countMap=new TreeMap<String,Integer>()
+	
+	def analyzeInit() {
+		countMap.clear()
+	}
+	
+	def analyzeFinish() {
+		countMap.each {k,v ->
+			println(k+"="+v)
+		}
+	}
+	
+	def analyzeEntry(Map entry) {
+		Integer count=countMap.get(entry.recall_initiation_date)
+		if (count==null) {
+			countMap.put(entry.recall_initiation_date,1)
+        } else {
+		    countMap.put(entry.recall_initiation_date,count+1)
+		}
+	}
+
     def analyzeDataset(String dataset) {
+		analyzeInit()
 		ZipFile zipFile=new ZipFile(getZipFile(dataset))
 		for(ZipEntry entry:zipFile.entries()) {
 			println("Processing ${entry.getName()}")
@@ -64,9 +86,13 @@ class AnalysisService {
 			def contents=zipFile.getInputStream(entry).text
 			println(contents.size())
 			def js=JSON.parse(contents)
+			js.results.each {
+				analyzeEntry(it)
+			}
 			println(js.meta.results.total)
 			} catch (Exception e) {}
 		}
+		analyzeFinish()
 		return("OK")
     }
 }
