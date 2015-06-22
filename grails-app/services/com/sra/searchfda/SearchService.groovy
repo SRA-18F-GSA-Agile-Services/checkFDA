@@ -3,13 +3,11 @@ package com.sra.searchfda
 import grails.converters.JSON
 import grails.transaction.Transactional
 
-import org.codehaus.groovy.grails.web.json.JSONElement
-
 @Transactional
 class SearchService {
 
 	def grailsApplication
-	String urlBase="https://api.fda.gov/" //baseURL for Open FDA API
+	def OpenFDAService
 	List<String> datasets=[ //dataset names
 		"food/enforcement",
 		"drug/label",
@@ -39,16 +37,10 @@ class SearchService {
 	 */
 	private def List<Map> search(String dataset,String query) {
 		int count=0 // count of results for far
-		String apiToken=grailsApplication.config.openfdaapi.token //get api token from our config
 		List<Map> results=[] //to accumulate results
 		while(true) { //while we still have results
-			String url=urlBase+dataset+".json?api_key="+apiToken+"&search="+URLEncoder.encode(query)+"&limit=100&skip="+count //construct url
-			String result=null //variable for json result from url
-			try {
-				result=new URL(url).text //fetch the json back from the url
-			} catch (Exception e) {
-			  break
-			}
+			String result=OpenFDAService.query(dataset,query,100,count) //get a result from open fda
+			if (result==null) break
 			Map js=JSON.parse(result) //parse the json into a map
 			int total=js.meta.results.total //get the total for the overall query
 			println(dataset+" has "+total) //report (for now) how many total hits the dataset had
