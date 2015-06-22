@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "disclaimer": "openFDA is a beta research project and not for clinical use. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated.",
+    "license": "http://open.fda.gov/license",
+    "last_updated": "2015-05-31",
+    "results": {
+      "skip": 0,
+      "limit": 100,
+      "total": 565
+    }
+  },
+  "results": [
+    {
+      "recall_number": "F-2154-2014",
+      "reason_for_recall": "During an FDA inspection the firm was notified that their bulk product lacked labels. Due to the lack of ingredient statement, the firm failed to declare direct allergens for the products. The products also lacked the declaration that they are packaged in a facility that processes peanuts, tree nuts, wheat, milk and eggs.",
+      "status": "Ongoing",
+      "distribution_pattern": "Distributed in the states of Indiana and Kentucky",
+      "product_quantity": "1 - 7qt unit",
+      "recall_initiation_date": "20140410",
+      "state": "KY",
+      "event_id": "68486",
+      "product_type": "Food",
+      "product_description": "Tiramisu Ice Cream, Manufactured by: Koogee-Queen Anne, LLC, d/b/a The Comfy Cow 2221 Frankfort Ave, Louisville, KY 40206.",
+      "country": "US",
+      "city": "Louisville",
+      "recalling_firm": "Koogee-Queen Anne, LLC",
+      "report_date": "20140716",
+      "@epoch": 1424553174.836488,
+      "voluntary_mandated": "Voluntary: Firm Initiated",
+      "classification": "Class II",
+      "code_info": "1aTRM022014",
+      "@id": "0043ae8a3f0f7f07dcf8de033a0f14ebc43c7f220e421dc9143be8a4880e7e96",
+      "openfda": {},
+      "initial_firm_notification": "Combination"
+    }
+  ]
+}

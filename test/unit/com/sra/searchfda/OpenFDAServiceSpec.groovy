@@ -1,5 +1,6 @@
 package com.sra.searchfda
 
+import com.sra.searchfda.service.OpenFDAService
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 
