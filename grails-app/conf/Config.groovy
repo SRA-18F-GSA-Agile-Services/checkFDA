@@ -74,6 +74,9 @@ environments {
     production {
         grails.logging.jul.usebridge = false
     }
+	searchfdadev {
+		grails.logging.jul.usebridge = true
+	}
 }
 
 log4j = {

@@ -67,25 +67,92 @@ environments {
     }
     test {
         dataSource {
-            dbCreate = "update"
-            url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
-        }
+			dbCreate = "create-drop"
+			url = 'jdbc:mysql://searchfda.crctz8nageky.us-east-1.rds.amazonaws.com:8080/searchfda?useUnicode=true&autoReconnect=true'
+			pooled = true
+			driverClassName = "com.mysql.jdbc.Driver"
+			dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
+			username="fdasearch"
+			password="fda$earch"
+	
+			properties {
+				maxActive = 50
+				maxIdle = 25
+				minIdle = 1
+				initialSize = 1
+		   
+				numTestsPerEvictionRun = 3
+				maxWait = 10000
+		   
+				testOnBorrow = true
+				testWhileIdle = true
+				testOnReturn = true
+		   
+				validationQuery = "select now()"
+		   
+				minEvictableIdleTimeMillis = 1000 * 60 * 5
+				timeBetweenEvictionRunsMillis = 1000 * 60 * 5
+			 }
+		}
     }
+	searchfdadev {
+		dataSource {
+			dbCreate = "create-drop"
+			url = 'jdbc:mysql://searchfda.crctz8nageky.us-east-1.rds.amazonaws.com:8080/searchfda?useUnicode=true&autoReconnect=true'
+			pooled = true
+			driverClassName = "com.mysql.jdbc.Driver"
+			dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
+			username="fdasearch"
+			password="fda$earch"
+	
+			properties {
+				maxActive = 50
+				maxIdle = 25
+				minIdle = 1
+				initialSize = 1
+		   
+				numTestsPerEvictionRun = 3
+				maxWait = 10000
+		   
+				testOnBorrow = true
+				testWhileIdle = true
+				testOnReturn = true
+		   
+				validationQuery = "select now()"
+		   
+				minEvictableIdleTimeMillis = 1000 * 60 * 5
+				timeBetweenEvictionRunsMillis = 1000 * 60 * 5
+			 }
+		}
+	}
     production {
-        dataSource {
-            dbCreate = "update"
-            url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
-            pooled = true
-            properties {
-               maxActive = -1
-               minEvictableIdleTimeMillis=1800000
-               timeBetweenEvictionRunsMillis=1800000
-               numTestsPerEvictionRun=3
-               testOnBorrow=true
-               testWhileIdle=true
-               testOnReturn=true
-               validationQuery="SELECT 1"
-            }
-        }
+		dataSource {
+			dbCreate = ""
+			url = 'jdbc:mysql://searchfda.crctz8nageky.us-east-1.rds.amazonaws.com:8080/searchfda?useUnicode=true&autoReconnect=true'
+			pooled = true
+			driverClassName = "com.mysql.jdbc.Driver"
+			dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
+			username="fdasearch"
+			password="fda$earch"
+	
+			properties {
+				maxActive = 50
+				maxIdle = 25
+				minIdle = 1
+				initialSize = 1
+		   
+				numTestsPerEvictionRun = 3
+				maxWait = 10000
+		   
+				testOnBorrow = true
+				testWhileIdle = true
+				testOnReturn = true
+		   
+				validationQuery = "select now()"
+		   
+				minEvictableIdleTimeMillis = 1000 * 60 * 5
+				timeBetweenEvictionRunsMillis = 1000 * 60 * 5
+			 }
+		}
     }
 }
