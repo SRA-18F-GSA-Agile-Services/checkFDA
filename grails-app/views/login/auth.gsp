@@ -48,7 +48,7 @@
 					</div>
 				</div>
 				<div class="centered">
-					<button class="ui primary button">${message(code: "springSecurity.login.button")}</button>
+					<button class="ui primary button"><g:message code="springSecurity.login.button"/></button>
 				</div>
 			</form>
 		</div>
