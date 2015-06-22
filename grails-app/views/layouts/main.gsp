@@ -17,7 +17,7 @@
 	</head>
 	<body>
 		<div id="logo" role="banner">
-			<a href="${createLink(uri: '/')}"><img src="${resource(dir: 'static/images', file: 'RAD.png')}" alt="Rapid Application Devlopment"/></a>
+			<img class="ui image" src="https://s3.amazonaws.com/stb-content/RAD.png" style="max-height: 80px;" />
 		</div>
 		<div id="loginHeader">
 			<sec:ifLoggedIn>

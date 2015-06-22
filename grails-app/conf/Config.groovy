@@ -115,6 +115,8 @@ grails.plugin.springsecurity.authority.className = 'com.sra.searchfda.Role'
 
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**':								['permitAll'],
+	'/searchable/**':					['ROLE_ADMIN'],
+	'/query/**':						['ROLE_ADMIN'],
 	'/user/**':							['ROLE_ADMIN'],
 	'/role/**':							['ROLE_ADMIN'],
 	'/registrationCode/**':				['ROLE_ADMIN'],
