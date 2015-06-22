@@ -11,8 +11,10 @@ class Query {
 	long lat
 	long lng
 
+	String uuid = UUID.randomUUID()
+
 	static constraints = {
-		search blank: false
+		search nullable: false
 		lat nullable: true
 		lng nullable: true
 	}
