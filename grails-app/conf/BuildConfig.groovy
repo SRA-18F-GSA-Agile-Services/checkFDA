@@ -47,7 +47,7 @@ grails.project.dependency.resolution = {
 
     plugins {
         compile ":hibernate:3.6.10.17"
-        runtime ":resources:1.2.14"
+        compile ":asset-pipeline:2.3.2"
 		compile ":quartz:1.0.1"
 		compile ":scaffolding:2.1.0"
 		compile ":searchable:0.6.7"
