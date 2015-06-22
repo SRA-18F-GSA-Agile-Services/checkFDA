@@ -13,26 +13,25 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.4/semantic.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.66.0-2013.10.09/jquery.blockUI.min.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.4/semantic.min.css" type="text/css">
-		<link rel="stylesheet" href="${resource(dir: 'static/css', file: 'custom.css')}" type="text/css">
+		<asset:stylesheet href="custom.css" />
 		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.3/d3-tip.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/0.5.0/sweet-alert.min.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/0.5.0/sweet-alert.css" type="text/css"> -->
 
 		<g:layoutHead/>
-		<r:layoutResources />
 	</head>
 
 	<body>
-		<div class="ui segment">
+		<div class="ui segment header">
 			<div class="ui two column grid">
 				<div class="column">
 					<a href="${createLink(uri: '/')}">
-						<img class="ui image" src="https://s3.amazonaws.com/stb-content/RAD.png" style="max-height: 80px;" />
+						<img class="ui image" src="https://s3.amazonaws.com/stb-content/RAD.png" />
 					</a>
 				</div>
-				<div class="column" style="text-align: right;">
-					<img class="ui image small" style="display: inline-block;" src="https://s3.amazonaws.com/stb-content/sralogo-blue.png" />
+				<div class="column right-aligned">
+					<img class="ui image small inline" src="https://s3.amazonaws.com/stb-content/sralogo-blue.png" />
 				</div>
 			</div>
 		</div>
@@ -72,14 +71,13 @@
 			<g:layoutBody/>
 		</div>
 
-		<div class="menu-wrapper">
-			<div class="ui segment" style="margin-bottom: 15px;">
+		<div class="menu-wrapper footer">
+			<div class="ui segment">
 				<b>Search FDA ${grailsApplication.metadata['app.version']}</b>
 			</div>
 		</div>
 
 		<g:javascript library="application"/>
-		<r:layoutResources />
 		<script>
 			var activeMenu = function(id) {
 				if ($('.menu-' + id).is('a')) {

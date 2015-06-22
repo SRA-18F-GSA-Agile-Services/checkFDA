@@ -253,14 +253,14 @@ ruleset {
         applyToFileNames = "*.gsp"
     }
 
-    rule(IllegalRegexRule) {
-        name = 'UseCsrfSafeFormOnlyInGsps'
-        regex = /(<g:form\s)|(g.form\()/
-        description = 'Do not use the g:form tag in GSPs, use the csrf:form tag instead, to enable CSRF protection.'
-        priority = 2
-        applyToFilesMatching = /.*grails-app\/views\/.*/
-        applyToFileNames = "*.gsp"
-    }
+//    rule(IllegalRegexRule) {
+//        name = 'UseCsrfSafeFormOnlyInGsps'
+//        regex = /(<g:form\s)|(g.form\()/
+//        description = 'Do not use the g:form tag in GSPs, use the csrf:form tag instead, to enable CSRF protection.'
+//        priority = 2
+//        applyToFilesMatching = /.*grails-app\/views\/.*/
+//        applyToFileNames = "*.gsp"
+//    }
 
     rule(IllegalRegexRule) {
         name = 'UseCsrfSafeFormOnlyInTaglibs'
