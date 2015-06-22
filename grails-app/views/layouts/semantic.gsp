@@ -35,37 +35,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="menu-wrapper">
-			<sec:ifLoggedIn>
-				<div class="ui menu">
-					<a class="item menu-home" href="/">
-						<i class="icon home"></i>
-						Home
-					</a>
-					<sec:ifAllGranted roles="ROLE_ADMIN">
-						<div class="ui dropdown item">
-							<i class="icon setting"></i>
-							Admin Actions<i class="icon dropdown"></i>
-							<div class="menu">
-								<g:link class="item" controller="user">Edit Users</g:link>
-							   <a class="item" href="/controllers">Internal Controllers</a>
-							</div>
-						</div>
-					</sec:ifAllGranted>
-					<div class="right menu">
-						<div class="ui dropdown item">
-							<i class="icon dropdown"></i> <sec:username/>
-							<div class="menu">
-								<a class="item" href="/home/changePassword">Change Your Password</a>
-								<g:link class="item" controller="logout">
-									<i class="icon sign out"></i> Logout
-								</g:link>
-							</div>
-						</div>
-					</div>
-				</div>
-			</sec:ifLoggedIn>
-		</div>
 
 		<div class="content">
 			<g:layoutBody/>
