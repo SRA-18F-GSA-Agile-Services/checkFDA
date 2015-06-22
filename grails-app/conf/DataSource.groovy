@@ -1,30 +1,7 @@
 // MySQL
-/*dataSource {
-    pooled = true
-    driverClassName = "com.mysql.jdbc.Driver"
-    dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
-	username="username"
-	password="password"
-	
-	properties {
-		maxActive = 50
-		maxIdle = 25
-		minIdle = 1
-		initialSize = 1
-   
-		numTestsPerEvictionRun = 3
-		maxWait = 10000
-   
-		testOnBorrow = true
-		testWhileIdle = true
-		testOnReturn = true
-   
-		validationQuery = "select now()"
-   
-		minEvictableIdleTimeMillis = 1000 * 60 * 5
-		timeBetweenEvictionRunsMillis = 1000 * 60 * 5
-	 }
-}*/
+def fileloc = ['../UserConfig.groovy', 'webapps/ROOT/Jenkins.groovy'].grep { new File(it).exists() }.first();
+def dbConfig = new ConfigSlurper(grailsSettings.grailsEnv).parse(new File(fileloc).toURI().toURL())
+
 dataSource {
     pooled = true
     driverClassName = "org.h2.Driver"
@@ -67,32 +44,8 @@ environments {
     }
     test {
         dataSource {
-			dbCreate = "create-drop"
-			url = 'jdbc:mysql://searchfda.crctz8nageky.us-east-1.rds.amazonaws.com:8080/searchfda?useUnicode=true&autoReconnect=true'
-			pooled = true
-			driverClassName = "com.mysql.jdbc.Driver"
-			dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
-			username="fdasearch"
-			password="fda$earch"
-	
-			properties {
-				maxActive = 50
-				maxIdle = 25
-				minIdle = 1
-				initialSize = 1
-		   
-				numTestsPerEvictionRun = 3
-				maxWait = 10000
-		   
-				testOnBorrow = true
-				testWhileIdle = true
-				testOnReturn = true
-		   
-				validationQuery = "select now()"
-		   
-				minEvictableIdleTimeMillis = 1000 * 60 * 5
-				timeBetweenEvictionRunsMillis = 1000 * 60 * 5
-			 }
+			dbCreate = "" // one of 'create', 'create-drop', 'update', 'validate', ''
+			url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
 		}
     }
 	searchfdadev {
@@ -102,8 +55,8 @@ environments {
 			pooled = true
 			driverClassName = "com.mysql.jdbc.Driver"
 			dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
-			username="fdasearch"
-			password="fda$earch"
+			username=dbConfig.rds.username
+			password=dbConfig.rds.password 
 	
 			properties {
 				maxActive = 50
@@ -132,8 +85,8 @@ environments {
 			pooled = true
 			driverClassName = "com.mysql.jdbc.Driver"
 			dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
-			username="fdasearch"
-			password="fda$earch"
+			username=dbConfig.rds.username
+			password=dbConfig.rds.password 
 	
 			properties {
 				maxActive = 50
