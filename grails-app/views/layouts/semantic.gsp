@@ -73,7 +73,7 @@
 
 		<div class="menu-wrapper footer">
 			<div class="ui segment">
-				<b>Search FDA ${grailsApplication.metadata['app.version']}</b>
+				<b><g:message code="default.layout.app" /> ${grailsApplication.metadata['app.version']}</b>
 			</div>
 		</div>
 
