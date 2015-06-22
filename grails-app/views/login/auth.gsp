@@ -47,7 +47,7 @@
 						<label><g:message code="springSecurity.login.remember.me.label"/></label>
 					</div>
 				</div>
-				<div style="text-align: center;">
+				<div class="centered">
 					<button class="ui primary button">${message(code: "springSecurity.login.button")}</button>
 				</div>
 			</form>
