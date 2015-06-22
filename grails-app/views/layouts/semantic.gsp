@@ -24,15 +24,15 @@
 	</head>
 
 	<body>
-		<div class="ui segment">
+		<div class="ui segment header">
 			<div class="ui two column grid">
 				<div class="column">
 					<a href="${createLink(uri: '/')}">
-						<img class="ui image" src="https://s3.amazonaws.com/stb-content/RAD.png" style="max-height: 80px;" />
+						<img class="ui image" src="https://s3.amazonaws.com/stb-content/RAD.png" />
 					</a>
 				</div>
-				<div class="column" style="text-align: right;">
-					<img class="ui image small" style="display: inline-block;" src="https://s3.amazonaws.com/stb-content/sralogo-blue.png" />
+				<div class="column right-aligned">
+					<img class="ui image small inline" src="https://s3.amazonaws.com/stb-content/sralogo-blue.png" />
 				</div>
 			</div>
 		</div>
@@ -72,8 +72,8 @@
 			<g:layoutBody/>
 		</div>
 
-		<div class="menu-wrapper">
-			<div class="ui segment" style="margin-bottom: 15px;">
+		<div class="menu-wrapper footer">
+			<div class="ui segment">
 				<b>Search FDA ${grailsApplication.metadata['app.version']}</b>
 			</div>
 		</div>

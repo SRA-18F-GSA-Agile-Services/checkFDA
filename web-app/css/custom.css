@@ -11,3 +11,23 @@
 .selected {
 	box-shadow: 0 2px 0 inset;
 }
+
+.header img {
+	 max-height: 80px;
+}
+
+/* Footer */
+
+.footer > .segment {
+	margin-bottom: 15px;
+}
+
+/* Alignment */
+
+.right-aligned {
+	text-align: right;
+}
+
+.centered {
+	text-align: center;
+}
