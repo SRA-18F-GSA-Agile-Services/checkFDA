@@ -3,6 +3,6 @@
 #either recalls, events, or labels
 events.safetyreportid
 events.report_number
+events.patient
 recalls.recall_number
-labels.set_id
-labels.openfda.manufacturer_name
+labels.id

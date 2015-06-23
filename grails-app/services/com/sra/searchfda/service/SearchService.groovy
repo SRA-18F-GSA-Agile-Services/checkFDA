@@ -53,7 +53,7 @@ class SearchService {
 		List<Map> presults=null
 		GParsPool.withPool(datasets.size()) {
 			presults=datasets.collectParallel { ds ->
-				List<Map> result=search(ds.path,query) //get search results for the dataset
+				List<Map> result=filterResults(ds,search(ds,query)) //get search results for the dataset
 				[group:ds.group,result:result]
 			}
 		}
@@ -130,6 +130,7 @@ class SearchService {
 		List<Map> newMap=new ArrayList<Map>()
 		for(Map result:results) {
 		  Map resultMap=new HashMap()
+		  resultMap.dataset=dataset.path
 		  for(String filter:filters) {
 			if (filter.startsWith(dataset.group+".")) {
 				String[] path=filter.split("\\.").tail()
