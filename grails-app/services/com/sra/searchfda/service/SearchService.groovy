@@ -76,7 +76,8 @@ class SearchService {
 		Map<List<Map>> results=new HashMap<List<Map>>()
 		datasets.each { ds ->
 			String group=ds.group
-			results[group] = JSON.parse(grailsApplication.parentContext.getResource("data/OpenFDA-" + ds.path.split('/').join('-') + ".txt")?.file?.getText() ?: "{results: []}").results
+			results[group] = results[group] ?: [];
+			results[group] += JSON.parse(grailsApplication.parentContext.getResource("data/OpenFDA-" + ds.path.split('/').join('-') + ".txt")?.file?.getText() ?: "{results: []}").results
 		}
 		return(results)
 	}
