@@ -14,10 +14,12 @@
 			return all;
 		}, []);
 		var data = ages.reduce(function(map, cur) {
-			if (!map[cur]) {
-				map[cur] = 0;
+			var floor = Math.floor(cur / 10) * 10;
+			var age = cur ? floor + '-' + (floor + 9) : 'Unknown';
+			if (!map[age]) {
+				map[age] = 0;
 			}
-			map[cur]++;
+			map[age]++;
 			return map;
 		}, {});
 		var columns = Object.keys(data).reduce(function(cols, key) {
@@ -37,7 +39,8 @@
 		    axis: {
 			    x: {
 					type: 'category'
-				}
+				},
+				rotated: true
 			}
 		});
 	});
