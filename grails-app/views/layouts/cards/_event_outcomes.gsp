@@ -11,7 +11,10 @@
 		});
 		var outcomes = deviceEvents.reduce(function(all, cur) {
 			var list = cur.patient ? cur.patient.reduce(function(allP, curP) {
-				return allP.concat(curP.sequence_number_outcome);
+				var outcomeList = curP.sequence_number_outcome.map(function(d, i) {
+					return d.split(', ')[2 * i + 1];
+				});
+				return allP.concat(outcomeList);
 			}, []) : [];
 			return all.concat(list);
 		}, []);
