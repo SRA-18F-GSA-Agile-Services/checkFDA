@@ -1,0 +1,10 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+/*-------------------
+        Paths
+--------------------*/
+
+@checkFDAimagePath : '../../themes/check-fda/assets/images';
+@checkFDAfontPath  : '../../themes/check-fda/assets/fonts';
