@@ -125,7 +125,7 @@
 
 /* Title */
 .ui.steps .step .title {
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-size: 1.14285714em;
   font-weight: bold;
 }
@@ -330,7 +330,7 @@
   background: #f3f4f5;
 }
 .ui.steps .step.active .title {
-  color: #4183c4;
+  color: #003152;
 }
 .ui.ordered.steps .step.active:before,
 .ui.steps .active.step .icon {

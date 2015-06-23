@@ -1,0 +1,21 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+
+@backgroundColor: @checkFDABrightGreen;
+@fontWeight: normal;
+@textColor: @white;
+@hoveredTextColor: @white;
+
+/*-------------------
+        States
+--------------------*/
+
+/* Hovered */
+@hoverBackgroundColor: lighten(@backgroundColor, 5%);
+
+/* Pressed Down */
+@downBackgroundColor: darken(@backgroundColor, 10%);
+
+/* Active */
+@activeBackgroundColor: @backgroundColor;

@@ -38,7 +38,7 @@
 }
 .ui.popup > .header {
   padding: 0em;
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-size: 1.125em;
   line-height: 1.2;
   font-weight: bold;
@@ -291,7 +291,7 @@
 
 /* Inverted colors  */
 .ui.inverted.popup {
-  background: #1b1c1d;
+  background: #000000;
   color: #ffffff;
   border: none;
   box-shadow: none;
@@ -301,7 +301,7 @@
   color: #ffffff;
 }
 .ui.inverted.popup:before {
-  background-color: #1b1c1d;
+  background-color: #000000;
   box-shadow: none !important;
 }
 
