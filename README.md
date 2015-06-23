@@ -15,24 +15,27 @@ Write a brief description, no greater than 750 words, of the approach used to cr
 
 ###Our Full Stack Approach - (600 words)
 * User-driven design - "Put the needs of the users first."
-  * Ideation - opportunity canvas
+  * Ideation - opportunity canvas drives product evolution
   * User identification & interviews
   * User research and analysis - persona development
-  * Idea solidification - story map development
+  * Idea solidification - story map development informs backlog
+  * Constant iteration/feedback/validation wiwth users
 * Set up environment to allow for frequent, interative release cycle, maximize feedback cycles - "Release early, iteratively, and often"
   * Set team cadance - 3 stand-ups, early retrospective, timeboxed MVP milestone
   * Set team expectations, define roles/responsibilities early - select leaders for Design & Development, empower one Product Owner/Manager
   * Collocate, but also accomodate remote members - Slack, GitHub, Waffle.io, Google Docs, conference calls, WebEx
 * Build in quality - "Don't slow down delivery"
-  * Build in quality from the start - user stories, lightweight business cases, acceptance criteria
+  * Build in quality from the start - user stories, lightweight business cases, acceptance criteria, Code Narc, Test Coverage plug-in
   * Test throughout - unit tests, automated acceptance tests, user validation
   * Peer review to ensure continuity - pair programming, code review
+  * Using cloud technologies to support built-in security, availability, scalability, reliability, etc.)
 * Maximize value delivery - "Only do it if it adds value"
   * Use light-weight WSJF by sizing job size vs. business value and delivering most value with least work
   * Build in security - XSS, CSRF
   * Build with NFRs in mind - "future-proof" - can always grow later
   * Only produce minimal, useful documentation
-  * Use existing code whenever possible (open-source) instead of building from scratch
+  * Use existing code whenever possible (open-source) instead of building from scratch - Semantic framework, Grails, home-grown open-source plug-ins
+  * Pair program with designers and UX engineers to create immediate feedback cycle/iteration
 * Be transparent - "Work in the open"
   * Work off the backlog - pull system that reflects whole process
   * Code Standards - Definition of Done, style guide
