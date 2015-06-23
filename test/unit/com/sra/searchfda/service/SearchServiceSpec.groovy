@@ -12,11 +12,34 @@ class SearchServiceSpec extends Specification {
     def openFDAService = Mock(OpenFDAService)
 
     def setup() {
-		
         service.openFDAService = openFDAService
     }
 
-    void "test federatedSearch"() {
+    void "test parallel federated search"() {
+        given:
+        String query = "ice cream"
+
+        when:
+        Map searchResults = service.parallelFederatedSearch(query)
+
+        then:
+        1 * openFDAService.query("device/event", query, 100, 0) >> getClass().getResourceAsStream("OpenFDA-device-event.json").text
+        1 * openFDAService.query("drug/label", query, 100, 0) >> getClass().getResourceAsStream("OpenFDA-drug-label.json").text
+        1 * openFDAService.query("food/enforcement", query, 100, 0) >> getClass().getResourceAsStream("OpenFDA-food-enforcement.json").text
+        1 * openFDAService.query("drug/event", query, 100, 0) >> null
+        1 * openFDAService.query("device/enforcement", query, 100, 0) >> null
+        1 * openFDAService.query("drug/enforcement", query, 100, 0) >> null
+
+        searchResults.containsKey("labels")
+        searchResults.containsKey("recalls")
+        searchResults.containsKey("events")
+
+        searchResults.labels
+        searchResults.recalls
+        searchResults.events
+    }
+
+    void "test serial federated search"() {
         given:
         String query = "ice cream"
 
@@ -25,12 +48,12 @@ class SearchServiceSpec extends Specification {
 
         then:
         1 * openFDAService.query("device/event", query, 100, 0) >> getClass().getResourceAsStream("OpenFDA-device-event.json").text
-        1 * openFDAService.query("drug/label", query, 100, 0) >> getClass().getResourceAsStream("OpenFDA-drug-label.json"  ).text
-		1 * openFDAService.query("food/enforcement", query, 100, 0) >> getClass().getResourceAsStream("OpenFDA-food-enforcement.json").text
-		1 * openFDAService.query("drug/event", query, 100, 0) >> null
-		1 * openFDAService.query("device/enforcement", query, 100, 0) >> null
-		1 * openFDAService.query("drug/enforcement", query, 100, 0) >> null
-		
+        1 * openFDAService.query("drug/label", query, 100, 0) >> getClass().getResourceAsStream("OpenFDA-drug-label.json").text
+        1 * openFDAService.query("food/enforcement", query, 100, 0) >> getClass().getResourceAsStream("OpenFDA-food-enforcement.json").text
+        1 * openFDAService.query("drug/event", query, 100, 0) >> null
+        1 * openFDAService.query("device/enforcement", query, 100, 0) >> null
+        1 * openFDAService.query("drug/enforcement", query, 100, 0) >> null
+
         searchResults.containsKey("labels")
         searchResults.containsKey("recalls")
         searchResults.containsKey("events")
@@ -68,7 +91,7 @@ class SearchServiceSpec extends Specification {
         List<Map> searchResults = service.search("device/event", query)
 
         then:
-        1 * openFDAService.query("device/event", query, 100, 0) >> {throw new FileNotFoundException()}
+        1 * openFDAService.query("device/event", query, 100, 0) >> { throw new FileNotFoundException() }
         thrown(FileNotFoundException)
         !searchResults
     }
