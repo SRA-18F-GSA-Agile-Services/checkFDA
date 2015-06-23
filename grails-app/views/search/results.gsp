@@ -15,7 +15,7 @@
 			${ results.events.size() } Event Results
 		</h1>
 		<div class="ui two doubling cards">
-			<g:render template="/layouts/cards/events_severity" />
+			<g:render template="/layouts/cards/event_outcomes" />
 		</div>
 		<script>
 			$(function() {
