@@ -30,6 +30,7 @@ module.exports = function(callback) {
   return gulp.src(source.themes + '/**/assets/**/*.*')
     .pipe(gulpif(config.hasPermission, chmod(config.permission)))
     .pipe(gulp.dest(output.themes))
+    .pipe(gulp.dest("../grails-app/assets/stylesheets/themes"))
   ;
 
 };

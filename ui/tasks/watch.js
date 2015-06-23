@@ -221,6 +221,7 @@ module.exports = function(callback) {
         .pipe(gulpif(config.hasPermission, chmod(config.permission)))
         .pipe(gulp.dest(output.themes))
         .pipe(print(log.created))
+        .pipe(gulp.dest("../grails-app/assets/stylesheets/themes"))
       ;
     })
   ;

@@ -87,14 +87,14 @@
   expressed in em
 */
 
-@miniSize        : (10 / unit(@emValue));
-@tinySize        : (12 / unit(@emValue));
-@smallSize       : (13 / unit(@emValue));
-@mediumSize      : (14 / unit(@emValue));
-@largeSize       : (16 / unit(@emValue));
-@bigSize         : (18 / unit(@emValue));
-@hugeSize        : (20 / unit(@emValue));
-@massiveSize     : (24 / unit(@emValue));
+@miniSize        : (10 / unit(@emSize));
+@tinySize        : (12 / unit(@emSize));
+@smallSize       : (13 / unit(@emSize));
+@mediumSize      : (14 / unit(@emSize));
+@largeSize       : (16 / unit(@emSize));
+@bigSize         : (18 / unit(@emSize));
+@hugeSize        : (20 / unit(@emSize));
+@massiveSize     : (24 / unit(@emSize));
 
 
 /*-------------------
