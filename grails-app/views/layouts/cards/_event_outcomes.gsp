@@ -6,8 +6,7 @@
 </div>
 <script>
 	$(function() {
-		var json = ${ results.events as grails.converters.JSON };
-		var outcomes = json.reduce(function(all, cur) {
+		var outcomes = results.events.reduce(function(all, cur) {
 			var list = cur.patient.reduce(function(allP, curP) {
 				return allP.concat(curP.sequence_number_outcome);
 			}, []);

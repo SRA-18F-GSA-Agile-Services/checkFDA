@@ -18,6 +18,7 @@
 			<g:render template="/layouts/cards/event_outcomes" />
 		</div>
 		<script>
+			var results = ${ results as grails.converters.JSON };
 			$(function() {
 				searchInit();
 			});
