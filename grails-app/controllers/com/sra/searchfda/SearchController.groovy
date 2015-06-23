@@ -1,10 +1,13 @@
 package com.sra.searchfda
 
+import grails.converters.JSON
+
 class SearchController {
 
    def SearchService
 	
    def search(String query) {
-     render(SearchService.federatedSearch(query))
+     def mapResults = SearchService.federatedSearch(query)
+     render((mapResults as JSON).toString())
    }
 }

@@ -1,4 +1,4 @@
-package com.sra.searchfda
+package com.sra.searchfda.service
 
 import grails.converters.JSON
 import grails.transaction.Transactional
@@ -7,14 +7,14 @@ import grails.transaction.Transactional
 class SearchService {
 
 	def grailsApplication
-	def OpenFDAService
+	def openFDAService
 	List<Map> datasets=[ //dataset names
 		[path:"food/enforcement",group:"recalls"],
 		[path:"drug/label",group:"labels"],
 		[path:"drug/event",group:"events"],
 		[path:"drug/enforcement",group:"recalls"],
 		[path:"device/event",group:"events"],
-		[path:"device/enforcement]",group:"recalls"]
+		[path:"device/enforcement",group:"recalls"]
 	]
 
 	/**
@@ -22,7 +22,7 @@ class SearchService {
 	 * a string-based natural language query.  Returns a JSON object with a map
 	 * from group names to list of objects for those groups.
 	 */
-	def String federatedSearch(String query) {
+	def Map federatedSearch(String query) {
 		Map<List<Map>> results=new HashMap<List<Map>>()
 		datasets.each { ds -> //iterate across each dataset
 			List<Map> result=search(ds.path,query) //get search results for the dataset
@@ -31,7 +31,7 @@ class SearchService {
 			//println(ds+" has "+result.size())
 			results[group]+=result
 		}
-		return((results as JSON).toString()) //return the result as JSON
+		return(results) //return the result as JSON
 	}
 
 	/**
@@ -42,7 +42,7 @@ class SearchService {
 		int count=0 // count of results for far
 		List<Map> results=[] //to accumulate results
 		while(true) { //while we still have results
-			String result=OpenFDAService.query(dataset,query,100,count) //get a result from open fda
+			String result=openFDAService.query(dataset,query,100,count) //get a result from open fda
 			if (result==null) break
 			Map js=JSON.parse(result) //parse the json into a map
 			int total=js.meta.results.total //get the total for the overall query
