@@ -2,6 +2,7 @@ package com.sra.searchfda.service
 
 import grails.converters.JSON
 import grails.transaction.Transactional
+import groovyx.gpars.GParsPool
 
 @Transactional
 class SearchService {
@@ -23,6 +24,7 @@ class SearchService {
 	 * from group names to list of objects for those groups.
 	 */
 	def Map federatedSearch(String query) {
+		long t0=System.currentTimeMillis()
 		Map<List<Map>> results=new HashMap<List<Map>>()
 		datasets.each { ds -> //iterate across each dataset
 			List<Map> result=search(ds.path,query) //get search results for the dataset
@@ -31,7 +33,43 @@ class SearchService {
 			//log.info(ds+" has "+result.size())
 			results[group]+=result
 		}
+		long t1=System.currentTimeMillis()
+		log.info("Serial Federated Search Time:"+(t1-t0))
 		return(results) //return the result as JSON
+	}
+	
+	def Map parallelFederatedSearch(String query) {
+		long t0=System.currentTimeMillis()
+		Map<List<Map>> results=new HashMap<List<Map>>()
+		List<Map> presults=null
+		GParsPool.withPool(datasets.size()) {
+			presults=datasets.collectParallel { ds ->
+				List<Map> result=search(ds.path,query) //get search results for the dataset
+				[group:ds.group,result:result]
+			}
+		}
+		presults.each { item ->
+			String group=item.group
+			if (results[group]==null) results[group]=[]
+			results[group]+=item.result
+		}
+		long t1=System.currentTimeMillis()
+		log.info("Parallel Federated Search Time:"+(t1-t0))
+		return(results) //return the result as JSON
+	}
+	
+	def timingComparison(String query) {
+		long t0=System.currentTimeMillis()
+		def result=federatedSearch(query)
+		long t1=System.currentTimeMillis()
+		log.info("Federated time:"+(t1-t0))
+		long t3=System.currentTimeMillis()
+		def presult=parallelFederatedSearch(query)
+		long t4=System.currentTimeMillis()
+		log.info("Parallel time:"+(t4-t3))
+		log.info("result length="+result.size())
+		log.info("presult length="+presult.size())
+		return(presult)
 	}
 
 	Map federatedSearchMock() {
