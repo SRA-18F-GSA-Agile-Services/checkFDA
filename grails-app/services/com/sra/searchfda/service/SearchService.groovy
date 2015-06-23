@@ -34,6 +34,15 @@ class SearchService {
 		return(results) //return the result as JSON
 	}
 
+	Map federatedSearchMock() {
+		Map<List<Map>> results=new HashMap<List<Map>>()
+		datasets.each { ds ->
+			String group=ds.group
+			results[group] = JSON.parse(grailsApplication.parentContext.getResource("data/OpenFDA-" + ds.path.split('/').join('-') + ".txt")?.file?.getText() ?: "{results: []}").results
+		}
+		return(results)
+	}
+
 	/**
 	 * Perform a search against the desired dataset with the given query returning
 	 * a List of Maps.
