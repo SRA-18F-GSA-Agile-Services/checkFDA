@@ -16,6 +16,7 @@
 		</h1>
 		<div class="ui two doubling cards">
 			<g:render template="/layouts/cards/event_outcomes" />
+			<g:render template="/layouts/cards/event-gender" />
 		</div>
 		<script>
 			var results = ${ results as grails.converters.JSON };
