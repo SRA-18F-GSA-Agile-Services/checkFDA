@@ -14,6 +14,6 @@ class SearchController {
 	}
 
 	def results(String q) {
-		[query: q]
+		[query: q, results: SearchService.federatedSearchMock()]
 	}
 }
