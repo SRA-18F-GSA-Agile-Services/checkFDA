@@ -8,8 +8,8 @@ import groovy.transform.ToString
 class Query {
 
 	String search
-	long lat
-	long lng
+	Long lat
+	Long lng
 
 	String uuid = UUID.randomUUID()
 
