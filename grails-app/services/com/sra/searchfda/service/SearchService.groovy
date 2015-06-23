@@ -7,6 +7,7 @@ import groovyx.gpars.GParsPool
 @Transactional
 class SearchService {
 
+	def useFiltering=true
 	def grailsApplication
 	def openFDAService
 	List<Map> datasets=[ //dataset names
@@ -35,7 +36,7 @@ class SearchService {
 		long t0=System.currentTimeMillis()
 		Map<List<Map>> results=new HashMap<List<Map>>()
 		datasets.each { ds -> //iterate across each dataset
-			List<Map> result=search(ds.path,query) //get search results for the dataset
+			List<Map> result=filterResults(ds,search(ds,query)) //get search results for the dataset
 			String group=ds.group
 			if (results[group]==null) results[group]=[]
 			//log.info(ds+" has "+result.size())
@@ -94,15 +95,15 @@ class SearchService {
 	 * Perform a search against the desired dataset with the given query returning
 	 * a List of Maps.
 	 */
-	private def List<Map> search(String dataset,String query) {
+	private def List<Map> search(dataset,String query) {
 		int count=0 // count of results for far
 		List<Map> results=[] //to accumulate results
 		while(true) { //while we still have results
-			String result=openFDAService.query(dataset,query,100,count) //get a result from open fda
+			String result=openFDAService.query(dataset.path,query,100,count) //get a result from open fda
 			if (result==null) break
 			Map js=JSON.parse(result) //parse the json into a map
 			int total=js.meta.results.total //get the total for the overall query
-			log.info(dataset+" has "+total) //report (for now) how many total hits the dataset had
+			log.info(dataset.path+" has "+total) //report (for now) how many total hits the dataset had
 			results+=js.results //add the results
 			count+=js.results.size() //update our count
 			if (count>=total) break //if we're done with paging
@@ -110,5 +111,60 @@ class SearchService {
 		}
 		//log.info("total in list="+results.size())
 		return(results)
+	}
+	
+	private List<String> loadFilters() {
+		File filterFile=grailsApplication.parentContext.getResource("data/filters.txt").file
+		List<String> filters=[]
+		filterFile.eachLine { line ->
+			if (!line.startsWith("#")) {
+				filters<<line.trim()
+			}
+		}
+		return(filters)
+	}
+	
+	private List<Map> filterResults(Map dataset,List<Map> results) {
+		if (!useFiltering) return(results)
+		List<String> filters=loadFilters()
+		List<Map> newMap=new ArrayList<Map>()
+		for(Map result:results) {
+		  Map resultMap=new HashMap()
+		  for(String filter:filters) {
+			if (filter.startsWith(dataset.group+".")) {
+				String[] path=filter.split("\\.").tail()
+				filterResult(path,resultMap,result)
+			}
+		  }
+		  newMap<<resultMap
+		}
+		return(newMap)
+	}
+	
+	private void filterResult(String[] filter,Map resultMap,Map result) {
+		String key=filter.first()
+		String[] rest=filter.tail()
+		if (result.containsKey(key)) {
+	    	if (rest.size()==0) { //end of list
+				resultMap[key]=result[key] //move value across
+				return
+			}  else {
+			    if (resultMap[key]==null) resultMap[key]=new HashMap()
+				filterResult(rest,resultMap[key],result[key]) //recurse over key
+			}
+		}
+	}
+	
+	def testFilters() {
+	  def map=[a:[b:"c",d:["e":"e1"],f:["g":"h","i":["a","b"]]]]
+	  println("map="+map)
+	  HashMap result=new HashMap()
+	  List<String> filters=["a.d","a.f.g","a.f.i"]
+	  filters.each { filter ->
+		  println("filter="+filter)
+		  filterResult(filter.split("\\."),result,map)
+		  println("result is currently "+result)
+	  }
+	  println(result)
 	}
 }

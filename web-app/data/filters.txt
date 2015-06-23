@@ -1,0 +1,8 @@
+#this filter file specifies the json attributes we do want delivered to the server
+#they take the form <group>.att1.att2... where <group> is the group name which is
+#either recalls, events, or labels
+events.safetyreportid
+events.report_number
+recalls.recall_number
+labels.set_id
+labels.openfda.manufacturer_name
