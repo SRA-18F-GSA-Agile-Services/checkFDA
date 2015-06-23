@@ -42,7 +42,7 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
 		runtime "com.amazonaws:aws-java-sdk:1.7.3"
         runtime 'mysql:mysql-connector-java:5.1.22'
-		
+		compile 'org.codehaus.gpars:gpars:1.1.0'
     }
 
     plugins {
