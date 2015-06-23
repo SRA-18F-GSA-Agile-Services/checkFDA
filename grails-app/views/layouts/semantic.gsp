@@ -13,7 +13,6 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.66.0-2013.10.09/jquery.blockUI.min.js"></script>
 		<asset:javascript src="semantic.min.js" />
 		<asset:stylesheet href="semantic.min.css" />
-		<asset:stylesheet href="custom.css" />
 		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.3/d3-tip.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/0.5.0/sweet-alert.min.js"></script>
@@ -23,26 +22,15 @@
 	</head>
 
 	<body>
-		<div class="ui segment header">
-			<div class="ui two column grid">
-				<div class="column">
-					<a href="${createLink(uri: '/')}">
-						<img class="ui image" src="https://s3.amazonaws.com/stb-content/RAD.png" />
-					</a>
-				</div>
-				<div class="column right-aligned">
-					<img class="ui image small inline" src="https://s3.amazonaws.com/stb-content/sralogo-blue.png" />
-				</div>
-			</div>
-		</div>
-
 		<div class="content">
-			<g:layoutBody/>
-		</div>
+			<div class="ui header">
+				<a href="${createLink(uri: '/')}" class="logo">checkFDA</a>
+			</div>
 
-		<div class="menu-wrapper footer">
-			<div class="ui segment">
-				<b><g:message code="default.layout.app" /> ${grailsApplication.metadata['app.version']}</b>
+			<g:layoutBody/>
+
+			<div class="footer">
+				<!-- <g:message code="default.layout.app" /> ${grailsApplication.metadata['app.version']} -->
 			</div>
 		</div>
 

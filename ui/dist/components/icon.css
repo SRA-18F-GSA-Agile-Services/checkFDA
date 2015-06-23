@@ -16,8 +16,8 @@
 
 @font-face {
   font-family: 'Icons';
-  src: url("../themes/default/assets/fonts/Open Sans.eot");
-  src: url("../themes/default/assets/fonts/Open Sans.eot?#iefix") format('embedded-opentype'), url("../themes/default/assets/fonts/Open Sans.woff2") format('woff2'), url("../themes/default/assets/fonts/Open Sans.woff") format('woff'), url("../themes/default/assets/fonts/Open Sans.ttf") format('truetype'), url("../themes/default/assets/fonts/Open Sans.svg#icons") format('svg');
+  src: url("../themes/default/assets/fonts/icons.eot");
+  src: url("../themes/default/assets/fonts/icons.eot?#iefix") format('embedded-opentype'), url("../themes/default/assets/fonts/icons.woff2") format('woff2'), url("../themes/default/assets/fonts/icons.woff") format('woff'), url("../themes/default/assets/fonts/icons.ttf") format('truetype'), url("../themes/default/assets/fonts/icons.svg#icons") format('svg');
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -197,7 +197,7 @@ i.bordered.inverted.icon {
 /* Inverted Shapes */
 i.inverted.bordered.icon,
 i.inverted.circular.icon {
-  background-color: #1b1c1d !important;
+  background-color: #000000 !important;
   color: #ffffff !important;
 }
 i.inverted.icon {
@@ -447,7 +447,7 @@ i.icons .corner.icon {
   text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;
 }
 i.icons .inverted.corner.icon {
-  text-shadow: -1px -1px 0 #1b1c1d, 1px -1px 0 #1b1c1d, -1px 1px 0 #1b1c1d, 1px 1px 0 #1b1c1d;
+  text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
 }
 /*
  * Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome

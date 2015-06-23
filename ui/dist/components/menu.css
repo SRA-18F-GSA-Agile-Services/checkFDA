@@ -921,14 +921,14 @@ Floated Menu / Item
 .ui.secondary.pointing.menu .active.item {
   background-color: transparent;
   box-shadow: none;
-  border-color: #1b1c1d;
+  border-color: #000000;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.95);
 }
 
 /* Active Hover */
 .ui.secondary.pointing.menu .active.item:hover {
-  border-color: #1b1c1d;
+  border-color: #000000;
   color: rgba(0, 0, 0, 0.95);
 }
 
@@ -955,7 +955,7 @@ Floated Menu / Item
 
 /* Vertical Active */
 .ui.secondary.vertical.pointing.menu .active.item {
-  border-color: #1b1c1d;
+  border-color: #000000;
 }
 
 /* Inverted */
@@ -1117,7 +1117,7 @@ Floated Menu / Item
 .ui.icon.menu .item {
   height: auto;
   text-align: center;
-  color: #1b1c1d;
+  color: #000000;
 }
 .ui.icon.menu .item > .icon {
   margin: 0em;
@@ -1282,7 +1282,7 @@ Floated Menu / Item
 
 .ui.inverted.menu {
   border: 1px solid transparent;
-  background: #1b1c1d;
+  background: #000000;
   box-shadow: none;
 }
 

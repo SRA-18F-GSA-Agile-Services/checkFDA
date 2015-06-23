@@ -720,3 +720,18 @@ a.ui.inverted.grey.header:hover {
          Site Overrides
 *******************************/
 
+.ui.header {
+  min-height: 138px;
+  background-color: #003152;
+  margin: 0;
+  padding: 40px;
+}
+.ui.header > a.logo {
+  display: block;
+  width: 287px;
+  height: 55px;
+  background: url("../themes/check-fda/assets/images/logo.png") 0 0 no-repeat;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}

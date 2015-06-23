@@ -2,6 +2,8 @@
      User Global Variables
 *******************************/
 
+@black: #000;
+
 @checkFDABlue:  #003152;
 @checkFDAGray:  #eee;
 @checkFDAGreen: #75c043;
@@ -11,31 +13,31 @@
        Fonts
 --------------------*/
 
-@fontName          : 'Open Sans';
+@fontName: 'Open Sans';
 
 /*-------------------
     Brand Colors
 --------------------*/
 
-@primaryColor        : @checkFDAGreen;
-@secondaryColor      : @checkFDABlue;
+@primaryColor: @checkFDAGreen;
+@secondaryColor: @checkFDABlue;
 
 /*-------------------
         Page
 --------------------*/
 
-@pageBackground      : @checkFDAGray;
+@pageBackground: @checkFDAGray;
 
 
 /*-------------------
        Links
 --------------------*/
 
-@linkColor           : @checkFDABlue;
+@linkColor: @checkFDABlue;
 
 /*-------------------
         Paths
 --------------------*/
 
-@checkFDAimagePath : '../../themes/check-fda/assets/images';
-@checkFDAfontPath  : '../../themes/check-fda/assets/fonts';
+@checkFDAimagePath: '../../themes/check-fda/assets/images';
+@checkFDAfontPath: '../../themes/check-fda/assets/fonts';
