@@ -8,10 +8,10 @@ class SearchController {
 
 	QueryService queryService
 
-	def results(String q) {
-
+	def results(String q, Long lat, Long lng ) {
+		
 		if (q) {
-			Query searchQuery = queryService.saveSearchQuery(q, null, null)
+			Query searchQuery = queryService.saveSearchQuery(q, lat, lng)
 
 			if (searchQuery.hasErrors()) {
 				log.error("Search query '${searchQuery}' failed to save to db")

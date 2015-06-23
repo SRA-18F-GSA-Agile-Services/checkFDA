@@ -2,12 +2,14 @@ package com.sra.searchfda
 
 import com.sra.searchfda.service.QueryService
 import grails.test.mixin.TestFor
+import spock.lang.Unroll
 import spock.lang.Specification
 
 /**
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
 @TestFor(SearchController)
+@Unroll
 class SearchControllerSpec extends Specification {
 
     def queryService = Mock(QueryService)
@@ -17,19 +19,17 @@ class SearchControllerSpec extends Specification {
     }
 
     def "test results with no search query"() {
-        given:
-
         when:
 
-        def result = controller.results(searchQuery)
+        def result = controller.results(searchQuery, lat,lng)
 
         then:
         expectedResult == result.query
 
         where:
-        searchQuery | expectedResult
-        null        | null
-        ""          | ""
+        searchQuery | lat  | lng  | expectedResult
+        null        | null | null | null
+        ""          | null | null | ""
 
     }
 
@@ -38,15 +38,15 @@ class SearchControllerSpec extends Specification {
 
         when:
 
-        def result = controller.results(searchQuery)
+        def result = controller.results(searchQuery, lat , lng)
 
         then:
-        1 * queryService.saveSearchQuery(searchQuery, null, null) >> new Query(search: searchQuery, lat: null, lng: null)
+        1 * queryService.saveSearchQuery(searchQuery, lat, lng) >> new Query(search: searchQuery, lat: lat, lng: lng)
 
         expectedResult == result.query
 
         where:
-        searchQuery | expectedResult
-        "ice cream" | "ice cream"
+        searchQuery | lat  | lng  | expectedResult
+        "ice cream" | null | null | "ice cream"
     }
 }
