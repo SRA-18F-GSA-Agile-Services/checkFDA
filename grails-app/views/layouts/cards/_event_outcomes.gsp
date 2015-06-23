@@ -1,6 +1,6 @@
 <div class="card">
 	<div class="content">
-		<h2 class="header">Adverse Event Outcomes</h2>
+		<h2 class="header">Device Adverse Event Outcomes</h2>
 		<div id="chart"></div>
 	</div>
 </div>
@@ -34,7 +34,7 @@
 			    x: 'x',
 		        columns: [
 		  			['x'].concat(Object.keys(data)),
-		  			['Outcomes'].concat(columns)
+					['Event Outcomes'].concat(columns)
   		        ],
 		        type : 'bar'
 		    },
