@@ -9,7 +9,11 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css" type="text/css">
 	</head>
 	<body>
-		<g:render template="/layouts/search-box" />
+		<div class="results">
+			<div class="search">
+				<g:render template="/layouts/search-box" />
+			</div>
+		</div>
 		<div class="ui divider"></div>
 		<h1 class="ui header">
 			${ results.events.size() } Event Results

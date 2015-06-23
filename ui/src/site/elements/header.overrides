@@ -2,7 +2,7 @@
          Site Overrides
 *******************************/
 
-.ui.header {
+.ui.header.main {
 	min-height: 138px;
 	background-color: @checkFDABlue;
 	margin: 0;

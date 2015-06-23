@@ -23,15 +23,11 @@
 
 	<body>
 		<div class="content">
-			<div class="ui header">
+			<div class="ui header main">
 				<a href="${createLink(uri: '/')}" class="logo">checkFDA</a>
 			</div>
 
 			<g:layoutBody/>
-
-			<div class="footer">
-				<!-- <g:message code="default.layout.app" /> ${grailsApplication.metadata['app.version']} -->
-			</div>
 		</div>
 
 		<g:javascript library="application"/>

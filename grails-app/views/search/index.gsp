@@ -15,6 +15,9 @@
 				</div>
 			</div>
 		</div>
+		<div class="footer">
+			<!-- <g:message code="default.layout.app" /> ${grailsApplication.metadata['app.version']} -->
+		</div>
 		<script>
 			$(function() {
 				searchInit();

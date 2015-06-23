@@ -681,8 +681,8 @@ input::selection {
 .content .landing {
   display: table;
   width: 100%;
-  min-height: 726px;
-  background: url("themes/check-fda/assets/images/landing-splash.jpg") 0 0 no-repeat;
+  min-height: 560px;
+  background: url("themes/check-fda/assets/images/landing-splash.jpg") center center no-repeat;
   background-size: cover;
 }
 
@@ -699,13 +699,18 @@ input::selection {
   padding: 30px;
 }
 
-.content .landing .search .container > .input {
-  min-width: 458px;
-}
-
 .content .landing .search .container .guidance {
   line-height: 2.14275em;
   color: #ffffff;
+}
+
+.content .results .search {
+  margin: 20px;
+  text-align: center;
+}
+
+.search > .input {
+  min-width: 458px;
 }
 
 /* Footer */
@@ -6910,14 +6915,14 @@ a.ui.inverted.grey.header:hover {
          Site Overrides
 *******************************/
 
-.ui.header {
+.ui.header.main {
   min-height: 138px;
   background-color: #003152;
   margin: 0;
   padding: 40px;
 }
 
-.ui.header > a.logo {
+.ui.header.main > a.logo {
   display: block;
   width: 287px;
   height: 55px;
