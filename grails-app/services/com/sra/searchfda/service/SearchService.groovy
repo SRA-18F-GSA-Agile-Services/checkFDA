@@ -18,6 +18,14 @@ class SearchService {
 		[path:"device/enforcement",group:"recalls"]
 	]
 
+	Map executeSearch(String query) {
+		if (grailsApplication.config.checkfda.localData) {
+			return federatedSearchMock();
+		} else {
+			return parallelFederatedSearch(query);
+		}
+	}
+
 	/**
 	 * Perform a federated search across the 6 Open FDA datasets using
 	 * a string-based natural language query.  Returns a JSON object with a map

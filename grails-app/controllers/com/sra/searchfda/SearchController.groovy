@@ -42,6 +42,6 @@ class SearchController {
 			}
 		}
 
-		[query: q, results: searchService.federatedSearchMock()]
+		[query: q, results: searchService.executeSearch(q)]
 	}
 }
