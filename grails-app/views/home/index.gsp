@@ -6,8 +6,8 @@
 	</head>
 	<body>
 		<div class="ui segment">
-			<h1 class="ui header">Welcome to SRA's Grails Single Tenant Template</h1>
-			<p>This template was created by the RAD team to facilitate rapid deployment of Grails applications.</p>
+			<h1 class="ui header"><g:message code="home.title"/></h1>
+			<p><g:message code="home.content"/></p>
 		</div>
 		<script>
 			$(function() {
