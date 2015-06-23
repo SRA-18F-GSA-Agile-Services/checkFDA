@@ -9,12 +9,16 @@ import spock.lang.Specification
 @TestFor(SearchController)
 class SearchControllerSpec extends Specification {
 
-    def setup() {
-    }
+    def "test results"() {
+        when:
+        def result = controller.results(query)
 
-    def cleanup() {
-    }
+        then:
+        expectedResult == result.query
 
-    void "test something"() {
+        where:
+        query       | expectedResult
+        null        | null
+        "ice cream" | "ice cream"
     }
 }

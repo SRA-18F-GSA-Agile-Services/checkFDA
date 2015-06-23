@@ -6,11 +6,11 @@ import spock.lang.Specification
 @TestFor(HomeController)
 class HomeControllerSpec extends Specification {
 
-    void "test change password"() {
+    def "test health page"() {
         when:
-        controller.changePassword()
+        controller.health()
 
         then:
-        view == '/home/chpass'
+        response.status == 200
     }
 }
