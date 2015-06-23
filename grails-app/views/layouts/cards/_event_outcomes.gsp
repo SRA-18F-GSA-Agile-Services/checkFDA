@@ -6,7 +6,10 @@
 </div>
 <script>
 	$(function() {
-		var outcomes = results.events.reduce(function(all, cur) {
+		var deviceEvents = $.grep(results.events, function(event) {
+			return $.isArray(event.patient);
+		});
+		var outcomes = deviceEvents.reduce(function(all, cur) {
 			var list = cur.patient ? cur.patient.reduce(function(allP, curP) {
 				return allP.concat(curP.sequence_number_outcome);
 			}, []) : [];
