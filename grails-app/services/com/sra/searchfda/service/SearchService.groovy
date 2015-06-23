@@ -151,7 +151,19 @@ class SearchService {
 				return
 			}  else {
 			    if (resultMap[key]==null) resultMap[key]=new HashMap()
-				filterResult(rest,resultMap[key],result[key]) //recurse over key
+				String type=result[key]?.class?.name
+				//println("type="+type)
+				if ((type!=null) && type.endsWith("Array")) {
+				  def list=[]
+				  result[key].each {
+					  Map iterMap=new HashMap()
+					  filterResult(rest,iterMap,it)
+					  list<<iterMap
+				  }
+				  resultMap[key]=list	
+				} else {
+				  filterResult(rest,resultMap[key],result[key]) //recurse over key
+				}
 			}
 		}
 	}
