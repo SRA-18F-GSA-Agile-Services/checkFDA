@@ -3,6 +3,7 @@
 	<head>
 		<meta name="layout" content="semantic"/>
 		<title>Results - ${ query }</title>
+		<asset:javascript src="search.js" />
 	</head>
 	<body>
 		<div class="ui large fluid action labeled input">
@@ -23,17 +24,8 @@
 		</div>
 		<script>
 			$(function() {
-				$('#search').click(search);
-				$(window).keyup(function(event) {
-					if (event.keyCode == 13) {
-						search();
-					}
-				});
+				searchInit();
 			});
-
-			function search() {
-				window.location.href = '/results?q=' + $('#query').val();
-			}
 		</script>
 	</body>
 </html>
