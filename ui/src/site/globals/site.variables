@@ -2,6 +2,37 @@
      User Global Variables
 *******************************/
 
+@checkFDABlue:  #003152;
+@checkFDAGray:  #eee;
+@checkFDAGreen: #75c043;
+@checkFDABrightGreen: #44ae0a;
+
+/*-------------------
+       Fonts
+--------------------*/
+
+@fontName          : 'Open Sans';
+
+/*-------------------
+    Brand Colors
+--------------------*/
+
+@primaryColor        : @checkFDAGreen;
+@secondaryColor      : @checkFDABlue;
+
+/*-------------------
+        Page
+--------------------*/
+
+@pageBackground      : @checkFDAGray;
+
+
+/*-------------------
+       Links
+--------------------*/
+
+@linkColor           : @checkFDABlue;
+
 /*-------------------
         Paths
 --------------------*/
