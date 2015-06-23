@@ -38,7 +38,8 @@
 		    axis: {
 			    x: {
 			    	type: 'category'
-				}
+				},
+				rotated: true
 			}
 		});
 	});
