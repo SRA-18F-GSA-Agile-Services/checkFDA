@@ -22,7 +22,7 @@
 				</div>
 			</g:if>
 	
-			<form action="${postUrl}" method="POST" autocomplete="off" class="ui form">
+			<searchfda:form action="${postUrl}" method="POST" autocomplete="off" class="ui form">
 				<div class="two fields">
 					<div class="field">
 						<div class="ui labeled input">
@@ -50,7 +50,7 @@
 				<div class="centered">
 					<button class="ui primary button"><g:message code="springSecurity.login.button"/></button>
 				</div>
-			</form>
+			</searchfda:form>
 		</div>
 		<script>
 			$(function() {
