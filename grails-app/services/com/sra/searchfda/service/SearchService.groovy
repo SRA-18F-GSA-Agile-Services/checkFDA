@@ -28,7 +28,7 @@ class SearchService {
 			List<Map> result=search(ds.path,query) //get search results for the dataset
 			String group=ds.group
 			if (results[group]==null) results[group]=[]
-			//println(ds+" has "+result.size())
+			//log.info(ds+" has "+result.size())
 			results[group]+=result
 		}
 		return(results) //return the result as JSON
@@ -46,13 +46,13 @@ class SearchService {
 			if (result==null) break
 			Map js=JSON.parse(result) //parse the json into a map
 			int total=js.meta.results.total //get the total for the overall query
-			println(dataset+" has "+total) //report (for now) how many total hits the dataset had
+			log.info(dataset+" has "+total) //report (for now) how many total hits the dataset had
 			results+=js.results //add the results
 			count+=js.results.size() //update our count
 			if (count>=total) break //if we're done with paging
 			break //for now limit to 100 return results from any one dataset
 		}
-		//println("total in list="+results.size())
+		//log.info("total in list="+results.size())
 		return(results)
 	}
 }
