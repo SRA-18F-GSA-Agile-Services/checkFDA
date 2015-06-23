@@ -9,9 +9,9 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title><g:layoutTitle default="Search FDA"/></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.66.0-2013.10.09/jquery.blockUI.min.js"></script>
+		<asset:javascript src="jquery.min.js" />
 		<asset:javascript src="semantic.min.js" />
+		<asset:javascript src="jquery.blockUI.min.js" />
 		<asset:stylesheet href="semantic.min.css" />
 		<asset:stylesheet href="custom.css" />
 		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
