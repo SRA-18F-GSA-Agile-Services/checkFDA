@@ -4,14 +4,18 @@
 		<meta name="layout" content="semantic"/>
 		<title><g:message code="default.search.title" /> - ${ query }</title>
 		<asset:javascript src="search.js" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css" type="text/css">
 	</head>
 	<body>
 		<g:render template="/layouts/search-box" />
 		<div class="ui divider"></div>
+		<h1 class="ui header">
+			${ results.events.size() } Event Results
+		</h1>
 		<div class="ui four doubling cards">
-			<g:each in="${ 0..7 }">
-				<g:render template="/layouts/example-card" />
-			</g:each>
+			<g:render template="/layouts/cards/events_severity" />
 		</div>
 		<script>
 			$(function() {
