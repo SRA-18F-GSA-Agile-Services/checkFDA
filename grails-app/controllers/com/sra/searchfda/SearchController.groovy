@@ -5,6 +5,8 @@ import grails.converters.JSON
 class SearchController {
 
 	def SearchService
+	
+	def index() { }
 
 	def search(String query) {
 		def mapResults = SearchService.federatedSearch(query)
