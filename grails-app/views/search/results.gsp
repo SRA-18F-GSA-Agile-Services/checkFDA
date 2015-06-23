@@ -14,7 +14,7 @@
 		<h1 class="ui header">
 			${ results.events.size() } Event Results
 		</h1>
-		<div class="ui four doubling cards">
+		<div class="ui two doubling cards">
 			<g:render template="/layouts/cards/events_severity" />
 		</div>
 		<script>

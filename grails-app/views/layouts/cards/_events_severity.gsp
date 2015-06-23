@@ -1,6 +1,6 @@
 <div class="card">
 	<div class="content">
-		<h2 class="header">Event Severity</h2>
+		<h2 class="header">Adverse Event Outcomes</h2>
 		<div id="chart"></div>
 	</div>
 </div>
@@ -21,15 +21,23 @@
 			return map;
 		}, {});
 		var columns = Object.keys(data).reduce(function(cols, key) {
-			var col = [key].concat(data[key]);
-			cols.push(col);
+			cols.push(data[key]);
 			return cols;
 		}, []);
 		var chart = c3.generate({
 		    data: {
-		        columns: columns,
-		        type : 'pie'
-		    }
+			    x: 'x',
+		        columns: [
+		  			['x'].concat(Object.keys(data)),
+		  			['Outcomes'].concat(columns)
+  		        ],
+		        type : 'bar'
+		    },
+		    axis: {
+			    x: {
+			    	type: 'category'
+				}
+			}
 		});
 	});
 </script>
