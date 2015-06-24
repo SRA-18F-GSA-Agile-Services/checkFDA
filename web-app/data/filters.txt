@@ -4,5 +4,11 @@
 events.patient.sequence_number_outcome
 events.patient.patientsex
 events.patient.patientonsetage
-recalls.recall_number
+events.patient.sequence_number_treatment
+recalls.classification
+recalls.product_description
+recalls.recall_initiation_date
+recalls.recalling_firm
+recalls.reason_for_recall
+recalls.status
 labels.id
