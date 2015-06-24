@@ -1,3 +1,4 @@
+<%@ page import="grails.converters.JSON" %>
 <!doctype html>
 <html>
 	<head>
@@ -49,7 +50,11 @@
 			</div>
 		</div>
 		<script>
-			var results = ${ results as grails.converters.JSON };
+
+			<g:applyCodec encodeAs="none">
+			var results = ${results as JSON};
+			</g:applyCodec>
+
 			$(function() {
 				searchInit();
 				$('.message .close').on('click', function() {

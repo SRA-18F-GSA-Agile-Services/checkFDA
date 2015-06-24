@@ -9,5 +9,8 @@ function searchInit() {
 }
 
 function search() {
-	window.location.href = '/results?q=' + $('#query').val();
+	var trimmed =  $.trim( $('#query').val());
+	if(trimmed) {
+		window.location.href = '/results?q=' + encodeURIComponent(trimmed);
+	}
 }
