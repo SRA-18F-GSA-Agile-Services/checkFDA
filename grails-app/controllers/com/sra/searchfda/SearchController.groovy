@@ -2,7 +2,9 @@ package com.sra.searchfda
 
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
+
 import com.sra.searchfda.service.QueryService
+import com.sra.searchfda.service.SearchPreprocessingService
 import com.sra.searchfda.service.SearchService
 
 class SearchController {
@@ -11,6 +13,7 @@ class SearchController {
 
 	QueryService queryService
 	SearchService searchService
+	SearchPreprocessingService searchPreprocessingService
 
 	@SuppressWarnings("EmptyMethod")
 	def index() { }
@@ -35,6 +38,10 @@ class SearchController {
 	def searchTime(String query) {
 		def mapResults = searchService.timingComparison(query)
 		render((mapResults as JSON).toString())
+	}
+	
+	def testPreproc(String query) {
+		render(searchPreprocessingService.preprocessQuery(query))
 	}
 
 	def results(String q, Long lat, Long lng ) {
