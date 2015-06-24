@@ -44,7 +44,7 @@
 			<div class="ui divider"></div>
 
 			<g:each in="${ ['Ongoing', 'Pending'] }" var="status">
-				<g:set var="recalls" value="${ results.recalls.grep { it.status == status } }" />
+				<g:set var="recalls" value="${ results.recalls.grep { it.status == status }.sort { it.classification } }" />
 				<g:if test="${ recalls.size() != 0 }">
 					<h1 class="ui header">
 						<g:message code="widget.results.recall.${ status.toLowerCase() }.header" args="${ [recalls.size()] }" />
