@@ -23,6 +23,7 @@
 				</div>
 			</div>
 		</div>
+<<<<<<< HEAD
 		<div class="main results">
 			<g:if test="${flash.error}">
 				<div class="ui negative message">
@@ -39,9 +40,28 @@
 			</g:if>
 
 			<h1 class="ui header">
-				${ results.events.size() } Event Results
+				Query String
 			</h1>
 			<div class="ui divider"></div>
+
+			<g:each in="${ ['Ongoing', 'Pending'] }" var="status">
+				<g:set var="recalls" value="${ results.recalls.grep { it.status == status } }" />
+				<g:if test="${ recalls.size() != 0 }">
+					<h1 class="ui header">
+						<g:message code="widget.results.recall.${ status.toLowerCase() }.header" args="${ recalls.size() } " />
+					</h1>
+					<div class="ui two doubling cards">
+						<g:each in="${ recalls }" var="recall">
+							<g:render template="/layouts/cards/recall-alert" model="${ [recall: recall] }" />
+						</g:each>
+					</div>
+				</g:if>
+			</g:each>
+
+			<h1 class="ui header">
+				${ results.events.size() } Event Results
+			</h1>
+
 			<div class="ui two doubling cards">
 				<g:render template="/layouts/cards/event_outcomes" />
 				<g:render template="/layouts/cards/event-gender" />
