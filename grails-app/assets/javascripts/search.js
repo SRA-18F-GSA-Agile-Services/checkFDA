@@ -9,7 +9,7 @@ function searchInit() {
 			search();
 		}
 	});	
-	retrieveUserResponse (locationKey) == null ? setTimeout(getLocationPermission , 1000) :setTimeout(getGeolocation, 1000) 
+	retrieveUserPermission (locationKey) == null ? setTimeout(getLocationPermission , 1000) :setTimeout(getLocation, 1000) 
 }
 
 function search() {
@@ -17,18 +17,15 @@ function search() {
 }
 
 function getLocationPermission () {
-	var resp = confirm("Could checkFDA use your current location to give you more tailored information for your area?");
-	if (resp){
-		getGeolocation();
-	}
+	$('.ui.modal').modal('show');
 }
 
-function getGeolocation () {
+function getLocation () {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(locationSuccess, locationError);
 	}else {
 		console.log("Geolocation is not supported by this browser");
-		saveUserResponse ('Not Supported')
+		saveUserResponse (locationKey,'Not Supported')
 	}
 }
 
@@ -39,13 +36,13 @@ function locationSuccess (location) {
 }
 
 function locationError () {
-	saveUserResponse ('NO')
+	saveUserResponse (locationKey,'NO')
 }
 
 function saveUserResponse (key ,resp){
 	window.localStorage.setItem(key, resp);
 }
 
-function retrieveUserResponse (key) {
+function retrieveUserPermission (key) {
 	return window.localStorage.getItem(key)
 }
