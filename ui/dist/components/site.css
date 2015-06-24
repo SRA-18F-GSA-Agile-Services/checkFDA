@@ -201,3 +201,7 @@ input::selection {
 .search.results {
   padding: 0 40px 40px;
 }
+.content {
+  background-color: #ffffff;
+  padding: 40px;
+}
