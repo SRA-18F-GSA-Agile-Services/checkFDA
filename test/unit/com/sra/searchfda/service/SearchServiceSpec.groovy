@@ -1,6 +1,7 @@
 package com.sra.searchfda.service
 
 import grails.test.mixin.TestFor
+import org.codehaus.groovy.grails.web.json.JSONArray
 import spock.lang.Specification
 
 /**
@@ -46,6 +47,12 @@ class SearchServiceSpec extends Specification {
     void "test parallel federated search"() {
         given:
         String query = "ice cream"
+        String filterText = "#this filter file specifies the json attributes we do want delivered to the server\n" +
+                "events.patient"
+        service.grailsApplication = grailsApplication
+        service.metaClass.getFilterText = { ->
+            return filterText
+        }
 
         when:
         Map searchResults = service.parallelFederatedSearch(query)
@@ -70,6 +77,13 @@ class SearchServiceSpec extends Specification {
     void "test serial federated search"() {
         given:
         String query = "ice cream"
+        String filterText = "# comments should be ignored. \n" +
+                "events.patient"
+
+        service.grailsApplication = grailsApplication
+        service.metaClass.getFilterText = { ->
+            return filterText
+        }
 
         when:
         Map searchResults = service.federatedSearch(query)
@@ -96,19 +110,17 @@ class SearchServiceSpec extends Specification {
         String query = "ice cream"
 
         when:
-        String searchResults = service.search(dataSet, query)
-
+        List<Map> searchResults = service.search(dataSet, query)
 
         then:
-        1 * openFDAService.query(dataSet, query, 100, 0) >> getClass().getResourceAsStream(fileName).text
+        1 * openFDAService.query(dataSet.path, query, 100, 0) >> getClass().getResourceAsStream(fileName).text
         searchResults
-
 
         where:
         fileName                        | dataSet
-        "OpenFDA-device-event.json"     | "device/event"
-        "OpenFDA-drug-label.json"       | "drug/label"
-        "OpenFDA-food-enforcement.json" | "food/enforcement"
+        "OpenFDA-device-event.json"     | [path: "device/event", group: "event"]
+        "OpenFDA-drug-label.json"       | [path: "drug/label", group: "labels"]
+        "OpenFDA-food-enforcement.json" | [path: "food/enforcement", group: "events"]
     }
 
     void "test search exception thrown"() {
@@ -116,11 +128,74 @@ class SearchServiceSpec extends Specification {
         String query = "ice cream"
 
         when:
-        List<Map> searchResults = service.search("device/event", query)
+        List<Map> searchResults = service.search([path: "device/event", group: "event"], query)
 
         then:
         1 * openFDAService.query("device/event", query, 100, 0) >> { throw new FileNotFoundException() }
         thrown(FileNotFoundException)
         !searchResults
     }
+
+    void "test loadFilters"() {
+        given:
+        String filterText = "#this filter file specifies the json attributes we do want delivered to the server\n" +
+                "#they take the form <group>.att1.att2... where <group> is the group name which is\n" +
+                "#either recalls, events, or labels\n" +
+                "events.safetyreportid\n" +
+                "events.report_number\n" +
+                "#events.patient.sequence_number_outcome\n" +
+                "events.patient\n" +
+                "#events.patient\n" +
+                "recalls.recall_number\n" +
+                "labels.id"
+
+        service.grailsApplication = grailsApplication
+        service.metaClass.getFilterText = { ->
+            return filterText
+        }
+
+        when:
+
+        List<String> filtersList = service.loadFilters()
+
+        then:
+        filtersList
+        filtersList.contains("events.patient")
+
+        filterText.readLines().each { line ->
+            if (!line.startsWith("#")) {
+                assert filtersList.contains(line)
+            }
+        }
+    }
+
+    def "test filterResult"() {
+        given:
+        JSONArray jsonArray = new JSONArray([[x: 'x', y: 'y', z: 'z'], [x: 'x2', y: 'y2', z: 'z3'], [y: 'y3', z: 'z3']])
+        def map = [a: [b: 'c', d: ['e': 'e1'], f: [g: 'h', 'i': ['a', 'b']]], w: jsonArray]
+        HashMap result = new HashMap()
+
+
+        when:
+        filters.each { filter ->
+            service.filterResult(filter.split("\\."), result, map)
+        }
+
+        then:
+        empty ? result.isEmpty() : !result.isEmpty()
+        result == expected
+
+        where:
+        filters                   | expected                                                                        | empty
+        ['z.a']                   | [:]                                                                             | 1
+        []                        | [:]                                                                             | 1
+        ['1']                     | [:]                                                                             | 1
+        ["a.b"]                   | ["a": ["b": "c"]]                                                               | 0
+        ["a.d"]                   | ["a": ["d": ["e": "e1"]]]                                                       | 0
+        ["a.f"]                   | [a: [f: [g: 'h', i: ['a', 'b']]]]                                               | 0
+        ["a.f.g"]                 | ['a': ['f': ['g': 'h']]]                                                        | 0
+        ["a.d", "a.f.g", "a.f.i"] | ['a': ['f': ['g': 'h', 'i': ['a', 'b']], 'd': ['e': 'e1']]]                     | 0
+        ["a.d", "w.x", "w.y"]     | ["a": ["d": ["e": "e1"]], w: [[x: 'x', y: 'y'], [x: 'x2', y: 'y2'], [y: 'y3']]] | 0
+    }
+
 }

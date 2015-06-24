@@ -2,7 +2,6 @@ package com.sra.searchfda
 
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
-
 import com.sra.searchfda.service.QueryService
 import com.sra.searchfda.service.SearchService
 
@@ -21,10 +20,15 @@ class SearchController {
 		render((mapResults as JSON).toString())
 	}
 	
-	@Secured(["ROLE_ADMIN"])
+    @Secured(["ROLE_ADMIN"])
 	def serialSearch(String query) {
 		def mapResults = searchService.federatedSearch(query)
 		render((mapResults as JSON).toString())
+	}
+
+    @Secured(["ROLE_ADMIN"])
+	def testFilters() {
+		searchService.testFilters()
 	}
 
 	@Secured(["ROLE_ADMIN"])
