@@ -8,7 +8,7 @@ import groovyx.gpars.GParsPool
 class SearchService {
 
 	static int maxResults=500 //maximum results desired from each database
-	def useFiltering=true
+	boolean useFiltering=true
 	def grailsApplication
 	def openFDAService
 	List<Map> datasets=[ //dataset names
@@ -33,7 +33,7 @@ class SearchService {
 	 * a string-based natural language query.  Returns a JSON object with a map
 	 * from group names to list of objects for those groups.
 	 */
-	def Map federatedSearch(String query) {
+	Map federatedSearch(String query) {
 		long t0=System.currentTimeMillis()
 		Map<List<Map>> results=new HashMap<List<Map>>()
 		datasets.each { ds -> //iterate across each dataset
@@ -48,7 +48,7 @@ class SearchService {
 		return(results) //return the result as JSON
 	}
 	
-	def Map parallelFederatedSearch(String query) {
+	Map parallelFederatedSearch(String query) {
 		long t0=System.currentTimeMillis()
 		Map<List<Map>> results=new HashMap<List<Map>>()
 		List<Map> presults=null
@@ -96,7 +96,7 @@ class SearchService {
 	 * Perform a search against the desired dataset with the given query returning
 	 * a List of Maps.
 	 */
-	private def List<Map> search(dataset,String query) {
+	private List<Map> search(dataset,String query) {
 		int count=0 // count of results for far
 		List<Map> results=[] //to accumulate results
 		while(true) { //while we still have results
