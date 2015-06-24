@@ -1,14 +1,14 @@
 <div class="card">
 	<div class="content">
-		<h2 class="header">Drug Event Patient Gender Distribution</h2>
+		<h2 class="header"><g:message code="widget.event.gender.header"/></h2>
 		<div id="gender"></div>
 	</div>
 </div>
 <script>
 	var genders = {
-		0: 'Unknown',
-		1: 'Male',
-		2: 'Female'
+		0: '<g:message code="gender.unknown"/>',
+		1: '<g:message code="gender.male"/>',
+		2: '<g:message code="gender.female"/>'
 	};
 	$(function() {
 		var drugEvents = $.grep(results.events, function(event) {

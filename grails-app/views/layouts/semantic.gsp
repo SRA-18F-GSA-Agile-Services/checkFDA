@@ -24,7 +24,7 @@
 	<body>
 		<div class="content">
 			<div class="ui header main">
-				<a href="${createLink(uri: '/')}" class="logo">checkFDA</a>
+				<a href="${createLink(uri: '/')}" class="logo"><g:message code="default.logo.title"/></a>
 			</div>
 
 			<g:layoutBody/>

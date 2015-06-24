@@ -1,11 +1,12 @@
 <div class="card">
 	<div class="content">
-		<h2 class="header">Adverse Event Patient Ages</h2>
+		<h2 class="header"><g:message code="widget.event.ages.header"/></h2>
 		<div id="ages"></div>
 	</div>
 </div>
 <script>
 	$(function() {
+		var xAxisLegend = '<g:message code="widget.event.ages.legend.xAxis"/>'
 		var drugEvents = $.grep(results.events, function(event) {
 			return !$.isArray(event.patient);
 		});
@@ -15,7 +16,7 @@
 		}, []);
 		var data = ages.reduce(function(map, cur) {
 			var floor = Math.floor(cur / 10) * 10;
-			var age = cur ? floor + '-' + (floor + 9) : 'Unknown';
+			var age = cur ? floor + '-' + (floor + 9) : '<g:message code="widget.event.ages.unknown"/>';
 			if (!map[age]) {
 				map[age] = 0;
 			}
@@ -32,7 +33,7 @@
 			    x: 'x',
 		        columns: [
 					['x'].concat(Object.keys(data)),
-					['Ages'].concat(columns)
+					[xAxisLegend].concat(columns)
 		        ],
 		        type : 'bar'
 		    },

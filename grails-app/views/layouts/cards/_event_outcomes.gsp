@@ -1,11 +1,12 @@
 <div class="card">
 	<div class="content">
-		<h2 class="header">Device Adverse Event Outcomes</h2>
+		<h2 class="header"><g:message code="widget.event.outcomes.header"/></h2>
 		<div id="chart"></div>
 	</div>
 </div>
 <script>
 	$(function() {
+		var xAxisLegend = '<g:message code="widget.event.outcomes.legend.xAxis"/>'
 		var deviceEvents = $.grep(results.events, function(event) {
 			return $.isArray(event.patient);
 		});
@@ -34,7 +35,7 @@
 			    x: 'x',
 		        columns: [
 		  			['x'].concat(Object.keys(data)),
-					['Event Outcomes'].concat(columns)
+					[xAxisLegend].concat(columns)
   		        ],
 		        type : 'bar'
 		    },
