@@ -11,10 +11,12 @@ class Query {
 	Long lat
 	Long lng
 
+	static final int SEARCH_MAX_SIZE = 255
+
 	String uuid = UUID.randomUUID()
 
 	static constraints = {
-		search nullable: false
+		search nullable: false, maxSize: SEARCH_MAX_SIZE
 		lat nullable: true
 		lng nullable: true
 	}
