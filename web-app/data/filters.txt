@@ -3,8 +3,9 @@
 #either recalls, events, or labels
 events.safetyreportid
 events.report_number
-#events.patient.sequence_number_outcome
-events.patient
+events.patient.sequence_number_outcome
+events.patient.sequence_number_treatment
+#events.patient
 #events.patient
 recalls.recall_number
 labels.id

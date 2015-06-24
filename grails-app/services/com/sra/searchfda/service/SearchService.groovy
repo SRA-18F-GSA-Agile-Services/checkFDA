@@ -154,18 +154,22 @@ class SearchService {
 				resultMap[key]=result[key] //move value across
 				return
 			}  else {
-			    if (resultMap[key]==null) resultMap[key]=new HashMap()
-				String type=result[key]?.class?.name
-				//println("type="+type)
-				if ((type!=null) && type.endsWith("Array")) {
-				  def list=[]
-				  result[key].each {
-					  Map iterMap=new HashMap()
-					  filterResult(rest,iterMap,it)
-					  list<<iterMap
+				String type=result[key]?.class?.name //find type
+				if ((type!=null) && type.endsWith("Array")) { //if we are dealing with an array
+				  if (resultMap[key]==null) { //if we don't h=ave an array to receive the array yet 
+					  List<Map> nList=new ArrayList<Map>() //make an array of maps
+					  result[key].each { //and fill it with empty hashmaps of the right length
+						  nList<<new HashMap()
+					  }
+					  resultMap[key]=nList
 				  }
-				  resultMap[key]=list	
+				  int cnt=0 //use a counter for traversing the output list
+				  result[key].each { //for each element of the list the thing we're copying from
+					  filterResult(rest,resultMap[key][cnt],it)
+					  cnt++
+				  }
 				} else {
+			      if (resultMap[key]==null) resultMap[key]=new HashMap() //for default case we'll need a hashmap if it doesn't exist
 				  filterResult(rest,resultMap[key],result[key]) //recurse over key
 				}
 			}

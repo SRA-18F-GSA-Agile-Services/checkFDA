@@ -157,7 +157,7 @@ class SearchServiceSpec extends Specification {
 
     def "test filterResult"() {
         given:
-        def map = [a: [b: 'c', d: ['e': 'e1'], f: [g: 'h', 'i': ['a', 'b']]]]
+        def map = [a: [b: 'c', d: ['e': 'e1'], f: [g: 'h', 'i': ['a', 'b']]],w:[[x:'x',y:'y',z:'z'],[x:'x2',y:'y2',z:'z3'],[y:'y3',z:'z3']]]
         HashMap result = new HashMap()
 
         when:
@@ -180,5 +180,6 @@ class SearchServiceSpec extends Specification {
         ["a.f.i"]                 | ['a': ['f': ['i': ['a', 'b']]]]                             | 0
         ["a.f.g"]                 | ['a': ['f': ['g': 'h']]]                                    | 0
         ["a.d", "a.f.g", "a.f.i"] | ['a': ['f': ['g': 'h', 'i': ['a', 'b']], 'd': ['e': 'e1']]] | 0
+		//["a.d", "w.x","w.y"]	  | ["a": ["d": ["e": "e1"]],w:[[x:'x',y:'y'],[x:'x2',y:'y2'],[y:'y3']]] | 0
     }
 }
