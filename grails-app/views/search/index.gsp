@@ -21,7 +21,6 @@
 		<script>
 			$(function() {
 				searchInit();
-				setTimeout(geolocation, 1000)
 			});
 		</script>
 	</body>
