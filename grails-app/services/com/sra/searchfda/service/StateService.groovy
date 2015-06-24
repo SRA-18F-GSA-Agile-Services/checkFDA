@@ -11,12 +11,12 @@ class StateService {
    def grailsApplication
 	
    private void loadStates() {
-	   states=JSON.loads(grailsApplication.parentContext.getResource("data/states.txt").file.text)
-	   territories=JSON.loads(grailsApplication.parentContext.getResource("data/territories.txt").file.text)
+	   states=JSON.parse(grailsApplication.parentContext.getResource("data/states.json").file.text)
+	   territories=JSON.parse(grailsApplication.parentContext.getResource("data/territories.json").file.text)
    }
    
-   String getStates(String str) {
-     return((getStateList(str) as JSON).toString())	   
+   List getStates(String str) {
+     return(getStateList(str))
    }
 
    private List getStateList(String str) {

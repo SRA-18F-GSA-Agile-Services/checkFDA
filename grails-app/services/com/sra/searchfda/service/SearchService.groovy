@@ -11,6 +11,8 @@ class SearchService {
 	boolean useFiltering=true
 	def grailsApplication
 	def openFDAService
+	def stateService
+	
 	List<Map> datasets=[ //dataset names
 		[path:"food/enforcement",group:"recalls"],
 		[path:"drug/label",group:"labels"],
@@ -129,13 +131,22 @@ class SearchService {
 		return (filters)
 	}
 	
+	private void addDerivedFields(Map dataset,Map result,Map resultMap) {
+		  resultMap.dataset=dataset.path //add a dataset field
+		  if (dataset.group=="recalls") {
+			  if (result.distribution_pattern!=null) {
+			    resultMap.distribution_states=stateService.getStates(result.distribution_pattern)
+			  }
+		  }
+	}
+	
 	private List<Map> filterResults(Map dataset,List<Map> results) {
 		if (!useFiltering) return(results)
 		List<String> filters=loadFilters()
 		List<Map> newMap=new ArrayList<Map>()
 		for(Map result:results) {
 		  Map resultMap=new HashMap()
-		  resultMap.dataset=dataset.path
+		  addDerivedFields(dataset,result,resultMap)
 		  for(String filter:filters) {
 			if (filter.startsWith(dataset.group+".")) {
 				String[] path=filter.split("\\.").tail()
