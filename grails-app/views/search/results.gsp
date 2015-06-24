@@ -38,11 +38,6 @@
 				</div>
 			</g:if>
 
-			<h1 class="ui header">
-				Query String
-			</h1>
-			<div class="ui divider"></div>
-
 			<g:each in="${ ['Ongoing', 'Pending'] }" var="status">
 				<g:set var="recalls" value="${ results.recalls.grep { it.status == status }.sort { it.classification } }" />
 				<g:if test="${ recalls.size() != 0 }">
@@ -58,7 +53,7 @@
 			</g:each>
 
 			<h1 class="ui header">
-				${ results.events.size() } Event Results
+				<g:message code="widget.results.event.header" args="${[results.events.size()]}"/>
 			</h1>
 
 			<div class="ui two doubling cards">
