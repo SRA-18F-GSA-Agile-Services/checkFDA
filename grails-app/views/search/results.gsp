@@ -47,7 +47,7 @@
 				<g:set var="recalls" value="${ results.recalls.grep { it.status == status } }" />
 				<g:if test="${ recalls.size() != 0 }">
 					<h1 class="ui header">
-						<g:message code="widget.results.recall.${ status.toLowerCase() }.header" args="${ recalls.size() } " />
+						<g:message code="widget.results.recall.${ status.toLowerCase() }.header" args="${ [recalls.size()] }" />
 					</h1>
 					<div class="ui two doubling cards">
 						<g:each in="${ recalls }" var="recall">

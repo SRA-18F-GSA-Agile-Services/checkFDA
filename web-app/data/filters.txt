@@ -5,5 +5,10 @@ events.safetyreportid
 events.report_number
 events.patient.sequence_number_outcome
 events.patient.sequence_number_treatment
-recalls.recall_number
+recalls.classification
+recalls.product_description
+recalls.recall_initiation_date
+recalls.recalling_firm
+recalls.reason_for_recall
+recalls.status
 labels.id
