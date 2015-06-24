@@ -102,7 +102,7 @@ log4j = {
 		'grails.app.domain.com.sra.searchfda'
 	]
 
-	info	activity:  ['grails.app.filters.com.sra.LoggingFilters']
+	info 'activity':  ['grails.app.filters.LoggingFilters']
 	off 'org.grails.plugin.resource.ResourceMeta'
 }
 

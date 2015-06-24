@@ -13,6 +13,7 @@ class SearchController {
 	QueryService queryService
 	SearchService searchService
 
+	@SuppressWarnings("EmptyMethod")
 	def index() { }
 
 	def search(String query) {

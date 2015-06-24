@@ -254,23 +254,6 @@ ruleset {
     }
 
 //    rule(IllegalRegexRule) {
-//        name = 'UseCsrfSafeFormOnlyInGsps'
-//        regex = /(<g:form\s)|(g.form\()/
-//        description = 'Do not use the g:form tag in GSPs, use the csrf:form tag instead, to enable CSRF protection.'
-//        priority = 2
-//        applyToFilesMatching = /.*grails-app\/views\/.*/
-//        applyToFileNames = "*.gsp"
-//    }
-
-    rule(IllegalRegexRule) {
-        name = 'UseCsrfSafeFormOnlyInTaglibs'
-        regex = /\sg.form\(/
-        description = 'Do not use the g.form method in taglibs, use the csrf.form method instead, to enable CSRF protection.'
-        priority = 2
-        applyToFilesMatching = /.*grails-app\/taglib\/.*/
-    }
-
-//    rule(IllegalRegexRule) {
 //        name = 'NoBlankConstraintDomainClass'
 //        regex = /blank\:/
 //        description = 'Since upgrade to Grails 2.3.5 handles blanks coming in from web, we do not need blank constraints in domain classes anymore.'
