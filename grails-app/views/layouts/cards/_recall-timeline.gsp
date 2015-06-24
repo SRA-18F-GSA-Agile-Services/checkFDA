@@ -12,7 +12,7 @@
 		var recallInitDates = results.recalls.map(function(recall) {
 			var date = recall.recall_initiation_date;
 			return {
-				date: new Date(date.substring(0, 4) + '/' + date.substring(4, 6) + '/' + date.substring(6, 8)),
+				date: new Date(date.substring(0, 4) + '/' + date.substring(4, 6) + '/' + date.substring(6, 8)).getFullYear() + '-01-01',
 				type: recall.product_type
 			};
 		});

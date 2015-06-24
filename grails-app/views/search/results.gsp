@@ -53,13 +53,15 @@
 			</g:each>
 
 			<g:if test="${results}">
-				<h1 class="ui header">
-					<g:message code="widget.results.recall.header" args="${ results.events.size() }" />
-				</h1>
-				<div class="ui divider"></div>
-				<div class="ui two doubling cards">
-					<g:render template="/layouts/cards/recall-timeline" />
-				</div>
+				<g:if test="${ results.recalls.size() != 0 }">
+					<h1 class="ui header">
+						<g:message code="widget.results.recall.header" args="${ results.recalls.size() }" />
+					</h1>
+					<div class="ui divider"></div>
+					<div class="ui two doubling cards">
+						<g:render template="/layouts/cards/recall-timeline" />
+					</div>
+				</g:if>
 
 				<h1 class="ui header">
 					<g:message code="widget.results.event.header" args="${[results.events.size()]}"/>
