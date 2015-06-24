@@ -67,15 +67,19 @@ grails.hibernate.cache.queries = false
 
 environments {
     development {
+		checkfda.localData = true
         grails.logging.jul.usebridge = true
     }
     devdeploy {
+		checkfda.localData = false
         grails.logging.jul.usebridge = false
     }
     production {
+		checkfda.localData = false
         grails.logging.jul.usebridge = false
     }
 	searchfdadev {
+		checkfda.localData = false
 		grails.logging.jul.usebridge = true
 	}
 }

@@ -42,7 +42,7 @@ class SearchControllerSpec extends Specification {
         def result = controller.results(searchQuery, lat , lng)
 
         then:
-		1 * searchService.federatedSearchMock() >> [events: [], recalls: [], labels: []]
+		1 * searchService.executeSearch(searchQuery) >> [events: [], recalls: [], labels: []]
         1 * queryService.saveSearchQuery(searchQuery, lat, lng) >> new Query(search: searchQuery, lat: lat, lng: lng)
 
         expectedResult == result.query
