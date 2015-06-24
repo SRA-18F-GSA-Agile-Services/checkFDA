@@ -718,6 +718,11 @@ input::selection {
 .search.results {
   padding: 0 40px 40px;
 }
+
+.content {
+  background-color: #ffffff;
+  padding: 40px;
+}
 /*!
  * # Semantic UI 2.0.0 - Button
  * http://github.com/semantic-org/semantic-ui/

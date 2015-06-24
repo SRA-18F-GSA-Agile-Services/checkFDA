@@ -24,25 +24,23 @@
 			</div>
 		</div>
 		<div class="main">
+			<div class="content">
+				<g:if test="${flash.error}">
+					<div class="alert alert-error">${flash.error}</div>
+				</g:if>
+				<g:if test="${flash.message}">
+					<div class="message">${flash.message}</div>
+				</g:if>
 
-			<g:if test="${flash.error}">
-				<div class="alert alert-error">${flash.error}</div>
-			</g:if>
-			<g:if test="${flash.message}">
-				<div class="message">${flash.message}</div>
-			</g:if>
-
-	<!--
-			<div class="ui grid"></div>
-			<div class="ui divider"></div>
-	-->
-			<h1 class="ui header">
-				${ results.events.size() } Event Results
-			</h1>
-			<div class="ui two doubling cards">
-				<g:render template="/layouts/cards/event_outcomes" />
-				<g:render template="/layouts/cards/event-gender" />
-				<g:render template="/layouts/cards/event_ages" />
+				<h1 class="ui header">
+					${ results.events.size() } Event Results
+				</h1>
+				<div class="ui divider"></div>
+				<div class="ui two doubling cards">
+					<g:render template="/layouts/cards/event_outcomes" />
+					<g:render template="/layouts/cards/event-gender" />
+					<g:render template="/layouts/cards/event_ages" />
+				</div>
 			</div>
 		</div>
 		<script>
