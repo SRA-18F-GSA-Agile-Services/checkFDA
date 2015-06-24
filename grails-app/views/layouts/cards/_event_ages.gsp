@@ -14,6 +14,10 @@
 			all.push(cur.patient.patientonsetage);
 			return all;
 		}, []);
+		var ageMap = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].reduce(function(all, cur) {
+			all[(cur * 10) + '-' + (cur * 10 + 9)] = 0;
+			return all;
+		}, {});
 		var data = ages.reduce(function(map, cur) {
 			var floor = Math.floor(cur / 10) * 10;
 			var age = cur ? floor + '-' + (floor + 9) : '<g:message code="widget.event.ages.unknown"/>';
@@ -22,7 +26,7 @@
 			}
 			map[age]++;
 			return map;
-		}, {});
+		}, ageMap);
 		var columns = Object.keys(data).reduce(function(cols, key) {
 			cols.push(data[key]);
 			return cols;
@@ -37,11 +41,28 @@
 		        ],
 		        type : 'bar'
 		    },
+		    legend: {
+				show: false
+			},
 		    axis: {
 			    x: {
-					type: 'category'
+					type: 'category',
+					label: {
+						text: 'Age Group',
+						position: 'outer-center'
+					}
 				},
-				rotated: true
+				y: {
+					label: {
+						text: 'Number of Adverse Events',
+						position: 'outer-middle'
+					},
+					max: d3.max(columns),
+					padding: {top:0, bottom:0},
+					tick: {
+						count: d3.max(columns) + 1
+					}
+				}
 			}
 		});
 	});
