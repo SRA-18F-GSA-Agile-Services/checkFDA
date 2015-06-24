@@ -112,16 +112,17 @@ class SearchService {
 		//log.info("total in list="+results.size())
 		return(results)
 	}
-	
+
 	private List<String> loadFilters() {
-		File filterFile=grailsApplication.parentContext.getResource("data/filters.txt").file
-		List<String> filters=[]
+		InputStream filterInputStream = this.class.classLoader.getResourceAsStream('data/filters.txt')
+		String filterFile = filterInputStream.text
+		List<String> filters = []
 		filterFile.eachLine { line ->
 			if (!line.startsWith("#")) {
-				filters<<line.trim()
+				filters << line.trim()
 			}
 		}
-		return(filters)
+		return (filters)
 	}
 	
 	private List<Map> filterResults(Map dataset,List<Map> results) {
@@ -166,18 +167,5 @@ class SearchService {
 				}
 			}
 		}
-	}
-	
-	def testFilters() {
-	  def map=[a:[b:"c",d:["e":"e1"],f:["g":"h","i":["a","b"]]]]
-	  println("map="+map)
-	  HashMap result=new HashMap()
-	  List<String> filters=["a.d","a.f.g","a.f.i"]
-	  filters.each { filter ->
-		  println("filter="+filter)
-		  filterResult(filter.split("\\."),result,map)
-		  println("result is currently "+result)
-	  }
-	  println(result)
 	}
 }

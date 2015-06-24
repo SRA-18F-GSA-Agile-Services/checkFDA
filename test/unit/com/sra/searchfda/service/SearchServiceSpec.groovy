@@ -96,19 +96,17 @@ class SearchServiceSpec extends Specification {
         String query = "ice cream"
 
         when:
-        String searchResults = service.search(dataSet, query)
-
+        List<Map> searchResults = service.search(dataSet, query)
 
         then:
-        1 * openFDAService.query(dataSet, query, 100, 0) >> getClass().getResourceAsStream(fileName).text
+        1 * openFDAService.query(dataSet.path, query, 100, 0) >> getClass().getResourceAsStream(fileName).text
         searchResults
-
 
         where:
         fileName                        | dataSet
-        "OpenFDA-device-event.json"     | "device/event"
-        "OpenFDA-drug-label.json"       | "drug/label"
-        "OpenFDA-food-enforcement.json" | "food/enforcement"
+        "OpenFDA-device-event.json"     | [path: "device/event", group: "event"]
+        "OpenFDA-drug-label.json"       | [path: "drug/label", group: "labels"]
+        "OpenFDA-food-enforcement.json" | [path: "food/enforcement", group: "events"]
     }
 
     void "test search exception thrown"() {
@@ -116,11 +114,53 @@ class SearchServiceSpec extends Specification {
         String query = "ice cream"
 
         when:
-        List<Map> searchResults = service.search("device/event", query)
+        List<Map> searchResults = service.search([path: "device/event", group: "event"], query)
 
         then:
         1 * openFDAService.query("device/event", query, 100, 0) >> { throw new FileNotFoundException() }
         thrown(FileNotFoundException)
         !searchResults
     }
+
+    void "test loadFilters"() {
+        when:
+        List<String> filtersList = service.loadFilters()
+        InputStream filterInputStream = this.class.classLoader.getResourceAsStream('data/filters.txt')
+
+        then:
+        filtersList
+        filtersList.contains("events.patient")
+
+        filterInputStream.text.readLines().each { line ->
+            if (!line.startsWith("#")) {
+                assert filtersList.contains(line)
+            }
+        }
+    }
+
+    def "test filterResult"() {
+        given:
+        def map = [a: [b: "c", d: ["e": "e1"], f: [g: "h", "i": ["a", "b"]]]]
+        HashMap result = new HashMap()
+
+        when:
+        filters.each { filter ->
+            service.filterResult(filter.split("\\."), result, map)
+        }
+
+        then:
+        !result.isEmpty()
+        result == expected
+
+        where:
+        filters                   | expected
+        ["a.b"]                   | ["a": ["b": "c"]]
+        ["a.d"]                   | ["a": ["d": ["e": "e1"]]]
+        ["a.f"]                   | ['a': ['f': ['g': 'h', 'i': ['a', 'b']]]]
+        ["a.f.i"]                 | ['a': ['f': ['i': ['a', 'b']]]]
+        ["a.d", "a.f.g", "a.f.i"] | ['a': ['f': ['g': 'h', 'i': ['a', 'b']], 'd': ['e': 'e1']]]
+
+    }
+
+
 }
