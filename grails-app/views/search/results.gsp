@@ -52,15 +52,25 @@
 				</g:if>
 			</g:each>
 
-			<h1 class="ui header">
-				<g:message code="widget.results.event.header" args="${[results.events.size()]}"/>
-			</h1>
+			<g:if test="${results}">
+				<h1 class="ui header">
+					<g:message code="widget.results.recall.header" args="${ results.events.size() }" />
+				</h1>
+				<div class="ui divider"></div>
+				<div class="ui two doubling cards">
+					<g:render template="/layouts/cards/recall-timeline" />
+				</div>
 
-			<div class="ui two doubling cards">
-				<g:render template="/layouts/cards/event_outcomes" />
-				<g:render template="/layouts/cards/event-gender" />
-				<g:render template="/layouts/cards/event_ages" />
-			</div>
+				<h1 class="ui header">
+					<g:message code="widget.results.event.header" args="${[results.events.size()]}"/>
+				</h1>
+				<div class="ui divider"></div>
+				<div class="ui two doubling cards">
+					<g:render template="/layouts/cards/event_outcomes" />
+					<g:render template="/layouts/cards/event-gender" />
+					<g:render template="/layouts/cards/event_ages" />
+				</div>
+			</g:if>
 		</div>
 		<script>
 
