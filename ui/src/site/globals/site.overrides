@@ -2,68 +2,53 @@
          Site Overrides
 *******************************/
 
-.content {
-	display: flex;
-	flex-direction: column;
-	.heading.main {
-		flex: 0 1;
-	}
+.ui.container {
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 	.landing {
-		flex: 1 0;
-	}
-	.footer {
-		flex: 0 1;
-	}
-}
-
-/* General */
-
-.content {
-	width: 100%;
-	height: 100%;
-	max-width: 968px;
-	margin: 0 auto;
-	.landing {
-		display: flex;
-		width: 100%;
+		margin: 0;
  		min-height: 200px;
 		background: url("@{checkFDAimagePath}/landing-splash.jpg") 50% 33% no-repeat;
 		background-size: cover;
 		.search {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			.container {
+			.column {
 				background-color: fade(@black, 65%);
 				border: 1px solid @black;
 				padding: 30px;
-				text-align: center;
 				.guidance {
 					padding-top: @lineHeight * 0.5;
 					line-height: @lineHeight;
 					color: @white;
+					text-align: center;
 				}
 			}
 		}
 	}
-	.results {
-		.search {
-			margin: 20px;
-			text-align: center;
+	> .header, > .footer {
+		min-height: 138px;
+		background-color: @checkFDABlue;
+		a.logo {
+			display: block;
+			margin: 40px;
+			width: 287px;
+			height: 55px;
+			background: url("@{checkFDAimagePath}/logo.png") 0 0 no-repeat;
+			text-indent: 100%;
+			white-space: nowrap;
+			overflow: hidden;
 		}
 	}
 }
 
 .search {
-	width: 100%;
 	.input {
-		min-width: 458px;
+		width: 100%;
+	}
+	&.results {
+		padding: 0 40px 40px;
 	}
 }
 
-/* Footer */
-
-.footer {
-	min-height: 138px;
-	background-color: @checkFDABlue;
+.main.results {
+	background-color: @white;
+	padding: 40px;
 }
