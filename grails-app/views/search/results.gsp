@@ -72,8 +72,13 @@
 			var results = ${ results as grails.converters.JSON };
 			$(function() {
 				searchInit();
+
 				$('.message .close').on('click', function() {
 					$(this).closest('.message').transition('fade');
+				});
+
+				$('[data-content]').popup({
+					position: 'top center'
 				});
 			});
 		</script>

@@ -2,13 +2,13 @@
 	<div class="content">
 		<h2 class="header">${ recall.product_description }</h2>
 		<div class="meta">
-			<span>
+			<span data-content="${ message(code: 'widget.recall.alert.calendar') }">
 				<i class="icon calendar outline"></i> ${ new Date().parse('yyyyMMdd', recall.recall_initiation_date).format('M/d/yyyy') }
 			</span>
-			<span>
+			<span data-content="${ message(code: 'widget.recall.alert.severity') }">
 				<i class="icon announcement"></i> ${ recall.voluntary_mandated }
 			</span>
-			<span>
+			<span data-content="${ message(code: 'widget.recall.alert.firm') }">
 				<i class="icon building outline"></i> ${ recall.recalling_firm }
 			</span>
 		</div>
