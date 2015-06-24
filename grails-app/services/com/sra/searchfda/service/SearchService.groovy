@@ -7,6 +7,7 @@ import groovyx.gpars.GParsPool
 @Transactional
 class SearchService {
 
+	static int maxResults=500 //maximum results desired from each database
 	def useFiltering=true
 	def grailsApplication
 	def openFDAService
@@ -107,7 +108,7 @@ class SearchService {
 			results+=js.results //add the results
 			count+=js.results.size() //update our count
 			if (count>=total) break //if we're done with paging
-			break //for now limit to 100 return results from any one dataset
+			if (count>=maxResults) break //if we've reached the limit desired for each database
 		}
 		//log.info("total in list="+results.size())
 		return(results)
