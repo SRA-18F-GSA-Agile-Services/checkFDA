@@ -154,8 +154,8 @@ class SearchService {
 				resultMap[key]=result[key] //move value across
 				return
 			}  else {
-				String type=result[key]?.class?.name //find type
-				if ((type!=null) && type.contains("Array")) { //if we are dealing with an array
+//				String type=result[key]?.class?.name //find type
+				if ((result[key] instanceof List)) { //if we are dealing with an array
 				  if (resultMap[key]==null) { //if we don't h=ave an array to receive the array yet 
 					  List<Map> nList=new ArrayList<Map>() //make an array of maps
 					  result[key].each { //and fill it with empty hashmaps of the right length
