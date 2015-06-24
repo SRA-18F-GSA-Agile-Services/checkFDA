@@ -21,6 +21,7 @@
 		<script>
 			$(function() {
 				searchInit();
+				geolocation();
 			});
 		</script>
 	</body>
