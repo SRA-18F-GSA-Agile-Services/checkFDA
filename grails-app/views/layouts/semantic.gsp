@@ -42,10 +42,10 @@
 			</div>
 			<div class="actions">
 				<div class="ui negative button">
-				 No
+					No
 				</div>
 				<div class="ui positive button">
-				Yes
+					Yes
 				</div>
 			</div>
 		</div>
@@ -74,11 +74,11 @@
 				});
 				$('.ui.modal').modal({
 					closable  : false,
-					onDeny    : function(){
-						saveUserResponse (locationKey,'NO')
+					onDeny    : function() {
+						saveUserResponse (locationKey,'NO');
 					},
 					onApprove : function() {
-						getLocation ()
+						getLocation();
 					}
 				});
 			});
