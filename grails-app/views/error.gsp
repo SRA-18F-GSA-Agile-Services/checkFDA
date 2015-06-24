@@ -16,11 +16,14 @@
 				<h1 class="ui header icon">
 					<i class="bug icon"></i>
 					<div class="content">
-						An Error Has Occurred
+						<g:message code="default.error.header" />
 					</div>
 				</h1>
 				<p>
-					Sorry, an error has occurred. <a href="/">Take me to safety.</a>
+					<g:message code="default.error.message" />
+					<a href="/">
+						<g:message code="default.error.link" />
+					</a>
 				</p>
 			</div>
 		</g:else>

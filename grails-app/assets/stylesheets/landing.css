@@ -1,0 +1,16 @@
+.content {
+	height: 100%;
+}
+
+.body {
+	min-height: 100%;
+	margin-top: -216px;
+	margin-bottom: -46px;
+	display: table;
+	width: 100%;
+}
+
+.search {
+	display: table-cell;
+	vertical-align: middle;
+}

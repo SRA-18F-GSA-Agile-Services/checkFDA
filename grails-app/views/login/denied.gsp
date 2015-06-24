@@ -9,11 +9,11 @@
 			<h1 class="ui header icon">
 				<i class="remove user icon"></i>
 				<div class="content">
-					Access Denied
+					<g:message code="default.auth.header" />
 				</div>
 			</h1>
 			<p>
-				Sorry, you're not authorized to view this application.
+				<g:message code="default.auth.message" />
 			</p>
 		</div>
 	</body>

@@ -1,27 +1,16 @@
 package com.sra.searchfda
 
-import com.sra.searchfda.HomeController;
-
 import grails.test.mixin.TestFor
-import spock.lang.*
+import spock.lang.Specification
 
-/**
- * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
- */
 @TestFor(HomeController)
 class HomeControllerSpec extends Specification {
 
-    def setup() {
-    }
+    def "test health page"() {
+        when:
+        controller.health()
 
-    def cleanup() {
-    }
-
-    void "test change password"() {
-		when:
-			controller.changePassword();
-		
-		then:
-			view == '/home/chpass'
+        then:
+        response.status == 200
     }
 }

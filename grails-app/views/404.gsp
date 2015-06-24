@@ -9,11 +9,14 @@
 			<h1 class="ui header icon">
 				<i class="bug icon"></i>
 				<div class="content">
-					This Page Is Missing
+					<g:message code="default.missing.header" />
 				</div>
 			</h1>
 			<p>
-				Sorry, this page does not exist. <a href="/">Take me home.</a>
+				<g:message code="default.missing.message" />
+				<a href="/">
+					<g:message code="default.missing.link" />
+				</a>
 			</p>
 		</div>
 	</body>

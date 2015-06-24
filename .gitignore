@@ -7,3 +7,7 @@
 /logs
 /web-app/.ebextensions/ssl.config
 /web-app/extra/rad.txt
+*.iml
+/.idea
+/out
+cobertura.ser

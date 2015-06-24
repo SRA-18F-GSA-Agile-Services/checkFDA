@@ -13,6 +13,9 @@ grails.project.source.level = 1.6
 
 grails.project.dependency.resolver = "maven"
 
+def gebVersion = "0.10.0"
+def seleniumVersion = "2.45.0"
+
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
     inherits("global") {
@@ -21,10 +24,10 @@ grails.project.dependency.resolution = {
     }
     log "error" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
     checksums true // Whether to verify checksums on resolve
-    legacyResolve false // whether to do a secondary resolve on plugin installation, not advised and here for backwards compatibility
+    //legacyResolve false // whether to do a secondary resolve on plugin installation, not advised and here for backwards compatibility
 
     repositories {
-        inherits true // Whether to inherit repository definitions from plugins
+        inherit false // Whether to inherit repository definitions from plugins
 
         grailsPlugins()
         grailsHome()
@@ -40,14 +43,25 @@ grails.project.dependency.resolution = {
 
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
-		runtime "com.amazonaws:aws-java-sdk:1.7.3"
         runtime 'mysql:mysql-connector-java:5.1.22'
-		
+
+		compile 'org.codehaus.gpars:gpars:1.1.0'
+
+        test("org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion") {
+            exclude "commons-logging"
+        }
+
+        test("org.seleniumhq.selenium:selenium-htmlunit-driver:$seleniumVersion") {
+            exclude "commons-logging"
+        }
+        test "org.seleniumhq.selenium:selenium-support:$seleniumVersion"
+
+        test "org.gebish:geb-junit4:$gebVersion"
     }
 
     plugins {
         compile ":hibernate:3.6.10.17"
-        runtime ":resources:1.2.14"
+        compile ":asset-pipeline:2.3.2"
 		compile ":quartz:1.0.1"
 		compile ":scaffolding:2.1.0"
 		compile ":searchable:0.6.7"
@@ -58,6 +72,10 @@ grails.project.dependency.resolution = {
 		compile ":spring-security-ui:1.0-RC2"
 		compile ":spring-security-core:2.0-RC4"
 		compile ":jquery-ui:1.10.4"
+
+		test ":codenarc:0.22"
+        test ":code-coverage:2.0.3-3"
+        test ":geb:$gebVersion"
     }
 }
 codenarc.reports = {
@@ -73,17 +91,12 @@ codenarc.reports = {
 		title = 'Search FDA html Report'
 	}
 }
-codenarc.ruleSetFiles="file:grails-app/conf/CodeNarcRules.groovy"
-//example of configuring the Codenarc properties
-codenarc.properties = {
-	// Each property definition is of the form:  RULE.PROPERTY-NAME = PROPERTY-VALUE
-	GrailsPublicControllerMethod.enabled = false
-	EmptyIfStatement.priority = 1
-}
-//set the maximum number of priority X violations allowed without causing a failure.
-codenarc.maxPriority1Violations = 50
-codenarc.maxPriority2Violations = 100
-codenarc.maxPriority3Violations = 100
+codenarc.ruleSetFiles="file:test/CodeNarcRules.groovy"
+codenarc.processViews = true
 
 //controls what happens when the maximum number of violations are exceeded
 codenarc.systemExitOnBuildException = false
+
+coverage {
+    enabledByDefault = false
+}

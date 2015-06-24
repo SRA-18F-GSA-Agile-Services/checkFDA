@@ -1,0 +1,156 @@
+{
+  "meta": {
+    "disclaimer": "openFDA is a beta research project and not for clinical use. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated.",
+    "license": "http://open.fda.gov/license",
+    "last_updated": "2015-01-21",
+    "results": {
+      "skip": 0,
+      "limit": 100,
+      "total": 7
+    }
+  },
+  "results": [
+    {
+      "safetyreportid": "6251678-1",
+      "fulfillexpeditecriteria": "1",
+      "receiver": null,
+      "receivedateformat": "102",
+      "receiptdateformat": "102",
+      "receivedate": "20090630",
+      "primarysource": {
+        "qualification": "2",
+        "reportercountry": "IRELAND"
+      },
+      "sender": {
+        "senderorganization": "FDA-Public Use"
+      },
+      "@epoch": 1417048845.306429,
+      "patient": {
+        "reaction": [
+          {
+            "reactionmeddrapt": "MALAISE"
+          },
+          {
+            "reactionmeddrapt": "VOMITING"
+          }
+        ],
+        "patientonsetage": "5",
+        "patientweight": "16",
+        "patientonsetageunit": "801",
+        "drug": [
+          {
+            "drugauthorizationnumb": "50698",
+            "drugstartdateformat": "102",
+            "drugbatchnumb": "UNKNOWN",
+            "drugcharacterization": "1",
+            "drugindication": "HELICOBACTER INFECTION",
+            "medicinalproduct": "KLACID FOR ORAL SUSPENSION",
+            "drugstartdate": "20090507"
+          },
+          {
+            "drugauthorizationnumb": "050698",
+            "drugbatchnumb": "UNKNOWN",
+            "drugcharacterization": "1",
+            "medicinalproduct": "KLACID FOR ORAL SUSPENSION",
+            "drugdosagetext": "HALF A TABLET CRUSHED, TOOK WITH ICE CREAM"
+          },
+          {
+            "drugstartdateformat": "102",
+            "drugbatchnumb": "UNKNOWN",
+            "drugcharacterization": "1",
+            "drugindication": "HELICOBACTER INFECTION",
+            "medicinalproduct": "PINAMOX",
+            "drugstartdate": "20090507"
+          },
+          {
+            "drugcharacterization": "2",
+            "drugindication": "HELICOBACTER INFECTION",
+            "medicinalproduct": "PRILOSEC",
+            "openfda": {
+              "unii": [
+                "KG60484QX9"
+              ],
+              "spl_id": [
+                "00b7d931-923e-4fdb-9736-e75e96ad3859"
+              ],
+              "product_ndc": [
+                "0186-0742",
+                "0186-0606",
+                "0186-0625",
+                "0186-0610",
+                "0186-0743"
+              ],
+              "substance_name": [
+                "OMEPRAZOLE MAGNESIUM"
+              ],
+              "rxcui": [
+                "797061",
+                "797063",
+                "797058",
+                "207212",
+                "199119",
+                "198051",
+                "213295",
+                "211691",
+                "200329",
+                "797065"
+              ],
+              "spl_set_id": [
+                "a1b077e6-b070-43f2-a98e-380cc635419d"
+              ],
+              "product_type": [
+                "HUMAN PRESCRIPTION DRUG"
+              ],
+              "manufacturer_name": [
+                "AstraZeneca LP"
+              ],
+              "brand_name": [
+                "PRILOSEC"
+              ],
+              "route": [
+                "ORAL"
+              ],
+              "nui": [
+                "N0000175525",
+                "N0000182140",
+                "N0000000147"
+              ],
+              "pharm_class_moa": [
+                "Proton Pump Inhibitors [MoA]",
+                "Cytochrome P450 2C19 Inhibitors [MoA]"
+              ],
+              "package_ndc": [
+                "0186-0743-82",
+                "0186-0606-82",
+                "0186-0742-31",
+                "0186-0743-68",
+                "0186-0742-82",
+                "0186-0610-01",
+                "0186-0743-31",
+                "0186-0606-31",
+                "0186-0625-01"
+              ],
+              "pharm_class_epc": [
+                "Proton Pump Inhibitor [EPC]"
+              ],
+              "generic_name": [
+                "OMEPRAZOLE MAGNESIUM"
+              ],
+              "application_number": [
+                "NDA019810",
+                "NDA022056"
+              ]
+            }
+          }
+        ],
+        "patientsex": "2"
+      },
+      "receiptdate": "20090622",
+      "transmissiondate": "20091009",
+      "transmissiondateformat": "102",
+      "seriousnesshospitalization": "1",
+      "serious": "1",
+      "companynumb": "IE-ABBOTT-09P-229-0581634-00"
+    }
+  ]
+}

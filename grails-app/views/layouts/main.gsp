@@ -9,19 +9,15 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title><g:layoutTitle default="Grails"/></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="shortcut icon" href="${resource(dir: 'static/images', file: 'favicon.ico')}" type="image/x-icon">
-		<link rel="apple-touch-icon" href="${resource(dir: 'static/images', file: 'apple-touch-icon.png')}">
-		<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'static/images', file: 'apple-touch-icon-retina.png')}">
-		<link rel="stylesheet" href="${resource(dir: 'static/css', file: 'main.css')}" type="text/css">
-		<link rel="stylesheet" href="${resource(dir: 'static/css', file: 'mobile.css')}" type="text/css">
-		<link rel="stylesheet" href="${resource(dir: 'static/css', file: 'chosen.css')}" type="text/css">
-		<link rel="stylesheet" href="${resource(dir: 'static/css', file: 'custom.css')}" type="text/css">
+		<asset:stylesheet href="main.css" />
+		<asset:stylesheet href="mobile.css" />
+		<asset:stylesheet href="chosen.css" />
+		<asset:stylesheet href="custom.css" />
 		<g:layoutHead/>
-		<r:layoutResources />
 	</head>
 	<body>
 		<div id="logo" role="banner">
-			<a href="${createLink(uri: '/')}"><img src="${resource(dir: 'static/images', file: 'RAD.png')}" alt="Rapid Application Devlopment"/></a>
+			<img class="ui image" src="https://s3.amazonaws.com/stb-content/RAD.png" style="max-height: 80px;" />
 		</div>
 		<div id="loginHeader">
 			<sec:ifLoggedIn>
@@ -33,10 +29,9 @@
 			</sec:ifNotLoggedIn>
 		</div>
 		<g:layoutBody/>
-		<div class="footer" role="contentinfo" style="text-align: right;">
-			<b>Version ${ grailsApplication.metadata['app.version'] }</b>
+		<div class="footer right-aligned" role="contentinfo">
+			<b><g:message code="default.layout.app" /> ${ grailsApplication.metadata['app.version'] }</b>
 		</div>
 		<g:javascript library="application"/>
-		<r:layoutResources />
 	</body>
 </html>
