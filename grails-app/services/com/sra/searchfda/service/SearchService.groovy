@@ -113,11 +113,14 @@ class SearchService {
 		return(results)
 	}
 
+	private String getFilterText(){
+		return grailsApplication.parentContext.getResource("data/filters.txt").file.text
+	}
+
 	private List<String> loadFilters() {
-		InputStream filterInputStream = this.class.classLoader.getResourceAsStream('data/filters.txt')
-		String filterFile = filterInputStream.text
+		String filterText=getFilterText()
 		List<String> filters = []
-		filterFile.eachLine { line ->
+		filterText.eachLine { line ->
 			if (!line.startsWith("#")) {
 				filters << line.trim()
 			}

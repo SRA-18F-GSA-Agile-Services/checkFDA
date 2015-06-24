@@ -123,15 +123,32 @@ class SearchServiceSpec extends Specification {
     }
 
     void "test loadFilters"() {
+        given:
+        String filterText = "#this filter file specifies the json attributes we do want delivered to the server\n" +
+                "#they take the form <group>.att1.att2... where <group> is the group name which is\n" +
+                "#either recalls, events, or labels\n" +
+                "events.safetyreportid\n" +
+                "events.report_number\n" +
+                "#events.patient.sequence_number_outcome\n" +
+                "events.patient\n" +
+                "#events.patient\n" +
+                "recalls.recall_number\n" +
+                "labels.id"
+
+        service.grailsApplication = grailsApplication
+        service.metaClass.getFilterText = { ->
+            return filterText
+        }
+
         when:
+
         List<String> filtersList = service.loadFilters()
-        InputStream filterInputStream = this.class.classLoader.getResourceAsStream('data/filters.txt')
 
         then:
         filtersList
         filtersList.contains("events.patient")
 
-        filterInputStream.text.readLines().each { line ->
+        filterText.readLines().each { line ->
             if (!line.startsWith("#")) {
                 assert filtersList.contains(line)
             }
@@ -140,7 +157,7 @@ class SearchServiceSpec extends Specification {
 
     def "test filterResult"() {
         given:
-        def map = [a: [b: "c", d: ["e": "e1"], f: [g: "h", "i": ["a", "b"]]]]
+        def map = [a: [b: 'c', d: ['e': 'e1'], f: [g: 'h', 'i': ['a', 'b']]]]
         HashMap result = new HashMap()
 
         when:
@@ -149,18 +166,19 @@ class SearchServiceSpec extends Specification {
         }
 
         then:
-        !result.isEmpty()
+        empty ? result.isEmpty() : !result.isEmpty()
         result == expected
 
         where:
-        filters                   | expected
-        ["a.b"]                   | ["a": ["b": "c"]]
-        ["a.d"]                   | ["a": ["d": ["e": "e1"]]]
-        ["a.f"]                   | ['a': ['f': ['g': 'h', 'i': ['a', 'b']]]]
-        ["a.f.i"]                 | ['a': ['f': ['i': ['a', 'b']]]]
-        ["a.d", "a.f.g", "a.f.i"] | ['a': ['f': ['g': 'h', 'i': ['a', 'b']], 'd': ['e': 'e1']]]
-
+        filters                   | expected                                                    | empty
+        ['z.a']                   | [:]                                                         | 1
+        []                        | [:]                                                         | 1
+        ['1']                     | [:]                                                         | 1
+        ["a.b"]                   | ["a": ["b": "c"]]                                           | 0
+        ["a.d"]                   | ["a": ["d": ["e": "e1"]]]                                   | 0
+        ["a.f"]                   | ['a': ['f': ['g': 'h', 'i': ['a', 'b']]]]                   | 0
+        ["a.f.i"]                 | ['a': ['f': ['i': ['a', 'b']]]]                             | 0
+        ["a.f.g"]                 | ['a': ['f': ['g': 'h']]]                                    | 0
+        ["a.d", "a.f.g", "a.f.i"] | ['a': ['f': ['g': 'h', 'i': ['a', 'b']], 'd': ['e': 'e1']]] | 0
     }
-
-
 }
