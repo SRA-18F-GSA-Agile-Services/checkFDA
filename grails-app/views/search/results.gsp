@@ -40,6 +40,9 @@
 			var results = ${ results as grails.converters.JSON };
 			$(function() {
 				searchInit();
+				$('[data-content]').popup({
+					position: 'top center'
+				});
 			});
 		</script>
 	</body>
