@@ -26,7 +26,10 @@
 			map[cur]++;
 			return map;
 		}, {});
-		var columns = Object.keys(data).reduce(function(cols, key) {
+		var keys = Object.keys(data).sort(function(a, b) {
+			return data[b] - data[a];
+		});
+		var columns = keys.reduce(function(cols, key) {
 			cols.push(data[key]);
 			return cols;
 		}, []);
@@ -34,14 +37,23 @@
 		    data: {
 			    x: 'x',
 		        columns: [
-		  			['x'].concat(Object.keys(data)),
+		  			['x'].concat(keys),
 					[xAxisLegend].concat(columns)
   		        ],
 		        type : 'bar'
 		    },
+		    legend: {
+				show: false
+			},
 		    axis: {
 			    x: {
 			    	type: 'category'
+				},
+				y: {
+					label: {
+						text: 'Number of Outcomes',
+						position: 'outer-center'
+					}
 				},
 				rotated: true
 			}
