@@ -17,28 +17,30 @@ class SearchServiceSpec extends Specification {
 
 	void "test execute search local"() {
 		given:
+		Map result = [result: "My Test Value"]
 		grailsApplication.config.checkfda.localData = true
 		service.grailsApplication = grailsApplication
-		service.metaClass.federatedSearchMock = { -> return [result: "My Test Value"] }
+		service.metaClass.federatedSearchMock = { -> return result }
 
 		when:
 		Map searchResults = service.executeSearch("Test")
 
 		then:
-		searchResults == [result: "My Test Value"]
+		searchResults == result
 	}
 
 	void "test execute search remote"() {
 		given:
+		Map result = [result: "My Test Value"]
 		grailsApplication.config.checkfda.localData = false
 		service.grailsApplication = grailsApplication
-		service.metaClass.parallelFederatedSearch = { String query -> return [result: "My Test Value"] }
+		service.metaClass.parallelFederatedSearch = { String query -> return result }
 
 		when:
 		Map searchResults = service.executeSearch("Test")
 
 		then:
-		searchResults == [result: "My Test Value"]
+		searchResults == result
 	}
 
     void "test parallel federated search"() {
