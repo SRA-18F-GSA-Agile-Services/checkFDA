@@ -25,10 +25,17 @@
 		</div>
 		<div class="main results">
 			<g:if test="${flash.error}">
-				<div class="alert alert-error">${flash.error}</div>
+				<div class="ui negative message">
+					<i class="close icon"></i>
+					<div class="header">Error</div>
+					<p>${flash.error}</p>
+				</div>
 			</g:if>
 			<g:if test="${flash.message}">
-				<div class="message">${flash.message}</div>
+				<div class="ui message">
+					<i class="close icon"></i>
+					${flash.message}
+				</div>
 			</g:if>
 
 			<h1 class="ui header">
@@ -45,6 +52,9 @@
 			var results = ${ results as grails.converters.JSON };
 			$(function() {
 				searchInit();
+				$('.message .close').on('click', function() {
+					$(this).closest('.message').transition('fade');
+				});
 			});
 		</script>
 	</body>
