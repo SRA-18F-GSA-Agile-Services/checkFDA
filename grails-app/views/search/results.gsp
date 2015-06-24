@@ -23,7 +23,6 @@
 				</div>
 			</div>
 		</div>
-<<<<<<< HEAD
 		<div class="main results">
 			<g:if test="${flash.error}">
 				<div class="ui negative message">
