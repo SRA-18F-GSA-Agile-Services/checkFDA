@@ -51,7 +51,7 @@ environments {
 	searchfdadev {
 		dataSource {
 			dbCreate = "create-drop"
-			url = 'jdbc:mysql://searchfda.crctz8nageky.us-east-1.rds.amazonaws.com:8080/searchfda?useUnicode=true&autoReconnect=true'
+			url = 'jdbc:mysql://searchfda.crctz8nageky.us-east-1.rds.amazonaws.com:8080/searchfda-dev?useUnicode=true&autoReconnect=true'
 			pooled = true
 			driverClassName = "com.mysql.jdbc.Driver"
 			dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
@@ -80,7 +80,7 @@ environments {
 	}
     production {
 		dataSource {
-			dbCreate = ""
+			dbCreate = "create-drop"
 			url = 'jdbc:mysql://searchfda.crctz8nageky.us-east-1.rds.amazonaws.com:8080/searchfda?useUnicode=true&autoReconnect=true'
 			pooled = true
 			driverClassName = "com.mysql.jdbc.Driver"
