@@ -719,7 +719,7 @@ input::selection {
   padding: 0 40px 40px;
 }
 
-.content {
+.main.results {
   background-color: #ffffff;
   padding: 40px;
 }
