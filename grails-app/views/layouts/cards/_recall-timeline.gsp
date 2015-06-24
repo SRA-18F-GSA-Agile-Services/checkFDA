@@ -6,11 +6,13 @@
 </div>
 <script>
 	$(function() {
+		var xAxisLegend = '<g:message code="widget.recall.timeline.legend.xAxis"/>';
+		var yAxisLegend = '<g:message code="widget.recall.timeline.legend.yAxis"/>';
 		var typeKeys = ['Food', 'Drugs', 'Devices'];
 		var recallInitDates = results.recalls.map(function(recall) {
 			var date = recall.recall_initiation_date;
 			return {
-				date: new Date(date.substring(0, 4) + '/' + date.substring(4, 6) + '/' + date.substring(6, 8)).getFullYear() + '-01-01',
+				date: new Date(date.substring(0, 4) + '/' + date.substring(4, 6) + '/' + date.substring(6, 8)),
 				type: recall.product_type
 			};
 		});
@@ -49,6 +51,16 @@
 					type: 'timeseries',
 					tick: {
 						format: '%Y'
+					},
+					label: {
+						text: xAxisLegend,
+						position: 'outer-center'
+					}
+				},
+				y: {
+					label: {
+						text: yAxisLegend,
+						position: 'outer-middle'
 					}
 				}
 			}
