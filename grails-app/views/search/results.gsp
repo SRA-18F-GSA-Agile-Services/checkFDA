@@ -39,21 +39,23 @@
 				</div>
 			</g:if>
 
-			<h1 class="ui header">
-				${ results.events.size() } Event Results
-			</h1>
-			<div class="ui divider"></div>
-			<div class="ui two doubling cards">
-				<g:render template="/layouts/cards/event_outcomes" />
-				<g:render template="/layouts/cards/event-gender" />
-				<g:render template="/layouts/cards/event_ages" />
-			</div>
+			<g:if test="${results}">
+				<h1 class="ui header">
+					${ results.events.size() } Event Results
+				</h1>
+				<div class="ui divider"></div>
+				<div class="ui two doubling cards">
+					<g:render template="/layouts/cards/event_outcomes" />
+					<g:render template="/layouts/cards/event-gender" />
+					<g:render template="/layouts/cards/event_ages" />
+				</div>
+			</g:if>
 		</div>
 		<script>
 
-			<g:applyCodec encodeAs="none">
-			var results = ${results as JSON};
-			</g:applyCodec>
+		<g:applyCodec encodeAs="none">
+			var results = ${results ? results as JSON : "undefined"};
+		</g:applyCodec>
 
 			$(function() {
 				searchInit();

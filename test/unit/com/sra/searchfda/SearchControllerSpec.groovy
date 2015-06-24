@@ -1,54 +1,61 @@
 package com.sra.searchfda
 
 import com.sra.searchfda.service.QueryService
-import grails.test.mixin.TestFor
-import spock.lang.Unroll
-import spock.lang.Specification
 import com.sra.searchfda.service.SearchService
+import grails.test.mixin.Mock
+import grails.test.mixin.TestFor
+import spock.lang.Specification
+import spock.lang.Unroll
 
 /**
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
 @TestFor(SearchController)
+@Mock(Query)
 @Unroll
 class SearchControllerSpec extends Specification {
 
     def searchService = Mock(SearchService)
-	def queryService = Mock(QueryService)
+    def queryService = Mock(QueryService)
 
     def setup() {
         controller.searchService = searchService
-		controller.queryService = queryService
+        controller.queryService = queryService
     }
 
     def "test results with no search query"() {
         when:
 
-        def result = controller.results(searchQuery, lat,lng)
+        def result = controller.results(searchQuery, lat, lng)
 
         then:
-        expectedResult == result.query
+        expectedQueryResult == result.query
 
         where:
-        searchQuery | lat  | lng  | expectedResult
-        null        | null | null | null
+        searchQuery | lat  | lng  | expectedQueryResult
+        null        | null | null | ""
         ""          | null | null | ""
 
     }
 
     def "test results with search query"() {
-        when:
+        given:
+        def expectedSearchResults = [events: [], recalls: [], labels: []]
 
-        def result = controller.results(searchQuery, lat , lng)
+        when:
+        def result = controller.results(searchQuery, lat, lng)
 
         then:
-		1 * searchService.executeSearch(searchQuery) >> [events: [], recalls: [], labels: []]
-        1 * queryService.saveSearchQuery(searchQuery, lat, lng) >> new Query(search: searchQuery, lat: lat, lng: lng)
+        1 * searchService.executeSearch(truncatedSearchQuery) >> expectedSearchResults
+        1 * queryService.saveSearchQuery(_ as Query)
 
-        expectedResult == result.query
+        truncatedSearchQuery == result.query
+        expectedSearchResults == result.results
+        expectedFlash == flash.message
 
         where:
-        searchQuery | lat  | lng  | expectedResult
-        "ice cream" | null | null | "ice cream"
+        searchQuery | lat  | lng  | truncatedSearchQuery | expectedFlash
+        "ice cream" | null | null | "ice cream"          |  null
+        "x" * 256   | null | null | "x" * 255            |  'query.max.length.exceeded'
     }
 }
