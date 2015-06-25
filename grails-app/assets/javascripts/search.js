@@ -4,16 +4,20 @@ var locationKey = 'location-Permission';
 
 function searchInit() {
 	$('#query').focus();
-	$('#search').click(search);
+	$('#search').click(checkUserPermission);
 	$(window).keyup(function(event) {
 		if (event.keyCode == 13) {
-			search();
+			checkUserPermission();
 		}
 	});
-	retrieveUserPermission(locationKey) == null ? setTimeout(getLocationPermission, 1000) : setTimeout(getLocation, 1000);
+}
+
+function checkUserPermission () {
+	retrieveUserPermission(locationKey) == null ? getLocationPermission(): getLocation()
 }
 
 function search() {
+	console.log("search")
 	var trimmed =  $.trim( $('#query').val());
 	if (trimmed) {
 		window.location.href = '/results?q=' + encodeURIComponent(trimmed) + '&lat=' + lat + '&lng=' + lng;
@@ -30,17 +34,18 @@ function getLocation() {
 	} else {
 		console.log("Geolocation is not supported by this browser");
 		saveUserResponse(locationKey, 'Not Supported');
+		search();
 	}
 }
 
 function locationSuccess(location) {
 	lat = location.coords.latitude;
 	lng = location.coords.longitude;
-	saveUserResponse(locationKey, 'YES');
+	search();
 }
 
 function locationError() {
-	saveUserResponse(locationKey, 'NO');
+	search();
 }
 
 function saveUserResponse(key, resp) {

@@ -56,9 +56,11 @@
 				$('.ui.modal').modal({
 					closable  : false,
 					onDeny    : function() {
-						saveUserResponse (locationKey,'NO');
+						saveUserResponse (locationKey,'No');
+						search();
 					},
 					onApprove : function() {
+						saveUserResponse (locationKey,'Yes');
 						getLocation();
 					}
 				});
