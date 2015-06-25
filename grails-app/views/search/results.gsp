@@ -45,26 +45,18 @@
 				</div>
 			</g:if>
 
-			<g:each in="${ ['Ongoing', 'Pending'] }" var="status">
-				<g:set var="recalls" value="${ results.recalls.grep { it.status == status }.sort { it.classification } }" />
+			<g:if test="${results}">
+				<g:set var="recalls" value="${ results.recalls.grep { it.status in ['Ongoing', 'Pending'] }.sort { it.classification } }" />
 				<g:if test="${ recalls.size() != 0 }">
 					<h1 class="ui header">
-						<g:message code="widget.results.recall.${ status.toLowerCase() }.header" args="${ [recalls.size()] }" />
+						<g:message code="widget.results.recall.header" args="${ [recalls.size()] }" /> <i>${ query }</i>
 					</h1>
+					<div class="ui divider"></div>
 					<div class="ui two doubling cards">
 						<g:each in="${ recalls }" var="recall">
 							<g:render template="/layouts/cards/recall-alert" model="${ [recall: recall] }" />
 						</g:each>
 					</div>
-				</g:if>
-			</g:each>
-
-			<g:if test="${results}">
-				<g:if test="${ results.recalls.size() != 0 }">
-					<h1 class="ui header">
-						<g:message code="widget.results.recall.header" args="${ results.recalls.size() }" />
-					</h1>
-					<div class="ui divider"></div>
 					<div class="ui two doubling cards">
 						<g:render template="/layouts/cards/recall-timeline" />
 					</div>
