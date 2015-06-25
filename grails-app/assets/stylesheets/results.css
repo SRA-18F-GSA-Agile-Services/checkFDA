@@ -4,6 +4,26 @@
 	display: none;
 }
 
+.recall-table {
+	table-layout: fixed;
+	width: 100%;
+	white-space: nowrap;
+}
+
 .recall-table tr {
 	cursor: pointer;
+}
+
+.recall-table tr td:nth-child(1) {
+	width: 2em;
+}
+
+.recall-table tr td:nth-child(2) {
+	width: 10em;
+}
+
+.overflow {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }

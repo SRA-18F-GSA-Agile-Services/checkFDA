@@ -5,8 +5,8 @@
 		${ initiationDate }<br />
 		<abbr class="timeago" title="${ initiationDate }"></abbr>
 	</td>
-	<td>
-		<b>${ recall.product_description[0..Math.min(50, recall.product_description.size() - 1)] }</b><br />
-		${ recall.distribution_pattern[0..Math.min(50, recall.distribution_pattern.size() - 1)] }
+	<td class="overflow">
+		<b>${ recall.product_description }</b><br />
+		${ recall.distribution_pattern }
 	</td>
 </tr>
