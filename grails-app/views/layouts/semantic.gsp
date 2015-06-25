@@ -55,12 +55,20 @@
 				});
 				$('.ui.modal').modal({
 					closable  : false,
+					selector: {
+						close: '.close.icon'
+					},
 					onDeny    : function() {
-						saveUserResponse (locationKey,'NO');
+						saveUserResponse (locationKey,'No');
+						search();
 					},
 					onApprove : function() {
+						saveUserResponse (locationKey,'Yes');
 						getLocation();
 					}
+				});
+				$('.close.icon').click(function() {
+					search();
 				});
 			});
 
