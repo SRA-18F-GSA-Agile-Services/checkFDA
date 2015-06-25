@@ -54,7 +54,7 @@ environments {
 			pooled = true
 			driverClassName = "com.mysql.jdbc.Driver"
 			dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
-			url = dbconfig.rds.url
+			url = dbConfig.rds.url
 			username=dbConfig.rds.username
 			password=dbConfig.rds.password 
 	
