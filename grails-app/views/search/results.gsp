@@ -8,6 +8,7 @@
 		<asset:javascript src="aggregated-cards.js" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.4.1/jquery.timeago.min.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css" type="text/css">
 		<asset:stylesheet src="results.css" />
 	</head>
@@ -92,6 +93,7 @@
 				searchInit();
 
 				addRowListeners('.recall-table');
+				$('.timeago').timeago();
 				$('.message .close').on('click', function() {
 					$(this).closest('.message').transition('fade');
 				});
