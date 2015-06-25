@@ -5,9 +5,12 @@
 		<meta name="layout" content="semantic"/>
 		<title><g:message code="default.search.title" /> - ${ query }</title>
 		<asset:javascript src="search.js" />
+		<asset:javascript src="aggregated-cards.js" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.4.1/jquery.timeago.min.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css" type="text/css">
+		<asset:stylesheet src="results.css" />
 	</head>
 	<body>
 		<div class="header">
@@ -45,26 +48,27 @@
 				</div>
 			</g:if>
 
-			<g:each in="${ ['Ongoing', 'Pending'] }" var="status">
-				<g:set var="recalls" value="${ results.recalls.grep { it.status == status }.sort { it.classification } }" />
+			<g:if test="${results}">
+				<g:set var="recalls" value="${ results.recalls.grep { it.status in ['Ongoing', 'Pending'] }.sort { Map map1, Map map2 -> map1.classification <=> map2.classification ?: map2.recall_initiation_date <=> map1.recall_initiation_date } }" />
 				<g:if test="${ recalls.size() != 0 }">
 					<h1 class="ui header">
-						<g:message code="widget.results.recall.${ status.toLowerCase() }.header" args="${ [recalls.size()] }" />
-					</h1>
-					<div class="ui two doubling cards">
-						<g:each in="${ recalls }" var="recall">
-							<g:render template="/layouts/cards/recall-alert" model="${ [recall: recall] }" />
-						</g:each>
-					</div>
-				</g:if>
-			</g:each>
-
-			<g:if test="${results}">
-				<g:if test="${ results.recalls.size() != 0 }">
-					<h1 class="ui header">
-						<g:message code="widget.results.recall.header" args="${ results.recalls.size() }" />
+						<g:message code="widget.results.recall.header" args="${ [recalls.size()] }" /> <i>${ query }</i>
 					</h1>
 					<div class="ui divider"></div>
+					<div class="recall-alerts">
+						<g:each in="${ recalls }" var="recall" status="id">
+							<g:render template="/layouts/cards/recall-alert" model="${ [recall: recall, id: id] }" />
+						</g:each>
+					</div>
+					<div class="recall-table-wrapper">
+						<table class="ui small compact selectable unstackable table recall-table">
+							<tbody>
+								<g:each in="${ recalls }" var="recall" status="id">
+									<g:render template="/layouts/recall-alert-row" model="${ [recall: recall, id: id] }" />
+								</g:each>
+							</tbody>
+						</table>
+					</div>
 					<div class="ui two doubling cards">
 						<g:render template="/layouts/cards/recall-timeline" />
 					</div>
@@ -90,6 +94,8 @@
 			$(function() {
 				searchInit();
 
+				addRowListeners('.recall-table');
+				$('.timeago').timeago();
 				$('.message .close').on('click', function() {
 					$(this).closest('.message').transition('fade');
 				});
