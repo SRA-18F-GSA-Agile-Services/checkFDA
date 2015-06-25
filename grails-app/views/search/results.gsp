@@ -49,7 +49,7 @@
 			</g:if>
 
 			<g:if test="${results}">
-				<g:set var="recalls" value="${ results.recalls.grep { it.status in ['Ongoing', 'Pending'] }.sort { it.classification } }" />
+				<g:set var="recalls" value="${ results.recalls.grep { it.status in ['Ongoing', 'Pending'] }.sort { Map map1, Map map2 -> map1.classification <=> map2.classification ?: map2.recall_initiation_date <=> map1.recall_initiation_date } }" />
 				<g:if test="${ recalls.size() != 0 }">
 					<h1 class="ui header">
 						<g:message code="widget.results.recall.header" args="${ [recalls.size()] }" /> <i>${ query }</i>
