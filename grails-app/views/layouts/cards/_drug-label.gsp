@@ -5,9 +5,14 @@
 				<i class="icon calendar outline"></i> ${ new Date().parse('yyyyMMdd', label.effective_time).format('M/d/yyyy') }
 			</span>
 		</div>
-	</div>
-	<div class="content">
-		<h2 class="header">${ label.openfda.brand_name.join(', ').replaceAll('"', '') } (${ label.openfda.generic_name.join(', ').replaceAll('"', '') })</h2>
+		<h3 class="ui header">
+			<div class="content">
+				${ label.openfda.brand_name.join(', ').replaceAll('"', '') }
+				<div class="sub header">
+					${ label.openfda.generic_name.join(', ').replaceAll('"', '') }
+				</div>
+			</div>
+		</h3>
 		<g:if test="${ label.purpose }">
 			<div class="meta">
 				<span class="date">${ label.purpose.join(', ').replaceAll('"', '') }</span>

@@ -35,3 +35,9 @@
 	white-space: nowrap;
 	overflow: hidden;
 }
+
+/* Drug Labels */
+
+.druglabel > .content > .ui.header {
+	margin-top: 0;
+}
