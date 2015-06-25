@@ -449,7 +449,7 @@
 --------------------*/
 
 .ui.basic.segment {
-  background-color: none transparent;
+  background: none transparent;
   box-shadow: none;
   border: none;
   border-radius: 0px;
