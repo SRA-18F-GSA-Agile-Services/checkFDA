@@ -12,7 +12,8 @@ class SearchService {
 	def grailsApplication
 	def openFDAService
 	Map datasetTotals=new HashMap()
-	List<Map> datasets=[ //dataset names
+	List<Map> datasets=[
+		//dataset names
 		[path:"food/enforcement",group:"recalls"],
 		[path:"drug/label",group:"labels"],
 		[path:"drug/event",group:"events"],
@@ -28,12 +29,12 @@ class SearchService {
 			return parallelFederatedSearch(query);
 		}
 	}
-	
+
 	Integer getDatasetTotal(Map dataset) {
 		Integer total=datasetTotals[dataset.path]
 		if (total!=null) return(total)
 		String result=openFDAService.query(dataset.path,"",1,0) //get a result from open fda
-        if (result==null) {
+		if (result==null) {
 			println("dataset "+dataset.path+" empty count query gave null response")
 			//datasetTotals[dataset.path]=0
 			return(0)
@@ -54,7 +55,8 @@ class SearchService {
 		long t0=System.currentTimeMillis()
 		Map<String,List<Map>> results=new HashMap<String,List<Map>>()
 		Map meta=new HashMap()
-		datasets.each { ds -> //iterate across each dataset
+		datasets.each { ds ->
+			//iterate across each dataset
 			Map result=filterResults(ds,search(ds,query)) //get search results for the dataset
 			String group=ds.group
 			if (results[group]==null) results[group]=[]
@@ -75,7 +77,7 @@ class SearchService {
 		results.meta=meta
 		return(results) //return the result as JSON
 	}
-	
+
 	Map parallelFederatedSearch(String query) {
 		long t0=System.currentTimeMillis()
 		Map<String,List<Map>> results=new HashMap<String,List<Map>>()
@@ -87,8 +89,10 @@ class SearchService {
 				[group:ds.group,result:result,ds:ds.path]
 			}
 		}
+		Set<String> usedGroups=new HashSet<String>()
 		presults.each { item ->
 			String group=item.group
+			usedGroups.add(group)
 			if (results[group]==null) results[group]=[]
 			results[group]+=item.result.results
 			meta[item.ds.replace("/","-")]=item.result.meta
@@ -100,18 +104,33 @@ class SearchService {
 				meta[group]=gmeta
 			}
 			if (item.result.meta.hits!=null) {
-			  gmeta.hits+=item.result.meta.hits
+				gmeta.hits+=item.result.meta.hits
 			}
 			if (item.result.meta.total!=null) {
-			  gmeta.total+=item.result.meta.total
+				gmeta.total+=item.result.meta.total
 			}
 		}
+		double maxRatio=0.0
+		String predictedGroup=null
+		usedGroups.each { grp ->
+			if (meta[grp]!=null) {
+				if (meta[grp].total>0) {
+					double fraction=meta[grp].hits/meta[grp].total
+					meta[grp].fraction=fraction
+					if (fraction>maxRatio) {
+						maxRatio=fraction
+						predictedGroup=grp
+					}
+				}
+			}
+		}
+		meta['predicted-group']=predictedGroup
 		long t1=System.currentTimeMillis()
 		log.info("Parallel Federated Search Time:"+(t1-t0))
 		results.meta=meta
 		return(results) //return the result as JSON
 	}
-	
+
 	def timingComparison(String query) {
 		long t0=System.currentTimeMillis()
 		def result=federatedSearch(query)
@@ -147,7 +166,7 @@ class SearchService {
 		while(true) { //while we still have results
 			String result=openFDAService.query(dataset.path,query,100,count) //get a result from open fda
 			if (result==null) break
-			Map js=JSON.parse(result) //parse the json into a map
+				Map js=JSON.parse(result) //parse the json into a map
 			int total=js.meta.results.total //get the total for the overall query
 			meta.hits=total
 			meta.total=getDatasetTotal(dataset)
@@ -175,50 +194,52 @@ class SearchService {
 		}
 		return (filters)
 	}
-	
+
 	private Map filterResults(Map dataset,Map results) {
 		if (!useFiltering) return(results)
 		List<String> filters=loadFilters()
 		List<Map> newMap=new ArrayList<Map>()
 		for(Map result:results.results) {
-		  Map resultMap=new HashMap()
-		  resultMap.dataset=dataset.path
-		  for(String filter:filters) {
-			if (filter.startsWith(dataset.group+".")) {
-				String[] path=filter.split("\\.").tail()
-				filterResult(path,resultMap,result)
+			Map resultMap=new HashMap()
+			resultMap.dataset=dataset.path
+			for(String filter:filters) {
+				if (filter.startsWith(dataset.group+".")) {
+					String[] path=filter.split("\\.").tail()
+					filterResult(path,resultMap,result)
+				}
 			}
-		  }
-		  newMap<<resultMap
+			newMap<<resultMap
 		}
 		[meta:results.meta,results:newMap]
 	}
-	
+
 	private void filterResult(String[] filter,Map resultMap,Map result) {
 		String key=filter.first()
 		String[] rest=filter.tail()
 		if (result.containsKey(key)) {
-	    	if (rest.size()==0) { //end of list
+			if (rest.size()==0) { //end of list
 				resultMap[key]=result[key] //move value across
 				return
 			}  else {
-//				String type=result[key]?.class?.name //find type
+				//				String type=result[key]?.class?.name //find type
 				if ((result[key] instanceof List)) { //if we are dealing with an array
-				  if (resultMap[key]==null) { //if we don't h=ave an array to receive the array yet 
-					  List<Map> nList=new ArrayList<Map>() //make an array of maps
-					  result[key].each { //and fill it with empty hashmaps of the right length
-						  nList<<new HashMap()
-					  }
-					  resultMap[key]=nList
-				  }
-				  int cnt=0 //use a counter for traversing the output list
-				  result[key].each { //for each element of the list the thing we're copying from
-					  filterResult(rest,resultMap[key][cnt],it)
-					  cnt++
-				  }
+					if (resultMap[key]==null) { //if we don't h=ave an array to receive the array yet
+						List<Map> nList=new ArrayList<Map>() //make an array of maps
+						result[key].each {
+							//and fill it with empty hashmaps of the right length
+							nList<<new HashMap()
+						}
+						resultMap[key]=nList
+					}
+					int cnt=0 //use a counter for traversing the output list
+					result[key].each {
+						//for each element of the list the thing we're copying from
+						filterResult(rest,resultMap[key][cnt],it)
+						cnt++
+					}
 				} else {
-			      if (resultMap[key]==null) resultMap[key]=new HashMap() //for default case we'll need a hashmap if it doesn't exist
-				  filterResult(rest,resultMap[key],result[key]) //recurse over key
+					if (resultMap[key]==null) resultMap[key]=new HashMap() //for default case we'll need a hashmap if it doesn't exist
+					filterResult(rest,resultMap[key],result[key]) //recurse over key
 				}
 			}
 		}
