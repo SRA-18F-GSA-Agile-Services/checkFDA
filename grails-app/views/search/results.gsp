@@ -55,13 +55,13 @@
 						<g:message code="widget.results.recall.header" args="${ [recalls.size()] }" /> <i>${ query }</i>
 					</h1>
 					<div class="ui divider"></div>
-					<div class="recall-alerts">
+					<div class="hidden-cards">
 						<g:each in="${ recalls }" var="recall" status="id">
 							<g:render template="/layouts/cards/recall-alert" model="${ [recall: recall, id: id] }" />
 						</g:each>
 					</div>
-					<div class="recall-table-wrapper">
-						<table class="ui small compact selectable unstackable table recall-table">
+					<div class="card-table-wrapper">
+						<table class="ui small compact selectable unstackable table card-table recalls">
 							<tbody>
 								<g:each in="${ recalls }" var="recall" status="id">
 									<g:render template="/layouts/recall-alert-row" model="${ [recall: recall, id: id] }" />
@@ -71,6 +71,26 @@
 					</div>
 					<div class="ui two doubling cards">
 						<g:render template="/layouts/cards/recall-timeline" />
+					</div>
+				</g:if>
+				<g:set var="labels" value="${ results.labels.grep { it.openfda?.brand_name && it.openfda?.generic_name } }" />
+				<g:if test="${ labels.size() != 0 }">
+					<h1 class="ui header">
+						<g:message code="widget.results.label.header" args="${ [labels.size()] }" /> <i>${ query }</i>
+					</h1>
+					<div class="hidden-cards">
+						<g:each in="${ labels }" var="label" status="id">
+							<g:render template="/layouts/cards/drug-label" model="${ [label: label, id: id] }" />
+						</g:each>
+					</div>
+					<div class="card-table-wrapper">
+						<table class="ui small compact selectable unstackable table card-table labels">
+							<tbody>
+								<g:each in="${ labels }" var="label" status="id">
+									<g:render template="/layouts/drug-label-row" model="${ [label: label, id: id] }" />
+								</g:each>
+							</tbody>
+						</table>
 					</div>
 				</g:if>
 
@@ -94,7 +114,8 @@
 			$(function() {
 				searchInit();
 
-				addRowListeners('.recall-table');
+				addRowListeners('.card-table.recalls');
+				addRowListeners('.card-table.labels');
 				$('.timeago').timeago();
 				$('.message .close').on('click', function() {
 					$(this).closest('.message').transition('fade');

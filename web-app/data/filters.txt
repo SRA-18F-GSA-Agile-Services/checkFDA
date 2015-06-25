@@ -12,4 +12,15 @@ recalls.recalling_firm
 recalls.reason_for_recall
 recalls.status
 recalls.distribution_pattern
-labels.id
+labels.effective_time
+labels.openfda.brand_name
+labels.openfda.generic_name
+labels.purpose
+labels.indications_and_usage
+labels.dosage_and_administration
+labels.active_ingredient
+labels.inactive_ingredient
+labels.warnings
+labels.pregnancy_or_breast_feeding
+labels.keep_out_of_reach_of_children
+labels.openfda.manufacturer_name
