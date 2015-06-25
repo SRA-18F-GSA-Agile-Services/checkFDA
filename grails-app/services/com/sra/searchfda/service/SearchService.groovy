@@ -11,6 +11,7 @@ class SearchService {
 	boolean useFiltering=true
 	def grailsApplication
 	def openFDAService
+	Map datasetTotals=new HashMap()
 	List<Map> datasets=[ //dataset names
 		[path:"food/enforcement",group:"recalls"],
 		[path:"drug/label",group:"labels"],
@@ -27,6 +28,22 @@ class SearchService {
 			return parallelFederatedSearch(query);
 		}
 	}
+	
+	Integer getDatasetTotal(Map dataset) {
+		Integer total=datasetTotals[dataset.path]
+		if (total!=null) return(total)
+		String result=openFDAService.query(dataset.path,"",1,0) //get a result from open fda
+        if (result==null) {
+			println("dataset "+dataset.path+" empty count query gave null response")
+			//datasetTotals[dataset.path]=0
+			return(0)
+		}
+		Map srch=JSON.parse(result) //parse the json into a map
+		total=srch.meta.results.total
+		//println("total="+total)
+		datasetTotals[dataset.path]=total
+		return(total)
+	}
 
 	/**
 	 * Perform a federated search across the 6 Open FDA datasets using
@@ -35,36 +52,63 @@ class SearchService {
 	 */
 	Map federatedSearch(String query) {
 		long t0=System.currentTimeMillis()
-		Map<List<Map>> results=new HashMap<List<Map>>()
+		Map<String,List<Map>> results=new HashMap<String,List<Map>>()
+		Map meta=new HashMap()
 		datasets.each { ds -> //iterate across each dataset
-			List<Map> result=filterResults(ds,search(ds,query)) //get search results for the dataset
+			Map result=filterResults(ds,search(ds,query)) //get search results for the dataset
 			String group=ds.group
 			if (results[group]==null) results[group]=[]
 			//log.info(ds+" has "+result.size())
-			results[group]+=result
+			results[group]+=result.results
+			meta[ds.path.replace("/","-")]=result.meta
+			Map gmeta=meta[group]
+			if (gmeta==null) {
+				gmeta=new HashMap()
+				meta[group]=gmeta
+				gmeta.hits=0
+				gmeta.total=0
+			}
+			gmeta.hits=gmeta.hits+result.meta.hits
 		}
 		long t1=System.currentTimeMillis()
 		log.info("Serial Federated Search Time:"+(t1-t0))
+		results.meta=meta
 		return(results) //return the result as JSON
 	}
 	
 	Map parallelFederatedSearch(String query) {
 		long t0=System.currentTimeMillis()
-		Map<List<Map>> results=new HashMap<List<Map>>()
+		Map<String,List<Map>> results=new HashMap<String,List<Map>>()
 		List<Map> presults=null
+		Map meta=new HashMap()
 		GParsPool.withPool(datasets.size()) {
 			presults=datasets.collectParallel { ds ->
-				List<Map> result=filterResults(ds,search(ds,query)) //get search results for the dataset
-				[group:ds.group,result:result]
+				Map result=filterResults(ds,search(ds,query)) //get search results for the dataset
+				[group:ds.group,result:result,ds:ds.path]
 			}
 		}
 		presults.each { item ->
 			String group=item.group
 			if (results[group]==null) results[group]=[]
-			results[group]+=item.result
+			results[group]+=item.result.results
+			meta[item.ds.replace("/","-")]=item.result.meta
+			Map gmeta=meta[group]
+			if (gmeta==null) {
+				gmeta=new HashMap()
+				gmeta.hits=0
+				gmeta.total=0
+				meta[group]=gmeta
+			}
+			if (item.result.meta.hits!=null) {
+			  gmeta.hits+=item.result.meta.hits
+			}
+			if (item.result.meta.total!=null) {
+			  gmeta.total+=item.result.meta.total
+			}
 		}
 		long t1=System.currentTimeMillis()
 		log.info("Parallel Federated Search Time:"+(t1-t0))
+		results.meta=meta
 		return(results) //return the result as JSON
 	}
 	
@@ -83,7 +127,7 @@ class SearchService {
 	}
 
 	Map federatedSearchMock() {
-		Map<List<Map>> results=new HashMap<List<Map>>()
+		Map<String,List<Map>> results=new HashMap<String,List<Map>>()
 		datasets.each { ds ->
 			String group=ds.group
 			results[group] = results[group] ?: [];
@@ -96,14 +140,17 @@ class SearchService {
 	 * Perform a search against the desired dataset with the given query returning
 	 * a List of Maps.
 	 */
-	private List<Map> search(dataset,String query) {
+	private Map search(dataset,String query) {
 		int count=0 // count of results for far
+		HashMap meta=new HashMap()
 		List<Map> results=[] //to accumulate results
 		while(true) { //while we still have results
 			String result=openFDAService.query(dataset.path,query,100,count) //get a result from open fda
 			if (result==null) break
 			Map js=JSON.parse(result) //parse the json into a map
 			int total=js.meta.results.total //get the total for the overall query
+			meta.hits=total
+			meta.total=getDatasetTotal(dataset)
 			log.info(dataset.path+" has "+total) //report (for now) how many total hits the dataset had
 			results+=js.results //add the results
 			count+=js.results.size() //update our count
@@ -111,7 +158,7 @@ class SearchService {
 			if (count>=maxResults) break //if we've reached the limit desired for each database
 		}
 		//log.info("total in list="+results.size())
-		return(results)
+		[meta:meta,results:results]
 	}
 
 	private String getFilterText(){
@@ -129,11 +176,11 @@ class SearchService {
 		return (filters)
 	}
 	
-	private List<Map> filterResults(Map dataset,List<Map> results) {
+	private Map filterResults(Map dataset,Map results) {
 		if (!useFiltering) return(results)
 		List<String> filters=loadFilters()
 		List<Map> newMap=new ArrayList<Map>()
-		for(Map result:results) {
+		for(Map result:results.results) {
 		  Map resultMap=new HashMap()
 		  resultMap.dataset=dataset.path
 		  for(String filter:filters) {
@@ -144,7 +191,7 @@ class SearchService {
 		  }
 		  newMap<<resultMap
 		}
-		return(newMap)
+		[meta:results.meta,results:newMap]
 	}
 	
 	private void filterResult(String[] filter,Map resultMap,Map result) {
