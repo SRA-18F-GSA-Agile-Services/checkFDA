@@ -1,10 +1,8 @@
 <div class="ui fluid card druglabel" id="druglabel-${ id }-card">
-	<div class="content">
-		<div class="meta">
-			<span data-content="${ message(code: 'widget.drug.label.calendar') }">
-				<i class="icon calendar outline"></i> ${ new Date().parse('yyyyMMdd', label.effective_time).format('M/d/yyyy') }
-			</span>
-		</div>
+	<div class="ui attached ${ message(code: "widget.drug.label.${ label.openfda.product_type[0].split(' ').join('') }.cls") } message">
+		<span data-content="${ message(code: 'widget.drug.label.calendar') }">
+			<i class="icon calendar outline"></i> ${ new Date().parse('yyyyMMdd', label.effective_time).format('M/d/yyyy') }
+		</span>
 	</div>
 	<div class="content">
 		<h2 class="header">${ label.openfda.brand_name.join(', ').replaceAll('"', '') } (${ label.openfda.generic_name.join(', ').replaceAll('"', '') })</h2>
