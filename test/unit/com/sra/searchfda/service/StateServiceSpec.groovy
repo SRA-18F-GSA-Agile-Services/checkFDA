@@ -30,5 +30,7 @@ class StateServiceSpec extends Specification {
 		str															|   expected
 		"the recall effects IA and Illinois"						|	["IA","IL"]
 		"this is only for MI and OH"								|	["MI","OH"]
+		"this recall is for all 50 states"							|	[]
+		"the recall is for Iowa, Virginia, and New York"			|	["IA","NY","VA"]
 	}
 }
