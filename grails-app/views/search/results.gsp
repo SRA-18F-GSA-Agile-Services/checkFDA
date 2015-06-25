@@ -73,7 +73,7 @@
 						<g:render template="/layouts/cards/recall-timeline" />
 					</div>
 				</g:if>
-				<g:set var="labels" value="${ results.labels.grep { it.openfda?.brand_name && it.openfda?.generic_name && it.openfda?.product_type && ('HUMAN OTC DRUG' in it.openfda.product_type || 'HUMAN PRESCRIPTION DRUG' in it.openfda.product_type) } }" />
+				<g:set var="labels" value="${ results.labels.grep { it.openfda?.brand_name && it.openfda?.generic_name } }" />
 				<g:if test="${ labels.size() != 0 }">
 					<h1 class="ui header">
 						<g:message code="widget.results.label.header" args="${ [labels.size()] }" /> <i>${ query }</i>
