@@ -1,0 +1,9 @@
+/* Recalls */
+
+.ui.cards.recall-alerts > .card {
+	display: none;
+}
+
+.recall-table tr {
+	cursor: pointer;
+}

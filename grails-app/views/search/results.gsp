@@ -5,9 +5,11 @@
 		<meta name="layout" content="semantic"/>
 		<title><g:message code="default.search.title" /> - ${ query }</title>
 		<asset:javascript src="search.js" />
+		<asset:javascript src="aggregated-cards.js" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css" type="text/css">
+		<asset:stylesheet src="results.css" />
 	</head>
 	<body>
 		<div class="header">
@@ -52,11 +54,18 @@
 						<g:message code="widget.results.recall.header" args="${ [recalls.size()] }" /> <i>${ query }</i>
 					</h1>
 					<div class="ui divider"></div>
-					<div class="ui two doubling cards">
-						<g:each in="${ recalls }" var="recall">
-							<g:render template="/layouts/cards/recall-alert" model="${ [recall: recall] }" />
+					<div class="recall-alerts">
+						<g:each in="${ recalls }" var="recall" status="id">
+							<g:render template="/layouts/cards/recall-alert" model="${ [recall: recall, id: id] }" />
 						</g:each>
 					</div>
+					<table class="ui small compact table recall-table">
+						<tbody>
+							<g:each in="${ recalls }" var="recall" status="id">
+								<g:render template="/layouts/recall-alert-row" model="${ [recall: recall, id: id] }" />
+							</g:each>
+						</tbody>
+					</table>
 					<div class="ui two doubling cards">
 						<g:render template="/layouts/cards/recall-timeline" />
 					</div>
@@ -82,6 +91,7 @@
 			$(function() {
 				searchInit();
 
+				addRowListeners('.recall-table');
 				$('.message .close').on('click', function() {
 					$(this).closest('.message').transition('fade');
 				});

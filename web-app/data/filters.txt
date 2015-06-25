@@ -11,4 +11,5 @@ recalls.recall_initiation_date
 recalls.recalling_firm
 recalls.reason_for_recall
 recalls.status
+recalls.distribution_pattern
 labels.id
