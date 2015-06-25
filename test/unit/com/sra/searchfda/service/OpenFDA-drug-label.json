@@ -2,155 +2,91 @@
   "meta": {
     "disclaimer": "openFDA is a beta research project and not for clinical use. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated.",
     "license": "http://open.fda.gov/license",
-    "last_updated": "2015-01-21",
+    "last_updated": "2015-05-31",
     "results": {
       "skip": 0,
-      "limit": 100,
-      "total": 7
+      "limit": 1,
+      "total": 72590
     }
   },
   "results": [
     {
-      "safetyreportid": "6251678-1",
-      "fulfillexpeditecriteria": "1",
-      "receiver": null,
-      "receivedateformat": "102",
-      "receiptdateformat": "102",
-      "receivedate": "20090630",
-      "primarysource": {
-        "qualification": "2",
-        "reportercountry": "IRELAND"
-      },
-      "sender": {
-        "senderorganization": "FDA-Public Use"
-      },
-      "@epoch": 1417048845.306429,
-      "patient": {
-        "reaction": [
-          {
-            "reactionmeddrapt": "MALAISE"
-          },
-          {
-            "reactionmeddrapt": "VOMITING"
-          }
+      "set_id": "0000076a-fc39-4208-ace8-6c2cb367904f",
+      "indications_and_usage": [
+        "Uses Multi-purpose mineral powder provides broad-spectrum SPF 46 PA+++ protection. Leaves the skin flawless and protected."
+      ],
+      "keep_out_of_reach_of_children": [
+        "Keep out of reach of children If product is swallowed, get medical help or contact a Poison Control Center right away"
+      ],
+      "dosage_and_administration": [
+        "Directions Protection Naturelle SPF 46 PA+++ Powder can be used on clean skin or over makeup. Shake lightly to activate the flow of powder. Sweep the brush all over the face to evenly distribute powder for immediate UVA/UVB protection."
+      ],
+      "purpose": [
+        "Purpose Sunscreen"
+      ],
+      "version": "4",
+      "id": "f229e866-5775-4e42-a316-8480dd92fec6",
+      "package_label_principal_display_panel": [
+        "CHANTECAILLE Protection Naturelle SPF 46 PA+++ Powder NET WT. 0.088 OZ. 2.5g e",
+        "CHANTECAILLE PROTECTION NATURELLE BRONZE SPF 46 .088OZ/2.5g (42893-030-00) CHANTECAILLE PROTECTION NATURELLE SPF 46"
+      ],
+      "active_ingredient": [
+        "BRONZE ACTIVE INGREDIENTS: TITANIUM DIOXIDE 2 %, ETHYLHEXYL METHOXYCINNAMATE 7%, ZINC OXIDE 24.5%"
+      ],
+      "inactive_ingredient": [
+        "INGREDIENTS: TALC, POLYMETHYL METHACRYLATE, VINYL DIMETHICONE/METHICONE SILSESQUIOXANE CROSSPOLYMER, CALCIUM SILICATE, TRIETHYLHEXANOIN, ALUMINUM HYDROXIDE, LAUROYL LYSINE, METHICONE, PHENOXYETHANOL, DIMETHICONE, ALUMINUM DIMYRISTATE, HYDROXYAPATITIE [+/-: MICA (CI77019), IRON OXIDES (CI 77491/CI 77492/CI 77499)]"
+      ],
+      "@epoch": 1421884901.541237,
+      "effective_time": "20150109",
+      "openfda": {
+        "spl_id": [
+          "50de8449-69cf-4593-bdac-4aae7e7b4b7b"
         ],
-        "patientonsetage": "5",
-        "patientweight": "16",
-        "patientonsetageunit": "801",
-        "drug": [
-          {
-            "drugauthorizationnumb": "50698",
-            "drugstartdateformat": "102",
-            "drugbatchnumb": "UNKNOWN",
-            "drugcharacterization": "1",
-            "drugindication": "HELICOBACTER INFECTION",
-            "medicinalproduct": "KLACID FOR ORAL SUSPENSION",
-            "drugstartdate": "20090507"
-          },
-          {
-            "drugauthorizationnumb": "050698",
-            "drugbatchnumb": "UNKNOWN",
-            "drugcharacterization": "1",
-            "medicinalproduct": "KLACID FOR ORAL SUSPENSION",
-            "drugdosagetext": "HALF A TABLET CRUSHED, TOOK WITH ICE CREAM"
-          },
-          {
-            "drugstartdateformat": "102",
-            "drugbatchnumb": "UNKNOWN",
-            "drugcharacterization": "1",
-            "drugindication": "HELICOBACTER INFECTION",
-            "medicinalproduct": "PINAMOX",
-            "drugstartdate": "20090507"
-          },
-          {
-            "drugcharacterization": "2",
-            "drugindication": "HELICOBACTER INFECTION",
-            "medicinalproduct": "PRILOSEC",
-            "openfda": {
-              "unii": [
-                "KG60484QX9"
-              ],
-              "spl_id": [
-                "00b7d931-923e-4fdb-9736-e75e96ad3859"
-              ],
-              "product_ndc": [
-                "0186-0742",
-                "0186-0606",
-                "0186-0625",
-                "0186-0610",
-                "0186-0743"
-              ],
-              "substance_name": [
-                "OMEPRAZOLE MAGNESIUM"
-              ],
-              "rxcui": [
-                "797061",
-                "797063",
-                "797058",
-                "207212",
-                "199119",
-                "198051",
-                "213295",
-                "211691",
-                "200329",
-                "797065"
-              ],
-              "spl_set_id": [
-                "a1b077e6-b070-43f2-a98e-380cc635419d"
-              ],
-              "product_type": [
-                "HUMAN PRESCRIPTION DRUG"
-              ],
-              "manufacturer_name": [
-                "AstraZeneca LP"
-              ],
-              "brand_name": [
-                "PRILOSEC"
-              ],
-              "route": [
-                "ORAL"
-              ],
-              "nui": [
-                "N0000175525",
-                "N0000182140",
-                "N0000000147"
-              ],
-              "pharm_class_moa": [
-                "Proton Pump Inhibitors [MoA]",
-                "Cytochrome P450 2C19 Inhibitors [MoA]"
-              ],
-              "package_ndc": [
-                "0186-0743-82",
-                "0186-0606-82",
-                "0186-0742-31",
-                "0186-0743-68",
-                "0186-0742-82",
-                "0186-0610-01",
-                "0186-0743-31",
-                "0186-0606-31",
-                "0186-0625-01"
-              ],
-              "pharm_class_epc": [
-                "Proton Pump Inhibitor [EPC]"
-              ],
-              "generic_name": [
-                "OMEPRAZOLE MAGNESIUM"
-              ],
-              "application_number": [
-                "NDA019810",
-                "NDA022056"
-              ]
-            }
-          }
+        "product_ndc": [
+          "42893-030"
         ],
-        "patientsex": "2"
+        "is_original_packager": [
+          true
+        ],
+        "route": [
+          "TOPICAL"
+        ],
+        "substance_name": [
+          "OCTINOXATE",
+          "TITANIUM DIOXIDE",
+          "ZINC OXIDE"
+        ],
+        "spl_set_id": [
+          "0000076a-fc39-4208-ace8-6c2cb367904f"
+        ],
+        "package_ndc": [
+          "42893-030-00"
+        ],
+        "product_type": [
+          "HUMAN OTC DRUG"
+        ],
+        "generic_name": [
+          "TITANIUM DIOXIDE, OCTINOXATE, ZINC OXIDE"
+        ],
+        "manufacturer_name": [
+          "Chantecaille Beaute Inc"
+        ],
+        "brand_name": [
+          "Other Brand"
+        ],
+        "application_number": [
+          "part352"
+        ]
       },
-      "receiptdate": "20090622",
-      "transmissiondate": "20091009",
-      "transmissiondateformat": "102",
-      "seriousnesshospitalization": "1",
-      "serious": "1",
-      "companynumb": "IE-ABBOTT-09P-229-0581634-00"
+      "spl_product_data_elements": [
+        "CHANTECAILLE PROTECTION NATURELLE BRONZE SPF 46 TITANIUM DIOXIDE, OCTINOXATE, ZINC OXIDE TITANIUM DIOXIDE TITANIUM DIOXIDE OCTINOXATE OCTINOXATE ZINC OXIDE ZINC OXIDE TALC CALCIUM SILICATE TRIETHYLHEXANOIN ALUMINUM HYDROXIDE LAUROYL LYSINE PHENOXYETHANOL DIMETHICONE ALUMINUM DIMYRISTATE MICA FERRIC OXIDE RED"
+      ],
+      "when_using": [
+        "When using this product keep out of eyes. Rinse with water to remove."
+      ],
+      "warnings": [
+        "Warnings For external use only."
+      ]
     }
   ]
 }
