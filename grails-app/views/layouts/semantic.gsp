@@ -68,7 +68,6 @@
 					}
 				});
 				$('.close.icon').click(function() {
-					saveUserResponse (locationKey,'No');
 					search();
 				});
 			});

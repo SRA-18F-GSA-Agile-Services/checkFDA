@@ -17,7 +17,6 @@ function checkUserPermission () {
 }
 
 function search() {
-	console.log("search")
 	var trimmed =  $.trim( $('#query').val());
 	if (trimmed) {
 		window.location.href = '/results?q=' + encodeURIComponent(trimmed) + '&lat=' + lat + '&lng=' + lng;
@@ -29,11 +28,15 @@ function getLocationPermission() {
 }
 
 function getLocation() {
-	if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(locationSuccess, locationError);
-	} else {
-		console.log("Geolocation is not supported by this browser");
-		saveUserResponse(locationKey, 'Not Supported');
+	if(retrieveUserPermission(locationKey)=='Yes'){
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(locationSuccess,locationError);
+		} else {
+			console.log("Geolocation is not supported by this browser");
+			saveUserResponse(locationKey, 'Not Supported');
+			search();
+		}
+	}else {
 		search();
 	}
 }
