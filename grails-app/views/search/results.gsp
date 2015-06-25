@@ -73,6 +73,15 @@
 						<g:render template="/layouts/cards/recall-timeline" />
 					</div>
 				</g:if>
+				<g:if test="${ results.labels.size() != 0 }">
+					<h1 class="ui header">
+						<g:message code="widget.results.label.header" args="${ [results.labels.size()] }" /> <i>${ query }</i>
+					</h1>
+
+					<g:each in="${ results.labels }" var="label" status="id">
+						<g:render template="/layouts/cards/drug-label" model="${ [label: label, id: id] }" />
+					</g:each>
+				</g:if>
 
 				<h1 class="ui header">
 					<g:message code="widget.results.event.header" args="${[results.events.size()]}"/>

@@ -12,4 +12,4 @@ recalls.recalling_firm
 recalls.reason_for_recall
 recalls.status
 recalls.distribution_pattern
-labels.id
+labels.openfda.brand_name
