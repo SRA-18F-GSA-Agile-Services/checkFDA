@@ -82,6 +82,15 @@
 							<g:render template="/layouts/cards/drug-label" model="${ [label: label, id: id] }" />
 						</g:each>
 					</div>
+					<div class="card-table-wrapper">
+						<table class="ui small compact selectable unstackable table card-table labels">
+							<tbody>
+								<g:each in="${ results.labels }" var="label" status="id">
+									<g:render template="/layouts/drug-label-row" model="${ [label: label, id: id] }" />
+								</g:each>
+							</tbody>
+						</table>
+					</div>
 				</g:if>
 
 				<h1 class="ui header">
@@ -105,6 +114,7 @@
 				searchInit();
 
 				addRowListeners('.card-table.recalls');
+				addRowListeners('.card-table.labels');
 				$('.timeago').timeago();
 				$('.message .close').on('click', function() {
 					$(this).closest('.message').transition('fade');
