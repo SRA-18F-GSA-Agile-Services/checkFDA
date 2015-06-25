@@ -22679,6 +22679,171 @@ Floated Menu / Item
 /*******************************
          Site Overrides
 *******************************/
+
+/*--------------
+      Red
+---------------*/
+
+.ui.table tr.red,
+.ui.table td.red {
+  box-shadow: 0px 0px 0px #d12323 inset;
+}
+
+.ui.table tr.red,
+.ui.table td.red {
+  background: #ffe8e6 !important;
+  color: #db2828 !important;
+}
+
+/*--------------
+      Orange
+---------------*/
+
+.ui.table tr.orange,
+.ui.table td.orange {
+  box-shadow: 0px 0px 0px #f1680e inset;
+}
+
+.ui.table tr.orange,
+.ui.table td.orange {
+  background: #ffedde !important;
+  color: #f2711c !important;
+}
+
+/*--------------
+      Yellow
+---------------*/
+
+.ui.table tr.yellow,
+.ui.table td.yellow {
+  box-shadow: 0px 0px 0px #a67605 inset;
+}
+
+.ui.table tr.yellow,
+.ui.table td.yellow {
+  background: #fff8db !important;
+  color: #b58105 !important;
+}
+
+/*--------------
+      Olive
+---------------*/
+
+.ui.table tr.olive,
+.ui.table td.olive {
+  box-shadow: 0px 0px 0px #80af1c inset;
+}
+
+.ui.table tr.olive,
+.ui.table td.olive {
+  background: #fbfdef !important;
+  color: #8abc1e !important;
+}
+
+/*--------------
+      Green
+---------------*/
+
+.ui.table tr.green,
+.ui.table td.green {
+  box-shadow: 0px 0px 0px #1caf2d inset;
+}
+
+.ui.table tr.green,
+.ui.table td.green {
+  background: #e5f9e7 !important;
+  color: #1ebc30 !important;
+}
+
+/*--------------
+      Teal
+---------------*/
+
+.ui.table tr.teal,
+.ui.table td.teal {
+  box-shadow: 0px 0px 0px #0f9595 inset;
+}
+
+.ui.table tr.teal,
+.ui.table td.teal {
+  background: #e1f7f7 !important;
+  color: #10a3a3 !important;
+}
+
+/*--------------
+      Blue
+---------------*/
+
+.ui.table tr.blue,
+.ui.table td.blue {
+  box-shadow: 0px 0px 0px #1f7dc3 inset;
+}
+
+.ui.table tr.blue,
+.ui.table td.blue {
+  background: #dff0ff !important;
+  color: #2185d0 !important;
+}
+
+/*--------------
+      Violet
+---------------*/
+
+.ui.table tr.violet,
+.ui.table td.violet {
+  box-shadow: 0px 0px 0px #5e32bd inset;
+}
+
+.ui.table tr.violet,
+.ui.table td.violet {
+  background: #eae7ff !important;
+  color: #6435c9 !important;
+}
+
+/*--------------
+      Purple
+---------------*/
+
+.ui.table tr.purple,
+.ui.table td.purple {
+  box-shadow: 0px 0px 0px #9930bc inset;
+}
+
+.ui.table tr.purple,
+.ui.table td.purple {
+  background: #f6e7ff !important;
+  color: #a333c8 !important;
+}
+
+/*--------------
+      Pink
+---------------*/
+
+.ui.table tr.pink,
+.ui.table td.pink {
+  box-shadow: 0px 0px 0px #de2c90 inset;
+}
+
+.ui.table tr.pink,
+.ui.table td.pink {
+  background: #ffe3fb !important;
+  color: #e03997 !important;
+}
+
+/*--------------
+      Brown
+---------------*/
+
+.ui.table tr.brown,
+.ui.table td.brown {
+  box-shadow: 0px 0px 0px #9a603b inset;
+}
+
+.ui.table tr.brown,
+.ui.table td.brown {
+  background: #f1e2d3 !important;
+  color: #a5673f !important;
+}
 /*!
  * # Semantic UI 2.0.0 - Ad
  * http://github.com/semantic-org/semantic-ui/
@@ -33044,6 +33209,171 @@ html.ios body {
 /*******************************
          Site Overrides
 *******************************/
+
+/*--------------
+      Red
+---------------*/
+
+.ui.table tr.red,
+.ui.table td.red {
+  box-shadow: 0px 0px 0px #d12323 inset;
+}
+
+.ui.table tr.red,
+.ui.table td.red {
+  background: #ffe8e6 !important;
+  color: #db2828 !important;
+}
+
+/*--------------
+      Orange
+---------------*/
+
+.ui.table tr.orange,
+.ui.table td.orange {
+  box-shadow: 0px 0px 0px #f1680e inset;
+}
+
+.ui.table tr.orange,
+.ui.table td.orange {
+  background: #ffedde !important;
+  color: #f2711c !important;
+}
+
+/*--------------
+      Yellow
+---------------*/
+
+.ui.table tr.yellow,
+.ui.table td.yellow {
+  box-shadow: 0px 0px 0px #a67605 inset;
+}
+
+.ui.table tr.yellow,
+.ui.table td.yellow {
+  background: #fff8db !important;
+  color: #b58105 !important;
+}
+
+/*--------------
+      Olive
+---------------*/
+
+.ui.table tr.olive,
+.ui.table td.olive {
+  box-shadow: 0px 0px 0px #80af1c inset;
+}
+
+.ui.table tr.olive,
+.ui.table td.olive {
+  background: #fbfdef !important;
+  color: #8abc1e !important;
+}
+
+/*--------------
+      Green
+---------------*/
+
+.ui.table tr.green,
+.ui.table td.green {
+  box-shadow: 0px 0px 0px #1caf2d inset;
+}
+
+.ui.table tr.green,
+.ui.table td.green {
+  background: #e5f9e7 !important;
+  color: #1ebc30 !important;
+}
+
+/*--------------
+      Teal
+---------------*/
+
+.ui.table tr.teal,
+.ui.table td.teal {
+  box-shadow: 0px 0px 0px #0f9595 inset;
+}
+
+.ui.table tr.teal,
+.ui.table td.teal {
+  background: #e1f7f7 !important;
+  color: #10a3a3 !important;
+}
+
+/*--------------
+      Blue
+---------------*/
+
+.ui.table tr.blue,
+.ui.table td.blue {
+  box-shadow: 0px 0px 0px #1f7dc3 inset;
+}
+
+.ui.table tr.blue,
+.ui.table td.blue {
+  background: #dff0ff !important;
+  color: #2185d0 !important;
+}
+
+/*--------------
+      Violet
+---------------*/
+
+.ui.table tr.violet,
+.ui.table td.violet {
+  box-shadow: 0px 0px 0px #5e32bd inset;
+}
+
+.ui.table tr.violet,
+.ui.table td.violet {
+  background: #eae7ff !important;
+  color: #6435c9 !important;
+}
+
+/*--------------
+      Purple
+---------------*/
+
+.ui.table tr.purple,
+.ui.table td.purple {
+  box-shadow: 0px 0px 0px #9930bc inset;
+}
+
+.ui.table tr.purple,
+.ui.table td.purple {
+  background: #f6e7ff !important;
+  color: #a333c8 !important;
+}
+
+/*--------------
+      Pink
+---------------*/
+
+.ui.table tr.pink,
+.ui.table td.pink {
+  box-shadow: 0px 0px 0px #de2c90 inset;
+}
+
+.ui.table tr.pink,
+.ui.table td.pink {
+  background: #ffe3fb !important;
+  color: #e03997 !important;
+}
+
+/*--------------
+      Brown
+---------------*/
+
+.ui.table tr.brown,
+.ui.table td.brown {
+  box-shadow: 0px 0px 0px #9a603b inset;
+}
+
+.ui.table tr.brown,
+.ui.table td.brown {
+  background: #f1e2d3 !important;
+  color: #a5673f !important;
+}
 /*!
  * # Semantic UI 2.0.0 - Transition
  * http://github.com/semantic-org/semantic-ui/

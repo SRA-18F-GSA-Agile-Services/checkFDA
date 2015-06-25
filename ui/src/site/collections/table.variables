@@ -1,3 +1,80 @@
 /*******************************
     User Variable Overrides
 *******************************/
+
+/* Red */
+@redColor: @redTextColor;
+@redBorderColor: darken(@redColor, 3);
+@redBoxShadow: @stateMarkerWidth 0px 0px @redBorderColor inset;
+@redBackgroundHover: darken(@redBackground, 3);
+@redColorHover: darken(@redColor, 3);
+
+/* Orange */
+@orangeColor: @orangeTextColor;
+@orangeBorderColor: darken(@orangeColor, 3);
+@orangeBoxShadow: @stateMarkerWidth 0px 0px @orangeBorderColor inset;
+@orangeBackgroundHover: darken(@orangeBackground, 3);
+@orangeColorHover: darken(@orangeColor, 3);
+
+/* Yellow */
+@yellowColor: @yellowTextColor;
+@yellowBorderColor: darken(@yellowColor, 3);
+@yellowBoxShadow: @stateMarkerWidth 0px 0px @yellowBorderColor inset;
+@yellowBackgroundHover: darken(@yellowBackground, 3);
+@yellowColorHover: darken(@yellowColor, 3);
+
+/* Olive */
+@oliveColor: @oliveTextColor;
+@oliveBorderColor: darken(@oliveColor, 3);
+@oliveBoxShadow: @stateMarkerWidth 0px 0px @oliveBorderColor inset;
+@oliveBackgroundHover: darken(@oliveBackground, 3);
+@oliveColorHover: darken(@oliveColor, 3);
+
+/* Green */
+@greenColor: @greenTextColor;
+@greenBorderColor: darken(@greenColor, 3);
+@greenBoxShadow: @stateMarkerWidth 0px 0px @greenBorderColor inset;
+@greenBackgroundHover: darken(@greenBackground, 3);
+@greenColorHover: darken(@greenColor, 3);
+
+/* Teal */
+@tealColor: @tealTextColor;
+@tealBorderColor: darken(@tealColor, 3);
+@tealBoxShadow: @stateMarkerWidth 0px 0px @tealBorderColor inset;
+@tealBackgroundHover: darken(@tealBackground, 3);
+@tealColorHover: darken(@tealColor, 3);
+
+/* Blue */
+@blueColor: @blueTextColor;
+@blueBorderColor: darken(@blueColor, 3);
+@blueBoxShadow: @stateMarkerWidth 0px 0px @blueBorderColor inset;
+@blueBackgroundHover: darken(@blueBackground, 3);
+@blueColorHover: darken(@blueColor, 3);
+
+/* Violet */
+@violetColor: @violetTextColor;
+@violetBorderColor: darken(@violetColor, 3);
+@violetBoxShadow: @stateMarkerWidth 0px 0px @violetBorderColor inset;
+@violetBackgroundHover: darken(@violetBackground, 3);
+@violetColorHover: darken(@violetColor, 3);
+
+/* Purple */
+@purpleColor: @purpleTextColor;
+@purpleBorderColor: darken(@purpleColor, 3);
+@purpleBoxShadow: @stateMarkerWidth 0px 0px @purpleBorderColor inset;
+@purpleBackgroundHover: darken(@purpleBackground, 3);
+@purpleColorHover: darken(@purpleColor, 3);
+
+/* Pink */
+@pinkColor: @pinkTextColor;
+@pinkBorderColor: darken(@pinkColor, 3);
+@pinkBoxShadow: @stateMarkerWidth 0px 0px @pinkBorderColor inset;
+@pinkBackgroundHover: darken(@pinkBackground, 3);
+@pinkColorHover: darken(@pinkColor, 3);
+
+/* Brown */
+@brownColor: @brownTextColor;
+@brownBorderColor: darken(@brownColor, 3);
+@brownBoxShadow: @stateMarkerWidth 0px 0px @brownBorderColor inset;
+@brownBackgroundHover: darken(@brownBackground, 3);
+@brownColorHover: darken(@brownColor, 3);

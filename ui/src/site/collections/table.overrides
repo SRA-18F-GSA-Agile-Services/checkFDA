@@ -1,3 +1,158 @@
 /*******************************
          Site Overrides
 *******************************/
+
+/*--------------
+      Red
+---------------*/
+
+.ui.table tr.red,
+.ui.table td.red {
+  box-shadow: @redBoxShadow;
+}
+.ui.table tr.red,
+.ui.table td.red {
+  background: @redBackground !important;
+  color: @redColor !important;
+}
+
+/*--------------
+      Orange
+---------------*/
+
+.ui.table tr.orange,
+.ui.table td.orange {
+  box-shadow: @orangeBoxShadow;
+}
+.ui.table tr.orange,
+.ui.table td.orange {
+  background: @orangeBackground !important;
+  color: @orangeColor !important;
+}
+
+/*--------------
+      Yellow
+---------------*/
+
+.ui.table tr.yellow,
+.ui.table td.yellow {
+  box-shadow: @yellowBoxShadow;
+}
+.ui.table tr.yellow,
+.ui.table td.yellow {
+  background: @yellowBackground !important;
+  color: @yellowColor !important;
+}
+
+/*--------------
+      Olive
+---------------*/
+
+.ui.table tr.olive,
+.ui.table td.olive {
+  box-shadow: @oliveBoxShadow;
+}
+.ui.table tr.olive,
+.ui.table td.olive {
+  background: @oliveBackground !important;
+  color: @oliveColor !important;
+}
+
+/*--------------
+      Green
+---------------*/
+
+.ui.table tr.green,
+.ui.table td.green {
+  box-shadow: @greenBoxShadow;
+}
+.ui.table tr.green,
+.ui.table td.green {
+  background: @greenBackground !important;
+  color: @greenColor !important;
+}
+
+/*--------------
+      Teal
+---------------*/
+
+.ui.table tr.teal,
+.ui.table td.teal {
+  box-shadow: @tealBoxShadow;
+}
+.ui.table tr.teal,
+.ui.table td.teal {
+  background: @tealBackground !important;
+  color: @tealColor !important;
+}
+
+/*--------------
+      Blue
+---------------*/
+
+.ui.table tr.blue,
+.ui.table td.blue {
+  box-shadow: @blueBoxShadow;
+}
+.ui.table tr.blue,
+.ui.table td.blue {
+  background: @blueBackground !important;
+  color: @blueColor !important;
+}
+
+/*--------------
+      Violet
+---------------*/
+
+.ui.table tr.violet,
+.ui.table td.violet {
+  box-shadow: @violetBoxShadow;
+}
+.ui.table tr.violet,
+.ui.table td.violet {
+  background: @violetBackground !important;
+  color: @violetColor !important;
+}
+
+/*--------------
+      Purple
+---------------*/
+
+.ui.table tr.purple,
+.ui.table td.purple {
+  box-shadow: @purpleBoxShadow;
+}
+.ui.table tr.purple,
+.ui.table td.purple {
+  background: @purpleBackground !important;
+  color: @purpleColor !important;
+}
+
+/*--------------
+      Pink
+---------------*/
+
+.ui.table tr.pink,
+.ui.table td.pink {
+  box-shadow: @pinkBoxShadow;
+}
+.ui.table tr.pink,
+.ui.table td.pink {
+  background: @pinkBackground !important;
+  color: @pinkColor !important;
+}
+
+/*--------------
+      Brown
+---------------*/
+
+.ui.table tr.brown,
+.ui.table td.brown {
+  box-shadow: @brownBoxShadow;
+}
+.ui.table tr.brown,
+.ui.table td.brown {
+  background: @brownBackground !important;
+  color: @brownColor !important;
+}
+
