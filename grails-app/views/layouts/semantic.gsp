@@ -55,6 +55,9 @@
 				});
 				$('.ui.modal').modal({
 					closable  : false,
+					selector: {
+						close: '.close.icon'
+					},
 					onDeny    : function() {
 						saveUserResponse (locationKey,'No');
 						search();
@@ -63,6 +66,10 @@
 						saveUserResponse (locationKey,'Yes');
 						getLocation();
 					}
+				});
+				$('.close.icon').click(function() {
+					saveUserResponse (locationKey,'No');
+					search();
 				});
 			});
 
