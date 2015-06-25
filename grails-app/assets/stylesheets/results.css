@@ -1,32 +1,32 @@
 /* Recalls */
 
-.ui.cards.recall-alerts > .card {
+.hidden-cards > .card {
 	display: none;
 }
 
-.recall-table-wrapper {
+.card-table-wrapper {
 	max-height: 25em;
 	overflow-y: auto;
 	margin-bottom: 1em;
 	border: 1px solid rgba(34,36,38,.15);
 }
 
-.recall-table {
+.card-table {
 	table-layout: fixed;
 	width: 100%;
 	white-space: nowrap;
 	border: none;
 }
 
-.recall-table tr {
+.card-table tr {
 	cursor: pointer;
 }
 
-.recall-table tr td:nth-child(1) {
+.card-table tr td:nth-child(1) {
 	width: 2em;
 }
 
-.recall-table tr td:nth-child(2) {
+.card-table tr td:nth-child(2) {
 	width: 10em;
 }
 

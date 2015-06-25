@@ -55,13 +55,13 @@
 						<g:message code="widget.results.recall.header" args="${ [recalls.size()] }" /> <i>${ query }</i>
 					</h1>
 					<div class="ui divider"></div>
-					<div class="recall-alerts">
+					<div class="hidden-cards">
 						<g:each in="${ recalls }" var="recall" status="id">
 							<g:render template="/layouts/cards/recall-alert" model="${ [recall: recall, id: id] }" />
 						</g:each>
 					</div>
-					<div class="recall-table-wrapper">
-						<table class="ui small compact selectable unstackable table recall-table">
+					<div class="card-table-wrapper">
+						<table class="ui small compact selectable unstackable table card-table recalls">
 							<tbody>
 								<g:each in="${ recalls }" var="recall" status="id">
 									<g:render template="/layouts/recall-alert-row" model="${ [recall: recall, id: id] }" />
@@ -77,10 +77,11 @@
 					<h1 class="ui header">
 						<g:message code="widget.results.label.header" args="${ [results.labels.size()] }" /> <i>${ query }</i>
 					</h1>
-
-					<g:each in="${ results.labels }" var="label" status="id">
-						<g:render template="/layouts/cards/drug-label" model="${ [label: label, id: id] }" />
-					</g:each>
+					<div class="hidden-cards">
+						<g:each in="${ results.labels }" var="label" status="id">
+							<g:render template="/layouts/cards/drug-label" model="${ [label: label, id: id] }" />
+						</g:each>
+					</div>
 				</g:if>
 
 				<h1 class="ui header">
@@ -103,7 +104,7 @@
 			$(function() {
 				searchInit();
 
-				addRowListeners('.recall-table');
+				addRowListeners('.card-table.recalls');
 				$('.timeago').timeago();
 				$('.message .close').on('click', function() {
 					$(this).closest('.message').transition('fade');

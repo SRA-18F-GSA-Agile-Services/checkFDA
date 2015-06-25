@@ -6,9 +6,10 @@ function addRowListeners(tableIdentifier) {
 }
 
 function selectDetailCard(me) {
-	$('.recall-table tr.active').removeClass('active');
+	$(me).parent().children('tr.active').removeClass('active');
 	$(me).addClass('active');
 	var rowId = $(me).attr('id');
-	$('.recall-alerts > .card:visible').hide();
+	var cls = rowId.split('-')[0];
+	$('.hidden-cards > .' + cls + '.card:visible').hide();
 	$('#' + rowId + '-card').show();
 }
