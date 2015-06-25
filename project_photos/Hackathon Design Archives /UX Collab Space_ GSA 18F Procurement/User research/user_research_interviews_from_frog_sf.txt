@@ -1,0 +1,106 @@
+# User research interviews from frog SF
+
+On June 18th, 2015, Jeff Southard conducted "guerrilla user research" – short interviews with people easy to track down. He talked with 3 women in the frog office that responded to an in-office email solicitation.
+
+Here are summarized stories and insights to feed into the design process. Eleven highlights are marked with asterisks (*) below.
+
+# Charlotte
+
+Charlotte is a 50-year-old woman living in Austin, TX.
+
+## Charlotte01: Mother hallucinating after medication change *
+
+Charlotte's mother had ALS condition and went to specialist who stopped a couple medicines and changed her to another. After taking the new medication, her mother started hallucinating. She was seeing cats and swatting at things with an arm she hadn't used in 3 years. Charlotte's sister was there and asked the doctor what's going on. "It's the part of her condition" he said. There was 30h of this. 
+
+Charlotte's sister didn't have a computer so she faxed the list of medications to Charlotte and she tracked down a state agency pharmacist. He searched online and found that stopping her old medications causes hallucinations. He told them to have her give half doses of one of the old medicines. She was fine and able to sleep. 
+
+## Charlotte02: Self-prescribed Ritalin
+
+Charlotte's friend couldn't focus and concentrate. Her friend self-diagnosed herself as ADD. She convinced a psychologist in town to write her a Ritalin prescription. The friend took it and started acting weird. Sitting up in bed in the middle of the night. She couldn't sleep or eat right. Everyone around her saw issue. Convinced her to see physician. Took to local detox. 
+
+## Charlotte03: After Blue Bell recall, wondered about safety of ice machine
+
+In the Blue Bell incident, news said it was some cold-loving bacteria in the machines. Sandy is responsible for facilities and wondered about the ice machine. Could it be a problem? Do we need to clean it? What to know what are the conditions to create that problem (in other things). Mold in crevices? They notice mold in ice machine. Is this a problem? 
+
+# Sandy
+
+Sandy is 45-year-old mom in San Francisco, part of "sandwich generation", supporting both her parents and her kids on medical issues.
+
+## Sandy01: Lookup parent's medicine *
+
+Parents are remote and call to tell Sandy that "the doctor prescribed me this." They don't remember the condition. Just medicine. They read the label to Sandy. Sandy wonders "What condition do they actual have?" Sandy googles the medicine name to see 1) conditions associated with it, 2) label information, 3) side-effects, 4) how safe it is (low adverse effects rating/chart).
+
+## Sandy02: WebMD is a top hit
+
+9 out of 10 items it seems, she's directed to WebMD. It's SEO: "Treatment for {condition}. {drug}" Sometimes Wikipedia.  
+
+## Sandy03: Lookup side-effect (adverse event) and medicine *
+
+Sandy's Dad are experiencing a "weird leg pain" after doctor prescribed a certain medicine. Sandy diagnoses on Internet using Google.
+
+## Sandy04: Research laser treatment *
+
+Sandy is going to participate in medical study the gives her free laser treatment for Melasma. She's wondering if it's dangerous. She googles for "{brand} laser machine" looking for how safe it is (low adverse effects rating/chart).
+
+## Sandy05: Lookup controversial drug *
+
+Sandy's doctor prescribed her Hydroquinone. Sandy thought nothing of it and started using it. Randomly, another friend talked about risks and said "at least you're not using Hydroquinone." "But I am!" 
+Her friend told her it was controversial. Sandy googled it and discovered it was 1) banned in France and 2) gave rats liver damage. Seeing "liver damage" in print made an impact. (More than hearing it described in commercial disclaimer.) Sandy wondered who is right? France? US? Later, a second doctor reassured her that it wasn't dangerous. "I use it. My kids use it." Sandy ended up using it then.
+
+## Sandy06: Curious about past recall *
+
+Sandy remembers the Fen-Phen Pills diet recall in the past. Diet pills worked but killed. Was recalled. 
+
+## Sandy07: Historical context idea (based on Sandy06) *
+
+To feed consumers curiosity and demonstrate the value of adverse event reports, show how adverse event reports have led to high-profile recalls. System could visualize the lead up to past drug recalls. Saccharin (1977), Curve shows curve of adverse events then the recall. 
+
+## Sandy08: Show drug in context (based on Sandy07)
+
+Show where certain drug is on that same curve. Show trending drugs, food and devices that people might be worried about.
+
+## Sandy09: Lookup Steroids treatment for Eczema *
+
+Sandy's 4-year-old son had bad Eczema. The doctor prescribed Steroids. Sandy thought this was a severe treatment and she just used it sparingly. She googled Steroids and Eczema, looking for risks. In the end, she went with a homeopathic solution. 
+
+## Sandy10: Lookup recalled food by store *
+
+Sandy randomly read a Yahoo food story about the. Sabra hummus recall in California. She and her friends had just returned from a camping trip in which they were eating it all week. Sandy tried to find if the food from a particular store was recalled. It was hard to find out. She also wanted to know the side-effects. 
+
+# Jane
+
+Jane is a 45-year-old mom in San Francisco.
+
+## Jane01: Wants recall notifications
+
+Jane randomly sees in-store notices and news about food recalls. Wants more. Costco sometimes tells about her. "Is there a way to push the information to you?"
+
+## Jane02: Lookup 2 chemo drugs and get clear information *
+
+Jane's husband has cancer and is in chemo. She got a folder with information about the 2 drugs. But it's too complex. She want's the information to be more digestible and easier to understand. She also wonders if this is a typical treatment? 
+
+## Jane03: A brand name search takes up to brand website
+
+When looking up information (Jane02), Jane googles for the  information by chemical name and brand name. Googling the brand name takes you to brand website.
+ 
+ In "Chemo-Teach" session they run you through oncologist. Package includes the prints on each medicine. 
+
+## Jane04: Drug printouts aren't read
+
+From pharmacist, she gets long printouts that she doesn't read.
+
+## Jane05: Lookup medicine and compare to generic
+
+Jane takes a medicine regularly and wants cheapest version. Target supplied the medicine cheaply, but then stopped carrying it. Jane wonders about another source, perhaps a generic alternative. Are they the same?
+
+## Jane06: Might want medicine notifications
+
+Jane might like notifications about medicines she regularly takes.
+
+## Jane07: Lookup drug to confirm side affect *
+
+Jane was having shoulder pain. Her doctor recommended a certain pain reliever (Alieve). After taking it, she felt another problem. She googled "Alieve nausea" or "Alieve side effects" and found that it has some side effects. 
+
+## Jane08: All searches start with Google *
+
+For Jane (and Sandy and Charlotte), they all start by googling. 

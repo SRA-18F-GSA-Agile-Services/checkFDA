@@ -1,0 +1,29 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="908" measuredH="982" mockupW="897" mockupH="982">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::TextArea" x="11" y="0" w="897" h="82" measuredW="200" measuredH="140" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Name%2C%20Role</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::TextArea" x="11" y="364" w="419" h="618" measuredW="200" measuredH="140" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>About%20this%20Person%3A%20Subject%20Matter%20expertise%2C%20technology%20skills%2C%20demographics%20that%20matter%2C%20frequency%20of%20use%2C%20why%20they%27d%20use%20the%20product%2C%20pain%20points%20and%20joys%2C%20motivators</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::TextArea" x="393" y="94" w="515" h="246" measuredW="200" measuredH="140" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Context%3A%20How%27d%20they%20get%20to%20us%3F%20What%20are%20they%20doing%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::TextArea" x="457" y="364" w="451" h="397" measuredW="200" measuredH="140" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Implications%20for%20the%20product%3A%20for%20items%20in%20the%20About%20section%2C%20consider%20the%20implications%20for%20the%20product%27s%20design%20such%20as%20feature%20opportunities%20or%20product%20characteristics%20like%20ease%20of%20learning%2C%20efficiencity%2C%20reliability%2C%20speed</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::TextArea" x="11" y="91" w="356" h="249" measuredW="200" measuredH="140" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Photo</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
