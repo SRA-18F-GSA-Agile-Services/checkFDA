@@ -48,43 +48,13 @@ environments {
 			url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
 		}
     }
-	searchfdadev {
-		dataSource {
-			dbCreate = "create-drop"
-			url = 'jdbc:mysql://searchfda.crctz8nageky.us-east-1.rds.amazonaws.com:8080/searchfda-dev?useUnicode=true&autoReconnect=true'
-			pooled = true
-			driverClassName = "com.mysql.jdbc.Driver"
-			dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
-			username=dbConfig.rds.username
-			password=dbConfig.rds.password 
-	
-			properties {
-				maxActive = 50
-				maxIdle = 25
-				minIdle = 1
-				initialSize = 1
-		   
-				numTestsPerEvictionRun = 3
-				maxWait = 10000
-		   
-				testOnBorrow = true
-				testWhileIdle = true
-				testOnReturn = true
-		   
-				validationQuery = "select now()"
-		   
-				minEvictableIdleTimeMillis = 1000 * 60 * 5
-				timeBetweenEvictionRunsMillis = 1000 * 60 * 5
-			 }
-		}
-	}
     production {
 		dataSource {
 			dbCreate = "create-drop"
-			url = 'jdbc:mysql://searchfda.crctz8nageky.us-east-1.rds.amazonaws.com:8080/searchfda?useUnicode=true&autoReconnect=true'
 			pooled = true
 			driverClassName = "com.mysql.jdbc.Driver"
 			dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
+			url = dbconfig.rds.url
 			username=dbConfig.rds.username
 			password=dbConfig.rds.password 
 	
