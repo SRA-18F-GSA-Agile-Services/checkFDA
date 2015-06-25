@@ -10,7 +10,7 @@ import spock.lang.Specification
 @TestFor(StateService)
 class StateServiceSpec extends Specification {
 	
-	def "test getStateList"() {
+	def "test getStates"() {
 		given:
 		//we want to test with the same file used in production, so some work here
 		String s=getClass().getResource(".").toString() //find out where we are in testing mode
@@ -21,7 +21,7 @@ class StateServiceSpec extends Specification {
 		service.states=JSON.parse(jsonstr)
 		
 		when:
-		def result=service.getStateList(str)
+		def result=service.getStates(str)
 
 		then:
 		result == expected 

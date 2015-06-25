@@ -14,12 +14,8 @@ class StateService {
 	   states=JSON.parse(grailsApplication.parentContext.getResource("data/states.json").file.text)
 	   territories=JSON.parse(grailsApplication.parentContext.getResource("data/territories.json").file.text)
    }
-   
-   List getStates(String str) {
-     return(getStateList(str))
-   }
 
-   private List getStateList(String str) {
+   List getStates(String str) {
 	   if (states==null) loadStates()
 	   Set<String> hits=new HashSet()
 	   states.each {k,v ->
