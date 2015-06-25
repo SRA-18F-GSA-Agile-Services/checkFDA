@@ -1,7 +1,6 @@
 package com.sra.searchfda.service
 
 import grails.transaction.Transactional
-import org.apache.commons.lang.StringUtils
 
 @Transactional
 class OpenFDAService {
