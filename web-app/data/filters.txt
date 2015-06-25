@@ -19,4 +19,7 @@ labels.purpose
 labels.indications_and_usage
 labels.dosage_and_administration
 labels.active_ingredient
-labels.inactive_ingredient
+labels.warnings
+labels.pregnancy_or_breast_feeding
+labels.keep_out_of_reach_of_children
+labels.openfda.manufacturer_name
