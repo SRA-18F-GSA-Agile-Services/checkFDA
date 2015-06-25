@@ -38,6 +38,13 @@
 					${flash.message}
 				</div>
 			</g:if>
+			<g:if test="${beanWithErrors}">
+				<div class="ui message negative">
+					<i class="close icon"></i>
+					<g:renderErrors bean="${beanWithErrors}" as="list"/>
+				</div>
+			</g:if>
+
 			<g:each in="${ ['Ongoing', 'Pending'] }" var="status">
 				<g:set var="recalls" value="${ results.recalls.grep { it.status == status }.sort { it.classification } }" />
 				<g:if test="${ recalls.size() != 0 }">
