@@ -1,12 +1,12 @@
 <div class="ui modal">
 	<i class="close icon"></i>
 	<div class="header">
-		Location Permission
+		<g:message code="location.request.alert.title" />
 	</div>
 	<div class="content">
 		<div class="description">
 			<div class="header">
-				<div class="header">Could checkFDA use your current location to give you more tailored information for your area?</div>
+				<g:message code="location.request.alert.message" />
 			</div>
 		</div>
 	</div>
