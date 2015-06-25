@@ -61,7 +61,7 @@
 						</g:each>
 					</div>
 					<div class="recall-table-wrapper">
-						<table class="ui small compact selectable unstackabsle table recall-table">
+						<table class="ui small compact selectable unstackable table recall-table">
 							<tbody>
 								<g:each in="${ recalls }" var="recall" status="id">
 									<g:render template="/layouts/recall-alert-row" model="${ [recall: recall, id: id] }" />
