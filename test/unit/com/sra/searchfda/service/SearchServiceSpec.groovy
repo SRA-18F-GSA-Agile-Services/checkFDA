@@ -47,23 +47,28 @@ class SearchServiceSpec extends Specification {
     void "test parallel federated search"() {
         given:
         String query = "ice cream"
+        String parsedQuery = "ice AND cream"
         String filterText = "#this filter file specifies the json attributes we do want delivered to the server\n" +
                 "events.patient"
         service.grailsApplication = grailsApplication
         service.metaClass.getFilterText = { ->
             return filterText
         }
+        service.metaClass.parseQueryTerms = { ->
+            return parsedQuery
+        }
+
 
         when:
         Map searchResults = service.parallelFederatedSearch(query)
 
         then:
-        1 * openFDAService.query("device/event", query, 100, 0) >> getClass().getResourceAsStream("OpenFDA-device-event.json").text
-        1 * openFDAService.query("drug/label", query, 100, 0) >> getClass().getResourceAsStream("OpenFDA-drug-label.json").text
-        1 * openFDAService.query("food/enforcement", query, 100, 0) >> getClass().getResourceAsStream("OpenFDA-food-enforcement.json").text
-        1 * openFDAService.query("drug/event", query, 100, 0) >> null
-        1 * openFDAService.query("device/enforcement", query, 100, 0) >> null
-        1 * openFDAService.query("drug/enforcement", query, 100, 0) >> null
+        1 * openFDAService.query("device/event", parsedQuery, 100, 0) >> getClass().getResourceAsStream("OpenFDA-device-event.json").text
+        1 * openFDAService.query("drug/label", parsedQuery, 100, 0) >> getClass().getResourceAsStream("OpenFDA-drug-label.json").text
+        1 * openFDAService.query("food/enforcement", parsedQuery, 100, 0) >> getClass().getResourceAsStream("OpenFDA-food-enforcement.json").text
+        1 * openFDAService.query("drug/event", parsedQuery, 100, 0) >> null
+        1 * openFDAService.query("device/enforcement", parsedQuery, 100, 0) >> null
+        1 * openFDAService.query("drug/enforcement", parsedQuery, 100, 0) >> null
 
         searchResults.containsKey("labels")
         searchResults.containsKey("recalls")
@@ -77,6 +82,7 @@ class SearchServiceSpec extends Specification {
     void "test serial federated search"() {
         given:
         String query = "ice cream"
+        String parsedQuery = "ice AND cream"
         String filterText = "# comments should be ignored. \n" +
                 "events.patient"
 
@@ -84,17 +90,21 @@ class SearchServiceSpec extends Specification {
         service.metaClass.getFilterText = { ->
             return filterText
         }
+        service.metaClass.parseQueryTerms = { ->
+            return parsedQuery
+        }
 
         when:
         Map searchResults = service.federatedSearch(query)
 
         then:
-        1 * openFDAService.query("device/event", query, 100, 0) >> getClass().getResourceAsStream("OpenFDA-device-event.json").text
-        1 * openFDAService.query("drug/label", query, 100, 0) >> getClass().getResourceAsStream("OpenFDA-drug-label.json").text
-        1 * openFDAService.query("food/enforcement", query, 100, 0) >> getClass().getResourceAsStream("OpenFDA-food-enforcement.json").text
-        1 * openFDAService.query("drug/event", query, 100, 0) >> null
-        1 * openFDAService.query("device/enforcement", query, 100, 0) >> null
-        1 * openFDAService.query("drug/enforcement", query, 100, 0) >> null
+        1 * openFDAService.query("device/event", parsedQuery, 100, 0) >> getClass().getResourceAsStream("OpenFDA-device-event.json").text
+        1 * openFDAService.query("drug/label", parsedQuery, 100, 0) >> getClass().getResourceAsStream("OpenFDA-drug-label.json").text
+        1 * openFDAService.query("food/enforcement", parsedQuery, 100, 0) >> getClass().getResourceAsStream("OpenFDA-food-enforcement.json").text
+        1 * openFDAService.query("drug/event", parsedQuery, 100, 0) >> null
+        1 * openFDAService.query("device/enforcement", parsedQuery, 100, 0) >> null
+        1 * openFDAService.query("drug/enforcement", parsedQuery, 100, 0) >> null
+
 
         searchResults.containsKey("labels")
         searchResults.containsKey("recalls")
@@ -196,6 +206,24 @@ class SearchServiceSpec extends Specification {
         ["a.f.g"]                 | ['a': ['f': ['g': 'h']]]                                                        | 0
         ["a.d", "a.f.g", "a.f.i"] | ['a': ['f': ['g': 'h', 'i': ['a', 'b']], 'd': ['e': 'e1']]]                     | 0
         ["a.d", "w.x", "w.y"]     | ["a": ["d": ["e": "e1"]], w: [[x: 'x', y: 'y'], [x: 'x2', y: 'y2'], [y: 'y3']]] | 0
+    }
+
+
+    void "test parseQueryTerms"() {
+        when:
+        String parsedQueryTerms = service.parseQueryTerms(queryString)
+
+        then:
+        parsedQueryTerms == expected
+
+        where:
+        queryString                                                   | expected
+        'ice cream'                                                   | 'ice AND cream'
+        '"ice cream"'                                                 | '"ice cream"'
+        '"ice cream, vanilla" brownies'                               | '"ice cream, vanilla" AND brownies'
+        '"ice cream, vanilla" brownies syrup sprinkles'               | '"ice cream, vanilla" AND brownies AND syrup AND sprinkles'
+        '"ice cream, vanilla" brownies "syrup sprinkles"'             | '"ice cream, vanilla" AND "syrup sprinkles" AND brownies'
+        '"ice cream, vanilla" brownies chips pizza "syrup sprinkles"' | '"ice cream, vanilla" AND "syrup sprinkles" AND brownies AND chips AND pizza'
     }
 
 }
