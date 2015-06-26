@@ -19,7 +19,7 @@ function checkUserPermission () {
 function search() {
 	var trimmed =  $.trim( $('#query').val());
 	if (trimmed) {
-		window.location.href = '/results?q=' + encodeURIComponent(trimmed) + '&lat=' + lat + '&lng=' + lng;
+		window.location.href = '/results?q=' + encodeURIComponent(trimmed) + (lat && lng ? '&lat=' + lat + '&lng=' + lng : '');
 	}
 }
 
