@@ -10,12 +10,4 @@ import spock.lang.Specification
 @TestFor(OpenFDAService)
 class OpenFDAServiceSpec extends Specification {
 
-    def setup() {
-    }
-
-    def cleanup() {
-    }
-
-    void "test something"() {
-    }
 }
