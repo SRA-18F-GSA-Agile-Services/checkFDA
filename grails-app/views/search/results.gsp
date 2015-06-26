@@ -54,13 +54,9 @@
 						<g:message code="widget.results.recall.header" args="${ [recalls.size()] }" /> <i>${ query }</i>
 					</h1>
 					<div class="ui divider"></div>
-					<div class="hidden-cards">
-						<g:each in="${ recalls }" var="recall" status="id">
-							<g:render template="/layouts/cards/recall-alert" model="${ [recall: recall, id: id] }" />
-						</g:each>
-					</div>
+					<div id="recalls-card"></div>
 					<div class="card-table-wrapper">
-						<table class="ui small compact complex selectable unstackable table card-table recalls">
+						<table id="recalls" class="ui small compact complex selectable unstackable table card-table recalls">
 							<tbody>
 								<g:each in="${ recalls }" var="recall" status="id">
 									<g:render template="/layouts/recall-alert-row" model="${ [recall: recall, id: id] }" />
@@ -76,13 +72,9 @@
 						<g:message code="widget.results.label.header" args="${ [labels.size()] }" /> <i>${ query }</i>
 					</h1>
 					<div class="ui divider"></div>
-					<div class="hidden-cards">
-						<g:each in="${ labels }" var="label" status="id">
-							<g:render template="/layouts/cards/drug-label" model="${ [label: label, id: id] }" />
-						</g:each>
-					</div>
+					<div id="labels-card"></div>
 					<div class="card-table-wrapper">
-						<table class="ui small compact selectable unstackable table card-table labels">
+						<table id="labels" class="ui small compact selectable unstackable table card-table labels">
 							<tbody>
 								<g:each in="${ labels }" var="label" status="id">
 									<g:render template="/layouts/drug-label-row" model="${ [label: label, id: id] }" />
