@@ -69,9 +69,7 @@
 							</tbody>
 						</table>
 					</div>
-					<div class="ui two doubling cards">
-						<g:render template="/layouts/cards/recall-timeline" />
-					</div>
+					<g:render template="/layouts/cards/recall-timeline" />
 				</g:if>
 				<g:set var="labels" value="${ results.labels.grep { it.openfda?.brand_name && it.openfda?.generic_name } }" />
 				<g:if test="${ labels.size() != 0 }">
