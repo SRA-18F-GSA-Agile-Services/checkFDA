@@ -50,7 +50,7 @@
 			<g:if test="${results}">
 				<g:set var="recalls" value="${ results.recalls.grep { it.status in ['Ongoing', 'Pending'] }.sort { Map map1, Map map2 -> map1.classification <=> map2.classification ?: map2.recall_initiation_date <=> map1.recall_initiation_date } }" />
 				<g:if test="${ recalls.size() != 0 }">
-					<h1 class="ui header">
+					<h1 id="recalls-header" class="ui header">
 						<g:message code="widget.results.recall.header" args="${ [recalls.size()] }" /> <i>${ query }</i>
 					</h1>
 					<div class="ui divider"></div>
@@ -68,7 +68,7 @@
 				</g:if>
 				<g:set var="labels" value="${ results.labels.grep { it.openfda?.brand_name && it.openfda?.generic_name } }" />
 				<g:if test="${ labels.size() != 0 }">
-					<h1 class="ui header">
+					<h1 id="labels-header" class="ui header">
 						<g:message code="widget.results.label.header" args="${ [labels.size()] }" /> <i>${ query }</i>
 					</h1>
 					<div class="ui divider"></div>
