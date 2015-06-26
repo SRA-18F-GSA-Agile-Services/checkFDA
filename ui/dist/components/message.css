@@ -462,3 +462,6 @@
     User Variable Overrides
 *******************************/
 
+.ui.attached.message {
+  margin-top: -1px;
+}

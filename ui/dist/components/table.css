@@ -1061,6 +1061,17 @@
   background: #ffe8e6 !important;
   color: #db2828 !important;
 }
+.ui.selectable.table tr.red:hover,
+.ui.selectable.table tr:hover td.red {
+  background: #ffdad7 !important;
+  color: #d12323 !important;
+}
+.ui.table tr.active td.red,
+.ui.table tr.active td.red:hover,
+.ui.table tr.active:hover td.red {
+  background: #ffc2bd !important;
+  color: #d12323 !important;
+}
 
 /*--------------
       Orange
@@ -1074,6 +1085,17 @@
 .ui.table td.orange {
   background: #ffedde !important;
   color: #f2711c !important;
+}
+.ui.selectable.table tr.orange:hover,
+.ui.selectable.table tr:hover td.orange {
+  background: #ffe5cf !important;
+  color: #f1680e !important;
+}
+.ui.table tr.active td.orange,
+.ui.table tr.active td.orange:hover,
+.ui.table tr.active:hover td.orange {
+  background: #ffd7b5 !important;
+  color: #f1680e !important;
 }
 
 /*--------------
@@ -1089,6 +1111,17 @@
   background: #fff8db !important;
   color: #b58105 !important;
 }
+.ui.selectable.table tr.yellow:hover,
+.ui.selectable.table tr:hover td.yellow {
+  background: #fff5cc !important;
+  color: #a67605 !important;
+}
+.ui.table tr.active td.yellow,
+.ui.table tr.active td.yellow:hover,
+.ui.table tr.active:hover td.yellow {
+  background: #fff0b2 !important;
+  color: #a67605 !important;
+}
 
 /*--------------
       Olive
@@ -1102,6 +1135,17 @@
 .ui.table td.olive {
   background: #fbfdef !important;
   color: #8abc1e !important;
+}
+.ui.selectable.table tr.olive:hover,
+.ui.selectable.table tr:hover td.olive {
+  background: #f8fbe1 !important;
+  color: #80af1c !important;
+}
+.ui.table tr.active td.olive,
+.ui.table tr.active td.olive:hover,
+.ui.table tr.active:hover td.olive {
+  background: #f2f8cb !important;
+  color: #80af1c !important;
 }
 
 /*--------------
@@ -1117,6 +1161,17 @@
   background: #e5f9e7 !important;
   color: #1ebc30 !important;
 }
+.ui.selectable.table tr.green:hover,
+.ui.selectable.table tr:hover td.green {
+  background: #d9f6dc !important;
+  color: #1caf2d !important;
+}
+.ui.table tr.active td.green,
+.ui.table tr.active td.green:hover,
+.ui.table tr.active:hover td.green {
+  background: #c4f1c8 !important;
+  color: #1caf2d !important;
+}
 
 /*--------------
       Teal
@@ -1130,6 +1185,17 @@
 .ui.table td.teal {
   background: #e1f7f7 !important;
   color: #10a3a3 !important;
+}
+.ui.selectable.table tr.teal:hover,
+.ui.selectable.table tr:hover td.teal {
+  background: #d5f4f4 !important;
+  color: #0f9595 !important;
+}
+.ui.table tr.active td.teal,
+.ui.table tr.active td.teal:hover,
+.ui.table tr.active:hover td.teal {
+  background: #c1eeee !important;
+  color: #0f9595 !important;
 }
 
 /*--------------
@@ -1145,6 +1211,17 @@
   background: #dff0ff !important;
   color: #2185d0 !important;
 }
+.ui.selectable.table tr.blue:hover,
+.ui.selectable.table tr:hover td.blue {
+  background: #d0e9ff !important;
+  color: #1f7dc3 !important;
+}
+.ui.table tr.active td.blue,
+.ui.table tr.active td.blue:hover,
+.ui.table tr.active:hover td.blue {
+  background: #b6ddff !important;
+  color: #1f7dc3 !important;
+}
 
 /*--------------
       Violet
@@ -1158,6 +1235,17 @@
 .ui.table td.violet {
   background: #eae7ff !important;
   color: #6435c9 !important;
+}
+.ui.selectable.table tr.violet:hover,
+.ui.selectable.table tr:hover td.violet {
+  background: #ddd8ff !important;
+  color: #5e32bd !important;
+}
+.ui.table tr.active td.violet,
+.ui.table tr.active td.violet:hover,
+.ui.table tr.active:hover td.violet {
+  background: #c6beff !important;
+  color: #5e32bd !important;
 }
 
 /*--------------
@@ -1173,6 +1261,17 @@
   background: #f6e7ff !important;
   color: #a333c8 !important;
 }
+.ui.selectable.table tr.purple:hover,
+.ui.selectable.table tr:hover td.purple {
+  background: #f0d8ff !important;
+  color: #9930bc !important;
+}
+.ui.table tr.active td.purple,
+.ui.table tr.active td.purple:hover,
+.ui.table tr.active:hover td.purple {
+  background: #e7beff !important;
+  color: #9930bc !important;
+}
 
 /*--------------
       Pink
@@ -1187,6 +1286,17 @@
   background: #ffe3fb !important;
   color: #e03997 !important;
 }
+.ui.selectable.table tr.pink:hover,
+.ui.selectable.table tr:hover td.pink {
+  background: #ffd4f9 !important;
+  color: #de2c90 !important;
+}
+.ui.table tr.active td.pink,
+.ui.table tr.active td.pink:hover,
+.ui.table tr.active:hover td.pink {
+  background: #ffbaf5 !important;
+  color: #de2c90 !important;
+}
 
 /*--------------
       Brown
@@ -1200,4 +1310,15 @@
 .ui.table td.brown {
   background: #f1e2d3 !important;
   color: #a5673f !important;
+}
+.ui.selectable.table tr.brown:hover,
+.ui.selectable.table tr:hover td.brown {
+  background: #eddac7 !important;
+  color: #9a603b !important;
+}
+.ui.table tr.active td.brown,
+.ui.table tr.active td.brown:hover,
+.ui.table tr.active:hover td.brown {
+  background: #e7ceb4 !important;
+  color: #9a603b !important;
 }
