@@ -1,0 +1,16 @@
+package com.sra.searchfda
+
+enum AdminConfigPropertyKey {
+
+    API_BASE_URL,
+
+    DRUG_EVENT_ENDPOINT,
+    DRUG_LABEL_ENDPOINT,
+    DRUG_ENFORCEMENT_ENDPOINT,
+
+    DEVICE_ENFORCEMENT_ENDPOINT,
+    DEVICE_EVENT_ENDPOINT,
+
+    FOOD_ENFORCEMENT_ENDPOINT
+
+}
