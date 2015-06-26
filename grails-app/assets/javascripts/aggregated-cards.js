@@ -3,11 +3,11 @@ function addRowListeners(tableIdentifier) {
 		selectDetailCard(this);
 	});
 	if ($(tableIdentifier + ' tr').length) {
-		selectDetailCard($(tableIdentifier + ' tr').first());
+		selectDetailCard($(tableIdentifier + ' tr').first(), true);
 	}
 }
 
-function selectDetailCard(me) {
+function selectDetailCard(me, initializing) {
 	$(me).parent().children('tr.active').removeClass('active');
 	$(me).addClass('active');
 	var rowId = $(me).attr('id');
@@ -23,7 +23,9 @@ function selectDetailCard(me) {
 		},
 		success: function(data) {
 			$('#' + type + '-card').html(data);
-			jump(rowId + '-card');
+			if (!initializing) {
+				jump(type + '-header');
+			}
 		}
 	});
 }
