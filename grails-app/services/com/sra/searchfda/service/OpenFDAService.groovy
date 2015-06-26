@@ -1,14 +1,15 @@
 package com.sra.searchfda.service
 
 import grails.transaction.Transactional
+import org.codehaus.groovy.grails.commons.GrailsApplication
 
 @Transactional
 class OpenFDAService {
 
-    def grailsApplication
-    String urlBase = "https://api.fda.gov/" //baseURL for Open FDA API
+    GrailsApplication grailsApplication
+    final String urlBase = "https://api.fda.gov/" //baseURL for Open FDA API
 
-    def String query(String dataset, String query, int limit = 100, int skip = 0) {
+    String query(String dataset, String query, int limit = 100, int skip = 0) {
         String apiToken = grailsApplication.config.openfdaapi.token //get api token from our config
 
         String url = urlBase + dataset + ".json?api_key=" + apiToken + "&search=" + URLEncoder.encode(query) + "&limit=" + limit + "&skip=" + skip
@@ -17,6 +18,7 @@ class OpenFDAService {
         try {
             result = new URL(url).text //fetch the json back from the url
         } catch (Exception e) {
+			log.error 'Query failed: ' + e.getMessage()
         }
         return (result)
     }
