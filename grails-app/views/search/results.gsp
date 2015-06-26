@@ -59,8 +59,10 @@
 					<div class="card-table-wrapper">
 						<table id="recalls" class="ui small compact complex selectable unstackable table card-table recalls">
 							<tbody>
-								<g:each in="${ currentRecalls }" var="recall" status="id">
-									<g:render template="/layouts/recall-alert-row" model="${ [recall: recall, id: id] }" />
+								<g:each in="${ recalls }" var="recall" status="id">
+									<g:if test="${ recall.status in ['Ongoing', 'Pending'] }">
+										<g:render template="/layouts/recall-alert-row" model="${ [recall: recall, id: id] }" />
+									</g:if>
 								</g:each>
 							</tbody>
 						</table>
