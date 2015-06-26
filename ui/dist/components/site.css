@@ -205,3 +205,65 @@ input::selection {
   background-color: #ffffff;
   padding: 40px;
 }
+
+/* Recalls */
+.ui.cards.recall-alerts > .card {
+  display: none;
+}
+.ui.fluid.card.recall:last-child {
+  margin-bottom: 1em !important;
+}
+.ui.fluid.card.recall .extra.content span {
+  margin-right: 1em;
+}
+.ui.fluid.card.recall .extra.content .icon {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+.ui.fluid.card.recall .ui.small.header {
+  margin: 1rem 0 0.5rem;
+}
+.ui.fluid.card.recall .ui.tiny.header {
+  margin: 1rem 0 0.5rem;
+  font-weight: normal !important;
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+.recall-table-wrapper {
+  max-height: 25em;
+  overflow-y: auto;
+  margin-bottom: 1em;
+  border-radius: 0.28571429rem;
+  box-shadow: 0px 1px 3px 0px #d4d4d5, 0px 0px 0px 1px #d4d4d5;
+}
+.card-table.recalls {
+  table-layout: fixed;
+  width: 100%;
+  white-space: nowrap;
+  border: none !important;
+}
+.card-table.recalls tr {
+  cursor: pointer;
+}
+.card-table.recalls tr > th:nth-child(1),
+.card-table.recalls tr > td:nth-child(1) {
+  width: 4em;
+  text-align: center;
+}
+.card-table.recalls tr > th:nth-child(2),
+.card-table.recalls tr > td:nth-child(2) {
+  width: 10em;
+}
+.card-table.recalls tr > th abbr,
+.card-table.recalls tr > td abbr,
+.card-table.recalls tr > th span,
+.card-table.recalls tr > td span {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+.card-table.recalls tr > th abbr,
+.card-table.recalls tr > td abbr {
+  border-bottom-color: #dcddde;
+}
+.overflow {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

@@ -723,6 +723,82 @@ input::selection {
   background-color: #ffffff;
   padding: 40px;
 }
+
+/* Recalls */
+
+.ui.cards.recall-alerts > .card {
+  display: none;
+}
+
+.ui.fluid.card.recall:last-child {
+  margin-bottom: 1em !important;
+}
+
+.ui.fluid.card.recall .extra.content span {
+  margin-right: 1em;
+}
+
+.ui.fluid.card.recall .extra.content .icon {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.ui.fluid.card.recall .ui.small.header {
+  margin: 1rem 0 0.5rem;
+}
+
+.ui.fluid.card.recall .ui.tiny.header {
+  margin: 1rem 0 0.5rem;
+  font-weight: normal !important;
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.recall-table-wrapper {
+  max-height: 25em;
+  overflow-y: auto;
+  margin-bottom: 1em;
+  border-radius: 0.28571429rem;
+  box-shadow: 0px 1px 3px 0px #d4d4d5, 0px 0px 0px 1px #d4d4d5;
+}
+
+.card-table.recalls {
+  table-layout: fixed;
+  width: 100%;
+  white-space: nowrap;
+  border: none !important;
+}
+
+.card-table.recalls tr {
+  cursor: pointer;
+}
+
+.card-table.recalls tr > th:nth-child(1),
+.card-table.recalls tr > td:nth-child(1) {
+  width: 4em;
+  text-align: center;
+}
+
+.card-table.recalls tr > th:nth-child(2),
+.card-table.recalls tr > td:nth-child(2) {
+  width: 10em;
+}
+
+.card-table.recalls tr > th abbr,
+.card-table.recalls tr > td abbr,
+.card-table.recalls tr > th span,
+.card-table.recalls tr > td span {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.card-table.recalls tr > th abbr,
+.card-table.recalls tr > td abbr {
+  border-bottom-color: #dcddde;
+}
+
+.overflow {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
 /*!
  * # Semantic UI 2.0.0 - Button
  * http://github.com/semantic-org/semantic-ui/
@@ -21480,6 +21556,11 @@ Floated Menu / Item
 /*******************************
     User Variable Overrides
 *******************************/
+
+.ui.attached.message {
+  margin: 0 -1px -2px;
+  top: -1px;
+}
 /*!
  * # Semantic UI 2.0.0 - Table
  * http://github.com/semantic-org/semantic-ui/
@@ -22679,6 +22760,314 @@ Floated Menu / Item
 /*******************************
          Site Overrides
 *******************************/
+
+/*--------------
+      Red
+---------------*/
+
+.ui.table tr.red,
+.ui.table td.red {
+  box-shadow: 0px 0px 0px #d12323 inset;
+}
+
+.ui.table tr.red,
+.ui.table td.red {
+  background: #ffe8e6 !important;
+  color: #db2828 !important;
+}
+
+.ui.selectable.table tr.red:hover,
+.ui.selectable.table tr:hover td.red {
+  background: #ffdad7 !important;
+  color: #d12323 !important;
+}
+
+.ui.table tr.active td.red,
+.ui.table tr.active td.red:hover,
+.ui.table tr.active:hover td.red {
+  background: #ffc2bd !important;
+  color: #d12323 !important;
+}
+
+/*--------------
+      Orange
+---------------*/
+
+.ui.table tr.orange,
+.ui.table td.orange {
+  box-shadow: 0px 0px 0px #f1680e inset;
+}
+
+.ui.table tr.orange,
+.ui.table td.orange {
+  background: #ffedde !important;
+  color: #f2711c !important;
+}
+
+.ui.selectable.table tr.orange:hover,
+.ui.selectable.table tr:hover td.orange {
+  background: #ffe5cf !important;
+  color: #f1680e !important;
+}
+
+.ui.table tr.active td.orange,
+.ui.table tr.active td.orange:hover,
+.ui.table tr.active:hover td.orange {
+  background: #ffd7b5 !important;
+  color: #f1680e !important;
+}
+
+/*--------------
+      Yellow
+---------------*/
+
+.ui.table tr.yellow,
+.ui.table td.yellow {
+  box-shadow: 0px 0px 0px #a67605 inset;
+}
+
+.ui.table tr.yellow,
+.ui.table td.yellow {
+  background: #fff8db !important;
+  color: #b58105 !important;
+}
+
+.ui.selectable.table tr.yellow:hover,
+.ui.selectable.table tr:hover td.yellow {
+  background: #fff5cc !important;
+  color: #a67605 !important;
+}
+
+.ui.table tr.active td.yellow,
+.ui.table tr.active td.yellow:hover,
+.ui.table tr.active:hover td.yellow {
+  background: #fff0b2 !important;
+  color: #a67605 !important;
+}
+
+/*--------------
+      Olive
+---------------*/
+
+.ui.table tr.olive,
+.ui.table td.olive {
+  box-shadow: 0px 0px 0px #80af1c inset;
+}
+
+.ui.table tr.olive,
+.ui.table td.olive {
+  background: #fbfdef !important;
+  color: #8abc1e !important;
+}
+
+.ui.selectable.table tr.olive:hover,
+.ui.selectable.table tr:hover td.olive {
+  background: #f8fbe1 !important;
+  color: #80af1c !important;
+}
+
+.ui.table tr.active td.olive,
+.ui.table tr.active td.olive:hover,
+.ui.table tr.active:hover td.olive {
+  background: #f2f8cb !important;
+  color: #80af1c !important;
+}
+
+/*--------------
+      Green
+---------------*/
+
+.ui.table tr.green,
+.ui.table td.green {
+  box-shadow: 0px 0px 0px #1caf2d inset;
+}
+
+.ui.table tr.green,
+.ui.table td.green {
+  background: #e5f9e7 !important;
+  color: #1ebc30 !important;
+}
+
+.ui.selectable.table tr.green:hover,
+.ui.selectable.table tr:hover td.green {
+  background: #d9f6dc !important;
+  color: #1caf2d !important;
+}
+
+.ui.table tr.active td.green,
+.ui.table tr.active td.green:hover,
+.ui.table tr.active:hover td.green {
+  background: #c4f1c8 !important;
+  color: #1caf2d !important;
+}
+
+/*--------------
+      Teal
+---------------*/
+
+.ui.table tr.teal,
+.ui.table td.teal {
+  box-shadow: 0px 0px 0px #0f9595 inset;
+}
+
+.ui.table tr.teal,
+.ui.table td.teal {
+  background: #e1f7f7 !important;
+  color: #10a3a3 !important;
+}
+
+.ui.selectable.table tr.teal:hover,
+.ui.selectable.table tr:hover td.teal {
+  background: #d5f4f4 !important;
+  color: #0f9595 !important;
+}
+
+.ui.table tr.active td.teal,
+.ui.table tr.active td.teal:hover,
+.ui.table tr.active:hover td.teal {
+  background: #c1eeee !important;
+  color: #0f9595 !important;
+}
+
+/*--------------
+      Blue
+---------------*/
+
+.ui.table tr.blue,
+.ui.table td.blue {
+  box-shadow: 0px 0px 0px #1f7dc3 inset;
+}
+
+.ui.table tr.blue,
+.ui.table td.blue {
+  background: #dff0ff !important;
+  color: #2185d0 !important;
+}
+
+.ui.selectable.table tr.blue:hover,
+.ui.selectable.table tr:hover td.blue {
+  background: #d0e9ff !important;
+  color: #1f7dc3 !important;
+}
+
+.ui.table tr.active td.blue,
+.ui.table tr.active td.blue:hover,
+.ui.table tr.active:hover td.blue {
+  background: #b6ddff !important;
+  color: #1f7dc3 !important;
+}
+
+/*--------------
+      Violet
+---------------*/
+
+.ui.table tr.violet,
+.ui.table td.violet {
+  box-shadow: 0px 0px 0px #5e32bd inset;
+}
+
+.ui.table tr.violet,
+.ui.table td.violet {
+  background: #eae7ff !important;
+  color: #6435c9 !important;
+}
+
+.ui.selectable.table tr.violet:hover,
+.ui.selectable.table tr:hover td.violet {
+  background: #ddd8ff !important;
+  color: #5e32bd !important;
+}
+
+.ui.table tr.active td.violet,
+.ui.table tr.active td.violet:hover,
+.ui.table tr.active:hover td.violet {
+  background: #c6beff !important;
+  color: #5e32bd !important;
+}
+
+/*--------------
+      Purple
+---------------*/
+
+.ui.table tr.purple,
+.ui.table td.purple {
+  box-shadow: 0px 0px 0px #9930bc inset;
+}
+
+.ui.table tr.purple,
+.ui.table td.purple {
+  background: #f6e7ff !important;
+  color: #a333c8 !important;
+}
+
+.ui.selectable.table tr.purple:hover,
+.ui.selectable.table tr:hover td.purple {
+  background: #f0d8ff !important;
+  color: #9930bc !important;
+}
+
+.ui.table tr.active td.purple,
+.ui.table tr.active td.purple:hover,
+.ui.table tr.active:hover td.purple {
+  background: #e7beff !important;
+  color: #9930bc !important;
+}
+
+/*--------------
+      Pink
+---------------*/
+
+.ui.table tr.pink,
+.ui.table td.pink {
+  box-shadow: 0px 0px 0px #de2c90 inset;
+}
+
+.ui.table tr.pink,
+.ui.table td.pink {
+  background: #ffe3fb !important;
+  color: #e03997 !important;
+}
+
+.ui.selectable.table tr.pink:hover,
+.ui.selectable.table tr:hover td.pink {
+  background: #ffd4f9 !important;
+  color: #de2c90 !important;
+}
+
+.ui.table tr.active td.pink,
+.ui.table tr.active td.pink:hover,
+.ui.table tr.active:hover td.pink {
+  background: #ffbaf5 !important;
+  color: #de2c90 !important;
+}
+
+/*--------------
+      Brown
+---------------*/
+
+.ui.table tr.brown,
+.ui.table td.brown {
+  box-shadow: 0px 0px 0px #9a603b inset;
+}
+
+.ui.table tr.brown,
+.ui.table td.brown {
+  background: #f1e2d3 !important;
+  color: #a5673f !important;
+}
+
+.ui.selectable.table tr.brown:hover,
+.ui.selectable.table tr:hover td.brown {
+  background: #eddac7 !important;
+  color: #9a603b !important;
+}
+
+.ui.table tr.active td.brown,
+.ui.table tr.active td.brown:hover,
+.ui.table tr.active:hover td.brown {
+  background: #e7ceb4 !important;
+  color: #9a603b !important;
+}
 /*!
  * # Semantic UI 2.0.0 - Ad
  * http://github.com/semantic-org/semantic-ui/
@@ -33044,6 +33433,314 @@ html.ios body {
 /*******************************
          Site Overrides
 *******************************/
+
+/*--------------
+      Red
+---------------*/
+
+.ui.table tr.red,
+.ui.table td.red {
+  box-shadow: 0px 0px 0px #d12323 inset;
+}
+
+.ui.table tr.red,
+.ui.table td.red {
+  background: #ffe8e6 !important;
+  color: #db2828 !important;
+}
+
+.ui.selectable.table tr.red:hover,
+.ui.selectable.table tr:hover td.red {
+  background: #ffdad7 !important;
+  color: #d12323 !important;
+}
+
+.ui.table tr.active td.red,
+.ui.table tr.active td.red:hover,
+.ui.table tr.active:hover td.red {
+  background: #ffc2bd !important;
+  color: #d12323 !important;
+}
+
+/*--------------
+      Orange
+---------------*/
+
+.ui.table tr.orange,
+.ui.table td.orange {
+  box-shadow: 0px 0px 0px #f1680e inset;
+}
+
+.ui.table tr.orange,
+.ui.table td.orange {
+  background: #ffedde !important;
+  color: #f2711c !important;
+}
+
+.ui.selectable.table tr.orange:hover,
+.ui.selectable.table tr:hover td.orange {
+  background: #ffe5cf !important;
+  color: #f1680e !important;
+}
+
+.ui.table tr.active td.orange,
+.ui.table tr.active td.orange:hover,
+.ui.table tr.active:hover td.orange {
+  background: #ffd7b5 !important;
+  color: #f1680e !important;
+}
+
+/*--------------
+      Yellow
+---------------*/
+
+.ui.table tr.yellow,
+.ui.table td.yellow {
+  box-shadow: 0px 0px 0px #a67605 inset;
+}
+
+.ui.table tr.yellow,
+.ui.table td.yellow {
+  background: #fff8db !important;
+  color: #b58105 !important;
+}
+
+.ui.selectable.table tr.yellow:hover,
+.ui.selectable.table tr:hover td.yellow {
+  background: #fff5cc !important;
+  color: #a67605 !important;
+}
+
+.ui.table tr.active td.yellow,
+.ui.table tr.active td.yellow:hover,
+.ui.table tr.active:hover td.yellow {
+  background: #fff0b2 !important;
+  color: #a67605 !important;
+}
+
+/*--------------
+      Olive
+---------------*/
+
+.ui.table tr.olive,
+.ui.table td.olive {
+  box-shadow: 0px 0px 0px #80af1c inset;
+}
+
+.ui.table tr.olive,
+.ui.table td.olive {
+  background: #fbfdef !important;
+  color: #8abc1e !important;
+}
+
+.ui.selectable.table tr.olive:hover,
+.ui.selectable.table tr:hover td.olive {
+  background: #f8fbe1 !important;
+  color: #80af1c !important;
+}
+
+.ui.table tr.active td.olive,
+.ui.table tr.active td.olive:hover,
+.ui.table tr.active:hover td.olive {
+  background: #f2f8cb !important;
+  color: #80af1c !important;
+}
+
+/*--------------
+      Green
+---------------*/
+
+.ui.table tr.green,
+.ui.table td.green {
+  box-shadow: 0px 0px 0px #1caf2d inset;
+}
+
+.ui.table tr.green,
+.ui.table td.green {
+  background: #e5f9e7 !important;
+  color: #1ebc30 !important;
+}
+
+.ui.selectable.table tr.green:hover,
+.ui.selectable.table tr:hover td.green {
+  background: #d9f6dc !important;
+  color: #1caf2d !important;
+}
+
+.ui.table tr.active td.green,
+.ui.table tr.active td.green:hover,
+.ui.table tr.active:hover td.green {
+  background: #c4f1c8 !important;
+  color: #1caf2d !important;
+}
+
+/*--------------
+      Teal
+---------------*/
+
+.ui.table tr.teal,
+.ui.table td.teal {
+  box-shadow: 0px 0px 0px #0f9595 inset;
+}
+
+.ui.table tr.teal,
+.ui.table td.teal {
+  background: #e1f7f7 !important;
+  color: #10a3a3 !important;
+}
+
+.ui.selectable.table tr.teal:hover,
+.ui.selectable.table tr:hover td.teal {
+  background: #d5f4f4 !important;
+  color: #0f9595 !important;
+}
+
+.ui.table tr.active td.teal,
+.ui.table tr.active td.teal:hover,
+.ui.table tr.active:hover td.teal {
+  background: #c1eeee !important;
+  color: #0f9595 !important;
+}
+
+/*--------------
+      Blue
+---------------*/
+
+.ui.table tr.blue,
+.ui.table td.blue {
+  box-shadow: 0px 0px 0px #1f7dc3 inset;
+}
+
+.ui.table tr.blue,
+.ui.table td.blue {
+  background: #dff0ff !important;
+  color: #2185d0 !important;
+}
+
+.ui.selectable.table tr.blue:hover,
+.ui.selectable.table tr:hover td.blue {
+  background: #d0e9ff !important;
+  color: #1f7dc3 !important;
+}
+
+.ui.table tr.active td.blue,
+.ui.table tr.active td.blue:hover,
+.ui.table tr.active:hover td.blue {
+  background: #b6ddff !important;
+  color: #1f7dc3 !important;
+}
+
+/*--------------
+      Violet
+---------------*/
+
+.ui.table tr.violet,
+.ui.table td.violet {
+  box-shadow: 0px 0px 0px #5e32bd inset;
+}
+
+.ui.table tr.violet,
+.ui.table td.violet {
+  background: #eae7ff !important;
+  color: #6435c9 !important;
+}
+
+.ui.selectable.table tr.violet:hover,
+.ui.selectable.table tr:hover td.violet {
+  background: #ddd8ff !important;
+  color: #5e32bd !important;
+}
+
+.ui.table tr.active td.violet,
+.ui.table tr.active td.violet:hover,
+.ui.table tr.active:hover td.violet {
+  background: #c6beff !important;
+  color: #5e32bd !important;
+}
+
+/*--------------
+      Purple
+---------------*/
+
+.ui.table tr.purple,
+.ui.table td.purple {
+  box-shadow: 0px 0px 0px #9930bc inset;
+}
+
+.ui.table tr.purple,
+.ui.table td.purple {
+  background: #f6e7ff !important;
+  color: #a333c8 !important;
+}
+
+.ui.selectable.table tr.purple:hover,
+.ui.selectable.table tr:hover td.purple {
+  background: #f0d8ff !important;
+  color: #9930bc !important;
+}
+
+.ui.table tr.active td.purple,
+.ui.table tr.active td.purple:hover,
+.ui.table tr.active:hover td.purple {
+  background: #e7beff !important;
+  color: #9930bc !important;
+}
+
+/*--------------
+      Pink
+---------------*/
+
+.ui.table tr.pink,
+.ui.table td.pink {
+  box-shadow: 0px 0px 0px #de2c90 inset;
+}
+
+.ui.table tr.pink,
+.ui.table td.pink {
+  background: #ffe3fb !important;
+  color: #e03997 !important;
+}
+
+.ui.selectable.table tr.pink:hover,
+.ui.selectable.table tr:hover td.pink {
+  background: #ffd4f9 !important;
+  color: #de2c90 !important;
+}
+
+.ui.table tr.active td.pink,
+.ui.table tr.active td.pink:hover,
+.ui.table tr.active:hover td.pink {
+  background: #ffbaf5 !important;
+  color: #de2c90 !important;
+}
+
+/*--------------
+      Brown
+---------------*/
+
+.ui.table tr.brown,
+.ui.table td.brown {
+  box-shadow: 0px 0px 0px #9a603b inset;
+}
+
+.ui.table tr.brown,
+.ui.table td.brown {
+  background: #f1e2d3 !important;
+  color: #a5673f !important;
+}
+
+.ui.selectable.table tr.brown:hover,
+.ui.selectable.table tr:hover td.brown {
+  background: #eddac7 !important;
+  color: #9a603b !important;
+}
+
+.ui.table tr.active td.brown,
+.ui.table tr.active td.brown:hover,
+.ui.table tr.active:hover td.brown {
+  background: #e7ceb4 !important;
+  color: #9a603b !important;
+}
 /*!
  * # Semantic UI 2.0.0 - Transition
  * http://github.com/semantic-org/semantic-ui/

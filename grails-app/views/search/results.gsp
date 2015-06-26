@@ -60,8 +60,8 @@
 							<g:render template="/layouts/cards/recall-alert" model="${ [recall: recall, id: id] }" />
 						</g:each>
 					</div>
-					<div class="card-table-wrapper">
-						<table class="ui small compact selectable unstackable table card-table recalls">
+					<div class="recall-table-wrapper">
+						<table class="ui small compact complex selectable unstackable table card-table recalls">
 							<tbody>
 								<g:each in="${ recalls }" var="recall" status="id">
 									<g:render template="/layouts/recall-alert-row" model="${ [recall: recall, id: id] }" />
