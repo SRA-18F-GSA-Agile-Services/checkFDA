@@ -726,33 +726,54 @@ input::selection {
 
 /* Recalls */
 
-.ui.cards.recall-alerts > .card {
+.hidden-cards > .card {
   display: none;
 }
 
-.ui.fluid.card.recall:last-child {
+.ui.fluid.card.recall:last-child,
+.ui.fluid.card.druglabel:last-child {
   margin-bottom: 1em !important;
 }
 
-.ui.fluid.card.recall .extra.content span {
+.ui.fluid.card.recall .extra.content span,
+.ui.fluid.card.druglabel .extra.content span {
   margin-right: 1em;
 }
 
-.ui.fluid.card.recall .extra.content .icon {
+.ui.fluid.card.recall .extra.content .icon,
+.ui.fluid.card.druglabel .extra.content .icon {
   color: rgba(0, 0, 0, 0.4) !important;
 }
 
-.ui.fluid.card.recall .ui.small.header {
+.ui.fluid.card.recall .ui.small.header,
+.ui.fluid.card.druglabel .ui.small.header {
   margin: 1rem 0 0.5rem;
 }
 
-.ui.fluid.card.recall .ui.tiny.header {
+.ui.fluid.card.recall .ui.small.header .generic,
+.ui.fluid.card.druglabel .ui.small.header .generic {
+  font-weight: normal;
+  color: rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+}
+
+.ui.fluid.card.recall .ui.sub.header,
+.ui.fluid.card.druglabel .ui.sub.header {
+  font-weight: normal;
+  margin-top: -0.5em;
+  font-size: 1em;
+  text-transform: none;
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.ui.fluid.card.recall .ui.tiny.header,
+.ui.fluid.card.druglabel .ui.tiny.header {
   margin: 1rem 0 0.5rem;
   font-weight: normal !important;
   color: rgba(0, 0, 0, 0.4) !important;
 }
 
-.recall-table-wrapper {
+.card-table-wrapper {
   max-height: 25em;
   overflow-y: auto;
   margin-bottom: 1em;
@@ -760,14 +781,14 @@ input::selection {
   box-shadow: 0px 1px 3px 0px #d4d4d5, 0px 0px 0px 1px #d4d4d5;
 }
 
-.card-table.recalls {
+.card-table {
   table-layout: fixed;
   width: 100%;
   white-space: nowrap;
   border: none !important;
 }
 
-.card-table.recalls tr {
+.card-table tr {
   cursor: pointer;
 }
 
@@ -794,10 +815,25 @@ input::selection {
   border-bottom-color: #dcddde;
 }
 
+.card-table.labels tr > th:nth-child(1),
+.card-table.labels tr > td:nth-child(1) {
+  width: 8em;
+}
+
+.card-table.labels .icon {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
 .overflow {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+/* Drug Labels */
+
+.druglabel > .content > .ui.header {
+  margin-top: 0;
 }
 /*!
  * # Semantic UI 2.0.0 - Button

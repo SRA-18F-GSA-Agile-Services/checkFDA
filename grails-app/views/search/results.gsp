@@ -10,7 +10,6 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.4.1/jquery.timeago.min.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css" type="text/css">
-		<asset:stylesheet src="results.css" />
 	</head>
 	<body>
 		<div class="header">
@@ -60,7 +59,7 @@
 							<g:render template="/layouts/cards/recall-alert" model="${ [recall: recall, id: id] }" />
 						</g:each>
 					</div>
-					<div class="recall-table-wrapper">
+					<div class="card-table-wrapper">
 						<table class="ui small compact complex selectable unstackable table card-table recalls">
 							<tbody>
 								<g:each in="${ recalls }" var="recall" status="id">

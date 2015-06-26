@@ -56,11 +56,12 @@
 
 /* Recalls */
 
-.ui.cards.recall-alerts > .card {
+.hidden-cards > .card {
 	display: none;
 }
 
-.ui.fluid.card.recall {
+.ui.fluid.card.recall,
+.ui.fluid.card.druglabel, {
 	&:last-child {
 		margin-bottom: 1em !important;
 	}
@@ -76,6 +77,19 @@
 
 	.ui.small.header {
 		margin: 1rem 0 0.5rem;
+		.generic {
+			font-weight: normal;
+			color: @lightTextColor;
+			white-space: nowrap;
+		}
+	}
+
+	.ui.sub.header {
+		font-weight: normal;
+		margin-top: -0.5em;
+		font-size: 1em;
+		text-transform: none;
+		color: @lightTextColor !important;
 	}
 
 	.ui.tiny.header {
@@ -91,7 +105,7 @@
 @borderShadow: 0px 0px 0px @borderWidth @solidBorderColor;
 @boxShadow: @shadowBoxShadow, @borderShadow;
 
-.recall-table-wrapper {
+.card-table-wrapper {
 	max-height: 25em;
 	overflow-y: auto;
 	margin-bottom: 1em;
@@ -99,14 +113,16 @@
 	box-shadow: @boxShadow;
 }
 
-.card-table.recalls {
+.card-table {
 	table-layout: fixed;
 	width: 100%;
 	white-space: nowrap;
 	border: none !important;
 	tr {
 		cursor: pointer;
-		> th, > td {
+	}
+	&.recalls {
+		tr > th, tr > td {
 			&:nth-child(1) {
 				width: 4em;
 				text-align: center;
@@ -122,10 +138,26 @@
 			}
 		}
 	}
+	&.labels {
+		tr > th, tr > td {
+			&:nth-child(1) {
+				width: 8em;
+			}
+		}
+		.icon {
+			color: @lightTextColor !important;
+		}
+	}
 }
 
 .overflow {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
+}
+
+/* Drug Labels */
+
+.druglabel > .content > .ui.header {
+	margin-top: 0;
 }

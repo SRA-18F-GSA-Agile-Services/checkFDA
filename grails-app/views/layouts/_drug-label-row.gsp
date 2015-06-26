@@ -1,8 +1,9 @@
-<g:set var="effectiveTime" value="${ new Date().parse('yyyyMMdd', label.effective_time).format('yyyy-MM-dd') }" />
+<g:set var="effectiveTime" value="${ new Date().parse('yyyyMMdd', label.effective_time).format('M/d/yyyy') }" />
 <tr id="druglabel-${ id }">
-	<td><i class="calendar outline icon"></i></td>
 	<td>
-		${ effectiveTime }
+		<span data-content="${ message(code: 'widget.drug.label.calendar') }">
+			<i class="icon calendar outline"></i> ${ effectiveTime }
+		</span>
 	</td>
 	<td class="overflow">
 		<b>${ label.openfda.brand_name.join(', ').replaceAll('"', '') }</b>
