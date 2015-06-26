@@ -13,6 +13,7 @@ recalls.recalling_firm
 recalls.reason_for_recall
 recalls.status
 recalls.distribution_pattern
+recalls.recall_number
 labels.effective_time
 labels.openfda.brand_name
 labels.openfda.generic_name

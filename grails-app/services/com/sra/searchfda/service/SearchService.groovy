@@ -7,20 +7,21 @@ import groovyx.gpars.GParsPool
 @Transactional
 class SearchService {
 
-    static int maxResults = 500 //maximum results desired from each database
+	static int maxResults=500 //maximum results desired from each database
     static quotedStringMatcher = /"(.*?)"/
-    boolean useFiltering = true
-    def grailsApplication
-    def openFDAService
-
-    List<Map> datasets = [ //dataset names
-                           [path: "food/enforcement", group: "recalls"],
-                           [path: "drug/label", group: "labels"],
-                           [path: "drug/event", group: "events"],
-                           [path: "drug/enforcement", group: "recalls"],
-                           [path: "device/event", group: "events"],
-                           [path: "device/enforcement", group: "recalls"]
-    ]
+	boolean useFiltering=true
+	def grailsApplication
+	def openFDAService
+	def stateService
+	
+	List<Map> datasets=[ //dataset names
+		[path:"food/enforcement",group:"recalls"],
+		[path:"drug/label",group:"labels"],
+		[path:"drug/event",group:"events"],
+		[path:"drug/enforcement",group:"recalls"],
+		[path:"device/event",group:"events"],
+		[path:"device/enforcement",group:"recalls"]
+	]
 
 	Map executeSearch(String query) {
 		if (grailsApplication.config.checkfda.localData) {
@@ -120,7 +121,7 @@ class SearchService {
         return grailsApplication.parentContext.getResource("data/filters.txt").file.text
     }
 
-    private List<String> loadFilters() {
+	private List<String> loadFilters() {
         String filterText = getFilterText()
         List<String> filters = []
         filterText.eachLine { line ->
@@ -130,8 +131,17 @@ class SearchService {
         }
         return (filters)
     }
-
-    private List<Map> filterResults(Map dataset, List<Map> results) {
+	
+	private void addDerivedFields(Map dataset,Map result,Map resultMap) {
+		  resultMap.dataset=dataset.path //add a dataset field
+		  if (dataset.group=="recalls") {
+			  if (result.distribution_pattern!=null) {
+			    resultMap.distribution_states=stateService.getStates(result.distribution_pattern)
+			  }
+		  }
+	}
+	
+	private List<Map> filterResults(Map dataset, List<Map> results) {
         if (!useFiltering) return (results)
         List<String> filters = loadFilters()
         List<Map> newMap = new ArrayList<Map>()
@@ -148,8 +158,8 @@ class SearchService {
         }
         return (newMap)
     }
-
-    private void filterResult(String[] filter, Map resultMap, Map result) {
+	
+	private void filterResult(String[] filter, Map resultMap, Map result) {
         String key = filter.first()
         String[] rest = filter.tail()
         if (result.containsKey(key)) {
