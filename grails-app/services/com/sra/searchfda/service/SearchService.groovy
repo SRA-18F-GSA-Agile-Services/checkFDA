@@ -58,6 +58,9 @@ class SearchService {
 		datasets.each { ds ->
 			//iterate across each dataset
 			Map result=filterResults(ds,search(ds,query)) //get search results for the dataset
+			processSearchResult(results,result,meta,ds.group,ds.path)
+			/*
+			Map result=filterResults(ds,search(ds,query)) //get search results for the dataset
 			String group=ds.group
 			if (results[group]==null) results[group]=[]
 			//log.info(ds+" has "+result.size())
@@ -70,12 +73,51 @@ class SearchService {
 				gmeta.hits=0
 				gmeta.total=0
 			}
-			gmeta.hits=gmeta.hits+result.meta.hits
+			if (result.meta.hits!=null) {
+			  gmeta.hits=gmeta.hits+result.meta.hits
+			}
+			*/
 		}
 		long t1=System.currentTimeMillis()
 		log.info("Serial Federated Search Time:"+(t1-t0))
 		results.meta=meta
 		return(results) //return the result as JSON
+	}
+	
+	private void processSearchResult(Map<String,List<Map>> results,Map result,Map meta,String group,String path) {
+			if (results[group]==null) results[group]=[]
+			results[group]+=result.results
+			meta[path.replace("/","-")]=result.meta
+			Map gmeta=meta[group]
+			if (gmeta==null) {
+				gmeta=new HashMap()
+				gmeta.hits=0
+				gmeta.total=0
+				meta[group]=gmeta
+			}
+			if (result.meta.hits!=null) {
+				gmeta.hits+=result.meta.hits
+			}
+			if (result.meta.total!=null) {
+				gmeta.total+=result.meta.total
+			}
+		/*	
+		String group=ds.group
+		if (results[group]==null) results[group]=[]
+		//log.info(ds+" has "+result.size())
+		results[group]+=result.results
+		meta[ds.path.replace("/","-")]=result.meta
+		Map gmeta=meta[group]
+		if (gmeta==null) {
+			gmeta=new HashMap()
+			meta[group]=gmeta
+			gmeta.hits=0
+			gmeta.total=0
+		}
+		if (result.meta.hits!=null) {
+		  gmeta.hits=gmeta.hits+result.meta.hits
+		}
+		*/
 	}
 
 	Map parallelFederatedSearch(String query) {
@@ -91,8 +133,10 @@ class SearchService {
 		}
 		Set<String> usedGroups=new HashSet<String>()
 		presults.each { item ->
+			usedGroups.add(item.group)
+			processSearchResult(results,item.result,meta,item.group,item.ds)
+		    /*	
 			String group=item.group
-			usedGroups.add(group)
 			if (results[group]==null) results[group]=[]
 			results[group]+=item.result.results
 			meta[item.ds.replace("/","-")]=item.result.meta
@@ -109,6 +153,7 @@ class SearchService {
 			if (item.result.meta.total!=null) {
 				gmeta.total+=item.result.meta.total
 			}
+			*/
 		}
 		double maxRatio=0.0
 		String predictedGroup=null
