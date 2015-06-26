@@ -11,9 +11,11 @@
 			<span class="generic">(${ label.openfda.generic_name.join(', ').replaceAll('"', '') })</span>
 		</div>
 
-		<div class="ui sub header">
-			${ label.purpose.join(', ').replaceAll('"', '') }
-		</div>
+		<g:if test="${ label.purpose }">
+			<div class="ui sub header">
+				${ label.purpose.join(', ').replaceAll('"', '') }
+			</div>
+		</g:if>
 
 		<g:if test="${ label.indications_and_usage }">
 			<div class="ui tiny header">
@@ -55,12 +57,13 @@
 			<p><b>${ label.keep_out_of_reach_of_children.join(', ').replaceAll('"', '')  }</b></p>
 		</g:if>
 
-		<div class="ui divider"></div>
-
-		<div class="extra content">
-			<span data-content="${ message(code: 'widget.drug.label.manufacturer') }">
-				<i class="icon building outline"></i> ${ label.openfda.manufacturer_name.join(', ').replaceAll('"', '')  }
-			</span>
-		</div>
+		<g:if test="${ label.openfda?.manufacturer_name }">
+			<div class="ui divider"></div>
+			<div class="extra content">
+				<span data-content="${ message(code: 'widget.drug.label.manufacturer') }">
+					<i class="icon building outline"></i> ${ label.openfda.manufacturer_name.join(', ').replaceAll('"', '')  }
+				</span>
+			</div>
+		</g:if>
 	</div>
 </div>
