@@ -14,17 +14,16 @@
 			all.push(cur.patient.patientonsetage);
 			return all;
 		}, []);
-		var ageMap = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].reduce(function(all, cur) {
+		var ageMap = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].reduce(function(all, cur) {
 			all[(cur * 10) + '-' + (cur * 10 + 9)] = 0;
 			return all;
-		}, {});
+		}, {'<g:message code="widget.event.ages.unknown"/>': 0});
 		var data = ages.reduce(function(map, cur) {
 			var floor = Math.floor(cur / 10) * 10;
 			var age = cur ? floor + '-' + (floor + 9) : '<g:message code="widget.event.ages.unknown"/>';
-			if (!map[age]) {
-				map[age] = 0;
+			if (map[age] != undefined) {
+				map[age]++;
 			}
-			map[age]++;
 			return map;
 		}, ageMap);
 		var columns = Object.keys(data).reduce(function(cols, key) {
