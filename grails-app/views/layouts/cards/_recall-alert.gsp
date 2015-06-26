@@ -1,4 +1,4 @@
-<div class="ui fluid card recall" id="recall-${ id }-card">
+<div class="ui fluid card recall">
 	<div class="ui attached ${ message(code: "widget.recall.alert.${ recall.classification.split(' ').join('') }.cls") } message">
 		<i class="${ message(code: "widget.recall.alert.${ recall.status }.icon") } icon"></i>
 		${ recall.status }, <g:message code="widget.recall.alert.${ recall.classification.split(' ').join('') }.message" args="${ [recall.classification] }" />

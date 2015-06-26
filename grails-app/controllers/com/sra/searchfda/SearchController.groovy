@@ -58,4 +58,13 @@ class SearchController {
 
         [query: searchQuery.search, results: searchService.executeSearch(searchQuery.search)]
     }
+
+	def renderCard(String json, String type) {
+		Map element = JSON.parse(json)
+		if (type == 'recalls') {
+			render(template: '/layouts/cards/recall-alert', model: [recall: element])
+		} else if (type == 'labels') {
+			render(template: '/layouts/cards/drug-label', model: [label: element])
+		}
+	}
 }

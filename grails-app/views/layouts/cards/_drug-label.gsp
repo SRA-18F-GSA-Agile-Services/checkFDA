@@ -1,4 +1,4 @@
-<div class="ui fluid card druglabel" id="druglabel-${ id }-card">
+<div class="ui fluid card druglabel">
 	<div class="content">
 		<div class="extra content">
 			<span data-content="${ message(code: 'widget.drug.label.calendar') }">
