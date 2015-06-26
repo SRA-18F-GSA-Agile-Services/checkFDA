@@ -35,7 +35,7 @@ class OpenFDAService {
 				} catch (IOException e) {
 					//this might be a 429 for querying too fast
 					log.warn(e.toString())
-					println(e.toString()) //for visibility while testing
+					//println(e.toString()) //for visibility while testing
 				}
 			}
 		}

@@ -35,7 +35,7 @@ class SearchService {
 		if (total!=null) return(total)
 		String result=openFDAService.query(dataset.path,"",1,0) //get a result from open fda
 		if (result==null) {
-			println("dataset "+dataset.path+" empty count query gave null response")
+			log.warn("dataset "+dataset.path+" empty count query gave null response")
 			//datasetTotals[dataset.path]=0
 			return(0)
 		}
