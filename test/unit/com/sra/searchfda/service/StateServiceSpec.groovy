@@ -16,8 +16,7 @@ class StateServiceSpec extends Specification {
 		String s=getClass().getResource(".").toString() //find out where we are in testing mode
 		int pos=s.indexOf("target/") //find the head of the string up to the project
 		String target=s.substring(0,pos)+"web-app/data/states.json" //get absolute path to the states file
-		target=target.substring(6) //trim the file: url head
-		String jsonstr=new File(target).text //just get the contents of the same file used in production
+		String jsonstr=new URL(target).text
 		service.states=JSON.parse(jsonstr)
 		
 		when:
