@@ -92,16 +92,17 @@
 						</table>
 					</div>
 				</g:if>
-
-				<h1 class="ui header">
-					<g:message code="widget.results.event.header" args="${[results.events.size()]}"/>
-				</h1>
-				<div class="ui divider"></div>
-				<div class="ui three cards">
-					<g:render template="/layouts/cards/event_outcomes" />
-					<g:render template="/layouts/cards/event-gender" />
-					<g:render template="/layouts/cards/event_ages" />
-				</div>
+				<g:if test="${ results.events.size() != 0 }">
+					<h1 class="ui header">
+						<g:message code="widget.results.event.header" args="${[results.events.size()]}"/>
+					</h1>
+					<div class="ui divider"></div>
+					<div class="ui three cards">
+						<g:render template="/layouts/cards/event_outcomes" />
+						<g:render template="/layouts/cards/event-gender" />
+						<g:render template="/layouts/cards/event_ages" />
+					</div>
+				</g:if>
 			</g:if>
 		</div>
 		<script>
