@@ -15,7 +15,7 @@
 			return !$.isArray(event.patient);
 		});
 		var genderMap = drugEvents.reduce(function(map, cur) {
-			var gender = genders[cur.patient.patientsex];
+			var gender = genders[cur.patient.patientsex] || genders[0];
 			if (!map[gender]) {
 				map[gender] = 0;
 			}

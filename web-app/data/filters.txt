@@ -5,6 +5,7 @@ events.patient.sequence_number_outcome
 events.patient.patientsex
 events.patient.patientonsetage
 events.patient.sequence_number_treatment
+recalls.product_type
 recalls.classification
 recalls.product_description
 recalls.recall_initiation_date

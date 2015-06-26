@@ -69,15 +69,14 @@
 							</tbody>
 						</table>
 					</div>
-					<div class="ui two doubling cards">
-						<g:render template="/layouts/cards/recall-timeline" />
-					</div>
+					<g:render template="/layouts/cards/recall-timeline" />
 				</g:if>
 				<g:set var="labels" value="${ results.labels.grep { it.openfda?.brand_name && it.openfda?.generic_name } }" />
 				<g:if test="${ labels.size() != 0 }">
 					<h1 class="ui header">
 						<g:message code="widget.results.label.header" args="${ [labels.size()] }" /> <i>${ query }</i>
 					</h1>
+					<div class="ui divider"></div>
 					<div class="hidden-cards">
 						<g:each in="${ labels }" var="label" status="id">
 							<g:render template="/layouts/cards/drug-label" model="${ [label: label, id: id] }" />
@@ -98,7 +97,7 @@
 					<g:message code="widget.results.event.header" args="${[results.events.size()]}"/>
 				</h1>
 				<div class="ui divider"></div>
-				<div class="ui two doubling cards">
+				<div class="ui three cards">
 					<g:render template="/layouts/cards/event_outcomes" />
 					<g:render template="/layouts/cards/event-gender" />
 					<g:render template="/layouts/cards/event_ages" />
