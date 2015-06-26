@@ -11,9 +11,11 @@ import spock.lang.Specification
 class SearchServiceSpec extends Specification {
 
     def openFDAService = Mock(OpenFDAService)
+	def stateService = Mock(StateService)
 
     def setup() {
         service.openFDAService = openFDAService
+		service.stateService = stateService
     }
 
 	void "test execute search local"() {
