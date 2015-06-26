@@ -4,23 +4,33 @@
 
 .ui.container {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-	.landing {
-		margin: 0;
- 		min-height: 200px;
-		background: url("@{checkFDAimagePath}/landing-splash.jpg") 50% 33% no-repeat;
-		background-size: cover;
-		.search {
-			.column {
-				background-color: fade(@black, 65%);
-				border: 1px solid @black;
-				padding: 30px;
-				.guidance {
-					padding-top: @lineHeight * 0.5;
-					line-height: @lineHeight;
-					color: @white;
-					text-align: center;
+	 .main {
+		background-color: @white;
+		margin: 0 !important;
+		min-height: 200px;
+		&.landing {
+			background: url("@{checkFDAimagePath}/landing-splash.jpg") 50% 33% no-repeat;
+			background-size: cover;
+			.search {
+				.column {
+					background-color: fade(@black, 65%);
+					border: 1px solid @black;
+					padding: 30px;
+					.guidance {
+						padding-top: @lineHeight * 0.5;
+						line-height: @lineHeight;
+						color: @white;
+						text-align: center;
+					}
 				}
 			}
+		}
+		&.results, &.styleguide {
+			padding: 40px;
+		}
+		.column.error {
+			width: 50%;
+			text-align: center !important;
 		}
 	}
 	> .header, > .footer {
@@ -47,12 +57,6 @@
 		padding: 0 40px 40px;
 	}
 }
-
-.main.results {
-	background-color: @white;
-	padding: 40px;
-}
-
 
 /* Recalls */
 

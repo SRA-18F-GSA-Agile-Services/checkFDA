@@ -162,22 +162,33 @@ input::selection {
 .ui.container {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
-.ui.container .landing {
-  margin: 0;
+.ui.container .main {
+  background-color: #ffffff;
+  margin: 0 !important;
   min-height: 200px;
+}
+.ui.container .main.landing {
   background: url("../themes/check-fda/assets/images/landing-splash.jpg") 50% 33% no-repeat;
   background-size: cover;
 }
-.ui.container .landing .search .column {
+.ui.container .main.landing .search .column {
   background-color: rgba(0, 0, 0, 0.65);
   border: 1px solid #000000;
   padding: 30px;
 }
-.ui.container .landing .search .column .guidance {
+.ui.container .main.landing .search .column .guidance {
   padding-top: 0.71425em;
   line-height: 1.4285em;
   color: #ffffff;
   text-align: center;
+}
+.ui.container .main.results,
+.ui.container .main.styleguide {
+  padding: 40px;
+}
+.ui.container .main .column.error {
+  width: 50%;
+  text-align: center !important;
 }
 .ui.container > .header,
 .ui.container > .footer {
@@ -200,10 +211,6 @@ input::selection {
 }
 .search.results {
   padding: 0 40px 40px;
-}
-.main.results {
-  background-color: #ffffff;
-  padding: 40px;
 }
 
 /* Recalls */
