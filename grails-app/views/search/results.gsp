@@ -76,6 +76,7 @@
 					<h1 class="ui header">
 						<g:message code="widget.results.label.header" args="${ [labels.size()] }" /> <i>${ query }</i>
 					</h1>
+					<div class="ui divider"></div>
 					<div class="hidden-cards">
 						<g:each in="${ labels }" var="label" status="id">
 							<g:render template="/layouts/cards/drug-label" model="${ [label: label, id: id] }" />
