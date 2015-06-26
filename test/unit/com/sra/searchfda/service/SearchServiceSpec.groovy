@@ -185,7 +185,7 @@ class SearchServiceSpec extends Specification {
         given:
         JSONArray jsonArray = new JSONArray([[x: 'x', y: 'y', z: 'z'], [x: 'x2', y: 'y2', z: 'z3'], [y: 'y3', z: 'z3']])
         def map = [a: [b: 'c', d: ['e': 'e1'], f: [g: 'h', 'i': ['a', 'b']]], w: jsonArray]
-        HashMap result = new HashMap()
+        Map result = [:]
 
 
         when:
