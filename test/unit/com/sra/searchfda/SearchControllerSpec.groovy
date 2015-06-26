@@ -2,6 +2,7 @@ package com.sra.searchfda
 
 import com.sra.searchfda.service.QueryService
 import com.sra.searchfda.service.SearchService
+import grails.converters.JSON
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
 import spock.lang.Specification
@@ -58,4 +59,30 @@ class SearchControllerSpec extends Specification {
         "ice cream" | null | null | "ice cream"          |  null
         "x" * 256   | null | null | "x" * 255            |  'query.max.length.exceeded'
     }
+
+	def "test render card with recall"() {
+		given:
+		Map recalls = JSON.parse(getClass().getResourceAsStream("service/OpenFDA-food-enforcement.json").text)
+		String recall = recalls.results[0] as JSON
+
+		when:
+		def result = controller.renderCard(recall, 'recalls')
+
+		then:
+		controller.response.text.size() != 0
+		controller.response.text.contains('div')
+	}
+
+	def "test render card with label"() {
+		given:
+		Map labels = JSON.parse(getClass().getResourceAsStream("service/OpenFDA-drug-label.json").text)
+		String label = labels.results[0] as JSON
+
+		when:
+		def result = controller.renderCard(label, 'labels')
+
+		then:
+		controller.response.text.size() != 0
+		controller.response.text.contains('div')
+	}
 }
