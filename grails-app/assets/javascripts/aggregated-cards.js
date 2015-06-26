@@ -11,7 +11,18 @@ function selectDetailCard(me) {
 	$(me).parent().children('tr.active').removeClass('active');
 	$(me).addClass('active');
 	var rowId = $(me).attr('id');
-	var cls = rowId.split('-')[0];
-	$('.hidden-cards > .' + cls + '.card:visible').hide();
 	$('#' + rowId + '-card').show();
+	var arrayIndex = parseInt(rowId.split('-')[1]);
+	var type = $(me).parents('table').attr('id');
+	var element = results[type][arrayIndex];
+	$.ajax({
+		url: '/search/renderCard',
+		data: {
+			json: JSON.stringify(element),
+			type: type
+		},
+		success: function(data) {
+			$('#' + type + '-card').html(data);
+		}
+	});
 }
