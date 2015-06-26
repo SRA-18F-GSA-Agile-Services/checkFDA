@@ -730,23 +730,23 @@ input::selection {
   display: none;
 }
 
-.recall-alerts .ui.fluid.card:last-child {
+.ui.fluid.card.recall:last-child {
   margin-bottom: 1em !important;
 }
 
-.recall-alerts .extra.content span {
+.ui.fluid.card.recall .extra.content span {
   margin-right: 1em;
 }
 
-.recall-alerts .extra.content .icon {
+.ui.fluid.card.recall .extra.content .icon {
   color: rgba(0, 0, 0, 0.4) !important;
 }
 
-.recall-alerts .ui.small.header {
+.ui.fluid.card.recall .ui.small.header {
   margin: 1rem 0 0.5rem;
 }
 
-.recall-alerts .ui.tiny.header {
+.ui.fluid.card.recall .ui.tiny.header {
   margin: 1rem 0 0.5rem;
   font-weight: normal !important;
   color: rgba(0, 0, 0, 0.4) !important;
@@ -760,37 +760,37 @@ input::selection {
   box-shadow: 0px 1px 3px 0px #d4d4d5, 0px 0px 0px 1px #d4d4d5;
 }
 
-.recall-table {
+.card-table.recalls {
   table-layout: fixed;
   width: 100%;
   white-space: nowrap;
   border: none !important;
 }
 
-.recall-table tr {
+.card-table.recalls tr {
   cursor: pointer;
 }
 
-.recall-table tr > th:nth-child(1),
-.recall-table tr > td:nth-child(1) {
+.card-table.recalls tr > th:nth-child(1),
+.card-table.recalls tr > td:nth-child(1) {
   width: 4em;
   text-align: center;
 }
 
-.recall-table tr > th:nth-child(2),
-.recall-table tr > td:nth-child(2) {
+.card-table.recalls tr > th:nth-child(2),
+.card-table.recalls tr > td:nth-child(2) {
   width: 10em;
 }
 
-.recall-table tr > th abbr,
-.recall-table tr > td abbr,
-.recall-table tr > th span,
-.recall-table tr > td span {
+.card-table.recalls tr > th abbr,
+.card-table.recalls tr > td abbr,
+.card-table.recalls tr > th span,
+.card-table.recalls tr > td span {
   color: rgba(0, 0, 0, 0.4) !important;
 }
 
-.recall-table tr > th abbr,
-.recall-table tr > td abbr {
+.card-table.recalls tr > th abbr,
+.card-table.recalls tr > td abbr {
   border-bottom-color: #dcddde;
 }
 
@@ -21558,7 +21558,8 @@ Floated Menu / Item
 *******************************/
 
 .ui.attached.message {
-  margin-top: -1px;
+  margin: 0 -1px -2px;
+  top: -1px;
 }
 /*!
  * # Semantic UI 2.0.0 - Table

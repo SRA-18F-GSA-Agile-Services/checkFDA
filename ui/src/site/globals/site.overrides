@@ -60,8 +60,8 @@
 	display: none;
 }
 
-.recall-alerts {
-	.ui.fluid.card:last-child {
+.ui.fluid.card.recall {
+	&:last-child {
 		margin-bottom: 1em !important;
 	}
 
@@ -99,7 +99,7 @@
 	box-shadow: @boxShadow;
 }
 
-.recall-table {
+.card-table.recalls {
 	table-layout: fixed;
 	width: 100%;
 	white-space: nowrap;

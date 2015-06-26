@@ -3,5 +3,6 @@
 *******************************/
 
 .ui.attached.message {
-	margin-top: -1px;
+	margin: 0 -1px -2px;
+	top: -1px;
 }
