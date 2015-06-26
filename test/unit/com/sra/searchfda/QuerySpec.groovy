@@ -9,12 +9,4 @@ import spock.lang.Specification
 @TestFor(Query)
 class QuerySpec extends Specification {
 
-	def setup() {
-	}
-
-	def cleanup() {
-	}
-
-	void "test something"() {
-	}
 }
