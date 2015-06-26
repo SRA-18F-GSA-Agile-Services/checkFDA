@@ -11,7 +11,7 @@
 		2: '<g:message code="gender.female"/>'
 	};
 	$(function() {
-		var drugEvents = $.grep(results.events, function(event) {
+		var drugEvents = $.grep(events, function(event) {
 			return !$.isArray(event.patient);
 		});
 		var genderMap = drugEvents.reduce(function(map, cur) {

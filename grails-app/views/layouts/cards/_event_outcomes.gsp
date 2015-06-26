@@ -7,7 +7,7 @@
 <script>
 	$(function() {
 		var xAxisLegend = '<g:message code="widget.event.outcomes.legend.xAxis"/>'
-		var deviceEvents = $.grep(results.events, function(event) {
+		var deviceEvents = $.grep(events, function(event) {
 			return $.isArray(event.patient);
 		});
 		var outcomes = deviceEvents.reduce(function(all, cur) {
