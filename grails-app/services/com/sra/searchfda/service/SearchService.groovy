@@ -147,7 +147,7 @@ class SearchService {
         List<Map> newMap = new ArrayList<Map>()
         for (Map result : results) {
             Map resultMap = new HashMap()
-            resultMap.dataset = dataset.path
+			addDerivedFields(dataset,result,resultMap)
             for (String filter : filters) {
                 if (filter.startsWith(dataset.group + ".")) {
                     String[] path = filter.split("\\.").tail()
