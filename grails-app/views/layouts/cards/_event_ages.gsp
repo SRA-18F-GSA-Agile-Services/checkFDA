@@ -58,10 +58,7 @@
 						position: 'outer-middle'
 					},
 					max: d3.max(columns),
-					padding: {top:0, bottom:0},
-					tick: {
-						count: d3.max(columns) + 1
-					}
+					padding: {top:0, bottom:0}
 				}
 			}
 		});
