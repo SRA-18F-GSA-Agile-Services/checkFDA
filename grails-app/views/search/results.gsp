@@ -67,6 +67,7 @@
 							</tbody>
 						</table>
 					</div>
+					<g:render template="/layouts/cards/recall-map" />
 					<g:render template="/layouts/cards/recall-timeline" />
 				</g:if>
 				<g:set var="labels" value="${ results.labels.grep { it.openfda?.brand_name && it.openfda?.generic_name } }" />
