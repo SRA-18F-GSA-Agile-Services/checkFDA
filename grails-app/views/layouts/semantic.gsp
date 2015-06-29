@@ -29,8 +29,8 @@
 				<!-- <g:message code="default.layout.app" /> ${grailsApplication.metadata['app.version']} -->
 			</div>
 		</div>
-		<g:render template="/layouts/location_request_alert" />
-				
+		<g:render template="/layouts/location-request-alert" />
+
 		<asset:javascript src="application.js" />
 
 		<script>

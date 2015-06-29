@@ -27,12 +27,18 @@
 			cols.push(col);
 			return cols;
 		}, []);
+		console.log(columns);
 		var chart = c3.generate({
 			bindto: '#gender',
-		    data: {
-		        columns: columns,
-		        type : 'pie'
-		    }
+			data: {
+				columns: columns,
+				type : 'pie',
+				colors: {
+					Unknown: '#DCDDDE',
+					Male:    '#54C8FF',
+					Female:  '#FF8EDF'
+				},
+			}
 		});
 	});
 </script>
