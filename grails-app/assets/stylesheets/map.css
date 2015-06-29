@@ -1,0 +1,14 @@
+
+ .ui.fluid.card.maps{
+	min-height : 550px;
+ }
+ 
+.map {
+	background-color: #F5FAFF;
+	position: relative;   
+	width: 90%;
+	height: 450px; 
+	border: 1px solid #ccc; 
+	padding:0px;
+	margin : 0px;"
+}
