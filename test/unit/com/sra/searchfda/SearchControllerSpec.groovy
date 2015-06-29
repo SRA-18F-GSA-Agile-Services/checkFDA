@@ -92,7 +92,7 @@ class SearchControllerSpec extends Specification {
 		String event = events.results[0] as JSON
 
 		when:
-		def result = controller.renderCard(event, 'events')
+		def result = controller.renderCard(event, 'drugevents')
 
 		then:
 		controller.response.text.size() != 0
@@ -105,7 +105,7 @@ class SearchControllerSpec extends Specification {
 		String event = events.results[0] as JSON
 
 		when:
-		def result = controller.renderCard(event, 'events')
+		def result = controller.renderCard(event, 'deviceevents')
 
 		then:
 		controller.response.text.size() != 0

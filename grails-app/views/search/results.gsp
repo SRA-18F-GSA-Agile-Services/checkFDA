@@ -97,18 +97,29 @@
 						</table>
 					</div>
 				</g:if>
-				<g:set var="events" value="${ results.events }" />
-				<g:if test="${ events.size() != 0 }">
+				<g:set var="drugEvents" value="${ results.events.grep { !it.device } }" />
+				<g:set var="deviceEvents" value="${ results.events.grep { it.device } }" />
+				<g:if test="${ results.events.size() != 0 }">
 					<h1 class="ui header">
 						<g:message code="widget.results.event.header" args="${[results.events.size()]}"/>
 					</h1>
 					<div class="ui divider"></div>
-					<div id="events-card"></div>
+					<div id="drugevents-card"></div>
 					<div class="card-table-wrapper">
-						<table id="events" class="ui small compact selectable unstackable table card-table events">
+						<table id="drugevents" class="ui small compact selectable unstackable table card-table drugevents">
 							<tbody>
-								<g:each in="${ events }" var="event" status="id">
-									<g:render template="/layouts/event-row" model="${ [event: event, id: id, isDrug: !event.device, type: event.device ? 'device' : 'drug'] }" />
+								<g:each in="${ drugEvents }" var="event" status="id">
+									<g:render template="/layouts/event-row" model="${ [event: event, id: id, isDrug: true, type: 'drug'] }" />
+								</g:each>
+							</tbody>
+						</table>
+					</div>
+					<div id="deviceevents-card"></div>
+					<div class="card-table-wrapper">
+						<table id="deviceevents" class="ui small compact selectable unstackable table card-table deviceevents">
+							<tbody>
+								<g:each in="${ deviceEvents }" var="event" status="id">
+									<g:render template="/layouts/event-row" model="${ [event: event, id: id, isDrug: false, type: 'device'] }" />
 								</g:each>
 							</tbody>
 						</table>
@@ -127,8 +138,8 @@
 		<g:applyCodec encodeAs="none">
 			var recalls = ${ results ? recalls as JSON : "[]" };
 			var labels = ${ results ? labels as JSON : "[]" };
-			var events = ${ results ? events as JSON : "[]" };
-			var results = {recalls: recalls, labels: labels, events: events};
+			var events = ${ results ? results.events as JSON : "[]" };
+			var results = {recalls: recalls, labels: labels, events: events, drugevents: events.filter(function(e) { return !e.device; }), deviceevents: events.filter(function(e) { return e.device; })};
 		</g:applyCodec>
 
 			$(function() {
@@ -136,7 +147,8 @@
 
 				addRowListeners('.card-table.recalls');
 				addRowListeners('.card-table.labels');
-				addRowListeners('.card-table.events');
+				addRowListeners('.card-table.drugevents');
+				addRowListeners('.card-table.deviceevents');
 				$('.timeago').timeago();
 				$('.message .close').on('click', function() {
 					$(this).closest('.message').transition('fade');
