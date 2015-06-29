@@ -19,6 +19,7 @@ function checkUserPermission () {
 function search() {
 	var trimmed =  $.trim( $('#query').val());
 	if (trimmed) {
+		$('body').append('<div class="ui active dimmer"><div class="ui large indeterminate text loader">Searching...</div></div>')
 		window.location.href = '/results?q=' + encodeURIComponent(trimmed) + (lat && lng ? '&lat=' + lat + '&lng=' + lng : '');
 	}
 }
