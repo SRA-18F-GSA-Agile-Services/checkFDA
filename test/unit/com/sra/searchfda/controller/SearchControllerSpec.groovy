@@ -1,5 +1,6 @@
-package com.sra.searchfda
+package com.sra.searchfda.controller
 
+import com.sra.searchfda.domain.Query
 import com.sra.searchfda.service.QueryService
 import com.sra.searchfda.service.SearchService
 import grails.converters.JSON
@@ -62,7 +63,7 @@ class SearchControllerSpec extends Specification {
 
 	def "test render card with recall"() {
 		given:
-		Map recalls = JSON.parse(getClass().getResourceAsStream("service/OpenFDA-food-enforcement.json").text)
+		Map recalls = JSON.parse(getClass().getResourceAsStream("../service/OpenFDA-food-enforcement.json").text)
 		String recall = recalls.results[0] as JSON
 
 		when:
@@ -75,7 +76,7 @@ class SearchControllerSpec extends Specification {
 
 	def "test render card with label"() {
 		given:
-		Map labels = JSON.parse(getClass().getResourceAsStream("service/OpenFDA-drug-label.json").text)
+		Map labels = JSON.parse(getClass().getResourceAsStream("../service/OpenFDA-drug-label.json").text)
 		String label = labels.results[0] as JSON
 
 		when:

@@ -1,4 +1,4 @@
-package com.sra.searchfda
+package com.sra.searchfda.domain
 
 import grails.test.mixin.TestFor
 import spock.lang.Specification
@@ -9,12 +9,6 @@ import spock.lang.Specification
 @TestFor(Query)
 class QuerySpec extends Specification {
 
-	def setup() {
-	}
-
-	def cleanup() {
-	}
-
-	void "test something"() {
-	}
+    void "test something"() {
+    }
 }

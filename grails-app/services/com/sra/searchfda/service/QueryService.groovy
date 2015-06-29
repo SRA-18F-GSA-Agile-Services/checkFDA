@@ -1,6 +1,6 @@
 package com.sra.searchfda.service
 
-import com.sra.searchfda.Query
+import com.sra.searchfda.domain.Query
 import grails.transaction.Transactional
 
 @Transactional

@@ -1,4 +1,4 @@
-package com.sra.searchfda
+package com.sra.searchfda.domain
 
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString

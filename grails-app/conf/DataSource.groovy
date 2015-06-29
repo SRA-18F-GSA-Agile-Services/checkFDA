@@ -1,5 +1,5 @@
 // MySQL
-def fileloc = ['../UserConfig.groovy', 'webapps/ROOT/Jenkins.groovy'].grep { new File(it).exists() }.first();
+def fileloc = ['../UserConfig.groovy', 'webapps/ROOT/Jenkins.groovy', 'webapps/ServerConfig.groovy'].grep { new File(it).exists() }.first();
 def dbConfig = new ConfigSlurper(grailsSettings.grailsEnv).parse(new File(fileloc).toURI().toURL())
 
 dataSource {
@@ -11,7 +11,9 @@ dataSource {
 hibernate {
     cache.use_second_level_cache = true
     cache.use_query_cache = false
-    cache.region.factory_class = 'net.sf.ehcache.hibernate.EhCacheRegionFactory'
+    cache.region.factory_class = 'org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory'
+	singleSession = true // configure OSIV singleSession mode
+	flush.mode = 'manual' // OSIV session flush mode outside of transactional context
 }
 // environment specific settings
 // MySQL
