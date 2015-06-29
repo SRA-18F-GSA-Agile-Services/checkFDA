@@ -97,7 +97,7 @@
 						<table id="events" class="ui small compact selectable unstackable table card-table events">
 							<tbody>
 								<g:each in="${ events }" var="event" status="id">
-									
+									<g:render template="/layouts/event-row" model="${ [event: event, id: id, isDrug: !event.device, type: event.device ? 'device' : 'drug'] }" />
 								</g:each>
 							</tbody>
 						</table>
