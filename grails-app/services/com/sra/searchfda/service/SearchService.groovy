@@ -12,12 +12,12 @@ class SearchService {
 	def grailsApplication
 	def openFDAService
 	List<Map> datasets=[ //dataset names
-		[path:"food/enforcement",group:"recalls"],
-		[path:"drug/label",group:"labels"],
-		[path:"drug/event",group:"events"],
-		[path:"drug/enforcement",group:"recalls"],
-		[path:"device/event",group:"events"],
-		[path:"device/enforcement",group:"recalls"]
+		[path:"food/enforcement",group:"recalls",datefield:"report_date"],
+		[path:"drug/label",group:"labels",datefield:"effective_time"],
+		[path:"drug/event",group:"events",datefield:"receivedate"],
+		[path:"drug/enforcement",group:"recalls",datefield:"report_date"],
+		[path:"device/event",group:"events",datefield:"date_received"],
+		[path:"device/enforcement",group:"recalls",datefield:"report_date"]
 	]
 
 	Map executeSearch(String query) {
