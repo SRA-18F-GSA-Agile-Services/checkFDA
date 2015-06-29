@@ -4,6 +4,9 @@ import com.sra.searchfda.service.QueryService
 import com.sra.searchfda.service.SearchService
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
+import grails.plugin.geocode.GeocodingService
+import grails.plugin.geocode.Point
+import grails.plugin.geocode.Address
 
 class SearchController {
 
@@ -11,6 +14,7 @@ class SearchController {
 
     QueryService queryService
     SearchService searchService
+	GeocodingService geocodingService
 
     @SuppressWarnings("EmptyMethod")
     def index() {}
@@ -37,26 +41,36 @@ class SearchController {
         render((mapResults as JSON).toString())
     }
 
-    def results(String q, Long lat, Long lng) {
-
+    def results(String q, String lat, String lng) {
+		Long llat = null
+		Long llng =  null
+		Double dlat = null
+		Double dlng = null
+		String state = ""
+			
         if (!q || !q.trim()) {
             return [query: "", results: null]
         }
-
+		
+		if(lat!=null){
+			dlat = lat.toDouble() ///Long.parseLong(slat)
+			dlng = lng.toDouble()
+			state = reverseGeocode (dlat,  dlng)
+		}
+		
         if (q.length() > Query.SEARCH_MAX_SIZE) {
             flash.message = g.message(code: "query.max.length.exceeded", args: [Query.SEARCH_MAX_SIZE])
         }
 
         def truncatedQuery = q.take(Query.SEARCH_MAX_SIZE)
-        Query searchQuery = new Query(search: truncatedQuery, lat: lat, lng: lng)
+        Query searchQuery = new Query(search: truncatedQuery, lat: llat, lng: llng)
 
         if (!searchQuery.validate()) {
             return [beanWithErrors: searchQuery, query: truncatedQuery, results: null]
         }
 
         queryService.saveSearchQuery(searchQuery)
-
-        [query: searchQuery.search, results: searchService.executeSearch(searchQuery.search)]
+        [query: searchQuery.search, results: searchService.executeSearch(searchQuery.search) << [state:[name:state]] ]
     }
 
 	def renderCard(String json, String type) {
@@ -66,5 +80,21 @@ class SearchController {
 		} else if (type == 'labels') {
 			render(template: '/layouts/cards/drug-label', model: [label: element])
 		}
+	}
+	/**
+	*  call locationgGeocoding service to convert latitude longitude coordinates to an address
+	* @param params
+	* @return
+	*/
+	String reverseGeocode (Double lat, Double lng){
+		String state = null
+		Point location = new Point(latitude: lat, longitude: lng) 
+		def results = geocodingService.getAddresses(location)
+		results[0].addressComponents.each {
+			if(it.types[0]=='administrative_area_level_1'){			
+				state = it.shortName ;
+			}
+		}
+		return state
 	}
 }

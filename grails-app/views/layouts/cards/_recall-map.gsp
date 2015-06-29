@@ -30,6 +30,9 @@
 			}else {
 				stateValuesMap[key].fillKey= stateValuesMap[key].status[0]
 			}
+			if(results.state.name == key){
+				stateValuesMap[key].fillKey= "Home"
+			}	
 			states[key]= stateValuesMap[key]
 			return states;
 		}, {});
@@ -43,6 +46,7 @@
 				Ongoing : '<g:message code="widget.recall.map.Ongoing.color"/>' ,//'#EB5E66',//'#db2828',
 				Pending : '<g:message code="widget.recall.map.Pending.color"/>' ,//'#CC0',
 				Mixed : '<g:message code="widget.recall.map.Mixed.color"/>' , //'#FC8D59',
+				Home : '<g:message code="widget.recall.map.Home.color"/>' ,
 				defaultFill: '<g:message code="widget.recall.map.Defualt.color"/>'//'#ABDDA4'
 			},
 			data: stateColorsMap ,
@@ -62,15 +66,7 @@
 	            }
 	        },
 	        done: function(datamap) {
-	        	 // datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
-	               /* selectedState = geography.id;
-	                $('#state').val(selectedState);
-	                $('#state').trigger("chosen:updated");
-	                getData();
-	                $("#foodGroup").trigger("change");*/
-	           // });
 	           // datamap.svg.call(d3.behavior.zoom().on("zoom", redraw));
-
 	            function redraw() {
 	                 datamap.svg.selectAll("g").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 	            }
