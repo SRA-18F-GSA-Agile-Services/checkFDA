@@ -1,7 +1,7 @@
-<div class="ui fluid card" style="min-height:550px;">
+<div class="ui fluid card maps" >
 	<div class="content">
 		<h2 class="header"><g:message code="widget.recall.map.header"/></h2>
-		<div id="container" style="background-color: #F5FAFF;position: relative;   width: 90%;height: 450px; border: 1px solid #ccc; padding:0px;margin : 0px;"></div>
+		<div id="container" class="map"></div>
 	</div>
 </div>
 <script>
@@ -39,29 +39,41 @@
 			responsive: true,
 			projection: 'mercator',
 			fills: {
-				Neutral: '#CCC',
-				Ongoing : '#db2828',
-				Pending : '#CC0',
-				Mixed : '#FFA500',
-				defaultFill: '#CCC'
+				Neutral : '<g:message code="widget.recall.map.Defualt.color"/>' ,
+				Ongoing : '<g:message code="widget.recall.map.Ongoing.color"/>' ,//'#EB5E66',//'#db2828',
+				Pending : '<g:message code="widget.recall.map.Pending.color"/>' ,//'#CC0',
+				Mixed : '<g:message code="widget.recall.map.Mixed.color"/>' , //'#FC8D59',
+				defaultFill: '<g:message code="widget.recall.map.Defualt.color"/>'//'#ABDDA4'
 			},
 			data: stateColorsMap ,
 	        geographyConfig: {
 		        borderWidth: 1,
-	            borderColor: '#FDFDFD',
+	            borderColor:'#FDFDFD',
 	            highlightOnHover: false,
 	            popupOnHover: true,
 	            popupTemplate: function(geo, data) {	           
 		        	if(data!=null){
 	                   return '<div class="hoverinfo">' + geo.properties.name 
-	                   									+ '<br>Ongoing: ' + data.Ongoing 
-	                   									+ '<br>Pending: ' + ((data.Pending)? data.Pending : '0')
-	                   									+ '<br>Total Recalls : ' + data.recalls  +
+	                   									+ '<br><i class="<g:message code="widget.recall.alert.Ongoing.icon"/> icon"></i> Ongoing: ' + data.Ongoing 
+	                   									+ '<br><i class="<g:message code="widget.recall.alert.Pending.icon"/> icon"></i> Pending: ' + ((data.Pending)? data.Pending : '0')
+	                   									+ '<br>Total Recalls : ' + data.recalls  
 	                   		  '</div>';
 		            }
 	            }
 	        },
 	        done: function(datamap) {
+	        	 // datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
+	               /* selectedState = geography.id;
+	                $('#state').val(selectedState);
+	                $('#state').trigger("chosen:updated");
+	                getData();
+	                $("#foodGroup").trigger("change");*/
+	           // });
+	           // datamap.svg.call(d3.behavior.zoom().on("zoom", redraw));
+
+	            function redraw() {
+	                 datamap.svg.selectAll("g").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+	            }
 	        },       
 		 });	
 		 map.labels();
