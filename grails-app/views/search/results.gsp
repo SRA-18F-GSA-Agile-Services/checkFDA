@@ -108,7 +108,6 @@
 			var events = ${ results ? results.events as JSON : "[]" };
 			var results = {recalls: recalls, labels: labels, events: events};
 		</g:applyCodec>
-
 			$(function() {
 				searchInit();
 
