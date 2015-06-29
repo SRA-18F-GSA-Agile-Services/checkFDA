@@ -14,10 +14,15 @@
 		<asset:stylesheet href="chosen.css" />
 		<asset:stylesheet href="custom.css" />
 		<g:layoutHead/>
+		<style>
+			#logo > .ui.image {
+				max-height: 80px;
+			}
+		</style>
 	</head>
 	<body>
 		<div id="logo" role="banner">
-			<img class="ui image" src="https://s3.amazonaws.com/stb-content/RAD.png" style="max-height: 80px;" />
+			<img class="ui image" src="https://s3.amazonaws.com/stb-content/RAD.png" />
 		</div>
 		<div id="loginHeader">
 			<sec:ifLoggedIn>

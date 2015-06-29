@@ -4,17 +4,18 @@ import grails.converters.JSON
 import grails.transaction.Transactional
 import groovyx.gpars.GParsPool
 
+import org.codehaus.groovy.grails.commons.GrailsApplication
+
 @Transactional
 class SearchService {
 
-	static int maxResults=500 //maximum results desired from each database
-    static quotedStringMatcher = /"(.*?)"/
-	boolean useFiltering=true
-	def grailsApplication
-	def openFDAService
-	def stateService
+	static final int MAXRESULTS=500 //maximum results desired from each database
+	static final boolean USEFILTERING=true
+	GrailsApplication grailsApplication
+	OpenFDAService openFDAService
+	StateService stateService
 	
-	List<Map> datasets=[ //dataset names
+	static final List<Map> DATASETS=[ //dataset names
 		[path:"food/enforcement",group:"recalls"],
 		[path:"drug/label",group:"labels"],
 		[path:"drug/event",group:"events"],
@@ -25,10 +26,9 @@ class SearchService {
 
 	Map executeSearch(String query) {
 		if (grailsApplication.config.checkfda.localData) {
-			return federatedSearchMock();
-		} else {
-			return parallelFederatedSearch(query);
+			return federatedSearchMock()
 		}
+		return parallelFederatedSearch(query)
 	}
 
     /**
@@ -38,11 +38,13 @@ class SearchService {
      */
     Map federatedSearch(String query) {
         long t0 = System.currentTimeMillis()
-        Map<List<Map>> results = new HashMap<List<Map>>()
-        datasets.each { ds -> //iterate across each dataset
+        Map<List<Map>> results = [:]
+        DATASETS.each { ds -> //iterate across each dataset
             List<Map> result = filterResults(ds, search(ds, parseQueryTerms(query))) //get search results for the dataset
             String group = ds.group
-            if (results[group] == null) results[group] = []
+            if (results[group] == null) {
+				results[group] = []
+			}
             //log.info(ds+" has "+result.size())
             results[group] += result
         }
@@ -53,17 +55,19 @@ class SearchService {
 
     Map parallelFederatedSearch(String query) {
         long t0 = System.currentTimeMillis()
-        Map<List<Map>> results = new HashMap<List<Map>>()
+        Map<List<Map>> results = [:]
         List<Map> presults = null
-        GParsPool.withPool(datasets.size()) {
-            presults = datasets.collectParallel { ds ->
+        GParsPool.withPool(DATASETS.size()) {
+            presults = DATASETS.collectParallel { ds ->
                 List<Map> result = filterResults(ds, search(ds, parseQueryTerms(query))) //get search results for the dataset
                 [group: ds.group, result: result]
             }
         }
         presults.each { item ->
             String group = item.group
-            if (results[group] == null) results[group] = []
+            if (results[group] == null) {
+				results[group] = []
+			}
             results[group] += item.result
         }
         long t1 = System.currentTimeMillis()
@@ -71,13 +75,13 @@ class SearchService {
         return (results) //return the result as JSON
     }
 
-    def timingComparison(String query) {
+    Map timingComparison(String query) {
         long t0 = System.currentTimeMillis()
-        def result = federatedSearch(query)
+        Map result = federatedSearch(query)
         long t1 = System.currentTimeMillis()
         log.info("Federated time:" + (t1 - t0))
         long t3 = System.currentTimeMillis()
-        def presult = parallelFederatedSearch(query)
+        Map presult = parallelFederatedSearch(query)
         long t4 = System.currentTimeMillis()
         log.info("Parallel time:" + (t4 - t3))
         log.info("result length=" + result.size())
@@ -86,10 +90,10 @@ class SearchService {
     }
 
     Map federatedSearchMock() {
-        Map<List<Map>> results = new HashMap<List<Map>>()
-        datasets.each { ds ->
+        Map<List<Map>> results = [:]
+        DATASETS.each { ds ->
             String group = ds.group
-            results[group] = results[group] ?: [];
+            results[group] = results[group] ?: []
             results[group] += JSON.parse(grailsApplication.parentContext.getResource("data/OpenFDA-" + ds.path.split('/').join('-') + ".txt")?.file?.getText() ?: "{results: []}").results
         }
         return (results)
@@ -104,14 +108,20 @@ class SearchService {
         List<Map> results = [] //to accumulate results
         while (true) { //while we still have results
             String result = openFDAService.query(dataset.path, query, 100, count) //get a result from open fda
-            if (result == null) break
+            if (result == null) {
+				break
+			}
             Map js = JSON.parse(result) //parse the json into a map
             int total = js.meta.results.total //get the total for the overall query
             log.info(dataset.path + " has " + total) //report (for now) how many total hits the dataset had
             results += js.results //add the results
             count += js.results.size() //update our count
-            if (count >= total) break //if we're done with paging
-            if (count >= maxResults) break //if we've reached the limit desired for each database
+            if (count >= total) {
+				break //if we're done with paging
+			}
+            if (count >= MAXRESULTS) {
+				break //if we've reached the limit desired for each database
+			}
         }
         //log.info("total in list="+results.size())
         return (results)
@@ -131,7 +141,7 @@ class SearchService {
         }
         return (filters)
     }
-	
+
 	private void addDerivedFields(Map dataset,Map result,Map resultMap) {
 		  resultMap.dataset=dataset.path //add a dataset field
 		  if (dataset.group=="recalls") {
@@ -140,11 +150,13 @@ class SearchService {
 			  }
 		  }
 	}
-	
+
 	private List<Map> filterResults(Map dataset, List<Map> results) {
-        if (!useFiltering) return (results)
+        if (!USEFILTERING) {
+			return (results)
+		}
         List<String> filters = loadFilters()
-        List<Map> newMap = new ArrayList<Map>()
+        List<Map> newMap = []
         for (Map result : results) {
             Map resultMap = new HashMap()
 			addDerivedFields(dataset,result,resultMap)
@@ -166,33 +178,34 @@ class SearchService {
             if (rest.size() == 0) { //end of list
                 resultMap[key] = result[key] //move value across
                 return
-            } else {
-//				String type=result[key]?.class?.name //find type
-                if ((result[key] instanceof List)) { //if we are dealing with an array
-                    if (resultMap[key] == null) { //if we don't h=ave an array to receive the array yet
-                        List<Map> nList = new ArrayList<Map>() //make an array of maps
-                        result[key].each { //and fill it with empty hashmaps of the right length
-                            nList << new HashMap()
-                        }
-                        resultMap[key] = nList
+            }
+//			String type=result[key]?.class?.name //find type
+            if ((result[key] instanceof List)) { //if we are dealing with an array
+                if (resultMap[key] == null) { //if we don't h=ave an array to receive the array yet
+                    List<Map> nList = [] //make an array of maps
+                    result[key].each { //and fill it with empty hashmaps of the right length
+                        nList << [:]
                     }
-                    int cnt = 0 //use a counter for traversing the output list
-                    result[key].each { //for each element of the list the thing we're copying from
-                        filterResult(rest, resultMap[key][cnt], it)
-                        cnt++
-                    }
-                } else {
-                    if (resultMap[key] == null) resultMap[key] = new HashMap()
-                    //for default case we'll need a hashmap if it doesn't exist
-                    filterResult(rest, resultMap[key], result[key]) //recurse over key
+                    resultMap[key] = nList
                 }
+                int cnt = 0 //use a counter for traversing the output list
+                result[key].each { //for each element of the list the thing we're copying from
+                    filterResult(rest, resultMap[key][cnt], it)
+                    cnt++
+                }
+            } else {
+                if (resultMap[key] == null) {
+					resultMap[key] = [:]
+				}
+                //for default case we'll need a hashmap if it doesn't exist
+                filterResult(rest, resultMap[key], result[key]) //recurse over key
             }
         }
     }
 
-    def String parseQueryTerms(String queryString) {
+    String parseQueryTerms(String queryString) {
         String parsedQuery
-        def nonQuotedTerms = Arrays.asList(queryString.replaceAll(/"(.*?)"/, '').split())
+        List nonQuotedTerms = Arrays.asList(queryString.replaceAll(/"(.*?)"/, '').split())
         List quotedTerms = (queryString =~ /"(.*?)"/).collect { it[0] }
 
         List allTerms = quotedTerms + nonQuotedTerms
