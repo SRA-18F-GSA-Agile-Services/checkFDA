@@ -48,10 +48,11 @@
 			</g:if>
 
 			<g:if test="${results}">
-				<g:set var="recalls" value="${ results.recalls.grep { it.status in ['Ongoing', 'Pending'] }.sort { Map map1, Map map2 -> map1.classification <=> map2.classification ?: map2.recall_initiation_date <=> map1.recall_initiation_date } }" />
+				<g:set var="recalls" value="${ results.recalls.sort { Map map1, Map map2 -> map1.classification <=> map2.classification ?: map2.recall_initiation_date <=> map1.recall_initiation_date } }" />
+				<g:set var="currentRecalls" value="${ recalls.grep { it.status in ['Ongoing', 'Pending'] } }" />
 				<g:if test="${ recalls.size() != 0 }">
 					<h1 id="recalls-header" class="ui header">
-						<g:message code="widget.results.recall.header" args="${ [recalls.size()] }" /> <i>${ query }</i>
+						<g:message code="widget.results.recall.header" args="${ [currentRecalls.size()] }" /> <i>${ query }</i>
 					</h1>
 					<div class="ui divider"></div>
 					<div id="recalls-card"></div>
@@ -59,7 +60,9 @@
 						<table id="recalls" class="ui small compact complex selectable unstackable table card-table recalls">
 							<tbody>
 								<g:each in="${ recalls }" var="recall" status="id">
-									<g:render template="/layouts/recall-alert-row" model="${ [recall: recall, id: id] }" />
+									<g:if test="${ recall.status in ['Ongoing', 'Pending'] }">
+										<g:render template="/layouts/recall-alert-row" model="${ [recall: recall, id: id] }" />
+									</g:if>
 								</g:each>
 							</tbody>
 						</table>
@@ -99,7 +102,10 @@
 		<script>
 
 		<g:applyCodec encodeAs="none">
-			var results = ${results ? results as JSON : "undefined"};
+			var recalls = ${ results ? recalls as JSON : "[]" };
+			var labels = ${ results ? labels as JSON : "[]" };
+			var events = ${ results ? results.events as JSON : "[]" };
+			var results = {recalls: recalls, labels: labels, events: events};
 		</g:applyCodec>
 
 			$(function() {
