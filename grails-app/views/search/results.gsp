@@ -104,6 +104,9 @@
 						<g:message code="widget.results.event.header" args="${[results.events.size()]}"/>
 					</h1>
 					<div class="ui divider"></div>
+					<h2 id="drugevents-header" class="ui header">
+						<g:message code="widget.results.event.drug.header" args="${ [drugEvents.size()] }" /> <i>${ query }</i>
+					</h2>
 					<div id="drugevents-card"></div>
 					<div class="card-table-wrapper">
 						<table id="drugevents" class="ui small compact selectable unstackable table card-table drugevents">
@@ -114,6 +117,9 @@
 							</tbody>
 						</table>
 					</div>
+					<h2 id="deviceevents-header" class="ui header">
+						<g:message code="widget.results.event.device.header" args="${ [deviceEvents.size()] }" /> <i>${ query }</i>
+					</h2>
 					<div id="deviceevents-card"></div>
 					<div class="card-table-wrapper">
 						<table id="deviceevents" class="ui small compact selectable unstackable table card-table deviceevents">
