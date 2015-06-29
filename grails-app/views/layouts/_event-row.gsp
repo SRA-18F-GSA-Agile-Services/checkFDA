@@ -17,4 +17,11 @@
 			 ${ isDrug ? event.patient.patientonsetage : event.patient.size() }
 		 </span>
 	</td>
+	<td class="overflow">
+		<g:if test="${ !isDrug }">
+			<span data-content="${ message(code: 'widget.event.row.outcomes') }">
+				${ event.patient*.sequence_number_outcome*.collect { it.split(', ').last() }*.join(', ').join('<br />') }
+			</span>
+		</g:if>
+	</td>
 </tr>

@@ -10,6 +10,17 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.4.1/jquery.timeago.min.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css" type="text/css">
+		<style>
+			.card-table.events tr > td:nth-child(1) {
+				width: 12em;
+			}
+			.card-table.events tr > td:nth-child(2) {
+				width: 8em;
+			}
+			.card-table.events tr > td:nth-child(3) {
+				width: 4em;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="header">
