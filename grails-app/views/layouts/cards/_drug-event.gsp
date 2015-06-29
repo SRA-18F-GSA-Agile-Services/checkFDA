@@ -1,4 +1,4 @@
-<div class="ui fluid card drugevent">
+<div class="ui fluid card event">
 	<div class="content">
 		<div class="ui grid">
 			<div class="four wide column">

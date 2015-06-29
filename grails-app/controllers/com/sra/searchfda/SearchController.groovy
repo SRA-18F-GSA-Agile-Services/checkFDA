@@ -65,6 +65,10 @@ class SearchController {
 			render(template: '/layouts/cards/recall-alert', model: [recall: element])
 		} else if (type == 'labels') {
 			render(template: '/layouts/cards/drug-label', model: [label: element])
+		} else if (type == 'events' && !element.device) {
+			render(template: '/layouts/cards/drug-event', model: [event: element])
+		} else if (type == 'events' && element.device) {
+			render(template: '/layouts/cards/device-event', model: [event: element])
 		}
 	}
 }
