@@ -14,8 +14,16 @@ class SearchService {
 	GrailsApplication grailsApplication
 	OpenFDAService openFDAService
 	StateService stateService
-	
+	/*
+	static int maxResults=500 //maximum results desired from each database
+	boolean useFiltering=true
+	def grailsApplication
+	def openFDAService
+	*/
+	Map datasetTotals=new HashMap()
 	static final List<Map> DATASETS=[ //dataset names
+	//List<Map> datasets=[
+		//dataset names
 		[path:"food/enforcement",group:"recalls"],
 		[path:"drug/label",group:"labels"],
 		[path:"drug/event",group:"events"],
@@ -30,64 +38,137 @@ class SearchService {
 		}
 		return parallelFederatedSearch(query)
 	}
+	
+	Integer getDatasetTotal(Map dataset) {
+		Integer total=datasetTotals[dataset.path]
+		if (total!=null) return(total)
+		String result=openFDAService.query(dataset.path,"",1,0) //get a result from open fda
+		if (result==null) {
+			log.warn("dataset "+dataset.path+" empty count query gave null response")
+			//datasetTotals[dataset.path]=0
+			return(0)
+		}
+		Map srch=JSON.parse(result) //parse the json into a map
+		total=srch.meta.results.total
+		//println("total="+total)
+		datasetTotals[dataset.path]=total
+		return(total)
+	}
 
-    /**
-     * Perform a federated search across the 6 Open FDA datasets using
-     * a string-based natural language query.  Returns a JSON object with a map
-     * from group names to list of objects for those groups.
-     */
-    Map federatedSearch(String query) {
-        long t0 = System.currentTimeMillis()
+	/**
+	 * Perform a federated search across the 6 Open FDA datasets using
+	 * a string-based natural language query.  Returns a JSON object with a map
+	 * from group names to list of objects for those groups.
+	 */
+	Map federatedSearch(String query) {
+		long t0=System.currentTimeMillis()
         Map<List<Map>> results = [:]
+		Map meta=new HashMap()
         DATASETS.each { ds -> //iterate across each dataset
-            List<Map> result = filterResults(ds, search(ds, parseQueryTerms(query))) //get search results for the dataset
-            String group = ds.group
-            if (results[group] == null) {
-				results[group] = []
+			//iterate across each dataset
+			Map result=filterResults(ds,search(ds,parseQueryTerms(query))) //get search results for the dataset
+			processSearchResult(results,result,meta,ds.group,ds.path)
+		}
+		long t1=System.currentTimeMillis()
+		log.info("Serial Federated Search Time:"+(t1-t0))
+		results.meta=meta
+		return(results) //return the result as JSON
+	}
+	
+	private void processSearchResult(Map<String,List<Map>> results,Map result,Map meta,String group,String path) {
+			if (results[group]==null) results[group]=[]
+			results[group]+=result.results
+			meta[path.replace("/","-")]=result.meta
+			Map gmeta=meta[group]
+			if (gmeta==null) {
+				gmeta=new HashMap()
+				gmeta.hits=0
+				gmeta.total=0
+				meta[group]=gmeta
 			}
-            //log.info(ds+" has "+result.size())
-            results[group] += result
-        }
-        long t1 = System.currentTimeMillis()
-        log.info("Serial Federated Search Time:" + (t1 - t0))
-        return (results) //return the result as JSON
-    }
-
-    Map parallelFederatedSearch(String query) {
-        long t0 = System.currentTimeMillis()
-        Map<List<Map>> results = [:]
-        List<Map> presults = null
-        GParsPool.withPool(DATASETS.size()) {
-            presults = DATASETS.collectParallel { ds ->
-                List<Map> result = filterResults(ds, search(ds, parseQueryTerms(query))) //get search results for the dataset
-                [group: ds.group, result: result]
-            }
-        }
-        presults.each { item ->
-            String group = item.group
-            if (results[group] == null) {
-				results[group] = []
+			if (result.meta.hits!=null) {
+				gmeta.hits+=result.meta.hits
 			}
-            results[group] += item.result
-        }
-        long t1 = System.currentTimeMillis()
-        log.info("Parallel Federated Search Time:" + (t1 - t0))
-        return (results) //return the result as JSON
-    }
+			if (result.meta.total!=null) {
+				gmeta.total+=result.meta.total
+			}
+	}
 
-    Map timingComparison(String query) {
-        long t0 = System.currentTimeMillis()
-        Map result = federatedSearch(query)
-        long t1 = System.currentTimeMillis()
-        log.info("Federated time:" + (t1 - t0))
-        long t3 = System.currentTimeMillis()
-        Map presult = parallelFederatedSearch(query)
-        long t4 = System.currentTimeMillis()
-        log.info("Parallel time:" + (t4 - t3))
-        log.info("result length=" + result.size())
-        log.info("presult length=" + presult.size())
-        return (presult)
-    }
+	Map parallelFederatedSearch(String query) {
+		long t0=System.currentTimeMillis()
+		Map<String,List<Map>> results=new HashMap<String,List<Map>>()
+		List<Map> presults=null
+		Map meta=new HashMap()
+		GParsPool.withPool(DATASETS.size()) {
+			presults=DATASETS.collectParallel { ds ->
+				Map result=filterResults(ds,search(ds,parseQueryTerms(query))) //get search results for the dataset
+				[group:ds.group,result:result,ds:ds.path]
+			}
+		}
+		Set<String> usedGroups=new HashSet<String>()
+		presults.each { item ->
+			usedGroups.add(item.group)
+			processSearchResult(results,item.result,meta,item.group,item.ds)
+		}
+		double maxRatio=0.0
+		String predictedGroup=null
+		usedGroups.each { grp ->
+			if (meta[grp]!=null) {
+				if (meta[grp].total>0) {
+					double fraction=meta[grp].hits/meta[grp].total
+					meta[grp].fraction=fraction
+					if (fraction>maxRatio) {
+						maxRatio=fraction
+						predictedGroup=grp
+					}
+				}
+			}
+		}
+		meta['predicted-group']=predictedGroup
+		long t1=System.currentTimeMillis()
+		log.info("Parallel Federated Search Time:"+(t1-t0))
+		results.meta=meta
+		return(results) //return the result as JSON
+	}
+
+	def timingComparison(String query) {
+		long t0=System.currentTimeMillis()
+		def result=federatedSearch(query)
+		long t1=System.currentTimeMillis()
+		log.info("Federated time:"+(t1-t0))
+		long t3=System.currentTimeMillis()
+		def presult=parallelFederatedSearch(query)
+		long t4=System.currentTimeMillis()
+		log.info("Parallel time:"+(t4-t3))
+		log.info("result length="+result.size())
+		log.info("presult length="+presult.size())
+		return(presult)
+	}
+	
+	/**
+	 * Perform a search against the desired dataset with the given query returning
+	 * a List of Maps.
+	 */
+	private Map search(dataset,String query) {
+		int count=0 // count of results for far
+		HashMap meta=[:]
+		List<Map> results=[] //to accumulate results
+		while(true) { //while we still have results
+			String result=openFDAService.query(dataset.path,query,100,count) //get a result from open fda
+			if (result==null) break
+				Map js=JSON.parse(result) //parse the json into a map
+			int total=js.meta.results.total //get the total for the overall query
+			meta.hits=total
+			meta.total=getDatasetTotal(dataset)
+			log.info(dataset.path+" has "+total) //report (for now) how many total hits the dataset had
+			results+=js.results //add the results
+			count+=js.results.size() //update our count
+			if (count>=total) break //if we're done with paging
+			if (count>=MAXRESULTS) break //if we've reached the limit desired for each database
+		}
+		//log.info("total in list="+results.size())
+		[meta:meta,results:results]
+	}
 
     Map federatedSearchMock() {
         Map<List<Map>> results = [:]
@@ -96,34 +177,6 @@ class SearchService {
             results[group] = results[group] ?: []
             results[group] += JSON.parse(grailsApplication.parentContext.getResource("data/OpenFDA-" + ds.path.split('/').join('-') + ".txt")?.file?.getText() ?: "{results: []}").results
         }
-        return (results)
-    }
-
-    /**
-     * Perform a search against the desired dataset with the given query returning
-     * a List of Maps.
-     */
-    private List<Map> search(dataset, String query) {
-        int count = 0 // count of results for far
-        List<Map> results = [] //to accumulate results
-        while (true) { //while we still have results
-            String result = openFDAService.query(dataset.path, query, 100, count) //get a result from open fda
-            if (result == null) {
-				break
-			}
-            Map js = JSON.parse(result) //parse the json into a map
-            int total = js.meta.results.total //get the total for the overall query
-            log.info(dataset.path + " has " + total) //report (for now) how many total hits the dataset had
-            results += js.results //add the results
-            count += js.results.size() //update our count
-            if (count >= total) {
-				break //if we're done with paging
-			}
-            if (count >= MAXRESULTS) {
-				break //if we've reached the limit desired for each database
-			}
-        }
-        //log.info("total in list="+results.size())
         return (results)
     }
 
@@ -151,25 +204,23 @@ class SearchService {
 		  }
 	}
 
-	private List<Map> filterResults(Map dataset, List<Map> results) {
-        if (!USEFILTERING) {
-			return (results)
-		}
-        List<String> filters = loadFilters()
-        List<Map> newMap = []
-        for (Map result : results) {
-            Map resultMap = new HashMap()
+	private Map filterResults(Map dataset,Map results) {
+		if (!USEFILTERING) return(results)
+		List<String> filters=loadFilters()
+		List<Map> newMap=[]
+		for(Map result:results.results) {
+			Map resultMap=[:]
 			addDerivedFields(dataset,result,resultMap)
-            for (String filter : filters) {
-                if (filter.startsWith(dataset.group + ".")) {
-                    String[] path = filter.split("\\.").tail()
-                    filterResult(path, resultMap, result)
-                }
-            }
-            newMap << resultMap
-        }
-        return (newMap)
-    }
+			for(String filter:filters) {
+				if (filter.startsWith(dataset.group+".")) {
+					String[] path=filter.split("\\.").tail()
+					filterResult(path,resultMap,result)
+				}
+			}
+			newMap<<resultMap
+		}
+		[meta:results.meta,results:newMap]
+	}
 	
 	private void filterResult(String[] filter, Map resultMap, Map result) {
         String key = filter.first()
