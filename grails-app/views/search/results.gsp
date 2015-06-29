@@ -86,10 +86,22 @@
 						</table>
 					</div>
 				</g:if>
-				<g:if test="${ results.events.size() != 0 }">
+				<g:set var="events" value="${ results.events }" />
+				<g:if test="${ events.size() != 0 }">
 					<h1 class="ui header">
 						<g:message code="widget.results.event.header" args="${[results.events.size()]}"/>
 					</h1>
+					<div class="ui divider"></div>
+					<div id="events-card"></div>
+					<div class="card-table-wrapper">
+						<table id="events" class="ui small compact selectable unstackable table card-table events">
+							<tbody>
+								<g:each in="${ events }" var="event" status="id">
+									
+								</g:each>
+							</tbody>
+						</table>
+					</div>
 					<div class="ui divider"></div>
 					<div class="ui three cards">
 						<g:render template="/layouts/cards/event_outcomes" />
@@ -104,7 +116,7 @@
 		<g:applyCodec encodeAs="none">
 			var recalls = ${ results ? recalls as JSON : "[]" };
 			var labels = ${ results ? labels as JSON : "[]" };
-			var events = ${ results ? results.events as JSON : "[]" };
+			var events = ${ results ? events as JSON : "[]" };
 			var results = {recalls: recalls, labels: labels, events: events};
 		</g:applyCodec>
 
@@ -113,6 +125,7 @@
 
 				addRowListeners('.card-table.recalls');
 				addRowListeners('.card-table.labels');
+				addRowListeners('.card-table.events');
 				$('.timeago').timeago();
 				$('.message .close').on('click', function() {
 					$(this).closest('.message').transition('fade');
