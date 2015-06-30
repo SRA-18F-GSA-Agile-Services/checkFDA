@@ -40,5 +40,35 @@
 				${ event.occurcountry }
 			</div>
 		</div>
+
+		<div class="ui divider"></div>
+
+		<g:if test="${ event.patient.drug.size() > 0 }">
+			<div class="ui small header">
+				<g:message code="widget.drug.event.drugs" />
+			</div>
+			<table class="ui compact celled stripped table">
+				<thead>
+					<tr>
+						<th><g:message code="widget.drug.event.drug.product" /></th>
+						<th><g:message code="widget.drug.event.drug.characterization" /></th>
+						<th><g:message code="widget.drug.event.drug.action" /></th>
+					</tr>
+				</thead>
+				<tbody>
+					<g:each in="${ event.patient.drug.sort { it.drugcharacterization } }" var="drug">
+						<tr>
+							<td>${ drug.medicinalproduct }</td>
+							<td><g:message code="widget.drug.event.drug.characterization${ drug.drugcharacterization }" /></td>
+							<td>
+								<g:if test="${ drug.actiondrug }">
+									<g:message code="widget.drug.event.drug.action${ drug.actiondrug }" />
+								</g:if>
+							</td>
+						</tr>
+					</g:each>
+				</tbody>
+			</table>
+		</g:if>
 	</div>
 </div>
