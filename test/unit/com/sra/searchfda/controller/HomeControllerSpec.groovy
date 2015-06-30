@@ -1,4 +1,4 @@
-package com.sra.searchfda
+package com.sra.searchfda.controller
 
 import grails.test.mixin.TestFor
 import spock.lang.Specification

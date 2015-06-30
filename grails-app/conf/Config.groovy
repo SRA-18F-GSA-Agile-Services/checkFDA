@@ -11,31 +11,27 @@
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
 // }
 
-def loc = ['../UserConfig.groovy', 'webapps/ROOT/Jenkins.groovy'].grep { new File(it).exists() }.first();
+def loc = ['../UserConfig.groovy', 'webapps/ROOT/Jenkins.groovy', 'webapps/ServerConfig.groovy'].grep { new File(it).exists() }.first();
 def localConfig = new ConfigSlurper(grailsSettings.grailsEnv).parse(new File(loc).toURI().toURL())
 
-grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
-grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
-grails.mime.use.accept.header = false
-grails.mime.types = [
-    all:           '*/*',
-    atom:          'application/atom+xml',
-    css:           'text/css',
-    csv:           'text/csv',
-    form:          'application/x-www-form-urlencoded',
-    html:          ['text/html','application/xhtml+xml'],
-    js:            'text/javascript',
-    json:          ['application/json', 'text/json'],
-    multipartForm: 'multipart/form-data',
-    rss:           'application/rss+xml',
-    text:          'text/plain',
-	csv: 			'text/csv',
-	pdf: 			'application/pdf',
-	rtf: 			'application/rtf',
-	excel: 			'application/vnd.ms-excel',
-	ods: 			'application/vnd.oasis.opendocument.spreadsheet',
-    xml:           ['text/xml', 'application/xml']
+// The ACCEPT header will not be used for content negotiation for user agents containing the following strings (defaults to the 4 major rendering engines)
+grails.mime.disable.accept.header.userAgents = ['Gecko', 'WebKit', 'Presto', 'Trident']
+grails.mime.types = [ // the first one is the default format
+					  all:           '*/*', // 'all' maps to '*' or the first available format in withFormat
+					  atom:          'application/atom+xml',
+					  css:           'text/css',
+					  csv:           'text/csv',
+					  form:          'application/x-www-form-urlencoded',
+					  html:          ['text/html','application/xhtml+xml'],
+					  js:            'text/javascript',
+					  json:          ['application/json', 'text/json'],
+					  multipartForm: 'multipart/form-data',
+					  rss:           'application/rss+xml',
+					  text:          'text/plain',
+					  hal:           ['application/hal+json','application/hal+xml'],
+					  xml:           ['text/xml', 'application/xml']
 ]
+
 
 // URL Mapping Cache Max Size, defaults to 5000
 //grails.urlmapping.cache.maxsize = 1000
@@ -130,9 +126,9 @@ grails.plugin.springsecurity.providerNames = [
 
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.logout.postOnly = false
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.sra.searchfda.User'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.sra.searchfda.UserRole'
-grails.plugin.springsecurity.authority.className = 'com.sra.searchfda.Role'
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.sra.searchfda.domain.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.sra.searchfda.domain.UserRole'
+grails.plugin.springsecurity.authority.className = 'com.sra.searchfda.domain.Role'
 
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**':								['permitAll'],

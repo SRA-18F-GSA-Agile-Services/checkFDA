@@ -1,5 +1,6 @@
-package com.sra.searchfda
+package com.sra.searchfda.controller
 
+import com.sra.searchfda.domain.Query
 import com.sra.searchfda.service.QueryService
 import com.sra.searchfda.service.SearchService
 import grails.converters.JSON
