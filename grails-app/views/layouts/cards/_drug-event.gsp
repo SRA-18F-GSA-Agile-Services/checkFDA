@@ -70,5 +70,31 @@
 				</tbody>
 			</table>
 		</g:if>
+
+		<g:if test="${ event.patient.reaction.size() > 0 }">
+			<div class="ui small header">
+				<g:message code="widget.drug.event.reactions" />
+			</div>
+			<table class="ui compact celled stripped table">
+				<thead>
+					<tr>
+						<th><g:message code="widget.drug.event.reaction.term" /></th>
+						<th><g:message code="widget.drug.event.reaction.outcome" /></th>
+					</tr>
+				</thead>
+				<tbody>
+					<g:each in="${ event.patient.reaction }" var="reaction">
+						<tr>
+							<td>${ reaction.reactionmeddrapt }</td>
+							<td>
+								<g:if test="${ reaction.reactionoutcome }">
+									<g:message code="widget.drug.event.reaction.outcome${ reaction.reactionoutcome }" />
+								</g:if>
+							</td>
+						</tr>
+					</g:each>
+				</tbody>
+			</table>
+		</g:if>
 	</div>
 </div>
