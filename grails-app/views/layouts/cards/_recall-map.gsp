@@ -57,10 +57,10 @@
 	            popupOnHover: true,
 	            popupTemplate: function(geo, data) {	           
 		        	if(data!=null){
-	                   return '<div class="hoverinfo">' + geo.properties.name 
-	                   									+ '<br><i class="<g:message code="widget.recall.alert.Ongoing.icon"/> icon"></i> Ongoing: ' + data.Ongoing 
-	                   									+ '<br><i class="<g:message code="widget.recall.alert.Pending.icon"/> icon"></i> Pending: ' + ((data.Pending)? data.Pending : '0')
-	                   									+ '<br>Total Recalls : ' + data.recalls  
+	                   return '<div class="hoverinfo" style="padding:5px 10px;"><h4>' + geo.properties.name + '</h4>'
+	                   									+ '<div class="ui red message maphover"><i class="<g:message code="widget.recall.alert.Ongoing.icon"/> icon"></i> Ongoing: ' + data.Ongoing + '</div>'
+	                   									+ '<div class="ui attached yellow message maphover"><i class="<g:message code="widget.recall.alert.Pending.icon"/> icon"></i> Pending: ' + ((data.Pending)? data.Pending : '0') +'</div>'
+	                   									+ '<div class="maphover">Total Recalls : ' + data.recalls  +'</div>'
 	                   		  '</div>';
 		            }
 	            }
@@ -73,6 +73,41 @@
 	        },       
 		 });	
 		 map.labels();
-		 map.legend();
+		 //map.legend();
+		 function addMapLegend(layer, data, options) {
+			  data = data || {};
+			  if ( !this.options.fills ) {
+		      	return;
+		      }
+			var html = '<dl>';
+    		var label = '';
+    		if ( data.legendTitle ) {
+      			html = '<h1 class="ui header"> ' + data.legendTitle + '</h1>' + html;
+    		}
+    		for ( var fillKey in this.options.fills ) {		
+		    	if ( fillKey === 'defaultFill') {
+		        	if (! data.defaultFillName ) {
+		          		continue;
+		        	}
+		        	label = data.defaultFillName;
+		    	} else {
+		        	if (data.labels && data.labels[fillKey]) {
+		          		label = data.labels[fillKey];
+		        	} else {
+		          		label= fillKey + ' ';
+		        	}
+		      	}
+    
+      			html += '<dd style="background-color:' +  this.options.fills[fillKey] + '">&nbsp;</dd>';
+      			html += '<dt><h3>' + label + '</h3></dt>';
+    		}
+    		html += '</dl>';
+			var hoverover = d3.select( this.options.element ).append('div')
+      			.attr('class', 'datamaps-legend')
+      			.html(html);
+		}
+		map.addPlugin("customLegend", addMapLegend);	    
+		map.customLegend({})
+				  
 	});
 </script>
