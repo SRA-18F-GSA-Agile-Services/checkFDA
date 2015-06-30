@@ -10,7 +10,7 @@ class StateService {
    Map states=null
    Map territories=null
    GrailsApplication grailsApplication
-   List<String> allPhrases=["nationwide"]
+   final List<String> allPhrases=["nationwide"]
 	
    private void loadStates() {
 	   states=JSON.parse(grailsApplication.parentContext.getResource("data/states.json").file.text)
