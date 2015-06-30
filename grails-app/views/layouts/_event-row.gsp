@@ -16,7 +16,7 @@
 			<g:if test="${ isDrug }">
 				<i class="icon ${ message(code: 'widget.event.row.patientsex.icon' + event.patient.patientsex) }"></i>
 			</g:if>
-			 ${ isDrug ? event.patient.patientonsetage : event.patient.size() }
+			 ${ isDrug ? event.patient.patientonsetage : (event.patient.size() + ' ' + message(code: 'widget.event.row.patient.device.patients')) }
 		 </span>
 	</td>
 	<td class="overflow">
