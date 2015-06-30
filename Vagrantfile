@@ -5,7 +5,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 VM_BOX = "trusty-server-cloudimg-amd64-vagrant"
-VM_BOX_URL = "http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box"
+VM_BOX_URL = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 

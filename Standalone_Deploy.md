@@ -25,8 +25,8 @@ This process assumes you already can create a WAR file in the project using Grai
 3. (recommended) Install Python VirtualEnv to manage python libraries
 
   ```
-   pip install virtualenv
-   pip install virtualenvwrapper
+   sudo pip install virtualenv
+   sudo pip install virtualenvwrapper
    ```
 
    If you decide to use Virtualenv please read the documentation (http://virtualenvwrapper.readthedocs.org/en/latest/) to
@@ -43,7 +43,7 @@ This process assumes you already can create a WAR file in the project using Grai
    If you are not using Virtualenv:
 
    ```
-   pip install -r requirements.txt
+   sudo pip install -r requirements.txt
    ```
 
 
