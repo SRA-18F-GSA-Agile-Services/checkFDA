@@ -11,6 +11,7 @@
   },
   "results": [
     {
+      "dataset": "device/event",
       "report_number": "MW5036369",
       "manufacturer_contact_state": "",
       "device_date_of_manufacturer": "",
@@ -136,6 +137,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2954323-2004-00300",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "09/01/2002",
@@ -266,6 +268,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2027242-1996-09029",
       "manufacturer_contact_state": "",
       "device_date_of_manufacturer": "",
@@ -394,6 +397,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "3004753838-2015-50057",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "12/29/2014",
@@ -527,6 +531,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2032227-2013-03419",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "11/01/2012",
@@ -661,6 +666,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2939301-2007-00780",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "05/01/2006",
@@ -795,6 +801,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2032227-2014-65964",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "",
@@ -928,6 +935,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2954323-2002-00094",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "05/01/2002",
@@ -1065,6 +1073,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2939301-2012-06507",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "12/10/2010",
@@ -1198,6 +1207,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2008-01376",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "",
@@ -1323,6 +1333,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2032227-2014-04907",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "01/01/2013",
@@ -1456,6 +1467,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "3004209178-2015-90904",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "",
@@ -1589,6 +1601,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2939301-2005-03322",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "07/01/2003",
@@ -1722,6 +1735,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2027242-1996-90029",
       "manufacturer_contact_state": "",
       "device_date_of_manufacturer": "",
@@ -1854,6 +1868,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1530449-2005-00001",
       "manufacturer_contact_state": "OH",
       "device_date_of_manufacturer": "10/01/2004",
@@ -2008,6 +2023,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2954323-2006-00569",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "",
@@ -2143,6 +2159,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2531779-2012-06856",
       "manufacturer_contact_state": "PA",
       "device_date_of_manufacturer": "02/27/2010",
@@ -2275,6 +2292,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2010-06153",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "03/31/2010",
@@ -2413,6 +2431,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2954323-2008-00704",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "03/01/2006",
@@ -2547,6 +2566,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2010-06198",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "10/31/2009",
@@ -2681,6 +2701,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2183996-2006-00863",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "",
@@ -2809,6 +2830,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2531779-2011-08235",
       "manufacturer_contact_state": "PA",
       "device_date_of_manufacturer": "08/01/2011",
@@ -2951,6 +2973,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2954323-2010-00969",
       "manufacturer_contact_state": "",
       "device_date_of_manufacturer": "04/14/2007",
@@ -3096,6 +3119,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2954323-2006-00420",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "",
@@ -3234,6 +3258,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2183502-2008-00235",
       "manufacturer_contact_state": "MN",
       "device_date_of_manufacturer": "10/01/2007",
@@ -3370,6 +3395,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2939301-2014-31057",
       "manufacturer_contact_state": "",
       "device_date_of_manufacturer": "08/23/2013",
@@ -3519,6 +3545,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2004-00980",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "",
@@ -3652,6 +3679,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2010-04998",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "08/31/2009",
@@ -3784,6 +3812,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2012-02451",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "05/23/2011",
@@ -3916,6 +3945,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2939301-2009-04155",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "07/11/2005",
@@ -4049,6 +4079,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "3010838917-2014-00004",
       "manufacturer_contact_state": "IL",
       "device_date_of_manufacturer": "",
@@ -4183,6 +4214,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "3004209178-2015-88684",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "",
@@ -4315,6 +4347,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2939301-1999-00907",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "",
@@ -4455,6 +4488,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2939301-2003-01569",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "",
@@ -4593,6 +4627,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2010-04997",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "08/31/2009",
@@ -4725,6 +4760,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "3004209178-2015-99348",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "",
@@ -4857,6 +4893,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "3004209178-2010-82112",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "",
@@ -4991,6 +5028,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "3004464228-2013-00968",
       "manufacturer_contact_state": "MA",
       "device_date_of_manufacturer": "06/01/2013",
@@ -5125,6 +5163,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2032227-2014-44486",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "",
@@ -5256,6 +5295,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2011-01283",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "06/30/2010",
@@ -5390,6 +5430,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2939301-2006-01531",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "10/01/2004",
@@ -5527,6 +5568,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2531779-2013-12193",
       "manufacturer_contact_state": "PA",
       "device_date_of_manufacturer": "07/01/2013",
@@ -5668,6 +5710,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2006-02296",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "09/01/2005",
@@ -5802,6 +5845,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2939301-2002-02164",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "",
@@ -5938,6 +5982,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2183996-2012-00908",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "",
@@ -6066,6 +6111,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2008-00125",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "07/01/2007",
@@ -6192,6 +6238,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2005-00746",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "06/01/2004",
@@ -6323,6 +6370,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2009-06513",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "",
@@ -6448,6 +6496,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2939301-2010-05266",
       "manufacturer_contact_state": "",
       "device_date_of_manufacturer": "12/01/2005",
@@ -6582,6 +6631,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "3004209178-2015-95720",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "",
@@ -6713,6 +6763,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2531779-2012-05827",
       "manufacturer_contact_state": "PA",
       "device_date_of_manufacturer": "11/29/2011",
@@ -6854,6 +6905,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2010-04493",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "01/31/2010",
@@ -6994,6 +7046,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "3004209178-2014-15855",
       "manufacturer_contact_state": "MN",
       "device_date_of_manufacturer": "03/27/2012",
@@ -7126,6 +7179,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2012-04741",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "03/13/2012",
@@ -7260,6 +7314,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2010-04698",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "04/30/2010",
@@ -7399,6 +7454,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2939301-2006-00792",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "02/01/2005",
@@ -7535,6 +7591,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "3004209178-2014-99802",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "",
@@ -7668,6 +7725,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "MW5008498",
       "manufacturer_contact_state": "",
       "device_date_of_manufacturer": "",
@@ -7794,6 +7852,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "MW1042281",
       "manufacturer_contact_state": "",
       "device_date_of_manufacturer": "",
@@ -7919,6 +7978,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2009-00601",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "07/01/2007",
@@ -8045,6 +8105,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2032227-2014-38324",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "06/01/2011",
@@ -8176,6 +8237,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2003-00352",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "10/01/2002",
@@ -8305,6 +8367,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2005-02097",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "09/01/2003",
@@ -8438,6 +8501,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2009-07848",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "",
@@ -8565,6 +8629,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2007-11097",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "02/01/2007",
@@ -8691,6 +8756,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2032227-2007-00597",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "09/01/2005",
@@ -8826,6 +8892,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2010-00899",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "09/30/2009",
@@ -8966,6 +9033,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2939301-2011-04575",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "11/19/2001",
@@ -9108,6 +9176,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2032227-2014-71032",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "",
@@ -9247,6 +9316,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "MW5040090",
       "manufacturer_contact_state": "",
       "device_date_of_manufacturer": "",
@@ -9372,6 +9442,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "3008789114-2014-00030",
       "manufacturer_contact_state": "",
       "device_date_of_manufacturer": "",
@@ -9503,6 +9574,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "3005075853-2012-03815",
       "manufacturer_contact_state": "OH",
       "device_date_of_manufacturer": "",
@@ -9642,6 +9714,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2939301-2007-00466",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "10/06/2004",
@@ -9775,6 +9848,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2032227-2015-07195",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "10/01/2012",
@@ -9906,6 +9980,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1052693-2015-00037",
       "manufacturer_contact_state": "FL",
       "device_date_of_manufacturer": "",
@@ -10040,6 +10115,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "3004209178-2011-84310",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "",
@@ -10171,6 +10247,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2007-06751",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "02/01/2007",
@@ -10297,6 +10374,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2032227-2014-46847",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "06/01/2012",
@@ -10429,6 +10507,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2531779-2013-11065",
       "manufacturer_contact_state": "PA",
       "device_date_of_manufacturer": "04/22/2013",
@@ -10569,6 +10648,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "3004209178-2012-85714",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "",
@@ -10702,6 +10782,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2011-01793",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "02/28/2010",
@@ -10835,6 +10916,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1213643-2009-00294",
       "manufacturer_contact_state": "RI",
       "device_date_of_manufacturer": "",
@@ -10968,6 +11050,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2032227-2014-19278",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "",
@@ -11099,6 +11182,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2010-03777",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "12/31/2009",
@@ -11231,6 +11315,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2006-00113",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "07/01/2005",
@@ -11360,6 +11445,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2939301-2005-03471",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "07/01/2003",
@@ -11497,6 +11583,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2183502-2009-00236",
       "manufacturer_contact_state": "MN",
       "device_date_of_manufacturer": "04/01/2009",
@@ -11632,6 +11719,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2004-00709",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "03/01/2003",
@@ -11764,6 +11852,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2011-01792",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "11/30/2010",
@@ -11897,6 +11986,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2183996-2011-01321",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "",
@@ -12029,6 +12119,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "3004464228-2013-00534",
       "manufacturer_contact_state": "MA",
       "device_date_of_manufacturer": "",
@@ -12162,6 +12253,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2006-02144",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "10/01/2005",
@@ -12298,6 +12390,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2009-08720",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "03/01/2009",
@@ -12424,6 +12517,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2531779-2013-25141",
       "manufacturer_contact_state": "PA",
       "device_date_of_manufacturer": "03/25/2013",
@@ -12565,6 +12659,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "3005862821-2014-00020",
       "manufacturer_contact_state": "",
       "device_date_of_manufacturer": "",
@@ -12694,6 +12789,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2032227-2014-65037",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "04/01/2013",
@@ -12825,6 +12921,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1823260-2007-06312",
       "manufacturer_contact_state": "IN",
       "device_date_of_manufacturer": "",
@@ -12950,6 +13047,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "2246315-2005-00062",
       "manufacturer_contact_state": "MA",
       "device_date_of_manufacturer": "",
@@ -13080,6 +13178,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "1220459-2000-00045",
       "manufacturer_contact_state": "MA",
       "device_date_of_manufacturer": "06/01/1999",
@@ -13216,6 +13315,7 @@
       ]
     },
     {
+      "dataset": "device/event",
       "report_number": "3004209178-2015-46933",
       "manufacturer_contact_state": "CA",
       "device_date_of_manufacturer": "",
