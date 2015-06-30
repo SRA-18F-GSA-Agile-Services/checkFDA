@@ -17,6 +17,7 @@ function selectDetailCard(me, initializing) {
 	var element = results[type][arrayIndex];
 	$.ajax({
 		url: '/search/renderCard',
+		method: 'POST',
 		data: {
 			json: JSON.stringify(element),
 			type: type
