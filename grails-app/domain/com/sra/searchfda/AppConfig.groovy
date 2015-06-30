@@ -4,14 +4,14 @@ import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 
 @EqualsAndHashCode(includes = 'key')
-@ToString(includeNames = true, includes = 'search')
-class AdminConfigProperty {
+@ToString(includeNames = true)
+class AppConfig {
 
-    AdminConfigPropertyKey key
+    AppConfigKey key
     String value
 
     static constraints = {
         key nullable: false, unique: true
-        key value: false, maxSize: 255, unique: true
+        value value: false, maxSize: 255
     }
 }

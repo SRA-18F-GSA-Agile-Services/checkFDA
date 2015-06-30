@@ -68,10 +68,8 @@ grails.project.dependency.resolution = {
 		compile ":executor:0.3"
 		compile ":markdown:1.1.1"
 
-        build ':tomcat:7.0.54'
-		compile ":spring-security-ui:1.0-RC2"
-		compile ":spring-security-core:2.0-RC4"
-		compile ":jquery-ui:1.10.4"
+        build ':tomcat:7.0.55.2'
+		compile ":spring-security-core:2.0-RC5"
 
 		test ":codenarc:0.22"
         test ":code-coverage:2.0.3-3"

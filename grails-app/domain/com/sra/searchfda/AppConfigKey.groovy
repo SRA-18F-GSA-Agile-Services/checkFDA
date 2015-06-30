@@ -1,8 +1,8 @@
 package com.sra.searchfda
 
-enum AdminConfigPropertyKey {
+enum AppConfigKey {
 
-    API_BASE_URL,
+    FDA_API_BASE_URL,
 
     DRUG_EVENT_ENDPOINT,
     DRUG_LABEL_ENDPOINT,
