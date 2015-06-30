@@ -107,7 +107,8 @@
 			var recalls = ${ results ? recalls as JSON : "[]" };
 			var labels = ${ results ? labels as JSON : "[]" };
 			var events = ${ results ? results.events as JSON : "[]" };
-			var results = {recalls: recalls, labels: labels, events: events};
+			var homeState = ${ results ? results.state as JSON : "[]"  };
+			var results = {recalls: recalls, labels: labels, events: events, state: homeState};
 		</g:applyCodec>
 			$(function() {
 				searchInit();
