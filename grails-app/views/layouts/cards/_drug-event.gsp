@@ -27,6 +27,18 @@
 				</div>
 				${ event.patient.patientonsetage }
 			</div>
+			<div class="eight wide column">
+				<div class="ui tiny header">
+					<g:message code="widget.drug.event.outcomes" />
+				</div>
+				${ ['hospitalization', 'lifethreatening', 'death', 'disabling', 'congenitalanomali'].grep { event['seriousness' + it] }.collect { message(code: 'widget.drug.event.seriousness.' + it) }.join(', ') }
+			</div>
+			<div class="four wide column">
+				<div class="ui tiny header">
+					<g:message code="widget.drug.event.country" />
+				</div>
+				${ event.occurcountry }
+			</div>
 		</div>
 	</div>
 </div>
