@@ -34,10 +34,13 @@
 				columns: columns,
 				type : 'pie',
 				colors: {
-					Unknown: '#DCDDDE',
-					Male:    '#54C8FF',
-					Female:  '#FF8EDF'
-				},
+					Unknown: '#dcddde',
+					Male:    '#bde7ff',
+					Female:  '#ffc2bd'
+				}
+			},
+			legend: {
+				position: 'right'
 			}
 		});
 	});
