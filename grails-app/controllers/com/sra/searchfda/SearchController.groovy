@@ -52,10 +52,15 @@ class SearchController {
             return [query: "", results: null]
         }
 		
-		if(lat!=null){
-			dlat = lat.toDouble() ///Long.parseLong(slat)
-			dlng = lng.toDouble()
-			state = reverseGeocode (dlat,  dlng)
+		if( lat != null && lng != null){
+			try {
+				dlat = lat.toDouble() 
+				dlng = lng.toDouble()
+				state = reverseGeocode (dlat,  dlng)
+			} catch (Exception ex) {
+				log.error("Search convert lat/lng coordinates to double:" + ex)
+				state = null
+			}
 		}
 		
         if (q.length() > Query.SEARCH_MAX_SIZE) {
@@ -89,10 +94,12 @@ class SearchController {
 	String reverseGeocode (Double lat, Double lng){
 		String state = null
 		Point location = new Point(latitude: lat, longitude: lng) 
-		def results = geocodingService.getAddresses(location)
-		results[0].addressComponents.each {
-			if(it.types[0]=='administrative_area_level_1'){			
-				state = it.shortName ;
+		ArrayList results = geocodingService.getAddresses(location)
+		if(results != null && results.size() >0 ){
+			results[0].addressComponents.each {
+				if(it.types[0]=='administrative_area_level_1'){			
+					state = it.shortName ;
+				}
 			}
 		}
 		return state
