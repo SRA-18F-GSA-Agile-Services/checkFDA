@@ -8,7 +8,7 @@
 	var map
 	$(function() {
 		var recallStates = $.grep(results.recalls, function(event) {
-			return $.inArray( event.status , ['Ongoing', 'Pending'] ) > -1 && event.distribution_states.length > 0;
+			return $.inArray( event.status , ['Ongoing', 'Pending'] ) > -1 && event.distribution_states!=null && event.distribution_states.length > 0;
 		});
 		var stateValuesMap = recallStates.reduce(function(map, cur) {
 			var List = cur.distribution_states.reduce(function(key, d) {
