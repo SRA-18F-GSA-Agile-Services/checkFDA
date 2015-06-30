@@ -10,6 +10,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.4.1/jquery.timeago.min.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css" type="text/css">
+		<asset:stylesheet href="map.css" />
 	</head>
 	<body>
 		<div class="header">
@@ -67,6 +68,7 @@
 							</tbody>
 						</table>
 					</div>
+					<g:render template="/layouts/cards/recall-map" />
 					<g:render template="/layouts/cards/recall-timeline" />
 				</g:if>
 				<g:set var="labels" value="${ results.labels.grep { it.openfda?.brand_name && it.openfda?.generic_name } }" />
@@ -107,9 +109,9 @@
 			var recalls = ${ results ? recalls as JSON : "[]" };
 			var labels = ${ results ? labels as JSON : "[]" };
 			var events = ${ results ? results.events as JSON : "[]" };
-			var results = {recalls: recalls, labels: labels, events: events};
+			var homeState = ${ results ? results.state as JSON : "[]"  };
+			var results = {recalls: recalls, labels: labels, events: events, state: homeState};
 		</g:applyCodec>
-
 			$(function() {
 				searchInit();
 
