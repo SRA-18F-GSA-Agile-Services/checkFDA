@@ -20,10 +20,13 @@
 		 </span>
 	</td>
 	<td class="overflow">
-		<g:if test="${ !isDrug }">
-			<span data-content="${ message(code: 'widget.event.row.outcomes') }">
+		<span data-content="${ message(code: 'widget.event.row.outcomes') }">
+			<g:if test="${ !isDrug }">
 				${ event.patient*.sequence_number_outcome*.collect { it.split(', ').last() }*.join(', ').join('<br />') }
-			</span>
-		</g:if>
+			</g:if>
+			<g:else>
+				${ ['hospitalization', 'lifethreatening', 'death', 'disabling', 'congenitalanomali'].grep { event['seriousness' + it] }.collect { message(code: 'widget.drug.event.seriousness.' + it) }.join(', ') }
+			</g:else>
+		</span>
 	</td>
 </tr>
