@@ -11,7 +11,9 @@
 				<div class="ui tiny header">
 					<g:message code="widget.drug.event.receivedate" />
 				</div>
-				${ new Date().parse('yyyyMMdd', event.receivedate).format('M/d/yyyy') }
+				<g:if test="${ event.receivedate }">
+					${ new Date().parse('yyyyMMdd', event.receivedate).format('M/d/yyyy') }
+				</g:if>
 			</div>
 			<div class="four wide column">
 				<div class="ui tiny header">

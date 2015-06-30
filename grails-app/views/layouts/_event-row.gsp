@@ -6,7 +6,9 @@
 	</td>
 	<td>
 		<span data-content="${ message(code: 'widget.event.row.calendar.' + type) }">
-			<i class="icon calendar outline"></i> ${ new Date().parse('yyyyMMdd', isDrug ? event.receivedate : event.date_received).format('M/d/yyyy') }
+			<g:if test="${ event.receivedate || event.date_received }">
+				<i class="icon calendar outline"></i> ${ new Date().parse('yyyyMMdd', isDrug ? event.receivedate : event.date_received).format('M/d/yyyy') }
+			</g:if>
 		</span>
 	</td>
 	<td>
