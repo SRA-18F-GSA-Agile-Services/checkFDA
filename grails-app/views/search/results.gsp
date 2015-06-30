@@ -91,8 +91,10 @@
 						<g:message code="widget.results.event.header" args="${[results.events.size()]}"/>
 					</h1>
 					<div class="ui divider"></div>
-					<div class="ui three cards">
+					<div class="ui one cards">
 						<g:render template="/layouts/cards/event_outcomes" />
+					</div>
+					<div class="ui two cards">
 						<g:render template="/layouts/cards/event-gender" />
 						<g:render template="/layouts/cards/event_ages" />
 					</div>
