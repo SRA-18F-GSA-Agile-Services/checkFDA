@@ -1,7 +1,7 @@
 <tr id="event-${ id }">
 	<td>
 		<span data-content="${ message(code: 'widget.event.row.report') }">
-			${ isDrug ? event.safetyreport : event.report_number }
+			${ isDrug ? event.safetyreportid : event.report_number }
 		</span>
 	</td>
 	<td>

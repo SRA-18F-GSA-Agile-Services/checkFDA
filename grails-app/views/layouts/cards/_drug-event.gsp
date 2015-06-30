@@ -5,7 +5,7 @@
 				<div class="ui tiny header">
 					<g:message code="widget.drug.event.report" />
 				</div>
-				${ event.safetyreport }
+				${ event.safetyreportid }
 			</div>
 			<div class="four wide column">
 				<div class="ui tiny header">
