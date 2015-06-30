@@ -91,11 +91,6 @@ class SearchControllerSpec extends Specification {
 	}
 	
 	def "test reverse geocoding"() {
-		/*given:
-		Double lat = 38.8088511
-		Double lng = -77.1395403 
-		String expectedAddressState = null //"VA"
-		*/
 		when:
 		String result = controller.reverseGeocode (lat, lng)
 
