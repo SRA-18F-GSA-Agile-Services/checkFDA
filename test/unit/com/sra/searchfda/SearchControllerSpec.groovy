@@ -2,10 +2,9 @@ package com.sra.searchfda
 
 import com.sra.searchfda.service.QueryService
 import com.sra.searchfda.service.SearchService
-import grails.plugin.geocode.GeocodingService
+import grails.plugin.geocode.Point
 
 import grails.converters.JSON
-import grails.plugin.geocode.GeocodingService;
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
 import spock.lang.Specification
@@ -21,11 +20,12 @@ class SearchControllerSpec extends Specification {
 
     def searchService = Mock(SearchService)
     def queryService = Mock(QueryService)
-	def geocodingService = Mock(GeocodingService)
+	def geocodingService = Mock(grails.plugin.geocode.GeocodingService)
 
     def setup() {
         controller.searchService = searchService
         controller.queryService = queryService
+		controller.geocodingService = geocodingService
     }
 
     def "test results with no search query"() {
@@ -91,6 +91,11 @@ class SearchControllerSpec extends Specification {
 	}
 	
 	def "test reverse geocoding"() {
+		/*given:
+		Double lat = 38.8088511
+		Double lng = -77.1395403 
+		String expectedAddressState = null //"VA"
+		*/
 		when:
 		String result = controller.reverseGeocode (lat, lng)
 
@@ -99,7 +104,23 @@ class SearchControllerSpec extends Specification {
 		
 		where:
 		lat  		| lng  			| expectedAddressState 
-		38.8088511  | -77.1395403   | "VA"
+		38.8088511  | -77.1395403   |  null
+		null		| null 			|  null
+
+	}
+	
+	def "test reverse geocoding results size"() {
+		given:
+		Double lat = 38.8088511
+		Double lng = -77.1395403
+		List expectedAddress
+		
+		when:
+		String result = controller.reverseGeocode (lat, lng)
+
+		then:
+		1 * geocodingService.getAddresses(new Point(latitude: lat, longitude: lng) ) >> expectedAddress
+		expectedAddress == null //expectedAddress.size() > 1
 
 	}
 }
