@@ -40,6 +40,9 @@
 		        ],
 		        type : 'bar'
 		    },
+		    color: {
+				pattern: ['#ffd7b5']
+			},
 		    legend: {
 				show: false
 			},
