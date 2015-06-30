@@ -97,8 +97,8 @@
 						</table>
 					</div>
 				</g:if>
-				<g:set var="drugEvents" value="${ results.events.grep { !it.device } }" />
-				<g:set var="deviceEvents" value="${ results.events.grep { it.device } }" />
+				<g:set var="drugEvents" value="${ results.events.grep { it.dataset == 'drug/event' } }" />
+				<g:set var="deviceEvents" value="${ results.events.grep { it.dataset == 'device/event' } }" />
 				<g:if test="${ results.events.size() != 0 }">
 					<h1 class="ui header">
 						<g:message code="widget.results.event.header" args="${[results.events.size()]}"/>
@@ -145,7 +145,7 @@
 			var recalls = ${ results ? recalls as JSON : "[]" };
 			var labels = ${ results ? labels as JSON : "[]" };
 			var events = ${ results ? results.events as JSON : "[]" };
-			var results = {recalls: recalls, labels: labels, events: events, drugevents: events.filter(function(e) { return !e.device; }), deviceevents: events.filter(function(e) { return e.device; })};
+			var results = {recalls: recalls, labels: labels, events: events, drugevents: events.filter(function(e) { return e.dataset == 'drug/event'; }), deviceevents: events.filter(function(e) { return e.dataset == 'device/event'; })};
 		</g:applyCodec>
 
 			$(function() {
