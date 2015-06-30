@@ -47,7 +47,7 @@
 			<div class="ui small header">
 				<g:message code="widget.drug.event.drugs" />
 			</div>
-			<table class="ui compact celled stripped table">
+			<table class="ui small compact selectable unstackable stripped table">
 				<thead>
 					<tr>
 						<th><g:message code="widget.drug.event.drug.product" /></th>
@@ -75,7 +75,7 @@
 			<div class="ui small header">
 				<g:message code="widget.drug.event.reactions" />
 			</div>
-			<table class="ui compact celled stripped table">
+			<table class="ui small compact selectable unstackable stripped table">
 				<thead>
 					<tr>
 						<th><g:message code="widget.drug.event.reaction.term" /></th>
