@@ -21,7 +21,7 @@ class OpenFDAService {
 		String apiToken = grailsApplication.config.openfdaapi.token //get api token from our config
 
 		if (apiToken) {
-			queryMap['apiToken'] = apiToken
+			queryMap['api_key'] = apiToken
 		}
 
 		String paramsString = encodeQueryParams(queryMap)
