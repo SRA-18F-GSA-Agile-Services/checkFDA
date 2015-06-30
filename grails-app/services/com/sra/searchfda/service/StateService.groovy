@@ -26,8 +26,8 @@ class StateService {
 		   if (str.contains(all)) {
 			   states.each {k,v -> //add all the states
 				   hits.add(k)
-				   return(hits.sort().asType(List)) //return immediately
 			   }
+			   return(hits.sort().asType(List)) //return immediately
 		   }
 	   }
 	   states.each {k,v ->
