@@ -2,7 +2,10 @@ package com.sra.searchfda
 
 import com.sra.searchfda.service.QueryService
 import com.sra.searchfda.service.SearchService
+import grails.plugin.geocode.GeocodingService
+
 import grails.converters.JSON
+import grails.plugin.geocode.GeocodingService;
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
 import spock.lang.Specification
@@ -18,6 +21,7 @@ class SearchControllerSpec extends Specification {
 
     def searchService = Mock(SearchService)
     def queryService = Mock(QueryService)
+	def geocodingService = Mock(GeocodingService)
 
     def setup() {
         controller.searchService = searchService
@@ -84,5 +88,18 @@ class SearchControllerSpec extends Specification {
 		then:
 		controller.response.text.size() != 0
 		controller.response.text.contains('div')
+	}
+	
+	def "test reverse geocoding"() {
+		when:
+		String result = controller.reverseGeocode (lat, lng)
+
+		then:
+		expectedAddressState == result
+		
+		where:
+		lat  		| lng  			| expectedAddressState 
+		38.8088511  | -77.1395403   | "VA"
+
 	}
 }
