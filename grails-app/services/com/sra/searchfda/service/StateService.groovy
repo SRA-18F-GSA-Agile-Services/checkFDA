@@ -23,7 +23,7 @@ class StateService {
 	   }
 	   Set<String> hits=[]
 	   for(String all:allPhrases) {
-		   if (str.contains(all)) {
+		   if (str.toLowerCase().contains(all)) {
 			   states.each {k,v -> //add all the states
 				   hits.add(k)
 			   }
