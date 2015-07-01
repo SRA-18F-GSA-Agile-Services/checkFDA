@@ -93,13 +93,17 @@
 						<g:message code="widget.results.event.header" args="${[results.events.size()]}"/>
 					</h1>
 					<div class="ui divider"></div>
-					<div class="ui one cards">
-						<g:render template="/layouts/cards/event-outcomes" />
-					</div>
-					<div class="ui two cards">
-						<g:render template="/layouts/cards/event-gender" />
-						<g:render template="/layouts/cards/event-ages" />
-					</div>
+					<g:if test="${ results.events.grep { it.dataset == 'device/event' }.size() > 0 }">
+						<div class="ui one cards">
+							<g:render template="/layouts/cards/event-outcomes" />
+						</div>
+					</g:if>
+					<g:if test="${ results.events.grep { it.dataset == 'drug/event' }.size() > 0 }">
+						<div class="ui two cards">
+							<g:render template="/layouts/cards/event-gender" />
+							<g:render template="/layouts/cards/event-ages" />
+						</div>
+					</g:if>
 				</g:if>
 			</g:if>
 		</div>
