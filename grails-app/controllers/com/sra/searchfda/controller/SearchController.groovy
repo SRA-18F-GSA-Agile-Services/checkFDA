@@ -7,7 +7,6 @@ import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 import grails.plugin.geocode.GeocodingService
 import grails.plugin.geocode.Point
-import grails.plugin.geocode.Address
 
 class SearchController {
 
@@ -58,8 +57,8 @@ class SearchController {
 				dlat = lat.toDouble() 
 				dlng = lng.toDouble()
 				state = reverseGeocode (dlat,  dlng)
-			} catch (Exception ex) {
-				log.error("Search convert lat/lng coordinates to double:" + ex)
+			} catch (NumberFormatException ex) {
+				log.debug "Search convert lat/lng coordinates to double:" + ex
 				state = null
 			}
 		}
@@ -95,11 +94,11 @@ class SearchController {
 	String reverseGeocode (Double lat, Double lng){
 		String state = null
 		Point location = new Point(latitude: lat, longitude: lng) 
-		ArrayList results = geocodingService.getAddresses(location)
+		List results = geocodingService.getAddresses(location)
 		if(results != null && results.size() >0 ){
 			results[0].addressComponents.each {
 				if(it.types[0]=='administrative_area_level_1'){			
-					state = it.shortName ;
+					state = it.shortName
 				}
 			}
 		}

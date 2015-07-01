@@ -13,7 +13,24 @@
 	margin : 0px;"
 }
 
-.maphover {
+.hoverinfor.maphover {
 	font-weight : bold;
 	font-size: 15px;
+	padding:5px 10px;
+}
+
+.hoverinfo.popupInfo {
+	border: 1px solid red; 
+	background-color: #fff;
+	font-weight : bold;
+	padding:5px 10px;
+}
+.legend.Ongoing {
+	background-color: #FF9494;
+}
+.legend.Pending {
+	background-color: #fff8db;
+}
+.legend.Mixed {
+	background-color: #FC8D59;
 }
