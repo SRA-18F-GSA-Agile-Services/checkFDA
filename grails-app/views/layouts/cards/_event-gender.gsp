@@ -11,7 +11,7 @@
 		2: '<g:message code="gender.female"/>'
 	};
 	$(function() {
-		var drugEvents = $.grep(results.events, function(event) {
+		var drugEvents = $.grep(events, function(event) {
 			return !$.isArray(event.patient);
 		});
 		var genderMap = drugEvents.reduce(function(map, cur) {
@@ -27,12 +27,21 @@
 			cols.push(col);
 			return cols;
 		}, []);
+		console.log(columns);
 		var chart = c3.generate({
 			bindto: '#gender',
-		    data: {
-		        columns: columns,
-		        type : 'pie'
-		    }
+			data: {
+				columns: columns,
+				type : 'pie',
+				colors: {
+					Unknown: '#dcddde',
+					Male:    '#bde7ff',
+					Female:  '#ffc2bd'
+				}
+			},
+			legend: {
+				position: 'right'
+			}
 		});
 	});
 </script>

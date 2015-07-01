@@ -1,4 +1,4 @@
-grails.servlet.version = "2.5" // Change depending on target container compliance (2.5 or 3.0)
+grails.servlet.version = "3.0" // Change depending on target container compliance (2.5 or 3.0)
 grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
@@ -36,9 +36,9 @@ grails.project.dependency.resolution = {
         mavenLocal()
         mavenCentral()
 
-		mavenRepo "http://repo.spring.io/milestone/"
-		mavenRepo "http://download.java.net/maven/2/"
-		mavenRepo "http://repo.grails.org/grails/core"
+//		mavenRepo "http://repo.spring.io/milestone/"
+//		mavenRepo "http://download.java.net/maven/2/"
+//		mavenRepo "http://repo.grails.org/grails/core"
     }
 
     dependencies {
@@ -60,16 +60,15 @@ grails.project.dependency.resolution = {
     }
 
     plugins {
-        compile ":hibernate:3.6.10.17"
+        runtime ":hibernate4:4.3.8.1"
         compile ":asset-pipeline:2.3.2"
-		compile ":quartz:1.0.1"
-		compile ":scaffolding:2.1.0"
-		compile ":searchable:0.6.7"
-		compile ":executor:0.3"
-		compile ":markdown:1.1.1"
+		compile ":scaffolding:2.1.2"
+//		compile ":searchable:0.6.9"
 
         build ':tomcat:7.0.55.2'
+
 		compile ":spring-security-core:2.0-RC5"
+		compile ":geocode:0.3"
 
 		test ":codenarc:0.22"
         test ":code-coverage:2.0.3-3"

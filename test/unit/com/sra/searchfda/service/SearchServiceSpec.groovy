@@ -75,10 +75,12 @@ class SearchServiceSpec extends Specification {
         searchResults.containsKey("labels")
         searchResults.containsKey("recalls")
         searchResults.containsKey("events")
+		searchResults.containsKey("meta")
 
         searchResults.labels
         searchResults.recalls
         searchResults.events
+		searchResults.meta
     }
 
     void "test serial federated search"() {
@@ -111,10 +113,12 @@ class SearchServiceSpec extends Specification {
         searchResults.containsKey("labels")
         searchResults.containsKey("recalls")
         searchResults.containsKey("events")
+		searchResults.containsKey("meta")
 
         searchResults.labels
         searchResults.recalls
         searchResults.events
+		searchResults.meta
     }
 
     void "test search"() {
@@ -122,7 +126,7 @@ class SearchServiceSpec extends Specification {
         String query = "ice cream"
 
         when:
-        List<Map> searchResults = service.search(dataSet, query)
+        Map searchResults = service.search(dataSet, query)
 
         then:
         1 * openFDAService.query(dataSet.path, query, 100, 0) >> getClass().getResourceAsStream(fileName).text
@@ -140,7 +144,7 @@ class SearchServiceSpec extends Specification {
         String query = "ice cream"
 
         when:
-        List<Map> searchResults = service.search([path: "device/event", group: "event"], query)
+        Map searchResults = service.search([path: "device/event", group: "event"], query)
 
         then:
         1 * openFDAService.query("device/event", query, 100, 0) >> { throw new FileNotFoundException() }
@@ -185,7 +189,7 @@ class SearchServiceSpec extends Specification {
         given:
         JSONArray jsonArray = new JSONArray([[x: 'x', y: 'y', z: 'z'], [x: 'x2', y: 'y2', z: 'z3'], [y: 'y3', z: 'z3']])
         def map = [a: [b: 'c', d: ['e': 'e1'], f: [g: 'h', 'i': ['a', 'b']]], w: jsonArray]
-        HashMap result = new HashMap()
+        Map result = [:]
 
 
         when:

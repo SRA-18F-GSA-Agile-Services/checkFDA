@@ -10,6 +10,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.4.1/jquery.timeago.min.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css" type="text/css">
+		<asset:stylesheet href="map.css" />
 	</head>
 	<body>
 		<div class="header">
@@ -48,10 +49,11 @@
 			</g:if>
 
 			<g:if test="${results}">
-				<g:set var="recalls" value="${ results.recalls.grep { it.status in ['Ongoing', 'Pending'] }.sort { Map map1, Map map2 -> map1.classification <=> map2.classification ?: map2.recall_initiation_date <=> map1.recall_initiation_date } }" />
+				<g:set var="recalls" value="${ results.recalls.sort { Map map1, Map map2 -> map1.classification <=> map2.classification ?: map2.recall_initiation_date <=> map1.recall_initiation_date } }" />
+				<g:set var="currentRecalls" value="${ recalls.grep { it.status in ['Ongoing', 'Pending'] } }" />
 				<g:if test="${ recalls.size() != 0 }">
-					<h1 class="ui header">
-						<g:message code="widget.results.recall.header" args="${ [recalls.size()] }" /> <i>${ query }</i>
+					<h1 id="recalls-header" class="ui header">
+						<g:message code="widget.results.recall.header" args="${ [currentRecalls.size()] }" /> <i>${ query }</i>
 					</h1>
 					<div class="ui divider"></div>
 					<div id="recalls-card"></div>
@@ -59,16 +61,19 @@
 						<table id="recalls" class="ui small compact complex selectable unstackable table card-table recalls">
 							<tbody>
 								<g:each in="${ recalls }" var="recall" status="id">
-									<g:render template="/layouts/recall-alert-row" model="${ [recall: recall, id: id] }" />
+									<g:if test="${ recall.status in ['Ongoing', 'Pending'] }">
+										<g:render template="/layouts/recall-alert-row" model="${ [recall: recall, id: id] }" />
+									</g:if>
 								</g:each>
 							</tbody>
 						</table>
 					</div>
+					<g:render template="/layouts/cards/recall-map" />
 					<g:render template="/layouts/cards/recall-timeline" />
 				</g:if>
 				<g:set var="labels" value="${ results.labels.grep { it.openfda?.brand_name && it.openfda?.generic_name } }" />
 				<g:if test="${ labels.size() != 0 }">
-					<h1 class="ui header">
+					<h1 id="labels-header" class="ui header">
 						<g:message code="widget.results.label.header" args="${ [labels.size()] }" /> <i>${ query }</i>
 					</h1>
 					<div class="ui divider"></div>
@@ -88,20 +93,29 @@
 						<g:message code="widget.results.event.header" args="${[results.events.size()]}"/>
 					</h1>
 					<div class="ui divider"></div>
-					<div class="ui three cards">
-						<g:render template="/layouts/cards/event_outcomes" />
-						<g:render template="/layouts/cards/event-gender" />
-						<g:render template="/layouts/cards/event_ages" />
-					</div>
+					<g:if test="${ results.events.grep { it.dataset == 'device/event' }.size() > 0 }">
+						<div class="ui one cards">
+							<g:render template="/layouts/cards/event-outcomes" />
+						</div>
+					</g:if>
+					<g:if test="${ results.events.grep { it.dataset == 'drug/event' }.size() > 0 }">
+						<div class="ui two cards">
+							<g:render template="/layouts/cards/event-gender" />
+							<g:render template="/layouts/cards/event-ages" />
+						</div>
+					</g:if>
 				</g:if>
 			</g:if>
 		</div>
 		<script>
 
 		<g:applyCodec encodeAs="none">
-			var results = ${results ? results as JSON : "undefined"};
+			var recalls = ${ results ? recalls as JSON : "[]" };
+			var labels = ${ results ? labels as JSON : "[]" };
+			var events = ${ results ? results.events as JSON : "[]" };
+			var homeState = ${ results ? results.state as JSON : "[]"  };
+			var results = {recalls: recalls, labels: labels, events: events, state: homeState};
 		</g:applyCodec>
-
 			$(function() {
 				searchInit();
 

@@ -1,11 +1,8 @@
-import com.sra.searchfda.Role
-import com.sra.searchfda.User
-import com.sra.searchfda.UserRole
+import com.sra.searchfda.domain.Role
+import com.sra.searchfda.domain.User
+import com.sra.searchfda.domain.UserRole
 
 class BootStrap {
-
-	def springSecurityService
-	def searchableService
 
 	def createUser(user,pass,role) {
 		def theUser = new User(username:user,password:pass)
@@ -25,11 +22,9 @@ class BootStrap {
 				createUser('user','stbuser2014',userRole)
 			}
 		} catch (Exception e) {
-			log.error(e.toString())
-			e.printStackTrace()
+			log.error("Exception during bootstrap init", e)
 		}
 	}
 	def destroy = {
-		
 	}
 }

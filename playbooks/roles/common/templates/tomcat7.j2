@@ -1,0 +1,6 @@
+TOMCAT7_USER=tomcat7
+TOMCAT7_GROUP=tomcat7
+{% if oracle_java_version == 8 %}
+JAVA_HOME=/usr/lib/jvm/java-8-oracle
+{% endif %}
+JAVA_OPTS="{{tomcat_javaopts}}"
