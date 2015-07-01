@@ -1,6 +1,6 @@
 package com.sra.searchfda.controller
 
-import com.sra.searchfda.User
+import com.sra.searchfda.domain.User
 
 class UserController {
 
