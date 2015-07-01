@@ -70,6 +70,7 @@ grails.project.dependency.resolution = {
 		compile ":spring-security-core:2.0-RC5"
 		compile ":jquery-ui:1.10.4"
 		compile ":geocode:0.3"
+        compile ":grails-melody:1.56.0"
 
 		test ":codenarc:0.22"
         test ":code-coverage:2.0.3-3"
