@@ -19,6 +19,14 @@
 				color: -webkit-link;
 				text-decoration: underline;
 			}
+			@media (max-width: 1800px) {
+				.ui.very.close.right.rail {
+					width: 100%;
+					margin: 0 auto;
+					position: static;
+					max-width: 400px;
+				}
+			}
 		</style>
 	</head>
 	<body>
