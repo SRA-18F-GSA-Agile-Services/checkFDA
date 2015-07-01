@@ -11,6 +11,15 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.4.1/jquery.timeago.min.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css" type="text/css">
 		<asset:stylesheet href="map.css" />
+		<style>
+			.center-aligned {
+				text-align: center;
+			}
+			a.basic {
+				color: -webkit-link;
+				text-decoration: underline;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="header">
@@ -27,7 +36,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="main results">
+		<div class="main results" style="position: relative;">
 			<g:if test="${flash.error}">
 				<div class="ui negative message">
 					<i class="close icon"></i>
@@ -106,6 +115,48 @@
 					</g:if>
 				</g:if>
 			</g:if>
+
+			<div class="ui very close right rail">
+				<div class="ui four column centered grid">
+					<div class="center aligned column">
+						<a href="#" class="ui large facebook icon button">
+							<i class="facebook icon"></i>
+						</a>
+					</div>
+					<div class="center aligned column">
+						<a href="#" class="ui large twitter icon button">
+							<i class="twitter icon"></i>
+						</a>
+					</div>
+					<div class="center aligned column">
+						<a href="#" class="ui large red icon button">
+							<i class="pinterest icon"></i>
+						</a>
+					</div>
+					<div class="center aligned column">
+						<a href="#" class="ui large facebook icon button">
+							<i class="mail icon"></i>
+						</a>
+					</div>
+				</div>
+				<div class="ui segment">
+					<p>
+						Report your own adverse events with:
+					</p>
+					<ul>
+						<li>Medicines, medical devices, and combination products</li>
+						<li>Foods and beverages (including reports of serious allergic reactions)</li>
+						<li>Cosmetics</li>
+						<li>Special nutritional products</li>
+					</ul>
+					<div class="center-aligned">
+						<a href="#" class="ui big button">Begin a Report</a>
+					</div>
+					<div class="center-aligned">
+						<a href="#" class="basic">Begin a report as health professional</a>
+					</div>
+				</div>
+			</div>
 		</div>
 		<script>
 
