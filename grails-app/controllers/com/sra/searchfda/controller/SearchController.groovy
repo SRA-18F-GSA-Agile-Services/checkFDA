@@ -76,7 +76,7 @@ class SearchController {
         }
 
         queryService.saveSearchQuery(searchQuery)
-        [query: searchQuery.search, results: searchService.executeSearch(searchQuery.search) << [state:[name:state]] ]
+        [query: searchQuery.search, results: searchService.executeSearch(searchQuery.search) << [state:[name:state,latitude: dlat, longitude: dlng]] ]
     }
 
 	def renderCard(String json, String type) {

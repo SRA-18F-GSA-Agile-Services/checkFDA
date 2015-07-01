@@ -32,7 +32,6 @@
 				stateValuesMap[key].fillKey= stateValuesMap[key].status[0]
 			}
 			if(results.state.name == key){
-				//stateValuesMap[key].fillKey= "Home"
 				userLocation =[{ name:results.state.name,
 								latitude: results.state.latitude , 
 								longitude:results.state.longitude , 
@@ -75,7 +74,9 @@
 	            }
 	        },
 	        done: function(datamap) {
-	        	
+	        	datamap.svg.selectAll('.datamaps-subunit').on('click', function(geo) {
+	               addSearchFilter (geo.id )
+	            });
 	           // datamap.svg.call(d3.behavior.zoom().on("zoom", redraw));
 	            function redraw() {
 	                 datamap.svg.selectAll("g").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
@@ -127,5 +128,8 @@
 			.attr('class', 'datamaps-legend')
 			.html(html);
 	}
-	
+	function  addSearchFilter (state ){
+		$('#query').val(results.query+ " "+state) ;
+ 		checkUserPermission();
+	}
 </script>
