@@ -11,7 +11,7 @@ class LoggingFilters implements Serializable {
 				log.info 'User: ' + SecurityContextHolder.getContext().getAuthentication().getName() + ', Controller: ' + controllerName + ', Action: ' + actionName
             }
         }
-        checkCsrfToken(controller:'*', action:'*') {
+        checkCsrfToken(controller:'search', action:'renderCard', invert: true) {
             before = {
                 if (request.post) {
                     log.debug "Checking form on '${controllerName}/${actionName}' for invalid token"

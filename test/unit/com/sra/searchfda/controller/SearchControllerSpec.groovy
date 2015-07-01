@@ -117,6 +117,31 @@ class SearchControllerSpec extends Specification {
 		then:
 		1 * geocodingService.getAddresses(new Point(latitude: lat, longitude: lng) ) >> expectedAddress
 		expectedAddress == null //expectedAddress.size() > 1
+	}
 
+	def "test render card with drug event"() {
+		given:
+		Map events = JSON.parse(getClass().getResourceAsStream("../service/OpenFDA-drug-event.json").text)
+		String event = events.results[0] as JSON
+
+		when:
+		def result = controller.renderCard(event, 'drugevents')
+
+		then:
+		controller.response.text.size() != 0
+		controller.response.text.contains('div')
+	}
+
+	def "test render card with device event"() {
+		given:
+		Map events = JSON.parse(getClass().getResourceAsStream("../service/OpenFDA-device-event.json").text)
+		String event = events.results[0] as JSON
+
+		when:
+		def result = controller.renderCard(event, 'deviceevents')
+
+		then:
+		controller.response.text.size() != 0
+		controller.response.text.contains('div')
 	}
 }

@@ -11,6 +11,17 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.4.1/jquery.timeago.min.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css" type="text/css">
 		<asset:stylesheet href="map.css" />
+		<style>
+			.card-table.events tr > td:nth-child(1) {
+				width: 12em;
+			}
+			.card-table.events tr > td:nth-child(2) {
+				width: 8em;
+			}
+			.card-table.events tr > td:nth-child(3) {
+				width: 4em;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="header">
@@ -88,10 +99,40 @@
 						</table>
 					</div>
 				</g:if>
+				<g:set var="drugEvents" value="${ results.events.grep { it.dataset == 'drug/event' } }" />
+				<g:set var="deviceEvents" value="${ results.events.grep { it.dataset == 'device/event' } }" />
 				<g:if test="${ results.events.size() != 0 }">
 					<h1 class="ui header">
 						<g:message code="widget.results.event.header" args="${[results.events.size()]}"/>
 					</h1>
+					<div class="ui divider"></div>
+
+					<h2 id="drugevents-header" class="ui header">
+						<g:message code="widget.results.event.drug.header" args="${ [drugEvents.size()] }" /> <i>${ query }</i>
+					</h2>
+					<div id="drugevents-card"></div>
+					<div class="card-table-wrapper">
+						<table id="drugevents" class="ui small compact selectable unstackable table card-table drugevents">
+							<tbody>
+								<g:each in="${ drugEvents }" var="event" status="id">
+									<g:render template="/layouts/event-row" model="${ [event: event, id: id, isDrug: true, type: 'drug'] }" />
+								</g:each>
+							</tbody>
+						</table>
+					</div>
+					<h2 id="deviceevents-header" class="ui header">
+						<g:message code="widget.results.event.device.header" args="${ [deviceEvents.size()] }" /> <i>${ query }</i>
+					</h2>
+					<div id="deviceevents-card"></div>
+					<div class="card-table-wrapper">
+						<table id="deviceevents" class="ui small compact selectable unstackable table card-table deviceevents">
+							<tbody>
+								<g:each in="${ deviceEvents }" var="event" status="id">
+									<g:render template="/layouts/event-row" model="${ [event: event, id: id, isDrug: false, type: 'device'] }" />
+								</g:each>
+							</tbody>
+						</table>
+					</div>
 					<div class="ui divider"></div>
 					<g:if test="${ results.events.grep { it.dataset == 'device/event' }.size() > 0 }">
 						<div class="ui one cards">
@@ -114,13 +155,15 @@
 			var labels = ${ results ? labels as JSON : "[]" };
 			var events = ${ results ? results.events as JSON : "[]" };
 			var homeState = ${ results ? results.state as JSON : "[]"  };
-			var results = {recalls: recalls, labels: labels, events: events, state: homeState};
+			var results = {recalls: recalls, labels: labels, events: events, drugevents: events.filter(function(e) { return e.dataset == 'drug/event'; }), deviceevents: events.filter(function(e) { return e.dataset == 'device/event'; }), state: homeState};
 		</g:applyCodec>
 			$(function() {
 				searchInit();
 
 				addRowListeners('.card-table.recalls');
 				addRowListeners('.card-table.labels');
+				addRowListeners('.card-table.drugevents');
+				addRowListeners('.card-table.deviceevents');
 				$('.timeago').timeago();
 				$('.message .close').on('click', function() {
 					$(this).closest('.message').transition('fade');
