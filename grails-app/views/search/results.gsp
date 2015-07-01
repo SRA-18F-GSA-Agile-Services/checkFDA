@@ -106,7 +106,6 @@
 						<g:message code="widget.results.event.header" args="${[results.events.size()]}"/>
 					</h1>
 					<div class="ui divider"></div>
-
 					<h2 id="drugevents-header" class="ui header">
 						<g:message code="widget.results.event.drug.header" args="${ [drugEvents.size()] }" /> <i>${ query }</i>
 					</h2>
