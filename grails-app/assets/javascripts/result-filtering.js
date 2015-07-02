@@ -12,14 +12,20 @@ FilterSet.prototype = {
 			return string == filter.toString();
 		});
 	},
-	addFilter: function(accessorFn, value, label) {
+	addFilter: function(accessorFn, value, label, allValues) {
+		var self = this;
+		if (allValues && allValues.length) {
+			allValues.forEach(function(otherValue) {
+				self.removeFilter(otherValue, label);
+			});
+		}
 		if (this.getFilters(value, label).length == 0) {
 			this.filters.push(new Filter(this.dataset, accessorFn, value, label));
 		}
 		return this.filters;
 	},
-	removeFilter: function(string) {
-		var filters = this.filters.filter(function(f) { return f.toString() == string; });
+	removeFilter: function(value, label) {
+		var filters = this.getFilters(value, label);
 		if (filters.length == 1) {
 			this.filters.splice(this.filters.indexOf(filters[0]), 1);
 		}
@@ -63,7 +69,7 @@ Filter.prototype = {
 		});
 	},
 	renderLabel: function() {
-		var html = '<a class="ui label" onclick="removeFilter(\'' + this.dataset + '\', \'' + this.toString() + '\')">';
+		var html = '<a class="ui label" onclick="removeFilter(\'' + this.dataset + '\', \'' + this.value + '\', \'' + this.label + '\')">';
 		html += this.toString();
 		html += '<i class="icon close"></i>';
 		html += '</a>';
@@ -75,8 +81,8 @@ var filterSets = {
 	drugevents: new FilterSet('drugevents', '#drugevents', '#drugevents-labels')
 };
 
-function removeFilter(dataset, id) {
+function removeFilter(dataset, value, label) {
 	var filterSet = filterSets[dataset];
-	filterSet.removeFilter(id);
+	filterSet.removeFilter(value, label);
 	filterSet.rerender();
 }
