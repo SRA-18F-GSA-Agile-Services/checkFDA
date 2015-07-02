@@ -21,11 +21,11 @@
 	padding:5px 10px;
 }
 .legend.Ongoing {
-	background-color: #FF9494;
+	background-color: #DB2828;
 }
 .legend.Pending {
-	background-color: #fff8db;
+	background-color: #FBBD08;
 }
 .legend.Mixed {
-	background-color: #FC8D59;
+	background-color: #F2711C;
 }
