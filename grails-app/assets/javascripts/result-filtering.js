@@ -1,11 +1,13 @@
-function FilterSet(tableSelector) {
+function FilterSet(dataset, tableSelector, labelSelector) {
+	this.dataset = dataset;
 	this.tableSelector = tableSelector;
+	this.labelSelector = labelSelector;
 	this.filters = [];
 }
 
 FilterSet.prototype = {
-	addFilter: function(accessorFn, value) {
-		this.filters.push(new Filter(accessorFn, value));
+	addFilter: function(accessorFn, value, label) {
+		this.filters.push(new Filter(this.dataset, accessorFn, value, label));
 		return this.filters;
 	},
 	removeFilter: function(id) {
@@ -15,10 +17,10 @@ FilterSet.prototype = {
 		}
 		return this.filters;
 	},
-	apply: function(data) {
+	apply: function() {
 		return this.filters.reduce(function(all, filter) {
 			return filter.apply(all)
-		}, data);
+		}, results[this.dataset]);
 	},
 	rerender: function(data) {
 		var data = this.apply(data);
@@ -29,12 +31,17 @@ FilterSet.prototype = {
 				$(row).hide();
 			}
 		});
+		$(this.labelSelector).html(this.filters.map(function(filter) {
+			return filter.renderLabel();
+		}).join(''));
 	}
 }
 
-function Filter(accessorFn, value) {
+function Filter(dataset, accessorFn, value, label) {
+	this.dataset = dataset;
 	this.accessorFn = accessorFn;
 	this.value = value;
+	this.label = label;
 	this.id = id++;
 }
 
@@ -44,9 +51,22 @@ Filter.prototype = {
 		return data.map(function(item) {
 			return item && self.accessorFn(item) == self.value ? item : false;
 		});
+	},
+	renderLabel: function() {
+		var html = '<a class="ui label" onclick="removeFilter(\'' + this.dataset + '\', ' + this.id + ')">';
+		html += this.label + ': ' + this.value;
+		html += '<i class="icon close"></i>';
+		html += '</a>';
+		return html;
 	}
 }
 
 var filterSets = {
-	drugevents: new FilterSet('#drugevents')
+	drugevents: new FilterSet('drugevents', '#drugevents', '#drugevents-labels')
 }, id = 0;
+
+function removeFilter(dataset, id) {
+	var filterSet = filterSets[dataset];
+	filterSet.removeFilter(id);
+	filterSet.rerender();
+}
