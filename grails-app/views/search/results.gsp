@@ -6,6 +6,7 @@
 		<title><g:message code="default.search.title" /> - ${ query }</title>
 		<asset:javascript src="search.js" />
 		<asset:javascript src="aggregated-cards.js" />
+		<asset:javascript src="result-filtering.js" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.4.1/jquery.timeago.min.js"></script>
@@ -94,7 +95,7 @@
 						<h2 id="drugevents-header" class="ui header">
 							<g:message code="widget.results.event.drug.header" args="${ [drugEvents.size()] }" />
 						</h2>
-
+						<div id="drugevents-labels" class="ui labels"></div>
 						<div id="drugevents-card"></div>
 						<div class="card-table-wrapper">
 							<table id="drugevents" class="ui small compact selectable unstackable table card-table drugevents">
