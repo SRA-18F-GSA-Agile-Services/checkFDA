@@ -8,8 +8,8 @@ import groovy.transform.ToString
 class Query {
 
 	String search
-	Long lat
-	Long lng
+	Double lat
+	Double lng
 
 	static final int SEARCH_MAX_SIZE = 255
 
