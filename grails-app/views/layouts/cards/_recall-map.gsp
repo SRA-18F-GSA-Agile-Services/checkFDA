@@ -32,6 +32,7 @@
 				stateValuesMap[key].fillKey= stateValuesMap[key].status[0]
 			}
 			if(results.state.name == key){
+				//stateValuesMap[key].fillKey= "Home"
 				userLocation =[{ name:results.state.name,
 								latitude: results.state.latitude , 
 								longitude:results.state.longitude , 
@@ -73,9 +74,6 @@
 	            }
 	        },
 	        done: function(datamap) {
-	        	datamap.svg.selectAll('.datamaps-subunit').on('click', function(geo) {
-	               addSearchFilter (geo.id )
-	            });
 	            function redraw() {
 	                 datamap.svg.selectAll("g").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 	            }
@@ -129,10 +127,5 @@
 		var hoverover = d3.select( this.options.element ).append('div')
 			.attr('class', 'datamaps-legend')
 			.html(html);
-	}
-	
-	function  addSearchFilter (state ){
-		$('#query').val(results.query+ " "+state) ;
- 		checkUserPermission();
 	}
 </script>
