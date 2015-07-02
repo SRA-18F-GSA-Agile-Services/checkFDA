@@ -36,7 +36,7 @@
 				colors: {
 					Unknown: '<g:message code="color.lightGrey"/>',
 					Male:    '<g:message code="color.lightBlue"/>',
-					Female:  '<g:message code="color.lightRed"/>'
+					Female:  '<g:message code="color.lightPink"/>'
 				}
 			},
 			legend: {

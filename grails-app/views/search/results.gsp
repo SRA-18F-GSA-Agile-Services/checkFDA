@@ -64,7 +64,7 @@
 				<g:set var="currentRecalls" value="${ recalls.grep { it.status in ['Ongoing', 'Pending'] } }" />
 				<g:if test="${ recalls.size() != 0 }">
 					<h1 id="recalls-header" class="ui header">
-						<g:message code="widget.results.recall.header" args="${ [query, currentRecalls.size()] }" /><!--  <i>${ query }</i> -->
+						<g:message code="widget.results.recall.header" args="${ [query, currentRecalls.size()] }" />
 					</h1>
 					<div class="ui divider"></div>
 					<div id="recalls-card"></div>
@@ -82,23 +82,60 @@
 					<g:render template="/layouts/cards/recall-map" />
 					<g:render template="/layouts/cards/recall-timeline" />
 				</g:if>
+
+				<g:set var="drugEvents" value="${ results.events.grep { it.dataset == 'drug/event' } }" />
+				<g:set var="deviceEvents" value="${ results.events.grep { it.dataset == 'device/event' } }" />
 				<g:if test="${ results.events.size() != 0 }">
 					<h1 class="ui header">
-						<g:message code="widget.results.event.header" args="${[query, results.events.size()]}"/>
+						<g:message code="widget.results.event.header" args="${ [query, results.events.size()] }"/>
 					</h1>
 					<div class="ui divider"></div>
-					<div class="ui one cards">
-						<g:render template="/layouts/cards/event-outcomes" />
-					</div>
-					<div class="ui two cards">
-						<g:render template="/layouts/cards/event-gender" />
-						<g:render template="/layouts/cards/event-ages" />
-					</div>
+					<g:if test="${ results.events.grep { it.dataset == 'drug/event' }.size() > 0 }">
+						<h2 id="drugevents-header" class="ui header">
+							<g:message code="widget.results.event.drug.header" args="${ [drugEvents.size()] }" />
+						</h2>
+
+						<div id="drugevents-card"></div>
+						<div class="card-table-wrapper">
+							<table id="drugevents" class="ui small compact selectable unstackable table card-table drugevents">
+								<tbody>
+									<g:each in="${ drugEvents }" var="event" status="id">
+										<g:render template="/layouts/event-row" model="${ [event: event, id: id, isDrug: true, type: 'drug'] }" />
+									</g:each>
+								</tbody>
+							</table>
+						</div>
+						<div class="ui two cards">
+							<g:render template="/layouts/cards/event-gender" />
+							<g:render template="/layouts/cards/event-ages" />
+						</div>
+					</g:if>
+
+					<g:if test="${ results.events.grep { it.dataset == 'device/event' }.size() > 0 }">
+						<h2 id="deviceevents-header" class="ui header">
+							<g:message code="widget.results.event.device.header" args="${ [deviceEvents.size()] }" />
+						</h2>
+						<div id="deviceevents-card"></div>
+						<div class="card-table-wrapper">
+							<table id="deviceevents" class="ui small compact selectable unstackable table card-table deviceevents">
+								<tbody>
+									<g:each in="${ deviceEvents }" var="event" status="id">
+										<g:render template="/layouts/event-row" model="${ [event: event, id: id, isDrug: false, type: 'device'] }" />
+									</g:each>
+								</tbody>
+							</table>
+						</div>
+						<div class="ui divider"></div>
+						<div class="ui one cards">
+							<g:render template="/layouts/cards/event-outcomes" />
+						</div>
+					</g:if>
 				</g:if>
+
 				<g:set var="labels" value="${ results.labels.grep { it.openfda?.brand_name && it.openfda?.generic_name } }" />
 				<g:if test="${ labels.size() != 0 }">
 					<h1 id="labels-header" class="ui header">
-						<g:message code="widget.results.label.header" args="${ [query, labels.size()] }" /><!--  <i>${ query }</i> -->
+						<g:message code="widget.results.label.header" args="${ [query, labels.size()] }" />
 					</h1>
 					<div class="ui divider"></div>
 					<div id="labels-card"></div>
@@ -111,52 +148,6 @@
 							</tbody>
 						</table>
 					</div>
-				</g:if>
-				<g:set var="drugEvents" value="${ results.events.grep { it.dataset == 'drug/event' } }" />
-				<g:set var="deviceEvents" value="${ results.events.grep { it.dataset == 'device/event' } }" />
-				<g:if test="${ results.events.size() != 0 }">
-					<h1 class="ui header">
-						<g:message code="widget.results.event.header" args="${[results.events.size()]}"/>
-					</h1>
-					<div class="ui divider"></div>
-					<h2 id="drugevents-header" class="ui header">
-						<g:message code="widget.results.event.drug.header" args="${ [drugEvents.size()] }" /> <i>${ query }</i>
-					</h2>
-					<div id="drugevents-card"></div>
-					<div class="card-table-wrapper">
-						<table id="drugevents" class="ui small compact selectable unstackable table card-table drugevents">
-							<tbody>
-								<g:each in="${ drugEvents }" var="event" status="id">
-									<g:render template="/layouts/event-row" model="${ [event: event, id: id, isDrug: true, type: 'drug'] }" />
-								</g:each>
-							</tbody>
-						</table>
-					</div>
-					<h2 id="deviceevents-header" class="ui header">
-						<g:message code="widget.results.event.device.header" args="${ [deviceEvents.size()] }" /> <i>${ query }</i>
-					</h2>
-					<div id="deviceevents-card"></div>
-					<div class="card-table-wrapper">
-						<table id="deviceevents" class="ui small compact selectable unstackable table card-table deviceevents">
-							<tbody>
-								<g:each in="${ deviceEvents }" var="event" status="id">
-									<g:render template="/layouts/event-row" model="${ [event: event, id: id, isDrug: false, type: 'device'] }" />
-								</g:each>
-							</tbody>
-						</table>
-					</div>
-					<div class="ui divider"></div>
-					<g:if test="${ results.events.grep { it.dataset == 'device/event' }.size() > 0 }">
-						<div class="ui one cards">
-							<g:render template="/layouts/cards/event-outcomes" />
-						</div>
-					</g:if>
-					<g:if test="${ results.events.grep { it.dataset == 'drug/event' }.size() > 0 }">
-						<div class="ui two cards">
-							<g:render template="/layouts/cards/event-gender" />
-							<g:render template="/layouts/cards/event-ages" />
-						</div>
-					</g:if>
 				</g:if>
 			</g:if>
 		</div>
