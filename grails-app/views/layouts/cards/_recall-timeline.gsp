@@ -10,9 +10,8 @@
 		var yAxisLegend = '<g:message code="widget.recall.timeline.legend.yAxis"/>';
 		var typeKeys = ['Food', 'Drugs', 'Devices'];
 		var recallInitDates = recalls.map(function(recall) {
-			var date = recall.recall_initiation_date;
 			return {
-				date: new Date(date.substring(0, 4) + '/' + date.substring(4, 6) + '/' + date.substring(6, 8)).getFullYear() + '-01-01',
+				date: getDate(recall),
 				type: recall.product_type
 			};
 		});
@@ -45,6 +44,13 @@
 					return keyMap;
 				}, {}),
 				groups: [typeKeys],
+				onclick: function(d, element) {
+					var filterSet = filterSets['recalls'];
+					filterSet.addFilter(function(item) {
+						return getDate(item);
+					}, dateKeys.sort()[d.index], 'Date', dateKeys);
+					filterSet.rerender();
+				}
 			},
 			color: {
 				pattern: ['<g:message code="color.green"/>','<g:message code="color.blue"/>','<g:message code="color.orange"/>']
@@ -69,4 +75,9 @@
 			}
 		});
 	});
+
+	function getDate(recall) {
+		var date = recall.recall_initiation_date;
+		return new Date(date.substring(0, 4) + '/' + date.substring(4, 6) + '/' + date.substring(6, 8)).getFullYear() + '-01-01';
+	}
 </script>

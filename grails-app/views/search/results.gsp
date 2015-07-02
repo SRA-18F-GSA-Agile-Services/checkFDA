@@ -68,6 +68,7 @@
 						<g:message code="widget.results.recall.header" args="${ [query, currentRecalls.size()] }" />
 					</h1>
 					<div class="ui divider"></div>
+					<div id="recalls-labels" class="ui labels"></div>
 					<div id="recalls-card"></div>
 					<div class="card-table-wrapper">
 						<table id="recalls" class="ui small compact complex selectable unstackable table card-table recalls">

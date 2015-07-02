@@ -90,7 +90,8 @@ Filter.prototype = {
 
 var filterSets = {
 	drugevents: new FilterSet('drugevents', '#drugevents', '#drugevents-labels'),
-	deviceevents: new FilterSet('deviceevents', '#deviceevents', '#deviceevents-labels')
+	deviceevents: new FilterSet('deviceevents', '#deviceevents', '#deviceevents-labels'),
+	recalls: new FilterSet('recalls', '#recalls', '#recalls-labels')
 };
 
 function removeFilter(dataset, value, label) {
