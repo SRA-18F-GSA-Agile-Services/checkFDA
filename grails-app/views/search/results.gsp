@@ -132,7 +132,7 @@
 						</a>
 					</div>
 					<div class="center aligned column">
-						<a href="#" class="ui large twitter icon button">
+						<a href="http://twitter.com/home?status=${ java.net.URLEncoder.encode('Check out what I found out about ' + query + ' on #checkFDA: ' + grailsApplication.config.grails.serverURL + '/results?q=' + query) }" class="ui large twitter icon button" target="_blank">
 							<i class="twitter icon"></i>
 						</a>
 					</div>

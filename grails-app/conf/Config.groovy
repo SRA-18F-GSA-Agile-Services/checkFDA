@@ -83,10 +83,12 @@ environments {
     development {
 		checkfda.localData = true
         grails.logging.jul.usebridge = true
+		grails.serverURL = 'http://localhost:8080'
     }
     production {
 		checkfda.localData = false
         grails.logging.jul.usebridge = false
+		grails.serverURL = 'http://searchfda.elasticbeanstalk.com'
     }
 }
 
