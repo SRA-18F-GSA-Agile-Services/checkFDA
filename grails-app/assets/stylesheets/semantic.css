@@ -1789,14 +1789,14 @@ input::selection {
 .ui.toggle.buttons .active.button,
 .ui.buttons .button.toggle.active,
 .ui.button.toggle.active {
-  background-color: #21ba45 !important;
+  background-color: #75c043 !important;
   box-shadow: none !important;
   text-shadow: none;
   color: #ffffff !important;
 }
 
 .ui.button.toggle.active:hover {
-  background-color: #13ae38 !important;
+  background-color: #67bb2f !important;
   text-shadow: none;
   color: #ffffff !important;
 }
@@ -2814,7 +2814,7 @@ input::selection {
 
 .ui.green.buttons .button,
 .ui.green.button {
-  background-color: #21ba45;
+  background-color: #75c043;
   color: #ffffff;
   text-shadow: none;
   background-image: none;
@@ -2826,21 +2826,21 @@ input::selection {
 
 .ui.green.buttons .button:hover,
 .ui.green.button:hover {
-  background-color: #13ae38;
+  background-color: #67bb2f;
   color: #ffffff;
   text-shadow: none;
 }
 
 .ui.green.buttons .button:focus,
 .ui.green.button:focus {
-  background-color: #09a92f;
+  background-color: #5eb921;
   color: #ffffff;
   text-shadow: none;
 }
 
 .ui.green.buttons .button:active,
 .ui.green.button:active {
-  background-color: #198f35;
+  background-color: #5e9c34;
   color: #ffffff;
   text-shadow: none;
 }
@@ -2849,7 +2849,7 @@ input::selection {
 .ui.green.buttons .active.button:active,
 .ui.green.active.button,
 .ui.green.button .active.button:active {
-  background-color: #0fb335;
+  background-color: #66c029;
   color: #ffffff;
   text-shadow: none;
 }
@@ -2865,27 +2865,27 @@ input::selection {
 .ui.basic.green.buttons .button:hover,
 .ui.basic.green.button:hover {
   background: transparent !important;
-  box-shadow: 0px 0px 0px 2px #13ae38 inset !important;
-  color: #13ae38 !important;
+  box-shadow: 0px 0px 0px 2px #67bb2f inset !important;
+  color: #67bb2f !important;
 }
 
 .ui.basic.green.buttons .button:focus,
 .ui.basic.green.button:focus {
   background: transparent !important;
-  box-shadow: 0px 0px 0px 2px #09a92f inset !important;
+  box-shadow: 0px 0px 0px 2px #5eb921 inset !important;
 }
 
 .ui.basic.green.buttons .active.button,
 .ui.basic.green.active.button {
   background: transparent !important;
-  box-shadow: 0px 0px 0px 2px #0fb335 inset !important;
-  color: #198f35 !important;
+  box-shadow: 0px 0px 0px 2px #66c029 inset !important;
+  color: #5e9c34 !important;
 }
 
 .ui.basic.green.buttons .button:active,
 .ui.basic.green.button:active {
-  box-shadow: 0px 0px 0px 2px #198f35 inset !important;
-  color: #198f35 !important;
+  box-shadow: 0px 0px 0px 2px #5e9c34 inset !important;
+  color: #5e9c34 !important;
 }
 
 .ui.buttons > .basic.green.button:not(:first-child) {
@@ -2897,8 +2897,8 @@ input::selection {
 .ui.inverted.green.buttons .button,
 .ui.inverted.green.button {
   background-color: transparent;
-  box-shadow: 0px 0px 0px 2px #2ecc40 inset !important;
-  color: #2ecc40;
+  box-shadow: 0px 0px 0px 2px #44ae0a inset !important;
+  color: #44ae0a;
 }
 
 .ui.inverted.green.buttons .button:hover,
@@ -2915,22 +2915,22 @@ input::selection {
 
 .ui.inverted.green.buttons .button:hover,
 .ui.inverted.green.button:hover {
-  background-color: #1ec231;
+  background-color: #389e01;
 }
 
 .ui.inverted.green.buttons .button:focus,
 .ui.inverted.green.button:focus {
-  background-color: #12c025;
+  background-color: #338f00;
 }
 
 .ui.inverted.green.buttons .active.button,
 .ui.inverted.green.active.button {
-  background-color: #18c82c;
+  background-color: #389f00;
 }
 
 .ui.inverted.green.buttons .button:active,
 .ui.inverted.green.button:active {
-  background-color: #25a233;
+  background-color: #317e07;
 }
 
 /* Inverted Basic */
@@ -2946,29 +2946,29 @@ input::selection {
 .ui.inverted.green.basic.buttons .button:hover,
 .ui.inverted.green.buttons .basic.button:hover,
 .ui.inverted.green.basic.button:hover {
-  box-shadow: 0px 0px 0px 2px #1ec231 inset !important;
-  color: #2ecc40 !important;
+  box-shadow: 0px 0px 0px 2px #389e01 inset !important;
+  color: #44ae0a !important;
 }
 
 .ui.inverted.green.basic.buttons .button:focus,
 .ui.inverted.green.basic.buttons .button:focus,
 .ui.inverted.green.basic.button:focus {
-  box-shadow: 0px 0px 0px 2px #12c025 inset !important;
-  color: #2ecc40 !important;
+  box-shadow: 0px 0px 0px 2px #338f00 inset !important;
+  color: #44ae0a !important;
 }
 
 .ui.inverted.green.basic.buttons .active.button,
 .ui.inverted.green.buttons .basic.active.button,
 .ui.inverted.green.basic.active.button {
-  box-shadow: 0px 0px 0px 2px #18c82c inset !important;
-  color: #2ecc40 !important;
+  box-shadow: 0px 0px 0px 2px #389f00 inset !important;
+  color: #44ae0a !important;
 }
 
 .ui.inverted.green.basic.buttons .button:active,
 .ui.inverted.green.buttons .basic.button:active,
 .ui.inverted.green.basic.button:active {
-  box-shadow: 0px 0px 0px 2px #25a233 inset !important;
-  color: #2ecc40 !important;
+  box-shadow: 0px 0px 0px 2px #317e07 inset !important;
+  color: #44ae0a !important;
 }
 
 /*--- Orange ---*/
@@ -3058,8 +3058,8 @@ input::selection {
 .ui.inverted.orange.buttons .button,
 .ui.inverted.orange.button {
   background-color: transparent;
-  box-shadow: 0px 0px 0px 2px #ff851b inset !important;
-  color: #ff851b;
+  box-shadow: 0px 0px 0px 2px #ff9e37 inset !important;
+  color: #ff9e37;
 }
 
 .ui.inverted.orange.buttons .button:hover,
@@ -3076,22 +3076,22 @@ input::selection {
 
 .ui.inverted.orange.buttons .button:hover,
 .ui.inverted.orange.button:hover {
-  background-color: #ff7701;
+  background-color: #ff921e;
 }
 
 .ui.inverted.orange.buttons .button:focus,
 .ui.inverted.orange.button:focus {
-  background-color: #f17000;
+  background-color: #ff8a0e;
 }
 
 .ui.inverted.orange.buttons .active.button,
 .ui.inverted.orange.active.button {
-  background-color: #ff7701;
+  background-color: #ff921e;
 }
 
 .ui.inverted.orange.buttons .button:active,
 .ui.inverted.orange.button:active {
-  background-color: #e76b00;
+  background-color: #ff8504;
 }
 
 /* Inverted Basic */
@@ -3107,29 +3107,29 @@ input::selection {
 .ui.inverted.orange.basic.buttons .button:hover,
 .ui.inverted.orange.buttons .basic.button:hover,
 .ui.inverted.orange.basic.button:hover {
-  box-shadow: 0px 0px 0px 2px #ff7701 inset !important;
-  color: #ff851b !important;
+  box-shadow: 0px 0px 0px 2px #ff921e inset !important;
+  color: #ff9e37 !important;
 }
 
 .ui.inverted.orange.basic.buttons .button:focus,
 .ui.inverted.orange.basic.buttons .button:focus,
 .ui.inverted.orange.basic.button:focus {
-  box-shadow: 0px 0px 0px 2px #f17000 inset !important;
-  color: #ff851b !important;
+  box-shadow: 0px 0px 0px 2px #ff8a0e inset !important;
+  color: #ff9e37 !important;
 }
 
 .ui.inverted.orange.basic.buttons .active.button,
 .ui.inverted.orange.buttons .basic.active.button,
 .ui.inverted.orange.basic.active.button {
-  box-shadow: 0px 0px 0px 2px #ff7701 inset !important;
-  color: #ff851b !important;
+  box-shadow: 0px 0px 0px 2px #ff921e inset !important;
+  color: #ff9e37 !important;
 }
 
 .ui.inverted.orange.basic.buttons .button:active,
 .ui.inverted.orange.buttons .basic.button:active,
 .ui.inverted.orange.basic.button:active {
-  box-shadow: 0px 0px 0px 2px #e76b00 inset !important;
-  color: #ff851b !important;
+  box-shadow: 0px 0px 0px 2px #ff8504 inset !important;
+  color: #ff9e37 !important;
 }
 
 /*--- Pink ---*/
@@ -4353,7 +4353,7 @@ input::selection {
 
 .ui.positive.buttons .button,
 .ui.positive.button {
-  background-color: #21ba45 !important;
+  background-color: #75c043 !important;
   color: #ffffff;
   text-shadow: none;
   background-image: none;
@@ -4365,21 +4365,21 @@ input::selection {
 
 .ui.positive.buttons .button:hover,
 .ui.positive.button:hover {
-  background-color: #13ae38 !important;
+  background-color: #67bb2f !important;
   color: #ffffff;
   text-shadow: none;
 }
 
 .ui.positive.buttons .button:focus,
 .ui.positive.button:focus {
-  background-color: #09a92f !important;
+  background-color: #5eb921 !important;
   color: #ffffff;
   text-shadow: none;
 }
 
 .ui.positive.buttons .button:active,
 .ui.positive.button:active {
-  background-color: #198f35 !important;
+  background-color: #5e9c34 !important;
   color: #ffffff;
   text-shadow: none;
 }
@@ -4387,7 +4387,7 @@ input::selection {
 .ui.positive.buttons .active.button,
 .ui.positive.active.button,
 .ui.positive.buttons .active.button:active {
-  background-color: #0fb335;
+  background-color: #66c029;
   color: #ffffff;
   text-shadow: none;
 }
@@ -6638,11 +6638,11 @@ a.ui.orange.header:hover {
 /* Inverted */
 
 .ui.inverted.orange.header {
-  color: #ff851b !important;
+  color: #ff9e37 !important;
 }
 
 a.ui.inverted.orange.header:hover {
-  color: #ff7701 !important;
+  color: #ff921e !important;
 }
 
 /*--- Olive ---*/
@@ -6696,25 +6696,25 @@ a.ui.inverted.yellow.header:hover {
 /*--- Green ---*/
 
 .ui.green.header {
-  color: #21ba45 !important;
+  color: #75c043 !important;
 }
 
 a.ui.green.header:hover {
-  color: #13ae38 !important;
+  color: #67bb2f !important;
 }
 
 .ui.green.dividing.header {
-  border-bottom: 2px solid #21ba45;
+  border-bottom: 2px solid #75c043;
 }
 
 /* Inverted */
 
 .ui.inverted.green.header {
-  color: #2ecc40 !important;
+  color: #44ae0a !important;
 }
 
 a.ui.inverted.green.header:hover {
-  color: #1ec231 !important;
+  color: #389e01 !important;
 }
 
 /*--- Teal ---*/
@@ -7306,7 +7306,7 @@ i.orange.icon {
 }
 
 i.inverted.orange.icon {
-  color: #ff851b !important;
+  color: #ff9e37 !important;
 }
 
 i.inverted.bordered.orange.icon,
@@ -7350,16 +7350,16 @@ i.inverted.circular.olive.icon {
 /* Green */
 
 i.green.icon {
-  color: #21ba45 !important;
+  color: #75c043 !important;
 }
 
 i.inverted.green.icon {
-  color: #2ecc40 !important;
+  color: #44ae0a !important;
 }
 
 i.inverted.bordered.green.icon,
 i.inverted.circular.green.icon {
-  background-color: #21ba45 !important;
+  background-color: #75c043 !important;
   color: #ffffff !important;
 }
 
@@ -11905,22 +11905,22 @@ a.ui.olive.label:hover:before {
 }
 
 .ui.olive.ribbon.label {
-  border-color: #198f35 !important;
+  border-color: #5e9c34 !important;
 }
 
 /*--- Green ---*/
 
 .ui.green.labels .label,
 .ui.green.label {
-  background-color: #21ba45 !important;
-  border-color: #21ba45 !important;
+  background-color: #75c043 !important;
+  border-color: #75c043 !important;
   color: #ffffff !important;
 }
 
 .ui.labels .green.label:before,
 .ui.green.labels .label:before,
 .ui.green.label:before {
-  background-color: #21ba45 !important;
+  background-color: #75c043 !important;
 }
 
 .ui.green.corner.label,
@@ -11930,19 +11930,19 @@ a.ui.olive.label:hover:before {
 
 a.ui.green.labels .label:hover,
 a.ui.green.label:hover {
-  background-color: #13ae38 !important;
-  border-color: #13ae38 !important;
+  background-color: #67bb2f !important;
+  border-color: #67bb2f !important;
   color: #ffffff !important;
 }
 
 .ui.labels a.green.label:hover:before,
 .ui.green.labels a.label:hover:before,
 a.ui.green.label:hover:before {
-  background-color: #13ae38 !important;
+  background-color: #67bb2f !important;
 }
 
 .ui.green.ribbon.label {
-  border-color: #198f35 !important;
+  border-color: #5e9c34 !important;
 }
 
 /*--- Teal ---*/
@@ -14820,11 +14820,11 @@ ol.ui.horizontal.list li:before,
 /* Green */
 
 .ui.green.segment:not(.inverted) {
-  border-top: 2px solid #21ba45;
+  border-top: 2px solid #75c043;
 }
 
 .ui.inverted.green.segment {
-  background-color: #21ba45 !important;
+  background-color: #75c043 !important;
   color: #ffffff !important;
 }
 
@@ -15479,7 +15479,7 @@ ol.ui.horizontal.list li:before,
 
 .ui.steps .step.completed > .icon:before,
 .ui.ordered.steps .step.completed:before {
-  color: #21ba45;
+  color: #75c043;
 }
 
 /* Disabled */
@@ -18502,7 +18502,7 @@ ol.ui.horizontal.list li:before,
 .ui.grid > .green.row,
 .ui.grid > .green.column,
 .ui.grid > .row > .green.column {
-  background-color: #21ba45 !important;
+  background-color: #75c043 !important;
   color: #ffffff;
 }
 
@@ -20339,8 +20339,8 @@ Floated Menu / Item
 
 .ui.menu .green.active.item,
 .ui.green.menu .active.item {
-  border-color: #21ba45 !important;
-  color: #21ba45 !important;
+  border-color: #75c043 !important;
+  color: #75c043 !important;
 }
 
 .ui.menu .teal.active.item,
@@ -20575,7 +20575,7 @@ Floated Menu / Item
 /* Green */
 
 .ui.inverted.green.menu {
-  background-color: #21ba45;
+  background-color: #75c043;
 }
 
 .ui.inverted.green.menu .item:before {
@@ -22269,11 +22269,11 @@ Floated Menu / Item
 /* Green */
 
 .ui.green.table {
-  border-top: 0.2em solid #21ba45;
+  border-top: 0.2em solid #75c043;
 }
 
 .ui.inverted.green.table {
-  background-color: #21ba45 !important;
+  background-color: #75c043 !important;
   color: #ffffff !important;
 }
 
@@ -23968,13 +23968,13 @@ a.ui.card:hover,
 .ui.green.cards > .card,
 .ui.cards > .green.card,
 .ui.green.card {
-  box-shadow: 0px 0px 0px 1px #d4d4d5, 0px 2px 0px 0px #21ba45, 0px 1px 3px 0px #d4d4d5;
+  box-shadow: 0px 0px 0px 1px #d4d4d5, 0px 2px 0px 0px #75c043, 0px 1px 3px 0px #d4d4d5;
 }
 
 .ui.green.cards > .card:hover,
 .ui.cards > .green.card:hover,
 .ui.green.card:hover {
-  box-shadow: 0px 0px 0px 1px #d4d4d5, 0px 2px 0px 0px #13ae38, 0px 1px 3px 0px #bcbdbd;
+  box-shadow: 0px 0px 0px 1px #d4d4d5, 0px 2px 0px 0px #67bb2f, 0px 1px 3px 0px #bcbdbd;
 }
 
 /* Teal */
@@ -25944,7 +25944,7 @@ a.ui.card:hover,
 .ui.green.statistics .statistic > .value,
 .ui.statistics .green.statistic > .value,
 .ui.green.statistic > .value {
-  color: #21ba45;
+  color: #75c043;
 }
 
 .ui.teal.statistics .statistic > .value,
@@ -26012,7 +26012,7 @@ a.ui.card:hover,
 .ui.inverted.orange.statistics .statistic > .value,
 .ui.statistics .inverted.orange.statistic > .value,
 .ui.inverted.orange.statistic > .value {
-  color: #ff851b;
+  color: #ff9e37;
 }
 
 .ui.inverted.yellow.statistics .statistic > .value,
@@ -26030,7 +26030,7 @@ a.ui.card:hover,
 .ui.inverted.green.statistics .statistic > .value,
 .ui.statistics .inverted.green.statistic > .value,
 .ui.inverted.green.statistic > .value {
-  color: #2ecc40;
+  color: #44ae0a;
 }
 
 .ui.inverted.teal.statistics .statistic > .value,
@@ -30197,7 +30197,7 @@ a.ui.nag {
 ---------------*/
 
 .ui.progress.success .bar {
-  background-color: #21ba45 !important;
+  background-color: #75c043 !important;
 }
 
 .ui.progress.success .bar,
@@ -30333,7 +30333,7 @@ a.ui.nag {
 }
 
 .ui.inverted.progress.success > .label {
-  color: #21ba45;
+  color: #75c043;
 }
 
 .ui.inverted.progress.warning > .label {
@@ -30420,7 +30420,7 @@ a.ui.nag {
 }
 
 .ui.orange.inverted.progress .bar {
-  background-color: #ff851b;
+  background-color: #ff9e37;
 }
 
 /* Yellow */
@@ -30446,11 +30446,11 @@ a.ui.nag {
 /* Green */
 
 .ui.green.progress .bar {
-  background-color: #21ba45;
+  background-color: #75c043;
 }
 
 .ui.green.inverted.progress .bar {
-  background-color: #2ecc40;
+  background-color: #44ae0a;
 }
 
 /* Teal */
@@ -31012,7 +31012,7 @@ a.ui.nag {
 
 .ui.search > .results .result .price {
   float: right;
-  color: #21ba45;
+  color: #75c043;
 }
 
 /*--------------
@@ -32942,11 +32942,11 @@ html.ios body {
 /* Green */
 
 .ui.green.table {
-  border-top: 0.2em solid #21ba45;
+  border-top: 0.2em solid #75c043;
 }
 
 .ui.inverted.green.table {
-  background-color: #21ba45 !important;
+  background-color: #75c043 !important;
   color: #ffffff !important;
 }
 

@@ -180,7 +180,7 @@
 ---------------*/
 
 .ui.progress.success .bar {
-  background-color: #21ba45 !important;
+  background-color: #75c043 !important;
 }
 .ui.progress.success .bar,
 .ui.progress.success .bar::after {
@@ -302,7 +302,7 @@
   color: #ffffff;
 }
 .ui.inverted.progress.success > .label {
-  color: #21ba45;
+  color: #75c043;
 }
 .ui.inverted.progress.warning > .label {
   color: #f2c037;
@@ -378,7 +378,7 @@
   background-color: #f2711c;
 }
 .ui.orange.inverted.progress .bar {
-  background-color: #ff851b;
+  background-color: #ff9e37;
 }
 
 /* Yellow */
@@ -399,10 +399,10 @@
 
 /* Green */
 .ui.green.progress .bar {
-  background-color: #21ba45;
+  background-color: #75c043;
 }
 .ui.green.inverted.progress .bar {
-  background-color: #2ecc40;
+  background-color: #44ae0a;
 }
 
 /* Teal */
