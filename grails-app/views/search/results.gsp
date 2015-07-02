@@ -142,7 +142,7 @@
 						</a>
 					</div>
 					<div class="center aligned column">
-						<a href="#" class="ui large facebook icon button">
+						<a href="mailto:?subject=${ java.net.URLEncoder.encode(query + ' - ' + ' checkFDA') }&body${ java.net.URLEncoder.encode('Check out what I found out about ' + query + ' on #checkFDA: ' + grailsApplication.config.grails.serverURL + '/results?q=' + query) }" class="ui large facebook icon button">
 							<i class="mail icon"></i>
 						</a>
 					</div>
