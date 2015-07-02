@@ -1,4 +1,5 @@
-function FilterSet() {
+function FilterSet(tableSelector) {
+	this.tableSelector = tableSelector;
 	this.filters = [];
 }
 
@@ -18,6 +19,16 @@ FilterSet.prototype = {
 		return this.filters.reduce(function(all, filter) {
 			return filter.apply(all)
 		}, data);
+	},
+	rerender: function(data) {
+		var data = this.apply(data);
+		$(this.tableSelector + ' tr').toArray().forEach(function(row, index) {
+			if (data[index]) {
+				$(row).show();
+			} else {
+				$(row).hide();
+			}
+		});
 	}
 }
 
@@ -30,12 +41,12 @@ function Filter(accessorFn, value) {
 Filter.prototype = {
 	apply: function(data) {
 		var self = this;
-		return data.filter(function(item) {
-			return self.accessorFn(item) == self.value;
+		return data.map(function(item) {
+			return item && self.accessorFn(item) == self.value ? item : false;
 		});
 	}
 }
 
 var filterSets = {
-	drugevents: new FilterSet()
+	drugevents: new FilterSet('#drugevents')
 }, id = 0;
