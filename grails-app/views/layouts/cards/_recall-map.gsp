@@ -17,11 +17,11 @@
 				}
 				if(!map[d][cur.status]) {
 					map[d][cur.status] = 0 ;
-				}	
+				}
 			    map[d]["recalls"]++
 				map[d][cur.status]++
 				if (map[d]["status"].indexOf(cur.status) == -1) map[d]["status"].push(cur.status);
-			}, []);	
+			}, []);
 			return map;
 		}, {});
 		var stateColorsMap = Object.keys(stateValuesMap).reduce(function(states, key) {
@@ -32,7 +32,7 @@
 			}
 			if(results.state.name == key){
 				stateValuesMap[key].fillKey= "Home"
-			}	
+			}
 			states[key]= stateValuesMap[key]
 			return states;
 		}, {});
@@ -42,12 +42,23 @@
 			responsive: true,
 			projection: 'mercator',
 			fills: {
-				Neutral : '<g:message code="widget.recall.map.Defualt.color"/>' ,
-				Ongoing : '<g:message code="widget.recall.map.Ongoing.color"/>' ,//'#EB5E66',//'#db2828',
-				Pending : '<g:message code="widget.recall.map.Pending.color"/>' ,//'#CC0',
-				Mixed : '<g:message code="widget.recall.map.Mixed.color"/>' , //'#FC8D59',
-				Home : '<g:message code="widget.recall.map.Home.color"/>' ,
+/*
+				Leaving this commented out until the new colors can be tested with data
+
+				Neutral    : '<g:message code="widget.recall.map.Defualt.color"/>' ,
+				Ongoing    : '<g:message code="widget.recall.map.Ongoing.color"/>' ,//'#EB5E66',//'#db2828',
+				Pending    : '<g:message code="widget.recall.map.Pending.color"/>' ,//'#CC0',
+				Mixed      : '<g:message code="widget.recall.map.Mixed.color"/>' , //'#FC8D59',
+				Home       : '<g:message code="widget.recall.map.Home.color"/>' ,
 				defaultFill: '<g:message code="widget.recall.map.Defualt.color"/>'//'#ABDDA4'
+*/
+
+				Neutral    : '<g:message code="color.lightGrey"/>',
+				Ongoing    : '<g:message code="color.red"/>',
+				Pending    : '<g:message code="color.yellow"/>',
+				Mixed      : '<g:message code="color.orange"/>',
+				Home       : '<g:message code="color.green"/>',
+				defaultFill: '<g:message code="color.lightGrey"/>'
 			},
 			data: stateColorsMap ,
 	        geographyConfig: {
@@ -55,7 +66,7 @@
 	            borderColor:'#FDFDFD',
 	            highlightOnHover: false,
 	            popupOnHover: true,
-	            popupTemplate: function(geo, data) {	           
+	            popupTemplate: function(geo, data) {
 		        	if(data!=null){
 	                   return '<div class="hoverinfo" style="padding:5px 10px;"><h4>' + geo.properties.name + '</h4>'
 	                   									+ '<div class="ui red message maphover"><i class="<g:message code="widget.recall.alert.Ongoing.icon"/> icon"></i> Ongoing: ' + data.Ongoing + '</div>'
@@ -70,8 +81,8 @@
 	            function redraw() {
 	                 datamap.svg.selectAll("g").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 	            }
-	        },       
-		 });	
+	        },
+		 });
 		 map.labels();
 		 //map.legend();
 		 function addMapLegend(layer, data, options) {
@@ -84,7 +95,7 @@
     		if ( data.legendTitle ) {
       			html = '<h1 class="ui header"> ' + data.legendTitle + '</h1>' + html;
     		}
-    		for ( var fillKey in this.options.fills ) {		
+    		for ( var fillKey in this.options.fills ) {
 		    	if ( fillKey === 'defaultFill') {
 		        	if (! data.defaultFillName ) {
 		          		continue;
@@ -97,7 +108,7 @@
 		          		label= fillKey + ' ';
 		        	}
 		      	}
-    
+
       			html += '<dd style="background-color:' +  this.options.fills[fillKey] + '">&nbsp;</dd>';
       			html += '<dt><h3>' + label + '</h3></dt>';
     		}
@@ -106,8 +117,8 @@
       			.attr('class', 'datamaps-legend')
       			.html(html);
 		}
-		map.addPlugin("customLegend", addMapLegend);	    
+		map.addPlugin("customLegend", addMapLegend);
 		map.customLegend({})
-				  
+
 	});
 </script>

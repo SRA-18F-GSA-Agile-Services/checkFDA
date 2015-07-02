@@ -3,6 +3,9 @@
 *******************************/
 
 @black: #000;
+@green: #75c043;
+@lightOrange: #ff9e37;
+@lightGreen: #44ae0a;
 
 @checkFDABlue:  #003152;
 @checkFDAGray:  #eee;
