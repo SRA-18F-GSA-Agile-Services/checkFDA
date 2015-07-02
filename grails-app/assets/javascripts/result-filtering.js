@@ -6,12 +6,20 @@ function FilterSet(dataset, tableSelector, labelSelector) {
 }
 
 FilterSet.prototype = {
+	getFilters: function(value, label) {
+		var string = new Filter(null, null, value, label).toString();
+		return this.filters.filter(function(filter) {
+			return string == filter.toString();
+		});
+	},
 	addFilter: function(accessorFn, value, label) {
-		this.filters.push(new Filter(this.dataset, accessorFn, value, label));
+		if (this.getFilters(value, label).length == 0) {
+			this.filters.push(new Filter(this.dataset, accessorFn, value, label));
+		}
 		return this.filters;
 	},
-	removeFilter: function(id) {
-		var filters = this.filters.filter(function(f) { return f.id == id; });
+	removeFilter: function(string) {
+		var filters = this.filters.filter(function(f) { return f.toString() == string; });
 		if (filters.length == 1) {
 			this.filters.splice(this.filters.indexOf(filters[0]), 1);
 		}
@@ -42,10 +50,12 @@ function Filter(dataset, accessorFn, value, label) {
 	this.accessorFn = accessorFn;
 	this.value = value;
 	this.label = label;
-	this.id = id++;
 }
 
 Filter.prototype = {
+	toString: function() {
+		return this.label + ': ' + this.value;
+	},
 	apply: function(data) {
 		var self = this;
 		return data.map(function(item) {
@@ -53,8 +63,8 @@ Filter.prototype = {
 		});
 	},
 	renderLabel: function() {
-		var html = '<a class="ui label" onclick="removeFilter(\'' + this.dataset + '\', ' + this.id + ')">';
-		html += this.label + ': ' + this.value;
+		var html = '<a class="ui label" onclick="removeFilter(\'' + this.dataset + '\', \'' + this.toString() + '\')">';
+		html += this.toString();
 		html += '<i class="icon close"></i>';
 		html += '</a>';
 		return html;
@@ -63,7 +73,7 @@ Filter.prototype = {
 
 var filterSets = {
 	drugevents: new FilterSet('drugevents', '#drugevents', '#drugevents-labels')
-}, id = 0;
+};
 
 function removeFilter(dataset, id) {
 	var filterSet = filterSets[dataset];
