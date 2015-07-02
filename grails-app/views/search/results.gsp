@@ -68,7 +68,10 @@
 							</tbody>
 						</table>
 					</div>
-					<g:render template="/layouts/cards/recall-map" />
+					<g:set var="states" value="${ results.recalls.grep { it.distribution_states} }" />
+					<g:if test="${ states.size() != 0 }">
+						<g:render template="/layouts/cards/recall-map" />
+					</g:if>
 					<g:render template="/layouts/cards/recall-timeline" />
 				</g:if>
 				<g:set var="labels" value="${ results.labels.grep { it.openfda?.brand_name && it.openfda?.generic_name } }" />
@@ -109,13 +112,13 @@
 		</div>
 		<script>
 
-		<g:applyCodec encodeAs="none">
+		<g:applyCodec encodeAs="none">		
 			var recalls = ${ results ? recalls as JSON : "[]" };
 			var labels = ${ results ? labels as JSON : "[]" };
 			var events = ${ results ? results.events as JSON : "[]" };
 			var homeState = ${ results ? results.state as JSON : "[]"  };
 			var query = '${query }' ;
-			var results = {recalls: recalls, labels: labels, events: events, state: homeState, query :query};			
+			var results = {recalls: recalls, labels: labels, events: events, state: homeState, query :query};	
 		</g:applyCodec>
 			$(function() {
 				searchInit();
