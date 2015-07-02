@@ -31,7 +31,11 @@ function getLocationPermission() {
 function getLocation() {
 	if(retrieveUserPermission(locationKey)=='Yes'){
 		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(locationSuccess,locationError);
+			navigator.geolocation.getCurrentPosition(locationSuccess,locationError,{
+			      enableHighAccuracy : false,
+			      timeout    : 5000,
+			      maximumAge : 60000
+			    });
 		} else {
 			console.log("Geolocation is not supported by this browser");
 			saveUserResponse(locationKey, 'Not Supported');

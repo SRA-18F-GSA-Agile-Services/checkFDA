@@ -43,8 +43,6 @@ class SearchController {
     }
 
     def results(String q, String lat, String lng) {
-		Long llat = null
-		Long llng =  null
 		Double dlat = null
 		Double dlng = null
 		String state = ""
@@ -69,7 +67,7 @@ class SearchController {
         }
 
         def truncatedQuery = q.take(Query.SEARCH_MAX_SIZE)
-        Query searchQuery = new Query(search: truncatedQuery, lat: llat, lng: llng)
+        Query searchQuery = new Query(search: truncatedQuery, lat: dlat, lng: dlng)
 
         if (!searchQuery.validate()) {
             return [beanWithErrors: searchQuery, query: truncatedQuery, results: null]
