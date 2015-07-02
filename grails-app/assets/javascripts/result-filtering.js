@@ -69,7 +69,7 @@ Filter.prototype = {
 		return data.map(function(item) {
 			if (item) {
 				var accessedValue = self.accessorFn(item);
-				if (accessedValue.length) {
+				if ($.isArray(accessedValue)) {
 					return accessedValue.indexOf(self.value) != -1 ? item : false;
 				} else {
 					return accessedValue == self.value ? item : false;
