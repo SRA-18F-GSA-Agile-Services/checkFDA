@@ -158,10 +158,10 @@
 						<li>Special nutritional products</li>
 					</ul>
 					<div class="center-aligned">
-						<a href="#" class="ui big button">Begin a Report</a>
+						<a href="https://www.accessdata.fda.gov/scripts/medwatch/index.cfm?action=consumer.reporting1" class="ui big button" target="_blank">Begin a Report</a>
 					</div>
 					<div class="center-aligned">
-						<a href="#" class="basic">Begin a report as health professional</a>
+						<a href="https://www.accessdata.fda.gov/scripts/medwatch/index.cfm?action=professional.reporting1" class="basic" target="_blank">Begin a report as health professional</a>
 					</div>
 				</div>
 			</div>
