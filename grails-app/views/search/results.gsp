@@ -161,8 +161,7 @@
 			var labels = ${ results ? labels as JSON : "[]" };
 			var events = ${ results ? results.events as JSON : "[]" };
 			var homeState = ${ results ? results.state as JSON : "[]"  };
-			var query = '${query }' ;
-			var results = {recalls: recalls, labels: labels, events: events, drugevents: events.filter(function(e) { return e.dataset == 'drug/event'; }), deviceevents: events.filter(function(e) { return e.dataset == 'device/event'; }), state: homeState, query :query};	
+			var results = {recalls: recalls, labels: labels, events: events, drugevents: events.filter(function(e) { return e.dataset == 'drug/event'; }), deviceevents: events.filter(function(e) { return e.dataset == 'device/event'; }), state: homeState};	
 		</g:applyCodec>
 			$(function() {
 				searchInit();

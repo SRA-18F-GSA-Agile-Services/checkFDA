@@ -134,5 +134,5 @@
 		var hoverover = d3.select( this.options.element ).append('div')
 			.attr('class', 'datamaps-legend')
 			.html(html);
-	}	
+	}
 </script>
