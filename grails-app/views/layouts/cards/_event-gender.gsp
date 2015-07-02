@@ -42,7 +42,7 @@
 					filterSet.addFilter(function(item) {
 						return genders[item.patient.patientsex];
 					}, d.name, 'Sex', Object.keys(genderMap));
-					filterSet.rerender(drugEvents);
+					filterSet.rerender();
 				}
 			},
 			legend: {

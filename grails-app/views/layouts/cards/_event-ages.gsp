@@ -46,7 +46,7 @@
 						var floor = Math.floor(age / 10) * 10;
 						return age ? floor + 's' : '<g:message code="widget.event.ages.unknown"/>';
 					}, Object.keys(ageMap)[d.index], 'Age', Object.keys(ageMap));
-					filterSet.rerender(drugEvents);
+					filterSet.rerender();
 				}
 		    },
 		    color: {

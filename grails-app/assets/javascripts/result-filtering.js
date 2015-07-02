@@ -66,7 +66,16 @@ Filter.prototype = {
 	apply: function(data) {
 		var self = this;
 		return data.map(function(item) {
-			return item && self.accessorFn(item) == self.value ? item : false;
+			if (item) {
+				var accessedValue = self.accessorFn(item);
+				if (accessedValue.length) {
+					return accessedValue.indexOf(self.value) != -1 ? item : false;
+				} else {
+					return accessedValue == self.value ? item : false;
+				}
+			} else {
+				return item;
+			}
 		});
 	},
 	renderLabel: function() {
@@ -79,7 +88,8 @@ Filter.prototype = {
 }
 
 var filterSets = {
-	drugevents: new FilterSet('drugevents', '#drugevents', '#drugevents-labels')
+	drugevents: new FilterSet('drugevents', '#drugevents', '#drugevents-labels'),
+	deviceevents: new FilterSet('deviceevents', '#deviceevents', '#deviceevents-labels')
 };
 
 function removeFilter(dataset, value, label) {

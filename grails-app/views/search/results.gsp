@@ -116,6 +116,7 @@
 						<h2 id="deviceevents-header" class="ui header">
 							<g:message code="widget.results.event.device.header" args="${ [deviceEvents.size()] }" />
 						</h2>
+						<div id="deviceevents-labels" class="ui labels"></div>
 						<div id="deviceevents-card"></div>
 						<div class="card-table-wrapper">
 							<table id="deviceevents" class="ui small compact selectable unstackable table card-table deviceevents">
