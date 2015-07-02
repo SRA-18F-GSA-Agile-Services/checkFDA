@@ -1,4 +1,4 @@
-<div class="ui fluid card maps" >
+<div class="ui fluid card" >
 	<div class="content">
 		<h2 class="header"><g:message code="widget.recall.map.header"/></h2>
 		<div id="container" class="map"></div>
@@ -45,7 +45,6 @@
 			element: document.getElementById('container'),
 			scope: 'usa',
 			responsive: true,
-			projection: 'mercator',
 			fills: {
 				Ongoing : '<g:message code="widget.recall.map.Ongoing.color"/>' ,
 				Pending : '<g:message code="widget.recall.map.Pending.color"/>' ,
@@ -92,8 +91,12 @@
 		            return ['<div class="hoverinfo popupInfo"><h4> User Location: ' +  data.name + '</h4></div>'].join('');
 			    }
 		    });
-		}		  
+		}
+		window.addEventListener('resize', function(event){
+             map.resize();
+		});		  
 	});
+	
 	function addMapLegend(layer, data, options) {
 		  data = data || {};
 		  if ( !this.options.fills ) {
@@ -128,6 +131,7 @@
 			.attr('class', 'datamaps-legend')
 			.html(html);
 	}
+	
 	function  addSearchFilter (state ){
 		$('#query').val(results.query+ " "+state) ;
  		checkUserPermission();
