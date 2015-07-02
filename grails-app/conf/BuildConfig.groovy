@@ -63,12 +63,10 @@ grails.project.dependency.resolution = {
         runtime ":hibernate4:4.3.8.1"
         compile ":asset-pipeline:2.3.2"
 		compile ":scaffolding:2.1.2"
-//		compile ":searchable:0.6.9"
 
         build ':tomcat:7.0.55.2'
-		compile ":spring-security-ui:1.0-RC2"
+
 		compile ":spring-security-core:2.0-RC5"
-		compile ":jquery-ui:1.10.4"
 		compile ":geocode:0.3"
         compile ":grails-melody:1.56.0"
 
