@@ -63,7 +63,7 @@
 	            popupTemplate: function(geo, data) {
 		            var html = '<div class="hoverinfo popupInfo" ><h4>' + geo.properties.name + '</h4>' ;
 		            if(data){ 
-			            html +=	'<div class="ui red message maphover"><i class="<g:message code="widget.recall.alert.Ongoing.icon"/> icon"></i> Ongoing: ' + data.Ongoing + '</div>'+
+			            html +=	'<div class="ui red message maphover"><i class="<g:message code="widget.recall.alert.Ongoing.icon"/> icon"></i> Ongoing: ' + ((data.Ongoing)? data.Pending : '0')  + '</div>'+
 								'<div class="ui attached yellow message maphover"><i class="<g:message code="widget.recall.alert.Pending.icon"/> icon"></i> Pending: ' + ((data.Pending)? data.Pending : '0') +'</div>'+
 	                   			'<h4>Total Recalls : ' + data.recalls  +'</h4>';                   		   
 		            } else {
