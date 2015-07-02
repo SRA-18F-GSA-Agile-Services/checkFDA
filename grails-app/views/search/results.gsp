@@ -137,7 +137,7 @@
 						</a>
 					</div>
 					<div class="center aligned column">
-						<a href="#" class="ui large red icon button">
+						<a href="https://www.pinterest.com/pin/create/button/?url=${ java.net.URLEncoder.encode(grailsApplication.config.grails.serverURL + '/results?q=' + query) }&description=${ java.net.URLEncoder.encode('Check out what I found out about ' + query + ' on checkFDA') }" class="ui large red icon button" target="_blank">
 							<i class="pinterest icon"></i>
 						</a>
 					</div>
