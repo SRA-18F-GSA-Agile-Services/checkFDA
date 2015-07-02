@@ -83,6 +83,17 @@
 	            }
 	        },
 		 });
+		var allStates = $('.datamaps-subunit').toArray().map(function(d) {
+			return $(d).attr('class').split(' ')[1];
+		});
+		$('.datamaps-subunit').click(function() {
+			var state = $(this).attr('class').split(' ')[1];
+			var filterSet = filterSets['recalls'];
+			filterSet.addFilter(function(item) {
+				return item.distribution_states;
+			}, state, 'State', allStates);
+			filterSet.rerender();
+		});
 		 map.labels();
 		 //map.legend();
 		 function addMapLegend(layer, data, options) {
