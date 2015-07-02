@@ -55,9 +55,9 @@
 			data: stateColorsMap ,
 	        geographyConfig: {
 		        borderWidth: 1,
-	            borderColor:'#FDFDFD',
+	            borderColor:'#EDEDED',
 	            highlightBorderColor: '#bada55',
-	            highlightFillColor: 'lightblue',
+	            highlightFillColor: '#add8e6',
 	            highlightOnHover: true,
 	            popupOnHover: true,
 	            popupTemplate: function(geo, data) {
@@ -76,7 +76,6 @@
 	        	datamap.svg.selectAll('.datamaps-subunit').on('click', function(geo) {
 	               addSearchFilter (geo.id )
 	            });
-	           // datamap.svg.call(d3.behavior.zoom().on("zoom", redraw));
 	            function redraw() {
 	                 datamap.svg.selectAll("g").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 	            }
