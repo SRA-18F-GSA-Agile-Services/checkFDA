@@ -64,7 +64,7 @@
 				<g:set var="currentRecalls" value="${ recalls.grep { it.status in ['Ongoing', 'Pending'] } }" />
 				<g:if test="${ recalls.size() != 0 }">
 					<h1 id="recalls-header" class="ui header">
-						<g:message code="widget.results.recall.header" args="${ [currentRecalls.size()] }" /> <i>${ query }</i>
+						<g:message code="widget.results.recall.header" args="${ [query, currentRecalls.size()] }" /><!--  <i>${ query }</i> -->
 					</h1>
 					<div class="ui divider"></div>
 					<div id="recalls-card"></div>
@@ -82,10 +82,23 @@
 					<g:render template="/layouts/cards/recall-map" />
 					<g:render template="/layouts/cards/recall-timeline" />
 				</g:if>
+				<g:if test="${ results.events.size() != 0 }">
+					<h1 class="ui header">
+						<g:message code="widget.results.event.header" args="${[query, results.events.size()]}"/>
+					</h1>
+					<div class="ui divider"></div>
+					<div class="ui one cards">
+						<g:render template="/layouts/cards/event-outcomes" />
+					</div>
+					<div class="ui two cards">
+						<g:render template="/layouts/cards/event-gender" />
+						<g:render template="/layouts/cards/event-ages" />
+					</div>
+				</g:if>
 				<g:set var="labels" value="${ results.labels.grep { it.openfda?.brand_name && it.openfda?.generic_name } }" />
 				<g:if test="${ labels.size() != 0 }">
 					<h1 id="labels-header" class="ui header">
-						<g:message code="widget.results.label.header" args="${ [labels.size()] }" /> <i>${ query }</i>
+						<g:message code="widget.results.label.header" args="${ [query, labels.size()] }" /><!--  <i>${ query }</i> -->
 					</h1>
 					<div class="ui divider"></div>
 					<div id="labels-card"></div>

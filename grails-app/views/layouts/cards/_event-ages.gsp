@@ -41,7 +41,7 @@
 		        type : 'bar'
 		    },
 		    color: {
-				pattern: ['#ffd7b5']
+				pattern: ['<g:message code="color.blue"/>']
 			},
 		    legend: {
 				show: false
