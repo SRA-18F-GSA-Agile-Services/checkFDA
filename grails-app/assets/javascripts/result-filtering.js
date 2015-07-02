@@ -48,6 +48,7 @@ FilterSet.prototype = {
 		$(this.labelSelector).html(this.filters.map(function(filter) {
 			return filter.renderLabel();
 		}).join(''));
+		selectFirstCard(this.tableSelector);
 		jump(this.dataset + '-header');
 	}
 }

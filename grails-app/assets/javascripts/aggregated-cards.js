@@ -2,8 +2,11 @@ function addRowListeners(tableIdentifier) {
 	$(tableIdentifier + ' tr').click(function() {
 		selectDetailCard(this);
 	});
-	if ($(tableIdentifier + ' tr').length) {
-		selectDetailCard($(tableIdentifier + ' tr').first(), true);
+}
+
+function selectFirstCard(tableIdentifier) {
+	if ($(tableIdentifier + ' tr:visible').length) {
+		selectDetailCard($(tableIdentifier + ' tr:visible').first(), true);
 	}
 }
 
