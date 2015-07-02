@@ -63,7 +63,6 @@ grails.project.dependency.resolution = {
         runtime ":hibernate4:4.3.8.1"
         compile ":asset-pipeline:2.3.2"
 		compile ":scaffolding:2.1.2"
-//		compile ":searchable:0.6.9"
 
         build ':tomcat:7.0.55.2'
 

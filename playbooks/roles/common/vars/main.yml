@@ -6,3 +6,6 @@ searchfda_mysql_password: searchfda_pass
 searchfda_mysql_db: searchfda_db
 searchfda_webapp_filename: ROOT.war
 tomcat_javaopts: -Xms256m -Xmx1024m -XX:PermSize=512m -XX:MaxPermSize=512m
+# If you want to make the API token non-null, please add nested double and single quotation marks around it like this:
+# openfda_api_token: "'my_token'".
+openfda_api_token: null

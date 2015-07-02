@@ -10,12 +10,13 @@ import org.codehaus.groovy.grails.web.util.WebUtils
 class OpenFDAService {
 	
 	GrailsApplication grailsApplication
-	final String urlBase="https://api.fda.gov/" //baseURL for Open FDA API
+
 	static long lastQuery=0 //when did our last query take place
 	final long millis=1000*60/240 //how long we have to wait between queries
+
 	Object lock=new Object() //force the threads to move through in single file
 
-	def String 	query(String dataset,String query,int limit=100,int skip=0) {
+	def String query(String datasetUri, String query, int limit=100, int skip=0) {
 		def queryMap = [search: query, limit: limit, skip: skip]
 
 		String apiToken = grailsApplication.config.openfdaapi.token //get api token from our config
@@ -26,12 +27,13 @@ class OpenFDAService {
 
 		String paramsString = encodeQueryParams(queryMap)
 
-		String url = urlBase + dataset + ".json" + paramsString
+		String url = datasetUri + paramsString
 
 		log.debug("Attempting call to FDA API with url '${url}'")
 
 		int retries=3
 		String result=null //variable for json result from url
+
 		synchronized(lock) {
 			while(retries-->0) {
 				try {

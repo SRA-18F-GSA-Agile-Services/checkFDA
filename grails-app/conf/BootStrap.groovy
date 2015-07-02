@@ -1,3 +1,4 @@
+import com.sra.searchfda.domain.DataSet
 import com.sra.searchfda.domain.Role
 import com.sra.searchfda.domain.User
 import com.sra.searchfda.domain.UserRole
@@ -21,10 +22,26 @@ class BootStrap {
 				createUser('admin','stbadmin2014',adminRole)
 				createUser('user','stbuser2014',userRole)
 			}
+
+			if (DataSet.list().size() == 0) {
+				initDataSets()
+			}
 		} catch (Exception e) {
 			log.error("Exception during bootstrap init", e)
 		}
 	}
 	def destroy = {
+	}
+
+	void initDataSets() {
+		new DataSet(name: "FDA_DRUG_EVENT_ENDPOINT", url: "https://api.fda.gov/drug/event.json", path:"drug/event", groupName:"events", description: "FDA api endpoint url for adverse drug event reports since 2004").save(flush: true, failOnError: true)
+		new DataSet(name: "FDA_DRUG_LABEL_ENDPOINT", url: "https://api.fda.gov/drug/label.json", path:"drug/label", groupName:"labels", description: "FDA api endpoint url for Prescription and over-the-counter (OTC) drug labeling").save(flush: true, failOnError: true)
+		new DataSet(name: "FDA_DRUG_ENFORCEMENT_ENDPOINT", url: "https://api.fda.gov/drug/enforcement.json", path:"drug/enforcement", groupName:"recalls", description: "FDA api endpoint url for Drug recall enforcement reports since 2004").save(flush: true, failOnError: true)
+
+		new DataSet(name: "FDA_DEVICE_ENFORCEMENT_ENDPOINT", url: "https://api.fda.gov/device/enforcement.json", path:"device/enforcement", groupName:"recalls", description: "FDA api endpoint url for Device recall enforcement reports since 2004").save(flush: true, failOnError: true)
+		new DataSet(name: "FDA_DEVICE_EVENT_ENDPOINT", url: "https://api.fda.gov/device/event.json", path:"device/event", groupName:"events", description: "FDA api endpoint url for Device adverse event reports over time").save(flush: true, failOnError: true)
+
+		new DataSet(name: "FOOD_ENFORCEMENT_ENDPOINT", url: "https://api.fda.gov/food/enforcement.json", path:"food/enforcement", groupName:"recalls", description: "FDA api endpoint url for Food recall enforcement reports since 2004").save(flush: true, failOnError: true)
+
 	}
 }

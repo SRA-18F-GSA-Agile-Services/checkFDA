@@ -1,5 +1,6 @@
 package com.sra.searchfda.service
 
+import com.sra.searchfda.domain.DataSet
 import grails.converters.JSON
 import grails.transaction.Transactional
 import groovyx.gpars.GParsPool
@@ -11,26 +12,12 @@ class SearchService {
 
 	static final int MAXRESULTS=500 //maximum results desired from each database
 	static final boolean USEFILTERING=true
+
 	GrailsApplication grailsApplication
 	OpenFDAService openFDAService
 	StateService stateService
-	/*
-	static int maxResults=500 //maximum results desired from each database
-	boolean useFiltering=true
-	def grailsApplication
-	def openFDAService
-	*/
-	Map datasetTotals=new HashMap()
-	static final List<Map> DATASETS=[ //dataset names
-	//List<Map> datasets=[
-		//dataset names
-		[path:"food/enforcement",group:"recalls"],
-		[path:"drug/label",group:"labels"],
-		[path:"drug/event",group:"events"],
-		[path:"drug/enforcement",group:"recalls"],
-		[path:"device/event",group:"events"],
-		[path:"device/enforcement",group:"recalls"]
-	]
+
+	Map datasetTotals = new HashMap()
 
 	Map executeSearch(String query) {
 		if (grailsApplication.config.checkfda.localData) {
@@ -39,19 +26,22 @@ class SearchService {
 		return parallelFederatedSearch(query)
 	}
 	
-	Integer getDatasetTotal(Map dataset) {
-		Integer total=datasetTotals[dataset.path]
+	Integer getDatasetTotal(DataSet dataset) {
+		Integer total = datasetTotals[dataset.name] as Integer
 		if (total!=null) return(total)
-		String result=openFDAService.query(dataset.path,"",1,0) //get a result from open fda
+
+		String result=openFDAService.query(dataset.url,"",1,0) //get a result from open fda
+
 		if (result==null) {
-			log.warn("dataset "+dataset.path+" empty count query gave null response")
+			log.warn("dataset " + dataset.url + " empty count query gave null response")
 			//datasetTotals[dataset.path]=0
 			return(0)
 		}
+
 		Map srch=JSON.parse(result) //parse the json into a map
 		total=srch.meta.results.total
 		//println("total="+total)
-		datasetTotals[dataset.path]=total
+		datasetTotals[dataset.name] = total
 		return(total)
 	}
 
@@ -64,10 +54,11 @@ class SearchService {
 		long t0=System.currentTimeMillis()
         Map<List<Map>> results = [:]
 		Map meta=new HashMap()
-        DATASETS.each { ds -> //iterate across each dataset
+
+		DataSet.list().each { DataSet dataSet -> //iterate across each dataset
 			//iterate across each dataset
-			Map result=filterResults(ds,search(ds,parseQueryTerms(query))) //get search results for the dataset
-			processSearchResult(results,result,meta,ds.group,ds.path)
+			Map result=filterResults(dataSet,search(dataSet,parseQueryTerms(query))) //get search results for the dataset
+			processSearchResult(results,result,meta,dataSet.groupName,dataSet.path)
 		}
 		long t1=System.currentTimeMillis()
 		log.info("Serial Federated Search Time:"+(t1-t0))
@@ -99,10 +90,13 @@ class SearchService {
 		Map<String,List<Map>> results=new HashMap<String,List<Map>>()
 		List<Map> presults=null
 		Map meta=new HashMap()
-		GParsPool.withPool(DATASETS.size()) {
-			presults=DATASETS.collectParallel { ds ->
+
+		List<DataSet> dataSets = DataSet.list()
+
+		GParsPool.withPool(dataSets.size()) {
+			presults=dataSets.collectParallel { ds ->
 				Map result=filterResults(ds,search(ds,parseQueryTerms(query))) //get search results for the dataset
-				[group:ds.group,result:result,ds:ds.path]
+				[group:ds.groupName,result:result,ds:ds.path]
 			}
 		}
 		Set<String> usedGroups=new HashSet<String>()
@@ -149,12 +143,12 @@ class SearchService {
 	 * Perform a search against the desired dataset with the given query returning
 	 * a List of Maps.
 	 */
-	private Map search(dataset,String query) {
+	protected Map search(DataSet dataset,String query) {
 		int count=0 // count of results for far
 		HashMap meta=[:]
 		List<Map> results=[] //to accumulate results
 		while(true) { //while we still have results
-			String result=openFDAService.query(dataset.path,query,100,count) //get a result from open fda
+			String result=openFDAService.query(dataset.url, query, 100, count) //get a result from open fda
 			if (result==null) break
 				Map js=JSON.parse(result) //parse the json into a map
 			int total=js.meta.results.total //get the total for the overall query
@@ -172,8 +166,9 @@ class SearchService {
 
     Map federatedSearchMock() {
         Map<List<Map>> results = [:]
-        DATASETS.each { ds ->
-            String group = ds.group
+
+		DataSet.list().each { ds ->
+            String group = ds.groupName
             results[group] = results[group] ?: []
             results[group] += JSON.parse(grailsApplication.parentContext.getResource("data/OpenFDA-" + ds.path.split('/').join('-') + ".txt")?.file?.getText() ?: "{results: []}").results
         }
@@ -195,16 +190,16 @@ class SearchService {
         return (filters)
     }
 
-	private void addDerivedFields(Map dataset,Map result,Map resultMap) {
+	private void addDerivedFields(DataSet dataset, Map result,Map resultMap) {
 		  resultMap.dataset=dataset.path //add a dataset field
-		  if (dataset.group=="recalls") {
+		  if (dataset.groupName=="recalls") {
 			  if (result.distribution_pattern!=null) {
 			    resultMap.distribution_states=stateService.getStates(result.distribution_pattern)
 			  }
 		  }
 	}
 
-	private Map filterResults(Map dataset,Map results) {
+	private Map filterResults(DataSet dataset, Map results) {
 		if (!USEFILTERING) return(results)
 		List<String> filters=loadFilters()
 		List<Map> newMap=[]
@@ -212,7 +207,7 @@ class SearchService {
 			Map resultMap=[:]
 			addDerivedFields(dataset,result,resultMap)
 			for(String filter:filters) {
-				if (filter.startsWith(dataset.group+".")) {
+				if (filter.startsWith(dataset.groupName+".")) {
 					String[] path=filter.split("\\.").tail()
 					filterResult(path,resultMap,result)
 				}
@@ -255,13 +250,12 @@ class SearchService {
     }
 
     String parseQueryTerms(String queryString) {
-        String parsedQuery
         List nonQuotedTerms = Arrays.asList(queryString.replaceAll(/"(.*?)"/, '').split())
         List quotedTerms = (queryString =~ /"(.*?)"/).collect { it[0] }
 
         List allTerms = quotedTerms + nonQuotedTerms
 
-        parsedQuery = allTerms.join(" AND ")
+        String parsedQuery = allTerms.join(" AND ")
 
         parsedQuery
     }
