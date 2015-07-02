@@ -1,4 +1,4 @@
-<div class="ui fluid card maps" >
+<div class="ui fluid card" >
 	<div class="content">
 		<h2 class="header"><g:message code="widget.recall.map.header"/></h2>
 		<div id="container" class="map"></div>
@@ -6,6 +6,7 @@
 </div>
 <script>
 	var map
+	var userLocation
 	$(function() {
 		var recallStates = $.grep(results.recalls, function(event) {
 			return $.inArray( event.status , ['Ongoing', 'Pending'] ) > -1 && event.distribution_states!=null && event.distribution_states.length > 0;
@@ -31,8 +32,12 @@
 				stateValuesMap[key].fillKey= stateValuesMap[key].status[0]
 			}
 			if(results.state.name == key){
-				stateValuesMap[key].fillKey= "Home"
-			}
+				userLocation =[{ name:results.state.name,
+								latitude: results.state.latitude , 
+								longitude:results.state.longitude , 
+								radius: 10, 
+								fillKey: 'Home'}]
+			}	
 			states[key]= stateValuesMap[key]
 			return states;
 		}, {});
@@ -40,7 +45,6 @@
 			element: document.getElementById('container'),
 			scope: 'usa',
 			responsive: true,
-			projection: 'mercator',
 			fills: {
 /*
 				Leaving this commented out until the new colors can be tested with data
@@ -52,8 +56,6 @@
 				Home       : '<g:message code="widget.recall.map.Home.color"/>' ,
 				defaultFill: '<g:message code="widget.recall.map.Defualt.color"/>'//'#ABDDA4'
 */
-
-				Neutral    : '<g:message code="color.lightGrey"/>',
 				Ongoing    : '<g:message code="color.red"/>',
 				Pending    : '<g:message code="color.yellow"/>',
 				Mixed      : '<g:message code="color.orange"/>',
@@ -63,41 +65,58 @@
 			data: stateColorsMap ,
 	        geographyConfig: {
 		        borderWidth: 1,
-	            borderColor:'#FDFDFD',
-	            highlightOnHover: false,
+	            borderColor:'#EDEDED',
+	            highlightBorderColor: '#bada55',
+	            highlightFillColor: '#add8e6',
+	            highlightOnHover: true,
 	            popupOnHover: true,
 	            popupTemplate: function(geo, data) {
-		        	if(data!=null){
-	                   return '<div class="hoverinfo" style="padding:5px 10px;"><h4>' + geo.properties.name + '</h4>'
-	                   									+ '<div class="ui red message maphover"><i class="<g:message code="widget.recall.alert.Ongoing.icon"/> icon"></i> Ongoing: ' + data.Ongoing + '</div>'
-	                   									+ '<div class="ui attached yellow message maphover"><i class="<g:message code="widget.recall.alert.Pending.icon"/> icon"></i> Pending: ' + ((data.Pending)? data.Pending : '0') +'</div>'
-	                   									+ '<div class="maphover">Total Recalls : ' + data.recalls  +'</div>'
-	                   		  '</div>';
-		            }
+		            var html = '<div class="hoverinfo popupInfo" ><h4>' + geo.properties.name + '</h4>' ;
+		            if(data){ 
+			            html +=	'<div class="ui red message maphover"><i class="<g:message code="widget.recall.alert.Ongoing.icon"/> icon"></i> Ongoing: ' + ((data.Ongoing)? data.Pending : '0')  + '</div>'+
+								'<div class="ui attached yellow message maphover"><i class="<g:message code="widget.recall.alert.Pending.icon"/> icon"></i> Pending: ' + ((data.Pending)? data.Pending : '0') +'</div>'+
+	                   			'<h4>Total Recalls : ' + data.recalls  +'</h4>';                   		   
+		            } else {
+			            html +='<h4>Total Recalls : 0</h4>';	 	
+			        }
+			        return html+ '</div>';
 	            }
 	        },
 	        done: function(datamap) {
-	           // datamap.svg.call(d3.behavior.zoom().on("zoom", redraw));
 	            function redraw() {
 	                 datamap.svg.selectAll("g").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 	            }
-	        },
-		 });
-		 map.labels();
-		 //map.legend();
-		 function addMapLegend(layer, data, options) {
-			  data = data || {};
-			  if ( !this.options.fills ) {
-		      	return;
-		      }
-			var html = '<dl>';
-    		var label = '';
-    		if ( data.legendTitle ) {
-      			html = '<h1 class="ui header"> ' + data.legendTitle + '</h1>' + html;
-    		}
-    		for ( var fillKey in this.options.fills ) {
-		    	if ( fillKey === 'defaultFill') {
-		        	if (! data.defaultFillName ) {
+	        },       
+		 });	
+		 map.labels({fontSize: 11 }) 
+		 map.addPlugin("customLegend", addMapLegend);	    
+		 map.customLegend({})
+		 if(userLocation){
+			 map.bubbles(userLocation,  {
+			    popupTemplate:function (geo, data) { 
+		            return ['<div class="hoverinfo popupInfo"><h4> User Location: ' +  data.name + '</h4></div>'].join('');
+			    }
+		    });
+		}
+		window.addEventListener('resize', function(event){
+             map.resize();
+		});		  
+	});
+	
+	function addMapLegend(layer, data, options) {
+		  data = data || {};
+		  if ( !this.options.fills ) {
+	      	return;
+	      }
+		var html = '<dl>';
+		var label = '';
+		if ( data.legendTitle ) {
+			html = '<h1 class="ui header"> ' + data.legendTitle + '</h1>' + html;
+		}
+		for ( var fillKey in this.options.fills ) {	
+  
+		    	if (['defaultFill', 'Home'].indexOf(fillKey) > -1) {
+		        	if (! data.defaultFillName  ) {
 		          		continue;
 		        	}
 		        	label = data.defaultFillName;
@@ -108,17 +127,12 @@
 		          		label= fillKey + ' ';
 		        	}
 		      	}
-
-      			html += '<dd style="background-color:' +  this.options.fills[fillKey] + '">&nbsp;</dd>';
-      			html += '<dt><h3>' + label + '</h3></dt>';
-    		}
-    		html += '</dl>';
-			var hoverover = d3.select( this.options.element ).append('div')
-      			.attr('class', 'datamaps-legend')
-      			.html(html);
+    		html += '<dd class="legend ' +  fillKey + '">&nbsp;</dd>';
+			html += '<dt><h3>' + label + '</h3></dt>';
 		}
-		map.addPlugin("customLegend", addMapLegend);
-		map.customLegend({})
-
-	});
+		html += '</dl>';
+		var hoverover = d3.select( this.options.element ).append('div')
+			.attr('class', 'datamaps-legend')
+			.html(html);
+	}	
 </script>
