@@ -594,10 +594,10 @@
 
 /* Green */
 .ui.green.table {
-  border-top: 0.2em solid #21ba45;
+  border-top: 0.2em solid #75c043;
 }
 .ui.inverted.green.table {
-  background-color: #21ba45 !important;
+  background-color: #75c043 !important;
   color: #ffffff !important;
 }
 
@@ -1221,6 +1221,31 @@
 .ui.table tr.active:hover td.blue {
   background: #b6ddff !important;
   color: #1f7dc3 !important;
+}
+
+/*--------------
+      Navy
+---------------*/
+
+.ui.table tr.navy,
+.ui.table td.navy {
+  box-shadow: 0px 0px 0px #002843 inset;
+}
+.ui.table tr.navy,
+.ui.table td.navy {
+  background: #d3e7ff !important;
+  color: #003152 !important;
+}
+.ui.selectable.table tr.navy:hover,
+.ui.selectable.table tr:hover td.navy {
+  background: #c4dfff !important;
+  color: #002843 !important;
+}
+.ui.table tr.active td.navy,
+.ui.table tr.active td.navy:hover,
+.ui.table tr.active:hover td.navy {
+  background: #aad1ff !important;
+  color: #002843 !important;
 }
 
 /*--------------

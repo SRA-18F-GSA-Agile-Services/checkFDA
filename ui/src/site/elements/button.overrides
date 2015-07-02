@@ -1,3 +1,139 @@
 /*******************************
          Site Overrides
 *******************************/
+.ui.navy.buttons .button,
+.ui.navy.button {
+  background-color: @navy;
+  color: @navyTextColor;
+  text-shadow: @navyTextShadow;
+  background-image: @coloredBackgroundImage;
+}
+.ui.navy.button {
+  box-shadow: @coloredBoxShadow;
+}
+.ui.navy.buttons .button:hover,
+.ui.navy.button:hover {
+  background-color: @navyHover;
+  color: @navyTextColor;
+  text-shadow: @navyTextShadow;
+}
+.ui.navy.buttons .button:focus,
+.ui.navy.button:focus {
+  background-color: @navyFocus;
+  color: @navyTextColor;
+  text-shadow: @navyTextShadow;
+}
+.ui.navy.buttons .button:active,
+.ui.navy.button:active {
+  background-color: @navyDown;
+  color: @navyTextColor;
+  text-shadow: @navyTextShadow;
+}
+.ui.navy.buttons .active.button,
+.ui.navy.buttons .active.button:active,
+.ui.navy.active.button,
+.ui.navy.button .active.button:active {
+  background-color: @navyActive;
+  color: @navyTextColor;
+  text-shadow: @navyTextShadow;
+}
+
+/* Basic */
+.ui.basic.navy.buttons .button,
+.ui.basic.navy.button {
+  box-shadow: 0px 0px 0px @basicBorderSize @borderColor inset !important;
+  color: @textColor !important;
+}
+.ui.basic.navy.buttons .button:hover,
+.ui.basic.navy.button:hover {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px @basicColoredBorderSize @navyHover inset !important;
+  color: @navyHover !important;
+}
+.ui.basic.navy.buttons .button:focus,
+.ui.basic.navy.button:focus {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px @basicColoredBorderSize @navyFocus inset !important;
+}
+.ui.basic.navy.buttons .active.button,
+.ui.basic.navy.active.button {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px @basicColoredBorderSize @navyActive inset !important;
+  color: @navyDown !important;
+}
+.ui.basic.navy.buttons .button:active,
+.ui.basic.navy.button:active {
+  box-shadow: 0px 0px 0px @basicColoredBorderSize @navyDown inset !important;
+  color: @navyDown !important;
+}
+.ui.buttons > .basic.navy.button:not(:first-child) {
+  margin-left: -@basicColoredBorderSize;
+}
+
+/* Inverted */
+.ui.inverted.navy.buttons .button,
+.ui.inverted.navy.button {
+  background-color: transparent;
+  box-shadow: 0px 0px 0px @invertedBorderSize @lightNavy inset !important;
+  color: @lightNavy;
+}
+.ui.inverted.navy.buttons .button:hover,
+.ui.inverted.navy.button:hover,
+.ui.inverted.navy.buttons .button:focus,
+.ui.inverted.navy.button:focus,
+.ui.inverted.navy.buttons .button.active,
+.ui.inverted.navy.button.active,
+.ui.inverted.navy.buttons .button:active,
+.ui.inverted.navy.button:active {
+  box-shadow: none !important;
+  color: @lightNavyTextColor;
+}
+.ui.inverted.navy.buttons .button:hover,
+.ui.inverted.navy.button:hover {
+  background-color: @lightNavyHover;
+}
+.ui.inverted.navy.buttons .button:focus,
+.ui.inverted.navy.button:focus {
+  background-color: @lightNavyFocus;
+}
+.ui.inverted.navy.buttons .active.button,
+.ui.inverted.navy.active.button {
+  background-color: @lightNavyActive;
+}
+.ui.inverted.navy.buttons .button:active,
+.ui.inverted.navy.button:active {
+  background-color: @lightNavyDown;
+}
+
+/* Inverted Basic */
+.ui.inverted.navy.basic.buttons .button,
+.ui.inverted.navy.buttons .basic.button,
+.ui.inverted.navy.basic.button {
+  background-color: transparent;
+  box-shadow: @basicInvertedBoxShadow !important;
+  color: @white !important;
+}
+.ui.inverted.navy.basic.buttons .button:hover,
+.ui.inverted.navy.buttons .basic.button:hover,
+.ui.inverted.navy.basic.button:hover {
+  box-shadow: 0px 0px 0px @invertedBorderSize @lightNavyHover inset !important;
+  color: @lightNavy !important;
+}
+.ui.inverted.navy.basic.buttons .button:focus,
+.ui.inverted.navy.basic.buttons .button:focus,
+.ui.inverted.navy.basic.button:focus {
+  box-shadow: 0px 0px 0px @invertedBorderSize @lightNavyFocus inset !important;
+  color: @lightNavy !important;
+}
+.ui.inverted.navy.basic.buttons .active.button,
+.ui.inverted.navy.buttons .basic.active.button,
+.ui.inverted.navy.basic.active.button {
+  box-shadow: 0px 0px 0px @invertedBorderSize @lightNavyActive inset !important;
+  color: @lightNavy !important;
+}
+.ui.inverted.navy.basic.buttons .button:active,
+.ui.inverted.navy.buttons .basic.button:active,
+.ui.inverted.navy.basic.button:active {
+  box-shadow: 0px 0px 0px @invertedBorderSize @lightNavyDown inset !important;
+  color: @lightNavy !important;
+}

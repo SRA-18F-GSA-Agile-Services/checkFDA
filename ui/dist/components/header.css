@@ -353,10 +353,10 @@ a.ui.orange.header:hover {
 
 /* Inverted */
 .ui.inverted.orange.header {
-  color: #ff851b !important;
+  color: #ff9e37 !important;
 }
 a.ui.inverted.orange.header:hover {
-  color: #ff7701 !important;
+  color: #ff921e !important;
 }
 
 /*--- Olive ---*/
@@ -402,21 +402,21 @@ a.ui.inverted.yellow.header:hover {
 /*--- Green ---*/
 
 .ui.green.header {
-  color: #21ba45 !important;
+  color: #75c043 !important;
 }
 a.ui.green.header:hover {
-  color: #13ae38 !important;
+  color: #67bb2f !important;
 }
 .ui.green.dividing.header {
-  border-bottom: 2px solid #21ba45;
+  border-bottom: 2px solid #75c043;
 }
 
 /* Inverted */
 .ui.inverted.green.header {
-  color: #2ecc40 !important;
+  color: #44ae0a !important;
 }
 a.ui.inverted.green.header:hover {
-  color: #1ec231 !important;
+  color: #389e01 !important;
 }
 
 /*--- Teal ---*/
@@ -720,3 +720,20 @@ a.ui.inverted.grey.header:hover {
          Site Overrides
 *******************************/
 
+.ui.navy.header {
+  color: #003152 !important;
+}
+a.ui.navy.header:hover {
+  color: #002239 !important;
+}
+.ui.navy.dividing.header {
+  border-bottom: 2px solid #003152;
+}
+
+/* Inverted */
+.ui.inverted.navy.header {
+  color: #5881b2 !important;
+}
+a.ui.inverted.navy.header:hover {
+  color: #4073b1 !important;
+}

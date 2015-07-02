@@ -180,11 +180,11 @@ ol.ui.list ol li,
 .ui.list .list > a.item,
 .ui.list > a.item {
   cursor: pointer;
-  color: #003152;
+  color: #2185d0;
 }
 .ui.list .list > a.item:hover,
 .ui.list > a.item:hover {
-  color: #000306;
+  color: #065d9e;
 }
 
 /* Linked Item Icons */
@@ -197,11 +197,11 @@ ol.ui.list ol li,
 .ui.list .list > .item a.header,
 .ui.list > .item a.header {
   cursor: pointer;
-  color: #003152 !important;
+  color: #2185d0 !important;
 }
 .ui.list .list > .item a.header:hover,
 .ui.list > .item a.header:hover {
-  color: #000306 !important;
+  color: #065d9e !important;
 }
 
 /* Floated Content */
@@ -359,7 +359,7 @@ ol.ui.list ol li,
 }
 .ui.inverted.list .list > a.item:hover,
 .ui.inverted.list > a.item:hover {
-  color: #000306;
+  color: #065d9e;
 }
 
 /* Linking Content */
@@ -367,7 +367,7 @@ ol.ui.list ol li,
   color: rgba(255, 255, 255, 0.9) !important;
 }
 .ui.inverted.list .item a:not(.ui):hover {
-  color: #000306 !important;
+  color: #065d9e !important;
 }
 
 /*-------------------

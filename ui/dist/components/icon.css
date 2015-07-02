@@ -227,7 +227,7 @@ i.orange.icon {
   color: #f2711c !important;
 }
 i.inverted.orange.icon {
-  color: #ff851b !important;
+  color: #ff9e37 !important;
 }
 i.inverted.bordered.orange.icon,
 i.inverted.circular.orange.icon {
@@ -263,14 +263,14 @@ i.inverted.circular.olive.icon {
 
 /* Green */
 i.green.icon {
-  color: #21ba45 !important;
+  color: #75c043 !important;
 }
 i.inverted.green.icon {
-  color: #2ecc40 !important;
+  color: #44ae0a !important;
 }
 i.inverted.bordered.green.icon,
 i.inverted.circular.green.icon {
-  background-color: #21ba45 !important;
+  background-color: #75c043 !important;
   color: #ffffff !important;
 }
 
@@ -2581,3 +2581,14 @@ i.icon.bed:before {
          Site Overrides
 *******************************/
 
+i.navy.icon {
+  color: #003152 !important;
+}
+i.inverted.navy.icon {
+  color: #5881b2 !important;
+}
+i.inverted.bordered.navy.icon,
+i.inverted.circular.navy.icon {
+  background-color: #003152 !important;
+  color: #ffffff !important;
+}
