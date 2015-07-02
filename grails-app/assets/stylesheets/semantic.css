@@ -611,13 +611,13 @@ p:last-child {
 --------------------*/
 
 a {
-  color: #003152;
+  color: #2185d0;
   text-decoration: none;
 }
 
 a:hover {
-  color: #000306;
-  text-decoration: none;
+  color: #065d9e;
+  text-decoration: underline;
 }
 
 /*******************************
@@ -4548,6 +4548,165 @@ input::selection {
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.navy.buttons .button,
+.ui.navy.button {
+  background-color: #003152;
+  color: #ffffff;
+  text-shadow: none;
+  background-image: none;
+}
+
+.ui.navy.button {
+  box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+
+.ui.navy.buttons .button:hover,
+.ui.navy.button:hover {
+  background-color: #002239;
+  color: #ffffff;
+  text-shadow: none;
+}
+
+.ui.navy.buttons .button:focus,
+.ui.navy.button:focus {
+  background-color: #001929;
+  color: #ffffff;
+  text-shadow: none;
+}
+
+.ui.navy.buttons .button:active,
+.ui.navy.button:active {
+  background-color: #00131f;
+  color: #ffffff;
+  text-shadow: none;
+}
+
+.ui.navy.buttons .active.button,
+.ui.navy.buttons .active.button:active,
+.ui.navy.active.button,
+.ui.navy.button .active.button:active {
+  background-color: #002239;
+  color: #ffffff;
+  text-shadow: none;
+}
+
+/* Basic */
+
+.ui.basic.navy.buttons .button,
+.ui.basic.navy.button {
+  box-shadow: 0px 0px 0px 1px rgba(34, 36, 38, 0.15) inset !important;
+  color: #ffffff !important;
+}
+
+.ui.basic.navy.buttons .button:hover,
+.ui.basic.navy.button:hover {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px 2px #002239 inset !important;
+  color: #002239 !important;
+}
+
+.ui.basic.navy.buttons .button:focus,
+.ui.basic.navy.button:focus {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px 2px #001929 inset !important;
+}
+
+.ui.basic.navy.buttons .active.button,
+.ui.basic.navy.active.button {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px 2px #002239 inset !important;
+  color: #00131f !important;
+}
+
+.ui.basic.navy.buttons .button:active,
+.ui.basic.navy.button:active {
+  box-shadow: 0px 0px 0px 2px #00131f inset !important;
+  color: #00131f !important;
+}
+
+.ui.buttons > .basic.navy.button:not(:first-child) {
+  margin-left: -2px;
+}
+
+/* Inverted */
+
+.ui.inverted.navy.buttons .button,
+.ui.inverted.navy.button {
+  background-color: transparent;
+  box-shadow: 0px 0px 0px 2px #5881b2 inset !important;
+  color: #5881b2;
+}
+
+.ui.inverted.navy.buttons .button:hover,
+.ui.inverted.navy.button:hover,
+.ui.inverted.navy.buttons .button:focus,
+.ui.inverted.navy.button:focus,
+.ui.inverted.navy.buttons .button.active,
+.ui.inverted.navy.button.active,
+.ui.inverted.navy.buttons .button:active,
+.ui.inverted.navy.button:active {
+  box-shadow: none !important;
+  color: #ffffff;
+}
+
+.ui.inverted.navy.buttons .button:hover,
+.ui.inverted.navy.button:hover {
+  background-color: #4073b1;
+}
+
+.ui.inverted.navy.buttons .button:focus,
+.ui.inverted.navy.button:focus {
+  background-color: #316bb1;
+}
+
+.ui.inverted.navy.buttons .active.button,
+.ui.inverted.navy.active.button {
+  background-color: #3a73b7;
+}
+
+.ui.inverted.navy.buttons .button:active,
+.ui.inverted.navy.button:active {
+  background-color: #446893;
+}
+
+/* Inverted Basic */
+
+.ui.inverted.navy.basic.buttons .button,
+.ui.inverted.navy.buttons .basic.button,
+.ui.inverted.navy.basic.button {
+  background-color: transparent;
+  box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+  color: #ffffff !important;
+}
+
+.ui.inverted.navy.basic.buttons .button:hover,
+.ui.inverted.navy.buttons .basic.button:hover,
+.ui.inverted.navy.basic.button:hover {
+  box-shadow: 0px 0px 0px 2px #4073b1 inset !important;
+  color: #5881b2 !important;
+}
+
+.ui.inverted.navy.basic.buttons .button:focus,
+.ui.inverted.navy.basic.buttons .button:focus,
+.ui.inverted.navy.basic.button:focus {
+  box-shadow: 0px 0px 0px 2px #316bb1 inset !important;
+  color: #5881b2 !important;
+}
+
+.ui.inverted.navy.basic.buttons .active.button,
+.ui.inverted.navy.buttons .basic.active.button,
+.ui.inverted.navy.basic.active.button {
+  box-shadow: 0px 0px 0px 2px #3a73b7 inset !important;
+  color: #5881b2 !important;
+}
+
+.ui.inverted.navy.basic.buttons .button:active,
+.ui.inverted.navy.buttons .basic.button:active,
+.ui.inverted.navy.basic.button:active {
+  box-shadow: 0px 0px 0px 2px #446893 inset !important;
+  color: #5881b2 !important;
+}
 /*!
  * # Semantic UI 2.0.0 - Container
  * http://github.com/semantic-org/semantic-ui/
@@ -7064,6 +7223,28 @@ a.ui.inverted.grey.header:hover {
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.navy.header {
+  color: #003152 !important;
+}
+
+a.ui.navy.header:hover {
+  color: #002239 !important;
+}
+
+.ui.navy.dividing.header {
+  border-bottom: 2px solid #003152;
+}
+
+/* Inverted */
+
+.ui.inverted.navy.header {
+  color: #5881b2 !important;
+}
+
+a.ui.inverted.navy.header:hover {
+  color: #4073b1 !important;
+}
 /*!
  * # Semantic UI 2.0.0 - Icon
  * http://github.com/semantic-org/semantic-ui/
@@ -10372,6 +10553,20 @@ i.icon.bed:before {
 /*******************************
          Site Overrides
 *******************************/
+
+i.navy.icon {
+  color: #003152 !important;
+}
+
+i.inverted.navy.icon {
+  color: #5881b2 !important;
+}
+
+i.inverted.bordered.navy.icon,
+i.inverted.circular.navy.icon {
+  background-color: #003152 !important;
+  color: #ffffff !important;
+}
 /*!
  * # Semantic UI 2.0.0 - Image
  * http://github.com/semantic-org/semantic-ui/
@@ -12451,6 +12646,41 @@ a.ui.black.label:hover:before {
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.navy.labels .label,
+.ui.navy.label {
+  background-color: #003152 !important;
+  border-color: #003152 !important;
+  color: #ffffff !important;
+}
+
+.ui.labels .navy.label:before,
+.ui.navy.labels .label:before,
+.ui.navy.label:before {
+  background-color: #003152 !important;
+}
+
+.ui.navy.corner.label,
+.ui.navy.corner.label:hover {
+  background-color: transparent !important;
+}
+
+a.ui.navy.labels .label:hover,
+a.ui.navy.label:hover {
+  background-color: #002239 !important;
+  border-color: #002239 !important;
+  color: #ffffff !important;
+}
+
+.ui.labels a.navy.label:hover:before,
+.ui.navy.labels a.label:hover:before,
+a.ui.navy.label:hover:before {
+  background-color: #002239 !important;
+}
+
+.ui.navy.ribbon.label {
+  border-color: #00131f !important;
+}
 /*!
  * # Semantic UI 2.0.0 - List
  * http://github.com/semantic-org/semantic-ui/
@@ -12651,12 +12881,12 @@ ol.ui.list ol li,
 .ui.list .list > a.item,
 .ui.list > a.item {
   cursor: pointer;
-  color: #003152;
+  color: #2185d0;
 }
 
 .ui.list .list > a.item:hover,
 .ui.list > a.item:hover {
-  color: #000306;
+  color: #065d9e;
 }
 
 /* Linked Item Icons */
@@ -12671,12 +12901,12 @@ ol.ui.list ol li,
 .ui.list .list > .item a.header,
 .ui.list > .item a.header {
   cursor: pointer;
-  color: #003152 !important;
+  color: #2185d0 !important;
 }
 
 .ui.list .list > .item a.header:hover,
 .ui.list > .item a.header:hover {
-  color: #000306 !important;
+  color: #065d9e !important;
 }
 
 /* Floated Content */
@@ -12844,7 +13074,7 @@ ol.ui.list ol li,
 
 .ui.inverted.list .list > a.item:hover,
 .ui.inverted.list > a.item:hover {
-  color: #000306;
+  color: #065d9e;
 }
 
 /* Linking Content */
@@ -12854,7 +13084,7 @@ ol.ui.list ol li,
 }
 
 .ui.inverted.list .item a:not(.ui):hover {
-  color: #000306 !important;
+  color: #065d9e !important;
 }
 
 /*-------------------
@@ -15060,6 +15290,15 @@ ol.ui.horizontal.list li:before,
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.navy.segment:not(.inverted) {
+  border-top: 2px solid #003152;
+}
+
+.ui.inverted.navy.segment {
+  background-color: #003152 !important;
+  color: #ffffff !important;
+}
 /*!
  * # Semantic UI 2.0.0 - Step
  * http://github.com/semantic-org/semantic-ui/
@@ -15446,7 +15685,7 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.steps .step.active .title {
-  color: #003152;
+  color: #2185d0;
 }
 
 .ui.ordered.steps .step.active:before,
@@ -15761,11 +16000,11 @@ ol.ui.horizontal.list li:before,
 /* Link */
 
 .ui.breadcrumb a {
-  color: #003152;
+  color: #2185d0;
 }
 
 .ui.breadcrumb a:hover {
-  color: #000306;
+  color: #065d9e;
 }
 
 /* Icon Divider */
@@ -18978,6 +19217,22 @@ ol.ui.horizontal.list li:before,
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.grid > .row > .navy.column {
+  margin-top: -1rem;
+  margin-bottom: -1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* Navy */
+
+.ui.grid > .navy.row,
+.ui.grid > .navy.column,
+.ui.grid > .row > .navy.column {
+  background-color: #003152 !important;
+  color: #ffffff;
+}
 /*
  * # Semantic - Menu
  * http://github.com/semantic-org/semantic-ui/
@@ -21076,6 +21331,24 @@ Floated Menu / Item
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.menu .navy.active.item,
+.ui.navy.menu .active.item {
+  border-color: #003152 !important;
+  color: #003152 !important;
+}
+
+.ui.inverted.navy.menu {
+  background-color: #003152;
+}
+
+.ui.inverted.navy.menu .item:before {
+  background-color: rgba(34, 36, 38, 0.1);
+}
+
+.ui.inverted.navy.menu .active.item {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
 /*!
  * # Semantic UI 2.0.0 - Message
  * http://github.com/semantic-org/semantic-ui/
@@ -21605,6 +21878,15 @@ Floated Menu / Item
 .ui.attached.message {
   margin: 0 -1px -2px;
   top: -1px;
+}
+
+.ui.navy.message {
+  background-color: #d3e7ff;
+  color: #003152;
+}
+
+.ui.navy.message .header {
+  color: #002239;
 }
 /*!
  * # Semantic UI 2.0.0 - Table
@@ -23003,6 +23285,34 @@ Floated Menu / Item
 }
 
 /*--------------
+      Navy
+---------------*/
+
+.ui.table tr.navy,
+.ui.table td.navy {
+  box-shadow: 0px 0px 0px #002843 inset;
+}
+
+.ui.table tr.navy,
+.ui.table td.navy {
+  background: #d3e7ff !important;
+  color: #003152 !important;
+}
+
+.ui.selectable.table tr.navy:hover,
+.ui.selectable.table tr:hover td.navy {
+  background: #c4dfff !important;
+  color: #002843 !important;
+}
+
+.ui.table tr.active td.navy,
+.ui.table tr.active td.navy:hover,
+.ui.table tr.active:hover td.navy {
+  background: #aad1ff !important;
+  color: #002843 !important;
+}
+
+/*--------------
       Violet
 ---------------*/
 
@@ -23740,7 +24050,7 @@ Floated Menu / Item
 
 .ui.cards > .card > .content > a.header:hover,
 .ui.card > .content > a.header:hover {
-  color: #000306;
+  color: #065d9e;
 }
 
 /* Meta */
@@ -23860,7 +24170,7 @@ Floated Menu / Item
 
 .ui.cards > .card > .extra a:not(.ui):hover,
 .ui.card > .extra a:not(.ui):hover {
-  color: #000306;
+  color: #065d9e;
 }
 
 /*******************************
@@ -24450,6 +24760,18 @@ a.ui.card:hover,
 /*******************************
     User Variable Overrides
 *******************************/
+
+.ui.navy.cards > .card,
+.ui.cards > .navy.card,
+.ui.navy.card {
+  box-shadow: 0px 0px 0px 1px #d4d4d5, 0px 2px 0px 0px #003152, 0px 1px 3px 0px #d4d4d5;
+}
+
+.ui.navy.cards > .card:hover,
+.ui.cards > .navy.card:hover,
+.ui.navy.card:hover {
+  box-shadow: 0px 0px 0px 1px #d4d4d5, 0px 2px 0px 0px #002239, 0px 1px 3px 0px #bcbdbd;
+}
 /*!
  * # Semantic UI 2.0.0 - Comment
  * http://github.com/semantic-org/semantic-ui/
@@ -24572,7 +24894,7 @@ a.ui.card:hover,
 }
 
 .ui.comments .comment a.author:hover {
-  color: #000306;
+  color: #065d9e;
 }
 
 /*--------------
@@ -25303,7 +25625,7 @@ a.ui.card:hover,
 }
 
 .ui.items > .item > .content > a.header:hover {
-  color: #000306;
+  color: #065d9e;
 }
 
 /* Meta */
@@ -25537,7 +25859,7 @@ a.ui.card:hover,
 
 .ui.items a.item:hover .content .header,
 .ui.link.items > .item:hover .content .header {
-  color: #000306;
+  color: #065d9e;
 }
 
 /*--------------
@@ -26206,6 +26528,18 @@ a.ui.card:hover,
 /*******************************
     User Variable Overrides
 *******************************/
+
+.ui.navy.statistics .statistic > .value,
+.ui.statistics .navy.statistic > .value,
+.ui.navy.statistic > .value {
+  color: #003152;
+}
+
+.ui.inverted.navy.statistics .statistic > .value,
+.ui.statistics .inverted.navy.statistic > .value,
+.ui.inverted.navy.statistic > .value {
+  color: #5881b2;
+}
 /*!
  * # Semantic UI 2.0.0 - Accordion
  * http://github.com/semantic-org/semantic-ui/
@@ -30584,6 +30918,14 @@ a.ui.nag {
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.navy.progress .bar {
+  background-color: #003152;
+}
+
+.ui.navy.inverted.progress .bar {
+  background-color: #5881b2;
+}
 /*!
  * # Semantic UI 2.0.0 - Rating
  * http://github.com/semantic-org/semantic-ui/
@@ -33673,6 +34015,34 @@ html.ios body {
 .ui.table tr.active:hover td.blue {
   background: #b6ddff !important;
   color: #1f7dc3 !important;
+}
+
+/*--------------
+      Navy
+---------------*/
+
+.ui.table tr.navy,
+.ui.table td.navy {
+  box-shadow: 0px 0px 0px #002843 inset;
+}
+
+.ui.table tr.navy,
+.ui.table td.navy {
+  background: #d3e7ff !important;
+  color: #003152 !important;
+}
+
+.ui.selectable.table tr.navy:hover,
+.ui.selectable.table tr:hover td.navy {
+  background: #c4dfff !important;
+  color: #002843 !important;
+}
+
+.ui.table tr.active td.navy,
+.ui.table tr.active td.navy:hover,
+.ui.table tr.active:hover td.navy {
+  background: #aad1ff !important;
+  color: #002843 !important;
 }
 
 /*--------------

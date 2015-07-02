@@ -4,10 +4,24 @@
 
 @black: #000;
 @green: #75c043;
+@navy: #003152;
 @lightOrange: #ff9e37;
 @lightGreen: #44ae0a;
+@lightNavy: #5881B2;
 
-@checkFDABlue:  #003152;
+@navyHover: saturate(darken(@navy, 5), 10);
+@navyFocus: saturate(darken(@navy, 8), 20);
+@navyDown: darken(@navy, 10);
+@navyActive: saturate(darken(@navy, 5), 15);
+@lightNavyHover: saturate(darken(@lightNavy, 5), 10);
+@lightNavyFocus: saturate(darken(@lightNavy, 8), 20);
+@lightNavyDown: darken(@lightNavy, 10);
+@lightNavyActive: saturate(darken(@lightNavy, 5), 15);
+@navyBackground: #d3e7ff;
+@navyTextColor: @navy;
+@navyHeaderColor: darken(@navyTextColor, 5);
+
+@checkFDABlue: #003152;
 @checkFDAGray:  #eee;
 @checkFDAGreen: #75c043;
 @checkFDABrightGreen: #44ae0a;
@@ -36,7 +50,8 @@
        Links
 --------------------*/
 
-@linkColor: @checkFDABlue;
+@linkColor: @blue;
+@linkHoverUnderline: underline;
 
 /*-------------------
         Paths

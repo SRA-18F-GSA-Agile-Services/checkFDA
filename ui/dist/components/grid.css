@@ -1813,3 +1813,17 @@
          Site Overrides
 *******************************/
 
+.ui.grid > .row > .navy.column {
+  margin-top: -1rem;
+  margin-bottom: -1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* Navy */
+.ui.grid > .navy.row,
+.ui.grid > .navy.column,
+.ui.grid > .row > .navy.column {
+  background-color: #003152 !important;
+  color: #ffffff;
+}

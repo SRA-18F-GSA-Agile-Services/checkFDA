@@ -3235,3 +3235,139 @@
          Site Overrides
 *******************************/
 
+.ui.navy.buttons .button,
+.ui.navy.button {
+  background-color: #003152;
+  color: #ffffff;
+  text-shadow: none;
+  background-image: none;
+}
+.ui.navy.button {
+  box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.ui.navy.buttons .button:hover,
+.ui.navy.button:hover {
+  background-color: #002239;
+  color: #ffffff;
+  text-shadow: none;
+}
+.ui.navy.buttons .button:focus,
+.ui.navy.button:focus {
+  background-color: #001929;
+  color: #ffffff;
+  text-shadow: none;
+}
+.ui.navy.buttons .button:active,
+.ui.navy.button:active {
+  background-color: #00131f;
+  color: #ffffff;
+  text-shadow: none;
+}
+.ui.navy.buttons .active.button,
+.ui.navy.buttons .active.button:active,
+.ui.navy.active.button,
+.ui.navy.button .active.button:active {
+  background-color: #002239;
+  color: #ffffff;
+  text-shadow: none;
+}
+
+/* Basic */
+.ui.basic.navy.buttons .button,
+.ui.basic.navy.button {
+  box-shadow: 0px 0px 0px 1px rgba(34, 36, 38, 0.15) inset !important;
+  color: #ffffff !important;
+}
+.ui.basic.navy.buttons .button:hover,
+.ui.basic.navy.button:hover {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px 2px #002239 inset !important;
+  color: #002239 !important;
+}
+.ui.basic.navy.buttons .button:focus,
+.ui.basic.navy.button:focus {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px 2px #001929 inset !important;
+}
+.ui.basic.navy.buttons .active.button,
+.ui.basic.navy.active.button {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px 2px #002239 inset !important;
+  color: #00131f !important;
+}
+.ui.basic.navy.buttons .button:active,
+.ui.basic.navy.button:active {
+  box-shadow: 0px 0px 0px 2px #00131f inset !important;
+  color: #00131f !important;
+}
+.ui.buttons > .basic.navy.button:not(:first-child) {
+  margin-left: -2px;
+}
+
+/* Inverted */
+.ui.inverted.navy.buttons .button,
+.ui.inverted.navy.button {
+  background-color: transparent;
+  box-shadow: 0px 0px 0px 2px #5881b2 inset !important;
+  color: #5881b2;
+}
+.ui.inverted.navy.buttons .button:hover,
+.ui.inverted.navy.button:hover,
+.ui.inverted.navy.buttons .button:focus,
+.ui.inverted.navy.button:focus,
+.ui.inverted.navy.buttons .button.active,
+.ui.inverted.navy.button.active,
+.ui.inverted.navy.buttons .button:active,
+.ui.inverted.navy.button:active {
+  box-shadow: none !important;
+  color: #ffffff;
+}
+.ui.inverted.navy.buttons .button:hover,
+.ui.inverted.navy.button:hover {
+  background-color: #4073b1;
+}
+.ui.inverted.navy.buttons .button:focus,
+.ui.inverted.navy.button:focus {
+  background-color: #316bb1;
+}
+.ui.inverted.navy.buttons .active.button,
+.ui.inverted.navy.active.button {
+  background-color: #3a73b7;
+}
+.ui.inverted.navy.buttons .button:active,
+.ui.inverted.navy.button:active {
+  background-color: #446893;
+}
+
+/* Inverted Basic */
+.ui.inverted.navy.basic.buttons .button,
+.ui.inverted.navy.buttons .basic.button,
+.ui.inverted.navy.basic.button {
+  background-color: transparent;
+  box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+  color: #ffffff !important;
+}
+.ui.inverted.navy.basic.buttons .button:hover,
+.ui.inverted.navy.buttons .basic.button:hover,
+.ui.inverted.navy.basic.button:hover {
+  box-shadow: 0px 0px 0px 2px #4073b1 inset !important;
+  color: #5881b2 !important;
+}
+.ui.inverted.navy.basic.buttons .button:focus,
+.ui.inverted.navy.basic.buttons .button:focus,
+.ui.inverted.navy.basic.button:focus {
+  box-shadow: 0px 0px 0px 2px #316bb1 inset !important;
+  color: #5881b2 !important;
+}
+.ui.inverted.navy.basic.buttons .active.button,
+.ui.inverted.navy.buttons .basic.active.button,
+.ui.inverted.navy.basic.active.button {
+  box-shadow: 0px 0px 0px 2px #3a73b7 inset !important;
+  color: #5881b2 !important;
+}
+.ui.inverted.navy.basic.buttons .button:active,
+.ui.inverted.navy.buttons .basic.button:active,
+.ui.inverted.navy.basic.button:active {
+  box-shadow: 0px 0px 0px 2px #446893 inset !important;
+  color: #5881b2 !important;
+}

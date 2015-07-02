@@ -2581,3 +2581,14 @@ i.icon.bed:before {
          Site Overrides
 *******************************/
 
+i.navy.icon {
+  color: #003152 !important;
+}
+i.inverted.navy.icon {
+  color: #5881b2 !important;
+}
+i.inverted.bordered.navy.icon,
+i.inverted.circular.navy.icon {
+  background-color: #003152 !important;
+  color: #ffffff !important;
+}

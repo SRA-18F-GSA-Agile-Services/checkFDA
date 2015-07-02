@@ -515,3 +515,9 @@
          Site Overrides
 *******************************/
 
+.ui.navy.progress .bar {
+  background-color: #003152;
+}
+.ui.navy.inverted.progress .bar {
+  background-color: #5881b2;
+}

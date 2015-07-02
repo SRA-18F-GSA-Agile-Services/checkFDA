@@ -103,12 +103,12 @@ p:last-child {
 --------------------*/
 
 a {
-  color: #003152;
+  color: #2185d0;
   text-decoration: none;
 }
 a:hover {
-  color: #000306;
-  text-decoration: none;
+  color: #065d9e;
+  text-decoration: underline;
 }
 
 

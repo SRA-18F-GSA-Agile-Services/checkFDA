@@ -1112,3 +1112,32 @@ a.ui.black.label:hover:before {
          Site Overrides
 *******************************/
 
+.ui.navy.labels .label,
+.ui.navy.label {
+  background-color: #003152 !important;
+  border-color: #003152 !important;
+  color: #ffffff !important;
+}
+.ui.labels .navy.label:before,
+.ui.navy.labels .label:before,
+.ui.navy.label:before {
+  background-color: #003152 !important;
+}
+.ui.navy.corner.label,
+.ui.navy.corner.label:hover {
+  background-color: transparent !important;
+}
+a.ui.navy.labels .label:hover,
+a.ui.navy.label:hover {
+  background-color: #002239 !important;
+  border-color: #002239 !important;
+  color: #ffffff !important;
+}
+.ui.labels a.navy.label:hover:before,
+.ui.navy.labels a.label:hover:before,
+a.ui.navy.label:hover:before {
+  background-color: #002239 !important;
+}
+.ui.navy.ribbon.label {
+  border-color: #00131f !important;
+}
