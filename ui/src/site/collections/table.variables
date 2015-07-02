@@ -58,6 +58,14 @@
 @blueBackgroundActive: darken(@blueBackground, 8);
 @blueColorHover: darken(@blueColor, 3);
 
+/* Navy */
+@navyColor: @navyTextColor;
+@navyBorderColor: darken(@navyColor, 3);
+@navyBoxShadow: @stateMarkerWidth 0px 0px @navyBorderColor inset;
+@navyBackgroundHover: darken(@navyBackground, 3);
+@navyBackgroundActive: darken(@navyBackground, 8);
+@navyColorHover: darken(@navyColor, 3);
+
 /* Violet */
 @violetColor: @violetTextColor;
 @violetBorderColor: darken(@violetColor, 3);

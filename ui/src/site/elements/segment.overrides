@@ -1,3 +1,11 @@
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.navy.segment:not(.inverted) {
+  border-top: @coloredBorderSize solid @navy;
+}
+.ui.inverted.navy.segment {
+  background-color: @navy !important;
+  color: @white !important;
+}

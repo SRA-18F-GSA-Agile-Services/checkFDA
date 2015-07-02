@@ -1,3 +1,19 @@
 /*******************************
          Site Overrides
 *******************************/
+.ui.navy.header {
+  color: @navy !important;
+}
+a.ui.navy.header:hover {
+  color: @navyHover !important;
+}
+.ui.navy.dividing.header {
+  border-bottom: @dividedColoredBorderWidth solid @navy;
+}
+/* Inverted */
+.ui.inverted.navy.header {
+  color: @lightNavy !important;
+}
+a.ui.inverted.navy.header:hover {
+  color: @lightNavyHover !important;
+}

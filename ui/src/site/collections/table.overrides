@@ -178,6 +178,31 @@
 }
 
 /*--------------
+      Navy
+---------------*/
+
+.ui.table tr.navy,
+.ui.table td.navy {
+  box-shadow: @navyBoxShadow;
+}
+.ui.table tr.navy,
+.ui.table td.navy {
+  background: @navyBackground !important;
+  color: @navyColor !important;
+}
+.ui.selectable.table tr.navy:hover,
+.ui.selectable.table tr:hover td.navy {
+  background: @navyBackgroundHover !important;
+  color: @navyColorHover !important;
+}
+.ui.table tr.active td.navy,
+.ui.table tr.active td.navy:hover,
+.ui.table tr.active:hover td.navy {
+  background: @navyBackgroundActive !important;
+  color: @navyColorHover !important;
+}
+
+/*--------------
       Violet
 ---------------*/
 

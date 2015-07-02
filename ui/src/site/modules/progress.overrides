@@ -1,3 +1,9 @@
 /*******************************
          Site Overrides
 *******************************/
+.ui.navy.progress .bar {
+  background-color: @navy;
+}
+.ui.navy.inverted.progress .bar {
+  background-color: @lightNavy;
+}
