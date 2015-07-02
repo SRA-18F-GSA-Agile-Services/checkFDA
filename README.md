@@ -8,12 +8,12 @@ Search FDA
 
 Write a brief description, no greater than 750 words, of the approach used to create the prototype.
 
-###"Executive Summary" - (100 words)
+###"Executive Summary" - (250 words)
 * Introduction to SRA and who we are
 * Brief statement of understanding of 18F ethos and mission
 * Brief statement of understanding of the problem/data set
 
-###Our Full Stack Approach - (600 words)
+###Our Full Stack Approach - (1150 words)
 * User-driven design - "Put the needs of the users first."
   * Ideation - opportunity canvas drives product evolution
   * User identification & interviews
@@ -41,5 +41,5 @@ Write a brief description, no greater than 750 words, of the approach used to cr
   * Code Standards - Definition of Done, style guide
   * Conversations always better than documentation
 
-###Conclusion (50 words)
+###Conclusion (100 words)
 * Our approach and mindset line up with 18F's key principles and will results in a strong partnership
