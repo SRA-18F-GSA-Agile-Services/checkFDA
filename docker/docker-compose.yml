@@ -1,0 +1,23 @@
+---
+mysql:
+#  build: ./mysql
+  image: mysql:5.6
+  ports:
+    - "3306:3306"
+  environment:
+    - MYSQL_ROOT_PASSWORD=sfda_root_pass
+    - MYSQL_DATABASE=searchfda_db
+    - MYSQL_USER=searchfda_user
+    - MYSQL_PASSWORD=searchfda_pass
+
+tomcat:
+  build: ./tomcat
+#  image: tomcat:8.0
+  ports:
+    - "8888:8080"
+  links:
+    - mysql
+  environment:
+    - CATALINA_OPTS=-Xms256m -Xmx1024m -XX:PermSize=512m -XX:MaxPermSize=512m
+#    - OPENFDA_API_TOKEN=null
+#    - SEARCHFDA_CONFIG_PATH=/usr/local/tomcat/webapps/ServerConfig.groovy
