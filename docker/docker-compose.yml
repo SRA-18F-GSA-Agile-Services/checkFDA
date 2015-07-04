@@ -19,5 +19,4 @@ tomcat:
     - mysql
   environment:
     - CATALINA_OPTS=-Xms256m -Xmx1024m -XX:PermSize=512m -XX:MaxPermSize=512m
-#    - OPENFDA_API_TOKEN=null
-#    - SEARCHFDA_CONFIG_PATH=/usr/local/tomcat/webapps/ServerConfig.groovy
+    - OPENFDA_API_TOKEN=null

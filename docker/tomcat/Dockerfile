@@ -1,23 +1,22 @@
-FROM tomcat:8.0
+FROM tomcat:8-jre8
 
 # RUN apt-get update && apt-get install -y apt-utils && apt-get install -y telnet
 
+# This gives us envsubst, which we use for tomcat configuration.
+RUN apt-get update && apt-get install -y gettext-base
+
 RUN rm -rf /usr/local/tomcat/webapps/*
-
-# COPY configure.sh /tmp/configure.sh
-
-# RUN sh /tmp/configure.sh
-
-COPY ServerConfig.groovy /usr/local/tomcat/webapps/ServerConfig.groovy
-
-# RUN rm /tmp/configure.sh
 
 COPY ROOT.war /usr/local/tomcat/webapps/ROOT.war
 
-# COPY searchfda-entrypoint.sh /configure.sh
-# RUN chmod +x /*.sh
+COPY ServerConfig-template.groovy /tmp/ServerConfig-template.groovy
 
-# CMD ["/configure.sh"]
+COPY docker-entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+
+CMD ["catalina.sh", "run"]
 
 
 
