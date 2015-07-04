@@ -1,5 +1,7 @@
 package com.sra.searchfda.service
 
+import com.sra.searchfda.domain.DataSet
+import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
 import org.codehaus.groovy.grails.web.json.JSONArray
 import spock.lang.Specification
@@ -8,6 +10,7 @@ import spock.lang.Specification
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
 @TestFor(SearchService)
+@Mock(DataSet)
 class SearchServiceSpec extends Specification {
 
     def openFDAService = Mock(OpenFDAService)
@@ -56,21 +59,19 @@ class SearchServiceSpec extends Specification {
         service.metaClass.getFilterText = { ->
             return filterText
         }
-        service.metaClass.parseQueryTerms = { ->
-            return parsedQuery
-        }
 
+        initDataSets()
 
         when:
         Map searchResults = service.parallelFederatedSearch(query)
 
         then:
-        1 * openFDAService.query("device/event", parsedQuery, 100, 0) >> getClass().getResourceAsStream("OpenFDA-device-event.json").text
-        1 * openFDAService.query("drug/label", parsedQuery, 100, 0) >> getClass().getResourceAsStream("OpenFDA-drug-label.json").text
-        1 * openFDAService.query("food/enforcement", parsedQuery, 100, 0) >> getClass().getResourceAsStream("OpenFDA-food-enforcement.json").text
-        1 * openFDAService.query("drug/event", parsedQuery, 100, 0) >> null
-        1 * openFDAService.query("device/enforcement", parsedQuery, 100, 0) >> null
-        1 * openFDAService.query("drug/enforcement", parsedQuery, 100, 0) >> null
+        1 * openFDAService.query(DataSet.findByPath("device/event").url, parsedQuery, 100, 0) >> getClass().getResourceAsStream("OpenFDA-device-event.json").text
+        1 * openFDAService.query(DataSet.findByPath("drug/label").url, parsedQuery, 100, 0) >> getClass().getResourceAsStream("OpenFDA-drug-label.json").text
+        1 * openFDAService.query(DataSet.findByPath("food/enforcement").url, parsedQuery, 100, 0) >> getClass().getResourceAsStream("OpenFDA-food-enforcement.json").text
+        1 * openFDAService.query(DataSet.findByPath("drug/event").url, parsedQuery, 100, 0) >> null
+        1 * openFDAService.query(DataSet.findByPath("device/enforcement").url, parsedQuery, 100, 0) >> null
+        1 * openFDAService.query(DataSet.findByPath("drug/enforcement").url, parsedQuery, 100, 0) >> null
 
         searchResults.containsKey("labels")
         searchResults.containsKey("recalls")
@@ -94,20 +95,19 @@ class SearchServiceSpec extends Specification {
         service.metaClass.getFilterText = { ->
             return filterText
         }
-        service.metaClass.parseQueryTerms = { ->
-            return parsedQuery
-        }
+
+        initDataSets()
 
         when:
         Map searchResults = service.federatedSearch(query)
 
         then:
-        1 * openFDAService.query("device/event", parsedQuery, 100, 0) >> getClass().getResourceAsStream("OpenFDA-device-event.json").text
-        1 * openFDAService.query("drug/label", parsedQuery, 100, 0) >> getClass().getResourceAsStream("OpenFDA-drug-label.json").text
-        1 * openFDAService.query("food/enforcement", parsedQuery, 100, 0) >> getClass().getResourceAsStream("OpenFDA-food-enforcement.json").text
-        1 * openFDAService.query("drug/event", parsedQuery, 100, 0) >> null
-        1 * openFDAService.query("device/enforcement", parsedQuery, 100, 0) >> null
-        1 * openFDAService.query("drug/enforcement", parsedQuery, 100, 0) >> null
+        1 * openFDAService.query(DataSet.findByPath("device/event").url, parsedQuery, 100, 0) >> getClass().getResourceAsStream("OpenFDA-device-event.json").text
+        1 * openFDAService.query(DataSet.findByPath("drug/label").url, parsedQuery, 100, 0) >> getClass().getResourceAsStream("OpenFDA-drug-label.json").text
+        1 * openFDAService.query(DataSet.findByPath("food/enforcement").url, parsedQuery, 100, 0) >> getClass().getResourceAsStream("OpenFDA-food-enforcement.json").text
+        1 * openFDAService.query(DataSet.findByPath("drug/event").url, parsedQuery, 100, 0) >> null
+        1 * openFDAService.query(DataSet.findByPath("device/enforcement").url, parsedQuery, 100, 0) >> null
+        1 * openFDAService.query(DataSet.findByPath("drug/enforcement").url, parsedQuery, 100, 0) >> null
 
 
         searchResults.containsKey("labels")
@@ -129,25 +129,29 @@ class SearchServiceSpec extends Specification {
         Map searchResults = service.search(dataSet, query)
 
         then:
-        1 * openFDAService.query(dataSet.path, query, 100, 0) >> getClass().getResourceAsStream(fileName).text
+        1 * openFDAService.query(dataSet.url, query, 100, 0) >> getClass().getResourceAsStream(fileName).text
         searchResults
 
         where:
         fileName                        | dataSet
-        "OpenFDA-device-event.json"     | [path: "device/event", group: "event"]
-        "OpenFDA-drug-label.json"       | [path: "drug/label", group: "labels"]
-        "OpenFDA-food-enforcement.json" | [path: "food/enforcement", group: "events"]
+        "OpenFDA-device-event.json"     | new DataSet(path: "device/event", groupName: "event", url: "url")
+        "OpenFDA-drug-label.json"       | new DataSet(path: "drug/label", groupName: "labels", url: "url")
+        "OpenFDA-food-enforcement.json" | new DataSet(path: "food/enforcement", groupName: "events", url: "url")
     }
 
     void "test search exception thrown"() {
         given:
         String query = "ice cream"
 
+        initDataSets()
+
+        DataSet dataSet = DataSet.findByName("FDA_DEVICE_EVENT_ENDPOINT")
+
         when:
-        Map searchResults = service.search([path: "device/event", group: "event"], query)
+        Map searchResults = service.search(dataSet, query)
 
         then:
-        1 * openFDAService.query("device/event", query, 100, 0) >> { throw new FileNotFoundException() }
+        1 * openFDAService.query(dataSet.url, query, 100, 0) >> { throw new FileNotFoundException() }
         thrown(FileNotFoundException)
         !searchResults
     }
@@ -230,6 +234,18 @@ class SearchServiceSpec extends Specification {
         '"ice cream, vanilla" brownies syrup sprinkles'               | '"ice cream, vanilla" AND brownies AND syrup AND sprinkles'
         '"ice cream, vanilla" brownies "syrup sprinkles"'             | '"ice cream, vanilla" AND "syrup sprinkles" AND brownies'
         '"ice cream, vanilla" brownies chips pizza "syrup sprinkles"' | '"ice cream, vanilla" AND "syrup sprinkles" AND brownies AND chips AND pizza'
+    }
+
+    private void initDataSets() {
+        new DataSet(name: "FDA_DRUG_EVENT_ENDPOINT", url: "https://api.fda.gov/drug/event.json", path:"drug/event", groupName:"events", description: "FDA api endpoint url for adverse drug event reports since 2004").save(flush: true, failOnError: true)
+        new DataSet(name: "FDA_DRUG_LABEL_ENDPOINT", url: "https://api.fda.gov/drug/label.json", path:"drug/label", groupName:"labels", description: "FDA api endpoint url for Prescription and over-the-counter (OTC) drug labeling").save(flush: true, failOnError: true)
+        new DataSet(name: "FDA_DRUG_ENFORCEMENT_ENDPOINT", url: "https://api.fda.gov/drug/enforcement.json", path:"drug/enforcement", groupName:"recalls", description: "FDA api endpoint url for Drug recall enforcement reports since 2004").save(flush: true, failOnError: true)
+
+        new DataSet(name: "FDA_DEVICE_ENFORCEMENT_ENDPOINT", url: "https://api.fda.gov/device/enforcement.json", path:"device/enforcement", groupName:"recalls", description: "FDA api endpoint url for Device recall enforcement reports since 2004").save(flush: true, failOnError: true)
+        new DataSet(name: "FDA_DEVICE_EVENT_ENDPOINT", url: "https://api.fda.gov/device/event.json", path:"device/event", groupName:"events", description: "FDA api endpoint url for Device adverse event reports over time").save(flush: true, failOnError: true)
+
+        new DataSet(name: "FOOD_ENFORCEMENT_ENDPOINT", url: "https://api.fda.gov/food/enforcement.json", path:"food/enforcement", groupName:"recalls", description: "FDA api endpoint url for Food recall enforcement reports since 2004").save(flush: true, failOnError: true)
+
     }
 
 }

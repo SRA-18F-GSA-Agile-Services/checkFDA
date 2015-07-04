@@ -44,7 +44,10 @@
 					keyMap[d] = 'area';
 					return keyMap;
 				}, {}),
-				groups: [typeKeys]
+				groups: [typeKeys],
+			},
+			color: {
+				pattern: ['<g:message code="color.green"/>','<g:message code="color.blue"/>','<g:message code="color.orange"/>']
 			},
 			axis: {
 				x: {

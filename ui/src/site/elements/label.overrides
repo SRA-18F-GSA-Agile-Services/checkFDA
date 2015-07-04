@@ -1,3 +1,33 @@
 /*******************************
          Site Overrides
 *******************************/
+.ui.navy.labels .label,
+.ui.navy.label {
+  background-color: @navy !important;
+  border-color: @navy !important;
+  color: @navyTextColor !important;
+}
+.ui.labels .navy.label:before,
+.ui.navy.labels .label:before,
+.ui.navy.label:before {
+  background-color: @navy !important;
+}
+.ui.navy.corner.label,
+.ui.navy.corner.label:hover {
+  background-color: transparent !important;
+}
+
+a.ui.navy.labels .label:hover,
+a.ui.navy.label:hover{
+  background-color: @navyHover !important;
+  border-color: @navyHover !important;
+  color: @navyHoverTextColor !important;
+}
+.ui.labels a.navy.label:hover:before,
+.ui.navy.labels a.label:hover:before,
+a.ui.navy.label:hover:before {
+  background-color: @navyHover !important;
+}
+.ui.navy.ribbon.label {
+  border-color: @navyRibbonShadow !important;
+}

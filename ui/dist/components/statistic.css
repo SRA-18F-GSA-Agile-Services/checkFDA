@@ -355,7 +355,7 @@
 .ui.green.statistics .statistic > .value,
 .ui.statistics .green.statistic > .value,
 .ui.green.statistic > .value {
-  color: #21ba45;
+  color: #75c043;
 }
 .ui.teal.statistics .statistic > .value,
 .ui.statistics .teal.statistic > .value,
@@ -413,7 +413,7 @@
 .ui.inverted.orange.statistics .statistic > .value,
 .ui.statistics .inverted.orange.statistic > .value,
 .ui.inverted.orange.statistic > .value {
-  color: #ff851b;
+  color: #ff9e37;
 }
 .ui.inverted.yellow.statistics .statistic > .value,
 .ui.statistics .inverted.yellow.statistic > .value,
@@ -428,7 +428,7 @@
 .ui.inverted.green.statistics .statistic > .value,
 .ui.statistics .inverted.green.statistic > .value,
 .ui.inverted.green.statistic > .value {
-  color: #2ecc40;
+  color: #44ae0a;
 }
 .ui.inverted.teal.statistics .statistic > .value,
 .ui.statistics .inverted.teal.statistic > .value,
@@ -582,3 +582,13 @@
     User Variable Overrides
 *******************************/
 
+.ui.navy.statistics .statistic > .value,
+.ui.statistics .navy.statistic > .value,
+.ui.navy.statistic > .value {
+  color: #003152;
+}
+.ui.inverted.navy.statistics .statistic > .value,
+.ui.statistics .inverted.navy.statistic > .value,
+.ui.inverted.navy.statistic > .value {
+  color: #5881b2;
+}

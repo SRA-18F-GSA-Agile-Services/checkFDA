@@ -42,6 +42,9 @@
   		        ],
 		        type : 'bar'
 		    },
+		    color: {
+				pattern: ['<g:message code="color.lightOrange"/>']
+			},
 		    legend: {
 				show: false
 			},
@@ -51,7 +54,7 @@
 				},
 				y: {
 					label: {
-						text: 'Number of Outcomes',
+						text: '<g:message code="widget.event.outcomes.label.xAxis"/>',
 						position: 'outer-center'
 					}
 				},

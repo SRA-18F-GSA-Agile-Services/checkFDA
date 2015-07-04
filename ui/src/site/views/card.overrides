@@ -1,3 +1,21 @@
 /*******************************
     User Variable Overrides
 *******************************/
+.ui.navy.cards > .card,
+.ui.cards > .navy.card,
+.ui.navy.card {
+  box-shadow:
+    @borderShadow,
+    0px @coloredShadowDistance 0px 0px @navy,
+    @shadowBoxShadow
+  ;
+}
+.ui.navy.cards > .card:hover,
+.ui.cards > .navy.card:hover,
+.ui.navy.card:hover {
+  box-shadow:
+    @borderShadow,
+    0px @coloredShadowDistance 0px 0px @navyHover,
+    @shadowHoverBoxShadow
+  ;
+}

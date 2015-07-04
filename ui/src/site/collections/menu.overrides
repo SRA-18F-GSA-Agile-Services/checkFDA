@@ -1,3 +1,17 @@
 /*******************************
          Site Overrides
 *******************************/
+.ui.menu .navy.active.item,
+.ui.navy.menu .active.item {
+  border-color: @navy !important;
+  color: @navy !important;
+}
+.ui.inverted.navy.menu {
+  background-color: @navy;
+}
+.ui.inverted.navy.menu .item:before {
+  background-color: @invertedColoredDividerBackground;
+}
+.ui.inverted.navy.menu .active.item {
+  background-color: @invertedColoredActiveBackground !important;
+}
