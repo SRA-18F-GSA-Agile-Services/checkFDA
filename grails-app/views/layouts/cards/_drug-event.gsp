@@ -58,7 +58,7 @@
 			</table>
 		</g:if>
 
-		<g:if test="${ event.patient.reaction.size() > 0 }">
+		<g:if test="${ event.patient?.reaction && event.patient.reaction.size() > 0 }">
 			<div class="ui small header">
 				<g:message code="widget.drug.event.reactions" />
 			</div>
