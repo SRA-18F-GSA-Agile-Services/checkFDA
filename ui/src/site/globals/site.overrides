@@ -32,6 +32,15 @@
 			width: 50%;
 			text-align: center !important;
 		}
+		.ui.page.header {
+			font-size: 2.5em;
+		}
+		> section {
+			margin-top: 3em;
+			h1.large.header + h2.medium.header {
+				margin-top: 0;
+			}
+		}
 	}
 	> .header, > .footer {
 		min-height: 138px;
@@ -55,6 +64,23 @@
 	}
 	&.results {
 		padding: 0 40px 40px;
+	}
+}
+
+.jumplinks {
+	margin-top: -0.5em;
+	span {
+		display: block;
+	}
+	a {
+		display: inline-block;
+		margin: 0.25em 0;
+		padding: 0 0.5em;
+		border-left: 1px solid @borderColor;
+		&:first-of-type {
+			padding-left: 0;
+			border: none;
+		}
 	}
 }
 

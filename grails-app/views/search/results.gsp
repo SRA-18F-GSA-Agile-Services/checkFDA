@@ -68,14 +68,14 @@
 					<g:set var="deviceEvents" value="${ results.events.grep { it.dataset == 'device/event' } }" />
 					<g:set var="labels" value="${ results.labels.grep { it.openfda?.brand_name && it.openfda?.generic_name } }" />
 
-					<h1><g:message code="results.header" args="${ [currentRecalls.size() + results.events.size() + labels.size(), query] }" /></h1>
+					<h1 class="ui page header"><g:message code="results.header" args="${ [currentRecalls.size() + results.events.size() + labels.size(), query] }" /></h1>
 					<div class="jumplinks">
 						<span><g:message code="results.jumplink" /></span>
 						<g:if test="${ recalls.size() != 0 }">
 							<a href="#recalls"><g:message code="results.jumplink.recalls" args="${ [currentRecalls.size()] }" /></a>
 						</g:if>
 						<g:if test="${ results.events.size() != 0 }">
-							<a href="#recalls"><g:message code="results.jumplink.events" args="${ [results.events.size()] }" /></a>
+							<a href="#events"><g:message code="results.jumplink.events" args="${ [results.events.size()] }" /></a>
 						</g:if>
 						<g:if test="${ labels.size() != 0 }">
 							<a href="#labels"><g:message code="results.jumplink.labels" args="${ [labels.size()] }" /></a>
@@ -84,11 +84,11 @@
 
 					<g:if test="${results}">
 						<g:if test="${ recalls.size() != 0 }">
+							<div class="ui divider"></div>
 							<section id="recalls">
-								<h1 id="recalls-header" class="ui header">
+								<h1 id="recalls-header" class="ui large header">
 									<g:message code="widget.results.recall.header" args="${ [query, currentRecalls.size()] }" />
 								</h1>
-								<div class="ui divider"></div>
 								<div id="recalls-card"></div>
 								<div class="card-table-wrapper">
 									<table id="recalls" class="ui small compact complex selectable unstackable table card-table recalls">
@@ -110,16 +110,15 @@
 						</g:if>
 
 						<g:if test="${ results.events.size() != 0 }">
+							<div class="ui divider"></div>
 							<section id="events">
-								<h1 class="ui header">
+								<h1 class="ui large header">
 									<g:message code="widget.results.event.header" args="${ [query, results.events.size()] }"/>
 								</h1>
-								<div class="ui divider"></div>
 								<g:if test="${ results.events.grep { it.dataset == 'drug/event' }.size() > 0 }">
-									<h2 id="drugevents-header" class="ui header">
+									<h2 id="drugevents-header" class="ui medium header">
 										<g:message code="widget.results.event.drug.header" args="${ [drugEvents.size()] }" />
 									</h2>
-
 									<div id="drugevents-card"></div>
 									<div class="card-table-wrapper">
 										<table id="drugevents" class="ui small compact selectable unstackable table card-table drugevents">
@@ -137,7 +136,7 @@
 								</g:if>
 
 								<g:if test="${ results.events.grep { it.dataset == 'device/event' }.size() > 0 }">
-									<h2 id="deviceevents-header" class="ui header">
+									<h2 id="deviceevents-header" class="ui medium header">
 										<g:message code="widget.results.event.device.header" args="${ [deviceEvents.size()] }" />
 									</h2>
 									<div id="deviceevents-card"></div>
@@ -156,11 +155,11 @@
 						</g:if>
 
 						<g:if test="${ labels.size() != 0 }">
+							<div class="ui divider"></div>
 							<section id="labels">
-								<h1 id="labels-header" class="ui header">
+								<h1 id="labels-header" class="ui large header">
 									<g:message code="widget.results.label.header" args="${ [query, labels.size()] }" />
 								</h1>
-								<div class="ui divider"></div>
 								<div id="labels-card"></div>
 								<div class="card-table-wrapper">
 									<table id="labels" class="ui small compact selectable unstackable table card-table labels">
