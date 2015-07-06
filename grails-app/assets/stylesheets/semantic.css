@@ -715,10 +715,6 @@ input::selection {
   margin-top: 3em;
 }
 
-.ui.container .main > section h1.large.header + h2.medium.header {
-  margin-top: 0;
-}
-
 .ui.container > .header,
 .ui.container > .footer {
   min-height: 138px;
@@ -763,6 +759,10 @@ input::selection {
 .jumplinks a:first-of-type {
   padding-left: 0;
   border: none;
+}
+
+h1.large.header + h2.medium.header {
+  margin-top: 0 !important;
 }
 
 /* Recalls */
