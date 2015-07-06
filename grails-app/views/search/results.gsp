@@ -87,7 +87,7 @@
 							<div class="ui divider"></div>
 							<section id="recalls">
 								<h1 id="recalls-header" class="ui large header">
-									<g:message code="widget.results.recall.header" args="${ [query, currentRecalls.size()] }" />
+									<g:message code="widget.results.recall.header" args="${ [query, currentRecalls.size(), results.meta.recalls.hits] }" />
 								</h1>
 								<div id="recalls-card"></div>
 								<div class="card-table-wrapper">
@@ -113,11 +113,11 @@
 							<div class="ui divider"></div>
 							<section id="events">
 								<h1 class="ui large header">
-									<g:message code="widget.results.event.header" args="${ [query, results.events.size()] }"/>
+									<g:message code="widget.results.event.header" args="${ [query, results.events.size(), results.meta.events.hits] }"/>
 								</h1>
 								<g:if test="${ results.events.grep { it.dataset == 'drug/event' }.size() > 0 }">
 									<h2 id="drugevents-header" class="ui medium header">
-										<g:message code="widget.results.event.drug.header" args="${ [drugEvents.size()] }" />
+										<g:message code="widget.results.event.drug.header" args="${ [results.meta['drug-event'].hits, drugEvents.size()] }" />
 									</h2>
 									<div id="drugevents-card"></div>
 									<div class="card-table-wrapper">
@@ -137,7 +137,7 @@
 
 								<g:if test="${ results.events.grep { it.dataset == 'device/event' }.size() > 0 }">
 									<h2 id="deviceevents-header" class="ui medium header">
-										<g:message code="widget.results.event.device.header" args="${ [deviceEvents.size()] }" />
+										<g:message code="widget.results.event.device.header" args="${ [results.meta['device-event'].hits, deviceEvents.size()] }" />
 									</h2>
 									<div id="deviceevents-card"></div>
 									<div class="card-table-wrapper">
@@ -158,7 +158,7 @@
 							<div class="ui divider"></div>
 							<section id="labels">
 								<h1 id="labels-header" class="ui large header">
-									<g:message code="widget.results.label.header" args="${ [query, labels.size()] }" />
+									<g:message code="widget.results.label.header" args="${ [query, labels.size(), results.meta.labels.hits] }" />
 								</h1>
 								<div id="labels-card"></div>
 								<div class="card-table-wrapper">
