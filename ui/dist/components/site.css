@@ -190,6 +190,12 @@ input::selection {
   width: 50%;
   text-align: center !important;
 }
+.ui.container .main .ui.page.header {
+  font-size: 2.5em;
+}
+.ui.container .main > section {
+  margin-top: 3em;
+}
 .ui.container > .header,
 .ui.container > .footer {
   min-height: 138px;
@@ -211,6 +217,25 @@ input::selection {
 }
 .search.results {
   padding: 0 40px 40px;
+}
+.jumplinks {
+  margin-top: -0.5em;
+}
+.jumplinks span {
+  display: block;
+}
+.jumplinks a {
+  display: inline-block;
+  margin: 0.25em 0;
+  padding: 0 0.5em;
+  border-left: 1px solid rgba(34, 36, 38, 0.15);
+}
+.jumplinks a:first-of-type {
+  padding-left: 0;
+  border: none;
+}
+h1.large.header + h2.medium.header {
+  margin-top: 0 !important;
 }
 
 /* Recalls */
