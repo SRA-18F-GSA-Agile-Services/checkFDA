@@ -61,95 +61,117 @@
 
 			<div class="ui stackable grid">
 				<div class="eleven wide column">
-					<g:if test="${results}">
-						<g:set var="recalls" value="${ results.recalls.sort { Map map1, Map map2 -> map1.classification <=> map2.classification ?: map2.recall_initiation_date <=> map1.recall_initiation_date } }" />
-						<g:set var="currentRecalls" value="${ recalls.grep { it.status in ['Ongoing', 'Pending'] } }" />
+
+					<g:set var="recalls" value="${ results.recalls.sort { Map map1, Map map2 -> map1.classification <=> map2.classification ?: map2.recall_initiation_date <=> map1.recall_initiation_date } }" />
+					<g:set var="currentRecalls" value="${ recalls.grep { it.status in ['Ongoing', 'Pending'] } }" />
+					<g:set var="drugEvents" value="${ results.events.grep { it.dataset == 'drug/event' } }" />
+					<g:set var="deviceEvents" value="${ results.events.grep { it.dataset == 'device/event' } }" />
+					<g:set var="labels" value="${ results.labels.grep { it.openfda?.brand_name && it.openfda?.generic_name } }" />
+
+					<h1><g:message code="results.header" args="${ [currentRecalls.size() + results.events.size() + labels.size(), query] }" /></h1>
+					<div class="jumplinks">
+						<span><g:message code="results.jumplink" /></span>
 						<g:if test="${ recalls.size() != 0 }">
-							<h1 id="recalls-header" class="ui header">
-								<g:message code="widget.results.recall.header" args="${ [query, currentRecalls.size()] }" />
-							</h1>
-							<div class="ui divider"></div>
-							<div id="recalls-card"></div>
-							<div class="card-table-wrapper">
-								<table id="recalls" class="ui small compact complex selectable unstackable table card-table recalls">
-									<tbody>
-										<g:each in="${ recalls }" var="recall" status="id">
-											<g:if test="${ recall.status in ['Ongoing', 'Pending'] }">
-												<g:render template="/layouts/recall-alert-row" model="${ [recall: recall, id: id] }" />
-											</g:if>
-										</g:each>
-									</tbody>
-								</table>
-							</div>
-							<g:set var="states" value="${ results.recalls.grep { it.distribution_states} }" />
-							<g:if test="${ states.size() != 0 }">
-								<g:render template="/layouts/cards/recall-map" />
-							</g:if>
-							<g:render template="/layouts/cards/recall-timeline" />
+							<a href="#recalls"><g:message code="results.jumplink.recalls" args="${ [currentRecalls.size()] }" /></a>
 						</g:if>
-
-						<g:set var="drugEvents" value="${ results.events.grep { it.dataset == 'drug/event' } }" />
-						<g:set var="deviceEvents" value="${ results.events.grep { it.dataset == 'device/event' } }" />
 						<g:if test="${ results.events.size() != 0 }">
-							<h1 class="ui header">
-								<g:message code="widget.results.event.header" args="${ [query, results.events.size()] }"/>
-							</h1>
-							<div class="ui divider"></div>
-							<g:if test="${ results.events.grep { it.dataset == 'drug/event' }.size() > 0 }">
-								<h2 id="drugevents-header" class="ui header">
-									<g:message code="widget.results.event.drug.header" args="${ [drugEvents.size()] }" />
-								</h2>
+							<a href="#recalls"><g:message code="results.jumplink.events" args="${ [results.events.size()] }" /></a>
+						</g:if>
+						<g:if test="${ labels.size() != 0 }">
+							<a href="#labels"><g:message code="results.jumplink.labels" args="${ [labels.size()] }" /></a>
+						</g:if>
+					</div>
 
-								<div id="drugevents-card"></div>
+					<g:if test="${results}">
+						<g:if test="${ recalls.size() != 0 }">
+							<section id="recalls">
+								<h1 id="recalls-header" class="ui header">
+									<g:message code="widget.results.recall.header" args="${ [query, currentRecalls.size()] }" />
+								</h1>
+								<div class="ui divider"></div>
+								<div id="recalls-card"></div>
 								<div class="card-table-wrapper">
-									<table id="drugevents" class="ui small compact selectable unstackable table card-table drugevents">
+									<table id="recalls" class="ui small compact complex selectable unstackable table card-table recalls">
 										<tbody>
-											<g:each in="${ drugEvents }" var="event" status="id">
-												<g:render template="/layouts/event-row" model="${ [event: event, id: id, isDrug: true, type: 'drug'] }" />
+											<g:each in="${ recalls }" var="recall" status="id">
+												<g:if test="${ recall.status in ['Ongoing', 'Pending'] }">
+													<g:render template="/layouts/recall-alert-row" model="${ [recall: recall, id: id] }" />
+												</g:if>
 											</g:each>
 										</tbody>
 									</table>
 								</div>
-								<div class="ui two cards">
-									<g:render template="/layouts/cards/event-gender" />
-									<g:render template="/layouts/cards/event-ages" />
-								</div>
-							</g:if>
-
-							<g:if test="${ results.events.grep { it.dataset == 'device/event' }.size() > 0 }">
-								<h2 id="deviceevents-header" class="ui header">
-									<g:message code="widget.results.event.device.header" args="${ [deviceEvents.size()] }" />
-								</h2>
-								<div id="deviceevents-card"></div>
-								<div class="card-table-wrapper">
-									<table id="deviceevents" class="ui small compact selectable unstackable table card-table deviceevents">
-										<tbody>
-											<g:each in="${ deviceEvents }" var="event" status="id">
-												<g:render template="/layouts/event-row" model="${ [event: event, id: id, isDrug: false, type: 'device'] }" />
-											</g:each>
-										</tbody>
-									</table>
-								</div>
-								<g:render template="/layouts/cards/event-outcomes" />
-							</g:if>
+								<g:set var="states" value="${ results.recalls.grep { it.distribution_states} }" />
+								<g:if test="${ states.size() != 0 }">
+									<g:render template="/layouts/cards/recall-map" />
+								</g:if>
+								<g:render template="/layouts/cards/recall-timeline" />
+							</section>
 						</g:if>
 
-						<g:set var="labels" value="${ results.labels.grep { it.openfda?.brand_name && it.openfda?.generic_name } }" />
+						<g:if test="${ results.events.size() != 0 }">
+							<section id="events">
+								<h1 class="ui header">
+									<g:message code="widget.results.event.header" args="${ [query, results.events.size()] }"/>
+								</h1>
+								<div class="ui divider"></div>
+								<g:if test="${ results.events.grep { it.dataset == 'drug/event' }.size() > 0 }">
+									<h2 id="drugevents-header" class="ui header">
+										<g:message code="widget.results.event.drug.header" args="${ [drugEvents.size()] }" />
+									</h2>
+
+									<div id="drugevents-card"></div>
+									<div class="card-table-wrapper">
+										<table id="drugevents" class="ui small compact selectable unstackable table card-table drugevents">
+											<tbody>
+												<g:each in="${ drugEvents }" var="event" status="id">
+													<g:render template="/layouts/event-row" model="${ [event: event, id: id, isDrug: true, type: 'drug'] }" />
+												</g:each>
+											</tbody>
+										</table>
+									</div>
+									<div class="ui two cards">
+										<g:render template="/layouts/cards/event-gender" />
+										<g:render template="/layouts/cards/event-ages" />
+									</div>
+								</g:if>
+
+								<g:if test="${ results.events.grep { it.dataset == 'device/event' }.size() > 0 }">
+									<h2 id="deviceevents-header" class="ui header">
+										<g:message code="widget.results.event.device.header" args="${ [deviceEvents.size()] }" />
+									</h2>
+									<div id="deviceevents-card"></div>
+									<div class="card-table-wrapper">
+										<table id="deviceevents" class="ui small compact selectable unstackable table card-table deviceevents">
+											<tbody>
+												<g:each in="${ deviceEvents }" var="event" status="id">
+													<g:render template="/layouts/event-row" model="${ [event: event, id: id, isDrug: false, type: 'device'] }" />
+												</g:each>
+											</tbody>
+										</table>
+									</div>
+									<g:render template="/layouts/cards/event-outcomes" />
+								</g:if>
+							</section>
+						</g:if>
+
 						<g:if test="${ labels.size() != 0 }">
-							<h1 id="labels-header" class="ui header">
-								<g:message code="widget.results.label.header" args="${ [query, labels.size()] }" />
-							</h1>
-							<div class="ui divider"></div>
-							<div id="labels-card"></div>
-							<div class="card-table-wrapper">
-								<table id="labels" class="ui small compact selectable unstackable table card-table labels">
-									<tbody>
-										<g:each in="${ labels }" var="label" status="id">
-											<g:render template="/layouts/drug-label-row" model="${ [label: label, id: id] }" />
-										</g:each>
-									</tbody>
-								</table>
-							</div>
+							<section id="labels">
+								<h1 id="labels-header" class="ui header">
+									<g:message code="widget.results.label.header" args="${ [query, labels.size()] }" />
+								</h1>
+								<div class="ui divider"></div>
+								<div id="labels-card"></div>
+								<div class="card-table-wrapper">
+									<table id="labels" class="ui small compact selectable unstackable table card-table labels">
+										<tbody>
+											<g:each in="${ labels }" var="label" status="id">
+												<g:render template="/layouts/drug-label-row" model="${ [label: label, id: id] }" />
+											</g:each>
+										</tbody>
+									</table>
+								</div>
+							</section>
 						</g:if>
 					</g:if>
 
@@ -191,6 +213,7 @@
 					</div>
 				</div>
 			</div>
+
 		</div>
 		<script>
 
