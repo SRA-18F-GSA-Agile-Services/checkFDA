@@ -84,7 +84,7 @@ class SearchControllerSpec extends Specification {
 		String label = labels.results[0] as JSON
 
 		when:
-		def result = controller.renderCard(label, 'labels')
+		controller.renderCard(label, 'labels')
 
 		then:
 		controller.response.text.size() != 0
