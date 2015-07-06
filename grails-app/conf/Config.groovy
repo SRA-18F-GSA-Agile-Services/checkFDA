@@ -88,7 +88,7 @@ environments {
     production {
 		checkfda.localData = false
         grails.logging.jul.usebridge = false
-		grails.serverURL = 'http://searchfda.elasticbeanstalk.com'
+		grails.serverURL = 'https://checkfda.srarad.com'
     }
 }
 
