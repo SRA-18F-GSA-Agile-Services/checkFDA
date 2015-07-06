@@ -1,6 +1,3 @@
-[[Home]] ▸ [[Team Overview]] ▸ **Our Team**
-
-
 | Name            | Company | Position                                              | 
 | ----------------|:-------:| :-----------------------------------------------------|
 | Madorsky, Jenny| SRA     | Product Manager                                       |

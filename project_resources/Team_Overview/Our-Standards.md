@@ -1,5 +1,3 @@
-[[Home]] ▸ [[Team Overview]] ▸ **Our Standards**
-
 ### Definition of Done
 
 A User Story is considered done once
@@ -19,9 +17,6 @@ Additional considerations are applied to each user story, including additions to
 The standards for most of our non functional requirements are dependent on AWS and follow their [AWS EC2 SLA](http://aws.amazon.com/ec2/sla/).  
 
 By using AWS we can assure solutions regarding scalability, availability, reliability, and maintainability. If we were to continue this project we could assure scalability through load balancers for new EC2 instances for increased site traffic. For availability and reliability AWS EC2 SLA guarantees 99.95% up time or else a bill credit will be issued regarding the downtime. By using our MVC (Grails) and coding practices required by CodeNark allows our application retain maintainability. 
-
-##### Scalability
-* I need my site to scale dynamically to account for increased and decreased user traffic on checkFDA
 
 
 ### Security

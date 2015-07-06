@@ -1,5 +1,3 @@
-[[Home]] ▸ [[Team Overview]] ▸ **Project Requirements**
-
 ### Full Stack Criteria
 
 1. Assigned one leader, gave that person authority and responsibility, and held that person accountable for the quality of the prototype submitted

@@ -1,5 +1,3 @@
-[[Home]] ▸ [[Team Overview]] ▸ **How We Work**
-
 ### Daily Stand Ups 9am, 12pm, 3pm
 * What did you accomplish in the past 3 hours?
 * What will you finish in the next 3 hours?
