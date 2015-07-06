@@ -13,3 +13,4 @@
 cobertura.ser
 /.vagrant
 *.war
+.DS_Store
