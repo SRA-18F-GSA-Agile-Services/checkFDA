@@ -24,6 +24,9 @@ function selectDetailCard(me, initializing) {
 		},
 		success: function(data) {
 			$('#' + type + '-card').html(data);
+			$('#' + type + '-card [data-content]').popup({
+				position: 'top center'
+			});
 			if (!initializing) {
 				jump(type + '-header');
 			}
