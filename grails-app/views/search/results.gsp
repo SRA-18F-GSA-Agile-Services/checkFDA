@@ -38,7 +38,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="main results" style="position: relative;">
+		<div class="main results position" >
 			<g:if test="${flash.error}">
 				<div class="ui negative message">
 					<i class="close icon"></i>

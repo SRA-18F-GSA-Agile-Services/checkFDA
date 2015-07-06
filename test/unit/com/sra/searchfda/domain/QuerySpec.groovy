@@ -8,7 +8,8 @@ import spock.lang.Specification
  */
 @TestFor(Query)
 class QuerySpec extends Specification {
-
+	
+	@SuppressWarnings("EmptyMethod")
     void "test something"() {
     }
 }

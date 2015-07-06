@@ -17,7 +17,7 @@ class SearchService {
 	OpenFDAService openFDAService
 	StateService stateService
 
-	Map datasetTotals = new HashMap()
+	final Map datasetTotals = [:]
 
 	Map executeSearch(String query) {
 		if (grailsApplication.config.checkfda.localData) {
@@ -28,8 +28,9 @@ class SearchService {
 	
 	Integer getDatasetTotal(DataSet dataset) {
 		Integer total = datasetTotals[dataset.name] as Integer
-		if (total!=null) return(total)
-
+		if (total!=null){
+			 return(total)
+		}
 		String result=openFDAService.query(dataset.url,"",1,0) //get a result from open fda
 
 		if (result==null) {
@@ -53,7 +54,7 @@ class SearchService {
 	Map federatedSearch(String query) {
 		long t0=System.currentTimeMillis()
         Map<List<Map>> results = [:]
-		Map meta=new HashMap()
+		Map meta= [:]
 
 		DataSet.list().each { DataSet dataSet -> //iterate across each dataset
 			//iterate across each dataset
@@ -67,12 +68,14 @@ class SearchService {
 	}
 	
 	private void processSearchResult(Map<String,List<Map>> results,Map result,Map meta,String group,String path) {
-			if (results[group]==null) results[group]=[]
+			if (results[group]==null) {
+				results[group]=[]
+			}
 			results[group]+=result.results
 			meta[path.replace("/","-")]=result.meta
 			Map gmeta=meta[group]
 			if (gmeta==null) {
-				gmeta=new HashMap()
+				gmeta= [:]
 				gmeta.hits=0
 				gmeta.total=0
 				meta[group]=gmeta
@@ -89,7 +92,7 @@ class SearchService {
 		long t0=System.currentTimeMillis()
 		Map<String,List<Map>> results=new HashMap<String,List<Map>>()
 		List<Map> presults=null
-		Map meta=new HashMap()
+		Map meta= [:]
 
 		List<DataSet> dataSets = DataSet.list()
 
@@ -125,13 +128,13 @@ class SearchService {
 		return(results) //return the result as JSON
 	}
 
-	def timingComparison(String query) {
+	Map timingComparison(String query) {
 		long t0=System.currentTimeMillis()
-		def result=federatedSearch(query)
+		Map result=federatedSearch(query)
 		long t1=System.currentTimeMillis()
 		log.info("Federated time:"+(t1-t0))
 		long t3=System.currentTimeMillis()
-		def presult=parallelFederatedSearch(query)
+		Map presult=parallelFederatedSearch(query)
 		long t4=System.currentTimeMillis()
 		log.info("Parallel time:"+(t4-t3))
 		log.info("result length="+result.size())
@@ -145,20 +148,26 @@ class SearchService {
 	 */
 	protected Map search(DataSet dataset,String query) {
 		int count=0 // count of results for far
-		HashMap meta=[:]
+		Map meta=[:]
 		List<Map> results=[] //to accumulate results
 		while(true) { //while we still have results
 			String result=openFDAService.query(dataset.url, query, 100, count) //get a result from open fda
-			if (result==null) break
-				Map js=JSON.parse(result) //parse the json into a map
+			if (result==null){ 
+				break
+			}
+			Map js=JSON.parse(result) //parse the json into a map
 			int total=js.meta.results.total //get the total for the overall query
 			meta.hits=total
 			meta.total=getDatasetTotal(dataset)
 			log.info(dataset.path+" has "+total) //report (for now) how many total hits the dataset had
 			results+=js.results //add the results
 			count+=js.results.size() //update our count
-			if (count>=total) break //if we're done with paging
-			if (count>=MAXRESULTS) break //if we've reached the limit desired for each database
+			if (count>=total) {
+				break //if we're done with paging
+			}
+			if (count>=MAXRESULTS) {
+				break //if we've reached the limit desired for each database
+			}
 		}
 		//log.info("total in list="+results.size())
 		[meta:meta,results:results]
@@ -200,7 +209,9 @@ class SearchService {
 	}
 
 	private Map filterResults(DataSet dataset, Map results) {
-		if (!USEFILTERING) return(results)
+		if (!USEFILTERING) {
+			return(results)
+		}
 		List<String> filters=loadFilters()
 		List<Map> newMap=[]
 		for(Map result:results.results) {
