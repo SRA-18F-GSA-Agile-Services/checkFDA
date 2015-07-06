@@ -5,14 +5,13 @@
 .ui.container {
 	display: flex;
 	flex-direction: column;
-	min-height: 100vh;
-	.header {
-		flex: 0 1;
+	height: 100%;
+	.header,
+	.footer {
+		flex: none;
 	}
 	.main {
-		flex: 1 0;
-	}
-	.footer {
-		flex: 0 1;
+		flex: 1 0 auto;
+		width: 100%;
 	}
 }
