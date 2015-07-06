@@ -68,17 +68,17 @@
 					<g:set var="deviceEvents" value="${ results.events.grep { it.dataset == 'device/event' } }" />
 					<g:set var="labels" value="${ results.labels.grep { it.openfda?.brand_name && it.openfda?.generic_name } }" />
 
-					<h1 class="ui page header"><g:message code="results.header" args="${ [currentRecalls.size() + results.events.size() + labels.size(), query] }" /></h1>
+					<h1 class="ui page header"><g:message code="results.header" args="${ [results.meta.recalls.hits + results.meta.events.hits + results.meta.labels.hits, query] }" /></h1>
 					<div class="jumplinks">
 						<span><g:message code="results.jumplink" /></span>
 						<g:if test="${ recalls.size() != 0 }">
-							<a href="#recalls"><g:message code="results.jumplink.recalls" args="${ [currentRecalls.size()] }" /></a>
+							<a href="#recalls"><g:message code="results.jumplink.recalls" args="${ [results.meta.recalls.hits] }" /></a>
 						</g:if>
 						<g:if test="${ results.events.size() != 0 }">
-							<a href="#events"><g:message code="results.jumplink.events" args="${ [results.events.size()] }" /></a>
+							<a href="#events"><g:message code="results.jumplink.events" args="${ [results.meta.events.hits] }" /></a>
 						</g:if>
 						<g:if test="${ labels.size() != 0 }">
-							<a href="#labels"><g:message code="results.jumplink.labels" args="${ [labels.size()] }" /></a>
+							<a href="#labels"><g:message code="results.jumplink.labels" args="${ [results.meta.labels.hits] }" /></a>
 						</g:if>
 					</div>
 
