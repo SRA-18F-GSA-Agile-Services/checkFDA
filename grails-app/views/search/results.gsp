@@ -91,7 +91,6 @@
 									<g:message code="widget.results.recall.header" args="${ [query, currentRecalls.size()] }" />
 								</h1>
 								<div id="recalls-labels" class="ui labels"></div>
-								<div id="recalls-card"></div>
 								<div class="card-table-wrapper">
 									<table id="recalls" class="ui small compact complex selectable unstackable table card-table recalls">
 										<tbody>
@@ -103,6 +102,7 @@
 										</tbody>
 									</table>
 								</div>
+								<div id="recalls-card"></div>
 								<g:set var="states" value="${ results.recalls.grep { it.distribution_states} }" />
 								<g:if test="${ states.size() != 0 }">
 									<g:render template="/layouts/cards/recall-map" />
@@ -122,7 +122,6 @@
 										<g:message code="widget.results.event.drug.header" args="${ [drugEvents.size()] }" />
 									</h2>
 									<div id="drugevents-labels" class="ui labels"></div>
-									<div id="drugevents-card"></div>
 									<div class="card-table-wrapper">
 										<table id="drugevents" class="ui small compact selectable unstackable table card-table drugevents">
 											<tbody>
@@ -132,6 +131,7 @@
 											</tbody>
 										</table>
 									</div>
+									<div id="drugevents-card"></div>
 									<div class="ui two cards">
 										<g:render template="/layouts/cards/event-gender" />
 										<g:render template="/layouts/cards/event-ages" />
@@ -143,7 +143,6 @@
 										<g:message code="widget.results.event.device.header" args="${ [deviceEvents.size()] }" />
 									</h2>
 									<div id="deviceevents-labels" class="ui labels"></div>
-									<div id="deviceevents-card"></div>
 									<div class="card-table-wrapper">
 										<table id="deviceevents" class="ui small compact selectable unstackable table card-table deviceevents">
 											<tbody>
@@ -153,6 +152,7 @@
 											</tbody>
 										</table>
 									</div>
+									<div id="deviceevents-card"></div>
 									<g:render template="/layouts/cards/event-outcomes" />
 								</g:if>
 							</section>
@@ -164,7 +164,6 @@
 								<h1 id="labels-header" class="ui large header">
 									<g:message code="widget.results.label.header" args="${ [query, labels.size()] }" />
 								</h1>
-								<div id="labels-card"></div>
 								<div class="card-table-wrapper">
 									<table id="labels" class="ui small compact selectable unstackable table card-table labels">
 										<tbody>
@@ -174,6 +173,7 @@
 										</tbody>
 									</table>
 								</div>
+								<div id="labels-card"></div>
 							</section>
 						</g:if>
 					</g:if>

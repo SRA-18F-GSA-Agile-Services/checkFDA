@@ -30,9 +30,6 @@ function selectDetailCard(me, initializing) {
 			$('#' + type + '-card [data-content]').popup({
 				position: 'top center'
 			});
-			if (!initializing) {
-				jump(type + '-header');
-			}
 		}
 	});
 }
