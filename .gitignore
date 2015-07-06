@@ -12,3 +12,4 @@
 /out
 cobertura.ser
 /.vagrant
+*.war
