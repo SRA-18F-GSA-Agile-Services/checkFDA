@@ -1,7 +1,3 @@
-// MySQL
-def fileloc = ['../UserConfig.groovy', 'webapps/ROOT/Jenkins.groovy', 'webapps/ServerConfig.groovy'].grep { new File(it).exists() }.first();
-def dbConfig = new ConfigSlurper(grailsSettings.grailsEnv).parse(new File(fileloc).toURI().toURL())
-
 dataSource {
     pooled = true
     driverClassName = "org.h2.Driver"
@@ -56,9 +52,9 @@ environments {
 			pooled = true
 			driverClassName = "com.mysql.jdbc.Driver"
 			dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
-			url = dbConfig.rds.url
-			username=dbConfig.rds.username
-			password=dbConfig.rds.password 
+			url = ""
+			username = ""
+			password = ""
 	
 			properties {
 				maxActive = 50

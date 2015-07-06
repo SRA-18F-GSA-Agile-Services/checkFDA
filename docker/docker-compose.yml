@@ -1,0 +1,25 @@
+---
+mysql:
+#  build: ./mysql
+  image: mysql:5.6
+  ports:
+    - "3306:3306"
+  environment:
+    - MYSQL_ROOT_PASSWORD=sfda_root_pass
+    - MYSQL_DATABASE=checkfda_db
+    - MYSQL_USER=checkfda_user
+    - MYSQL_PASSWORD=checkfda_pass
+
+tomcat:
+  build: ./tomcat
+#  image: tomcat:8.0
+  ports:
+    - "8888:8080"
+  links:
+    - mysql
+  environment:
+    - CATALINA_OPTS=-Xms256m -Xmx1024m
+    - OPENFDA_API_TOKEN=null
+    - CHECKFDA_DB_CREATE=create-drop
+    - CHECKFDA_ADMIN_DEFAULT_USERNAME=override_default_username
+    - CHECKFDA_ADMIN_DEFAULT_PASSWORD=override_default_password
