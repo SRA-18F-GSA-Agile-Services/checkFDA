@@ -70,6 +70,7 @@
 
 			<i class="icon bug"></i> <g:message code="styleguide.icons.bug" /><br>
 			<i class="icon calendar outline"></i> <g:message code="styleguide.icons.calendar" /><br>
+			<i class="icon globe"></i> <g:message code="styleguide.icons.globe" /><br>
 			<i class="icon help"></i> <g:message code="styleguide.icons.help" /><br>
 			<i class="icon man"></i> <g:message code="styleguide.icons.man" /><br>
 			<i class="icon woman"></i> <g:message code="styleguide.icons.woman" /><br>
@@ -79,6 +80,7 @@
 			<i class="icon announcement"></i> <g:message code="styleguide.icons.announcement" /><br>
 			<i class="icon wait"></i> <g:message code="styleguide.icons.wait" /><br>
 			<i class="icon flag outline"></i> <g:message code="styleguide.icons.flag" /><br>
+			<i class="icon file text outline"></i> <g:message code="styleguide.icons.fileText" /><br>
 			<i class="icon remove user"></i> <g:message code="styleguide.icons.removeUser" />
 
 			<div class="ui divider"></div>

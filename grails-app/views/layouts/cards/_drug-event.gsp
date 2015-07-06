@@ -1,45 +1,32 @@
 <div class="ui fluid card drugevent">
 	<div class="content">
-		<div class="ui grid">
-			<div class="four wide column">
-				<div class="ui tiny header">
-					<g:message code="widget.drug.event.report" />
-				</div>
-				${ event.safetyreportid }
-			</div>
-			<div class="four wide column">
-				<div class="ui tiny header">
-					<g:message code="widget.drug.event.receivedate" />
-				</div>
-				<g:if test="${ event.receivedate }">
-					${ new Date().parse('yyyyMMdd', event.receivedate).format('M/d/yyyy') }
-				</g:if>
-			</div>
-			<div class="four wide column">
-				<div class="ui tiny header">
-					<g:message code="widget.drug.event.patientsex" />
-				</div>
-				<g:message code="widget.drug.event.patientsex${ event.patient.patientsex }" />
-			</div>
-			<div class="four wide column">
-				<div class="ui tiny header">
-					<g:message code="widget.drug.event.onsetage" />
-				</div>
+		<div class="extra content">
+			<g:if test="${ event.receivedate }">
+				<span data-content="${ message(code: 'widget.drug.event.receivedate') }">
+					<i class="icon calendar outline"></i> ${ new Date().parse('yyyyMMdd', event.receivedate).format('M/d/yyyy') }
+				</span>
+			</g:if>
+
+			<span data-content="${ message(code: 'widget.drug.event.report') }">
+				<i class="icon file text outline"></i> ${ event.safetyreportid }
+			</span>
+
+			<span data-content="${ message(code: 'widget.event.row.patient.drug') }">
+				<i class="icon ${ message(code: 'widget.event.row.patientsex.icon' + event.patient.patientsex) }" data-content="${ message(code: 'widget.event.row.patient.' + type) }"></i>
 				${ event.patient.patientonsetage }
-			</div>
-			<div class="eight wide column">
-				<div class="ui tiny header">
-					<g:message code="widget.drug.event.outcomes" />
-				</div>
-				${ ['hospitalization', 'lifethreatening', 'death', 'disabling', 'congenitalanomali'].grep { event['seriousness' + it] }.collect { message(code: 'widget.drug.event.seriousness.' + it) }.join(', ') }
-			</div>
-			<div class="four wide column">
-				<div class="ui tiny header">
-					<g:message code="widget.drug.event.country" />
-				</div>
-				${ event.occurcountry }
-			</div>
+			</span>
+
+			<g:if test="${ event.occurcountry }">
+				<span data-content="${ message(code: 'widget.drug.event.country') }">
+					<i class="icon globe"></i> ${ event.occurcountry }
+				</span>
+			</g:if>
 		</div>
+
+		<div class="ui tiny header">
+			<g:message code="widget.drug.event.outcomes" />
+		</div>
+		<p>${ ['hospitalization', 'lifethreatening', 'death', 'disabling', 'congenitalanomali'].grep { event['seriousness' + it] }.collect { message(code: 'widget.drug.event.seriousness.' + it) }.join(', ') }</p>
 
 		<div class="ui divider"></div>
 
@@ -47,7 +34,7 @@
 			<div class="ui small header">
 				<g:message code="widget.drug.event.drugs" />
 			</div>
-			<table class="ui small compact selectable unstackable stripped table">
+			<table class="ui small compact unstackable striped table">
 				<thead>
 					<tr>
 						<th><g:message code="widget.drug.event.drug.product" /></th>
@@ -75,7 +62,7 @@
 			<div class="ui small header">
 				<g:message code="widget.drug.event.reactions" />
 			</div>
-			<table class="ui small compact selectable unstackable stripped table">
+			<table class="ui small compact unstackable striped table">
 				<thead>
 					<tr>
 						<th><g:message code="widget.drug.event.reaction.term" /></th>

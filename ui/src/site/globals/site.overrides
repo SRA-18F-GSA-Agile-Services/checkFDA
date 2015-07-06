@@ -65,7 +65,9 @@
 }
 
 .ui.fluid.card.recall,
-.ui.fluid.card.druglabel, {
+.ui.fluid.card.druglabel,
+.ui.fluid.card.drugevent,
+.ui.fluid.card.deviceevent {
 	&:last-child {
 		margin-bottom: 1em !important;
 	}
@@ -79,12 +81,22 @@
 		}
 	}
 
+	.ui.medium.header {
+		margin: 1rem 0 0.5rem;
+		&.nomargin {
+			margin-top: 0;
+		}
+	}
+
 	.ui.small.header {
 		margin: 1rem 0 0.5rem;
 		.generic {
 			font-weight: normal;
 			color: @lightTextColor;
 			white-space: nowrap;
+		}
+		&.nomargin {
+			margin-top: 0;
 		}
 	}
 
@@ -150,6 +162,37 @@
 		}
 		.icon {
 			color: @lightTextColor !important;
+		}
+	}
+	&.deviceevents,
+	&.drugevents {
+		tr > th, tr > td {
+			&:nth-child(1) {
+				width: 8em;
+			}
+		}
+		.icon, .reactions, .brandname {
+			color: @lightTextColor !important;
+		}
+	}
+	&.deviceevents {
+		tr > th, tr > td {
+			&:nth-child(2) {
+				width: 15em;
+			}
+			&:nth-child(3) {
+				width: 8em;
+			}
+		}
+	}
+	&.drugevents {
+		tr > th, tr > td {
+			&:nth-child(2) {
+				width: 8em;
+			}
+			&:nth-child(3) {
+				width: 5em;
+			}
 		}
 	}
 }

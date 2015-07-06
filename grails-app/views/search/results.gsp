@@ -128,10 +128,7 @@
 								</tbody>
 							</table>
 						</div>
-						<div class="ui divider"></div>
-						<div class="ui one cards">
-							<g:render template="/layouts/cards/event-outcomes" />
-						</div>
+						<g:render template="/layouts/cards/event-outcomes" />
 					</g:if>
 				</g:if>
 
@@ -156,7 +153,7 @@
 		</div>
 		<script>
 
-		<g:applyCodec encodeAs="none">		
+		<g:applyCodec encodeAs="none">
 			var recalls = ${ results ? recalls as JSON : "[]" };
 			var labels = ${ results ? labels as JSON : "[]" };
 			var events = ${ results ? results.events as JSON : "[]" };

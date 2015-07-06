@@ -740,34 +740,67 @@ input::selection {
 }
 
 .ui.fluid.card.recall:last-child,
-.ui.fluid.card.druglabel:last-child {
+.ui.fluid.card.druglabel:last-child,
+.ui.fluid.card.drugevent:last-child,
+.ui.fluid.card.deviceevent:last-child {
   margin-bottom: 1em !important;
 }
 
 .ui.fluid.card.recall .extra.content span,
-.ui.fluid.card.druglabel .extra.content span {
+.ui.fluid.card.druglabel .extra.content span,
+.ui.fluid.card.drugevent .extra.content span,
+.ui.fluid.card.deviceevent .extra.content span {
   margin-right: 1em;
 }
 
 .ui.fluid.card.recall .extra.content .icon,
-.ui.fluid.card.druglabel .extra.content .icon {
+.ui.fluid.card.druglabel .extra.content .icon,
+.ui.fluid.card.drugevent .extra.content .icon,
+.ui.fluid.card.deviceevent .extra.content .icon {
   color: rgba(0, 0, 0, 0.4) !important;
 }
 
+.ui.fluid.card.recall .ui.medium.header,
+.ui.fluid.card.druglabel .ui.medium.header,
+.ui.fluid.card.drugevent .ui.medium.header,
+.ui.fluid.card.deviceevent .ui.medium.header {
+  margin: 1rem 0 0.5rem;
+}
+
+.ui.fluid.card.recall .ui.medium.header.nomargin,
+.ui.fluid.card.druglabel .ui.medium.header.nomargin,
+.ui.fluid.card.drugevent .ui.medium.header.nomargin,
+.ui.fluid.card.deviceevent .ui.medium.header.nomargin {
+  margin-top: 0;
+}
+
 .ui.fluid.card.recall .ui.small.header,
-.ui.fluid.card.druglabel .ui.small.header {
+.ui.fluid.card.druglabel .ui.small.header,
+.ui.fluid.card.drugevent .ui.small.header,
+.ui.fluid.card.deviceevent .ui.small.header {
   margin: 1rem 0 0.5rem;
 }
 
 .ui.fluid.card.recall .ui.small.header .generic,
-.ui.fluid.card.druglabel .ui.small.header .generic {
+.ui.fluid.card.druglabel .ui.small.header .generic,
+.ui.fluid.card.drugevent .ui.small.header .generic,
+.ui.fluid.card.deviceevent .ui.small.header .generic {
   font-weight: normal;
   color: rgba(0, 0, 0, 0.4);
   white-space: nowrap;
 }
 
+.ui.fluid.card.recall .ui.small.header.nomargin,
+.ui.fluid.card.druglabel .ui.small.header.nomargin,
+.ui.fluid.card.drugevent .ui.small.header.nomargin,
+.ui.fluid.card.deviceevent .ui.small.header.nomargin {
+  margin-top: 0;
+}
+
 .ui.fluid.card.recall .ui.sub.header,
-.ui.fluid.card.druglabel .ui.sub.header {
+.ui.fluid.card.druglabel .ui.sub.header,
+.ui.fluid.card.drugevent .ui.sub.header,
+.ui.fluid.card.deviceevent .ui.sub.header {
   font-weight: normal;
   margin-top: -0.5em;
   font-size: 1em;
@@ -776,7 +809,9 @@ input::selection {
 }
 
 .ui.fluid.card.recall .ui.tiny.header,
-.ui.fluid.card.druglabel .ui.tiny.header {
+.ui.fluid.card.druglabel .ui.tiny.header,
+.ui.fluid.card.drugevent .ui.tiny.header,
+.ui.fluid.card.deviceevent .ui.tiny.header {
   margin: 1rem 0 0.5rem;
   font-weight: normal !important;
   color: rgba(0, 0, 0, 0.4) !important;
@@ -831,6 +866,42 @@ input::selection {
 
 .card-table.labels .icon {
   color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.card-table.deviceevents tr > th:nth-child(1),
+.card-table.drugevents tr > th:nth-child(1),
+.card-table.deviceevents tr > td:nth-child(1),
+.card-table.drugevents tr > td:nth-child(1) {
+  width: 8em;
+}
+
+.card-table.deviceevents .icon,
+.card-table.drugevents .icon,
+.card-table.deviceevents .reactions,
+.card-table.drugevents .reactions,
+.card-table.deviceevents .brandname,
+.card-table.drugevents .brandname {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.card-table.deviceevents tr > th:nth-child(2),
+.card-table.deviceevents tr > td:nth-child(2) {
+  width: 15em;
+}
+
+.card-table.deviceevents tr > th:nth-child(3),
+.card-table.deviceevents tr > td:nth-child(3) {
+  width: 8em;
+}
+
+.card-table.drugevents tr > th:nth-child(2),
+.card-table.drugevents tr > td:nth-child(2) {
+  width: 8em;
+}
+
+.card-table.drugevents tr > th:nth-child(3),
+.card-table.drugevents tr > td:nth-child(3) {
+  width: 5em;
 }
 
 .overflow {
