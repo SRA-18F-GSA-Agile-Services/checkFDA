@@ -22,7 +22,7 @@
 	<td class="overflow">
 		<span data-content="${ message(code: 'widget.event.row.outcomes') }">
 			<g:if test="${ !isDrug }">
-				<b>${ event.patient*.sequence_number_outcome*.collect { it.split(', ').last() }*.join(', ') }</b>
+				<b>${ event.patient*.sequence_number_outcome*.collect { it.split(', ').last() }*.join(', ').join('') }</b>
 				<!-- <span class="brandname">{ device.brand_name }</span> -->
 			</g:if>
 			<g:else>
