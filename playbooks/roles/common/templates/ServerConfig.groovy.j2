@@ -1,4 +1,5 @@
-rds.username = '{{searchfda_mysql_username}}'
-rds.password = '{{searchfda_mysql_password}}'
-rds.url = 'jdbc:mysql://localhost:3306/{{searchfda_mysql_db}}?useUnicode=true&autoReconnect=true'
+dataSource.dbCreate = "{{searchfda_db_create}}" // one of 'create', 'create-drop', 'update', 'validate', ''
+dataSource.username = '{{searchfda_mysql_username}}'
+dataSource.password = '{{searchfda_mysql_password}}'
+dataSource.url = 'jdbc:mysql://localhost:3306/{{searchfda_mysql_db}}?useUnicode=true&autoReconnect=true'
 openfdaapi.token = {{openfda_api_token}}

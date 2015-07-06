@@ -18,5 +18,6 @@ tomcat:
   links:
     - mysql
   environment:
-    - CATALINA_OPTS=-Xms256m -Xmx1024m -XX:PermSize=512m -XX:MaxPermSize=512m
+    - CATALINA_OPTS=-Xms256m -Xmx1024m
     - OPENFDA_API_TOKEN=null
+    - SEARCHFDA_DB_CREATE=create-drop
