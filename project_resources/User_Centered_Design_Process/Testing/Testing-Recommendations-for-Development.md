@@ -4,7 +4,7 @@
 * Caroline, 32-year-old female: Thursday, June 25
 * Stephen, 23-year old male: Thursday, June 25
 
-##### Raw Data File PDF:  [Validation_Testing](https://github.com/SRA-18F-GSA-Agile-Services/checkFDA/blob/dev/project_resources/User_Centered_Design_Process/Testing/Testing_Artifactsb/Validation_Testing_Round1_Excel.pdf)
+##### Raw Data File PDF:  [Validation_Testing](https://github.com/SRA-18F-GSA-Agile-Services/checkFDA/blob/master/project_resources/User_Centered_Design_Process/Testing/Testing_Artifacts/Validation_Testing_Round1_Excel.pdf)
 
 ### Development Recommendations
 ######Context with Search Help

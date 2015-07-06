@@ -43,4 +43,4 @@
 * What were some of your primary concerns and questions about the drugs you were prescribed?
 * Have you ever had an adverse side effect or reaction related to a medication? What did you do? 
 
-### Raw Interview Notes File PDF: [Discovery_Interviews_Synthesized](https://github.com/SRA-18F-GSA-Agile-Services/checkFDA/blob/dev/project-artifacts/project_resources/User_Centered_Design_Process/Discovery/Discovery_Artifacts/Discovery_Interviews_Synthesized_Excel.pdf)
+### Raw Interview Notes File PDF: [Discovery_Interviews_Synthesized](https://github.com/SRA-18F-GSA-Agile-Services/checkFDA/blob/master/project_resources/User_Centered_Design_Process/Discovery/Discovery_Artifacts/Discovery_Interviews_Synthesized_Excel.pdf)

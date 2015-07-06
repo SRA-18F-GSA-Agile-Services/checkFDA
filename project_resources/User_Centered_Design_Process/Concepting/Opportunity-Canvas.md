@@ -1,3 +1,3 @@
-[High Resolution link](https://raw.githubusercontent.com/SRA-18F-GSA-Agile-Services/checkFDA/dev/project_photos/Hackathon_Design_Archives/UX_Collab_Space_%20GSA_18F_Procurement/Strategy/Opportunity_Canvas.png?token=AMHV3ST8E-YNWcGS6U19Lu_uqUB_OlzUks5Vo_I9wA%3D%3D)
+[High Resolution link](https://github.com/SRA-18F-GSA-Agile-Services/checkFDA/blob/master/project_resources/User_Centered_Design_Process/Concepting/Concepting_Artifacts/Opportunity_Canvas.png)
 
-![](https://github.com/SRA-18F-GSA-Agile-Services/SearchFDA/blob/dev/project_photos/Hackathon_Design_Archives/UX_Collab_Space_GSA_18F_Procurement/Strategy/Opportunity_Canvas.png)
+![](https://github.com/SRA-18F-GSA-Agile-Services/checkFDA/blob/master/project_resources/User_Centered_Design_Process/Concepting/Concepting_Artifacts/Opportunity_Canvas.png)
