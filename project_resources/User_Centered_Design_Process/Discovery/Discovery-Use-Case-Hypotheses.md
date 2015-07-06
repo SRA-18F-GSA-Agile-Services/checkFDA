@@ -1,5 +1,3 @@
-[[Home]] ▸ [[User Centered Design Process]] ▸ **Discovery Use Case Hypotheses**
-
 ### Goals of OpenFDA
 * Create easy access to public data
 * Create a new level of openness and accountability

@@ -1,5 +1,3 @@
-[[Home]] ▸ [[User Centered Design Process]] ▸ **Discovery User Interviews**
-
 ### Interviews, June 18 2015
 ##### 1) Stacey, Subject Matter Expert
 * Project Manager at SRA, Project Manager FDA VAERS contract
@@ -45,4 +43,4 @@
 * What were some of your primary concerns and questions about the drugs you were prescribed?
 * Have you ever had an adverse side effect or reaction related to a medication? What did you do? 
 
-### Raw Interview Notes File PDF: [Discovery_Interviews_Synthesized](https://github.com/SRA-18F-GSA-Agile-Services/SearchFDA/blob/06fbe3a11ec3e8ccdcc69b9c30d48f79afecc261/project_photos/Hackathon_Design_Archives/UCD_Artifacts_GitHub/Discovery_Interviews_Synthesized_Excel.pdf)
+### Raw Interview Notes File PDF: [Discovery_Interviews_Synthesized](https://github.com/SRA-18F-GSA-Agile-Services/checkFDA/blob/dev/project-artifacts/project_resources/User_Centered_Design_Process/Discovery/Discovery_Artifacts/Discovery_Interviews_Synthesized_Excel.pdf)

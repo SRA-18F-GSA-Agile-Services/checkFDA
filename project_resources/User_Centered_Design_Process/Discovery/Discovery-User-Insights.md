@@ -1,5 +1,3 @@
-[[Home]] ▸ [[User Centered Design Process]] ▸ **Discovery User Insights**
-
 ### Insights
 
 ##### 1. Many Types of Caregivers

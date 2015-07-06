@@ -1,5 +1,3 @@
-[[Home]] ▸ [[User Centered Design Process]] ▸ **Testing Use Cases**
-
 ### Team Prep
 ##### General Concept
 * Set up context

@@ -1,5 +1,3 @@
-[[Home]] ▸ [[User Centered Design Process]] ▸ **Discovery Challenge Identification**
-
 ### Challenge to Solve For
 #####Our challenge is to....
 **1) Create one place for consumers to search on FDA drug, medical device, or food information that visualizes fast answers to questions and decrease anxiety that they are not getting the correct, full picture.**

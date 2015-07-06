@@ -1,5 +1,3 @@
-[[Home]] ▸ [[User Centered Design Process]] ▸ **Concepting Ideation**
-
 ### Consumer-Related Concept Ideas
 
 ##### 1. FDA Snapshot Standard

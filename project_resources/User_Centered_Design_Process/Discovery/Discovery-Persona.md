@@ -1,5 +1,3 @@
-[[Home]] ▸ [[User Centered Design Process]] ▸ **Persona**
-
 ![](https://s-media-cache-ak0.pinimg.com/236x/56/82/31/568231d8d7cee530277bf5ca0e6844e7.jpg)
 ### Stacy Soccer Mom 
 Stacy is a 45-year-old working mom in San Francisco. She has 3 kids and two aging parents. This makes her part of the 'sandwich generation,' supporting both kids and parents with medical issues. Managing all of the different treatments for her family gets overwhelming. Stacy wants a way to find simple, straightforward answers to her questions about food and medications to keep her family safe.
