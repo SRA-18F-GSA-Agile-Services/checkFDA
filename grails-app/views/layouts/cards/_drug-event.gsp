@@ -12,7 +12,7 @@
 			</span>
 
 			<span data-content="${ message(code: 'widget.event.row.patient.drug') }">
-				<i class="icon ${ message(code: 'widget.event.row.patientsex.icon' + event.patient.patientsex) }" data-content="${ message(code: 'widget.event.row.patient.' + type) }"></i>
+				<i class="icon ${ message(code: 'widget.event.row.patientsex.icon' + event.patient.patientsex) }"></i>
 				${ event.patient.patientonsetage }
 			</span>
 
