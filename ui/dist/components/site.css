@@ -298,6 +298,9 @@ input::selection {
 .druglabel > .content > .ui.header {
   margin-top: 0;
 }
+.ui.sticky.fixed.top {
+  top: 1em !important;
+}
 .siderail ul {
   padding-left: 1.5em;
   margin-bottom: 1.5em;

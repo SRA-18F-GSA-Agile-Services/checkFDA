@@ -50,7 +50,6 @@
 
 			<div class="ui stackable grid">
 				<div class="eleven wide column">
-
 					<g:if test="${results}">
 						<g:set var="recalls" value="${ results.recalls.sort { Map map1, Map map2 -> map1.classification <=> map2.classification ?: map2.recall_initiation_date <=> map1.recall_initiation_date } }" />
 						<g:set var="currentRecalls" value="${ recalls.grep { it.status in ['Ongoing', 'Pending'] } }" />
@@ -111,41 +110,41 @@
 					</g:if>
 
 				</div>
-				<div class="five wide column">
-
-					<div class="ui four column centered grid">
-						<div class="center aligned column">
-							<a href="http://twitter.com/home?status=${ java.net.URLEncoder.encode('Check out what I found out about ' + query + ' on #checkFDA: ' + grailsApplication.config.grails.serverURL + '/results?q=' + query) }" class="ui large circular twitter icon button" target="_blank">
-								<i class="twitter icon"></i>
-							</a>
+				<div id="siderail-wrapper" class="five wide column">
+					<div class="ui sticky">
+						<div class="ui three column centered grid">
+							<div class="center aligned column">
+								<a href="http://twitter.com/home?status=${ java.net.URLEncoder.encode('Check out what I found out about ' + query + ' on #checkFDA: ' + grailsApplication.config.grails.serverURL + '/results?q=' + query) }" class="ui large circular twitter icon button" target="_blank">
+									<i class="twitter icon"></i>
+								</a>
+							</div>
+							<div class="center aligned column">
+								<a href="https://www.pinterest.com/pin/create/button/?url=${ java.net.URLEncoder.encode(grailsApplication.config.grails.serverURL + '/results?q=' + query) }&description=${ java.net.URLEncoder.encode('Check out what I found out about ' + query + ' on checkFDA') }" class="ui large circular red icon button" target="_blank">
+									<i class="pinterest icon"></i>
+								</a>
+							</div>
+							<div class="center aligned column">
+								<a href="mailto:?subject=${ java.net.URLEncoder.encode(query + ' - ' + ' checkFDA') }&body${ java.net.URLEncoder.encode('Check out what I found out about ' + query + ' on #checkFDA: ' + grailsApplication.config.grails.serverURL + '/results?q=' + query) }" class="ui large circular facebook icon button">
+									<i class="mail icon"></i>
+								</a>
+							</div>
 						</div>
-						<div class="center aligned column">
-							<a href="https://www.pinterest.com/pin/create/button/?url=${ java.net.URLEncoder.encode(grailsApplication.config.grails.serverURL + '/results?q=' + query) }&description=${ java.net.URLEncoder.encode('Check out what I found out about ' + query + ' on checkFDA') }" class="ui large circular red icon button" target="_blank">
-								<i class="pinterest icon"></i>
-							</a>
-						</div>
-						<div class="center aligned column">
-							<a href="mailto:?subject=${ java.net.URLEncoder.encode(query + ' - ' + ' checkFDA') }&body${ java.net.URLEncoder.encode('Check out what I found out about ' + query + ' on #checkFDA: ' + grailsApplication.config.grails.serverURL + '/results?q=' + query) }" class="ui large circular facebook icon button">
-								<i class="mail icon"></i>
-							</a>
+						<div class="ui segment siderail">
+							<p>
+								Report your own adverse events with:
+							</p>
+							<ul>
+								<li>Medicines, medical devices, and combination products</li>
+								<li>Foods and beverages (including reports of serious allergic reactions)</li>
+								<li>Cosmetics</li>
+								<li>Special nutritional products</li>
+							</ul>
+							<div class="center">
+								<a href="https://www.accessdata.fda.gov/scripts/medwatch/index.cfm?action=consumer.reporting1" class="ui big button" target="_blank">Begin a Report</a>
+								<a href="https://www.accessdata.fda.gov/scripts/medwatch/index.cfm?action=professional.reporting1" class="professional" target="_blank">Begin a report as health professional</a>
+							</div>
 						</div>
 					</div>
-					<div class="ui segment siderail">
-						<p>
-							Report your own adverse events with:
-						</p>
-						<ul>
-							<li>Medicines, medical devices, and combination products</li>
-							<li>Foods and beverages (including reports of serious allergic reactions)</li>
-							<li>Cosmetics</li>
-							<li>Special nutritional products</li>
-						</ul>
-						<div class="center">
-							<a href="https://www.accessdata.fda.gov/scripts/medwatch/index.cfm?action=consumer.reporting1" class="ui big button" target="_blank">Begin a Report</a>
-							<a href="https://www.accessdata.fda.gov/scripts/medwatch/index.cfm?action=professional.reporting1" class="professional" target="_blank">Begin a report as health professional</a>
-						</div>
-					</div>
-
 				</div>
 			</div>
 		</div>
@@ -159,6 +158,9 @@
 			var results = {recalls: recalls, labels: labels, events: events, state: homeState};
 		</g:applyCodec>
 			$(function() {
+				$('.ui.sticky').sticky({
+					context: '#siderail-wrapper'
+				});
 				searchInit();
 
 				addRowListeners('.card-table.recalls');
