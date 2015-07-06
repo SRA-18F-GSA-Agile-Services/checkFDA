@@ -90,7 +90,7 @@ class SearchService {
 
 	Map parallelFederatedSearch(String query) {
 		long t0=System.currentTimeMillis()
-		Map<String,List<Map>> results=new HashMap<String,List<Map>>()
+		Map<String,List<Map>> results= [:]
 		List<Map> presults=null
 		Map meta= [:]
 
@@ -102,7 +102,7 @@ class SearchService {
 				[group:ds.groupName,result:result,ds:ds.path]
 			}
 		}
-		Set<String> usedGroups=new HashSet<String>()
+		Set<String> usedGroups=[]
 		presults.each { item ->
 			usedGroups.add(item.group)
 			processSearchResult(results,item.result,meta,item.group,item.ds)
