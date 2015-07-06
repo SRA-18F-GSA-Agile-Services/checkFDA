@@ -23,11 +23,11 @@
 		<span data-content="${ message(code: 'widget.event.row.outcomes') }">
 			<g:if test="${ !isDrug }">
 				<b>${ event.patient*.sequence_number_outcome*.collect { it.split(', ').last() }*.join(', ').join('') }</b>
-				<!-- <span class="brandname">{ device.brand_name }</span> -->
+				<span class="brandname">${ event.device*.brand_name.join(', ') }</span>
 			</g:if>
 			<g:else>
 				<b>${ ['hospitalization', 'lifethreatening', 'death', 'disabling', 'congenitalanomali'].grep { event['seriousness' + it] }.collect { message(code: 'widget.drug.event.seriousness.' + it) }.join(', ') }</b>
-				<!-- <span class="reactions">{ comma separated list of reaction.reactionmeddrapt }</span> -->
+				<span class="reactions">${ event.patient.reaction*.reactionmeddrapt.join(', ') }</span>
 			</g:else>
 		</span>
 	</td>
