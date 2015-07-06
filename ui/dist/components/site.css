@@ -298,3 +298,14 @@ input::selection {
 .druglabel > .content > .ui.header {
   margin-top: 0;
 }
+.siderail ul {
+  padding-left: 1.5em;
+  margin-bottom: 1.5em;
+}
+.siderail .center {
+  text-align: center;
+}
+.siderail .professional {
+  display: block;
+  margin-top: 1em;
+}
