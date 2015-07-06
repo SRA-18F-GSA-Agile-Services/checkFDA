@@ -27,7 +27,6 @@
 			cols.push(col);
 			return cols;
 		}, []);
-		console.log(columns);
 		var chart = c3.generate({
 			bindto: '#gender',
 			data: {
@@ -37,6 +36,13 @@
 					Unknown: '<g:message code="color.lightGrey"/>',
 					Male:    '<g:message code="color.lightBlue"/>',
 					Female:  '<g:message code="color.lightPink"/>'
+				},
+				onclick: function(d, element) {
+					var filterSet = filterSets['drugevents'];
+					filterSet.addFilter(function(item) {
+						return genders[item.patient.patientsex];
+					}, d.name, 'Sex', Object.keys(genderMap));
+					filterSet.rerender();
 				}
 			},
 			legend: {

@@ -86,8 +86,19 @@
 	            function redraw() {
 	                 datamap.svg.selectAll("g").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 	            }
-	        },       
-		 });	
+	        	var allStates = $('.datamaps-subunit').toArray().map(function(d) {
+	        		return $(d).attr('class').split(' ')[1];
+	        	});
+	        	$('.datamaps-subunit').click(function() {
+	        		var state = $(this).attr('class').split(' ')[1];
+	        		var filterSet = filterSets['recalls'];
+	        		filterSet.addFilter(function(item) {
+	        			return item.distribution_states;
+	        		}, state, 'State', allStates);
+	        		filterSet.rerender();
+	        	});
+	        },
+		 });
 		 map.labels({fontSize: 11 }) 
 		 map.addPlugin("customLegend", addMapLegend);	    
 		 map.customLegend({})
@@ -100,34 +111,33 @@
 		}
 		window.addEventListener('resize', function(event){
              map.resize();
-		});		  
+		});
 	});
 	
 	function addMapLegend(layer, data, options) {
-		  data = data || {};
-		  if ( !this.options.fills ) {
-	      	return;
-	      }
+		data = data || {};
+		if ( !this.options.fills ) {
+			return;
+		}
 		var html = '<dl>';
 		var label = '';
 		if ( data.legendTitle ) {
 			html = '<h1 class="ui header"> ' + data.legendTitle + '</h1>' + html;
 		}
-		for ( var fillKey in this.options.fills ) {	
-  
-		    	if (['defaultFill', 'Home'].indexOf(fillKey) > -1) {
-		        	if (! data.defaultFillName  ) {
-		          		continue;
-		        	}
-		        	label = data.defaultFillName;
-		    	} else {
-		        	if (data.labels && data.labels[fillKey]) {
-		          		label = data.labels[fillKey];
-		        	} else {
-		          		label= fillKey + ' ';
-		        	}
-		      	}
-    		html += '<dd class="legend ' +  fillKey + '">&nbsp;</dd>';
+		for ( var fillKey in this.options.fills ) {
+			if (['defaultFill', 'Home'].indexOf(fillKey) > -1) {
+				if (!data.defaultFillName) {
+					continue;
+				}
+				label = data.defaultFillName;
+			} else {
+				if (data.labels && data.labels[fillKey]) {
+					label = data.labels[fillKey];
+				} else {
+					label= fillKey + ' ';
+				}
+			}
+			html += '<dd class="legend ' +  fillKey + '">&nbsp;</dd>';
 			html += '<dt><h3>' + label + '</h3></dt>';
 		}
 		html += '</dl>';

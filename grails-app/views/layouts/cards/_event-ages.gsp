@@ -38,7 +38,16 @@
 					['x'].concat(Object.keys(data)),
 					[xAxisLegend].concat(columns)
 		        ],
-		        type : 'bar'
+		        type : 'bar',
+				onclick: function(d, element) {
+					var filterSet = filterSets['drugevents'];
+					filterSet.addFilter(function(item) {
+						var age = item.patient.patientonsetage;
+						var floor = Math.floor(age / 10) * 10;
+						return age ? floor + 's' : '<g:message code="widget.event.ages.unknown"/>';
+					}, Object.keys(ageMap)[d.index], 'Age', Object.keys(ageMap));
+					filterSet.rerender();
+				}
 		    },
 		    color: {
 				pattern: ['<g:message code="color.blue"/>']

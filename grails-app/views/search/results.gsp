@@ -6,6 +6,7 @@
 		<title><g:message code="default.search.title" /> - ${ query }</title>
 		<asset:javascript src="search.js" />
 		<asset:javascript src="aggregated-cards.js" />
+		<asset:javascript src="result-filtering.js" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.4.1/jquery.timeago.min.js"></script>
@@ -89,6 +90,7 @@
 								<h1 id="recalls-header" class="ui large header">
 									<g:message code="widget.results.recall.header" args="${ [query, currentRecalls.size()] }" />
 								</h1>
+								<div id="recalls-labels" class="ui labels"></div>
 								<div id="recalls-card"></div>
 								<div class="card-table-wrapper">
 									<table id="recalls" class="ui small compact complex selectable unstackable table card-table recalls">
@@ -119,6 +121,7 @@
 									<h2 id="drugevents-header" class="ui medium header">
 										<g:message code="widget.results.event.drug.header" args="${ [drugEvents.size()] }" />
 									</h2>
+									<div id="drugevents-labels" class="ui labels"></div>
 									<div id="drugevents-card"></div>
 									<div class="card-table-wrapper">
 										<table id="drugevents" class="ui small compact selectable unstackable table card-table drugevents">
@@ -139,6 +142,7 @@
 									<h2 id="deviceevents-header" class="ui medium header">
 										<g:message code="widget.results.event.device.header" args="${ [deviceEvents.size()] }" />
 									</h2>
+									<div id="deviceevents-labels" class="ui labels"></div>
 									<div id="deviceevents-card"></div>
 									<div class="card-table-wrapper">
 										<table id="deviceevents" class="ui small compact selectable unstackable table card-table deviceevents">
@@ -173,7 +177,6 @@
 							</section>
 						</g:if>
 					</g:if>
-
 				</div>
 				<div id="siderail-wrapper" class="five wide column">
 					<div class="ui sticky">
@@ -212,7 +215,6 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
 		<script>
 
