@@ -4970,28 +4970,23 @@ h1.large.header + h2.medium.header {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100%;
 }
 
-.ui.container .header {
+.ui.container .header,
+.ui.container .footer {
   -webkit-box-flex: 0;
-  -webkit-flex: 0 1;
-  -ms-flex: 0 1;
-  flex: 0 1;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
 }
 
 .ui.container .main {
   -webkit-box-flex: 1;
-  -webkit-flex: 1 0;
-  -ms-flex: 1 0;
-  flex: 1 0;
-}
-
-.ui.container .footer {
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 1;
-  -ms-flex: 0 1;
-  flex: 0 1;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  width: 100%;
 }
 /*!
  * # Semantic UI 2.0.0 - Divider
