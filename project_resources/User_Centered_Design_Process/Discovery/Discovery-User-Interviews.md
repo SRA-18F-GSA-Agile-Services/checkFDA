@@ -4,7 +4,7 @@
 ##### 1) Stacey, Subject Matter Expert
 * Project Manager at SRA, Project Manager FDA VAERS contract
 
-##### 2) Lindsey, Subject Matter Expert, 
+##### 2) Lindsey, Subject Matter Expert 
 * Executive Strategy Director at frog, Lead in Healthcare 
 
 ##### 3) Kristin, 32-year old female
