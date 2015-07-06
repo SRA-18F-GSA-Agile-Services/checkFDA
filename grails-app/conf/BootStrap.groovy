@@ -2,8 +2,10 @@ import com.sra.searchfda.domain.DataSet
 import com.sra.searchfda.domain.Role
 import com.sra.searchfda.domain.User
 import com.sra.searchfda.domain.UserRole
+import org.codehaus.groovy.grails.commons.GrailsApplication
 
 class BootStrap {
+	GrailsApplication grailsApplication
 
 	def createUser(user,pass,role) {
 		def theUser = new User(username:user,password:pass)
@@ -17,10 +19,12 @@ class BootStrap {
 		try {
 			if (UserRole.list().size() == 0) { //only load on empty DB
 				def adminRole = new Role(authority:'ROLE_ADMIN').save(flush:true)
-				def userRole = new Role(authority:'ROLE_USER').save(flush:true)
-	
-				createUser('admin','stbadmin2014',adminRole)
-				createUser('user','stbuser2014',userRole)
+				new Role(authority:'ROLE_USER').save(flush:true)
+
+				// Create an administrative user that can manage the configuration.
+				createUser(grailsApplication.config.checkfda.admin.default_username,
+						grailsApplication.config.checkfda.admin.default_password,
+						adminRole)
 			}
 
 			if (DataSet.list().size() == 0) {

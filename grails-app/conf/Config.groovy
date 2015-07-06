@@ -34,7 +34,6 @@ grails.mime.types = [ // the first one is the default format
 
 // URL Mapping Cache Max Size, defaults to 5000
 //grails.urlmapping.cache.maxsize = 1000
-//openfdaapi.token=localConfig.openfdaapi.token
 
 // Legacy setting for codec used to encode data with ${}
 grails.views.default.codec = "html"
@@ -77,6 +76,9 @@ grails.exceptionresolver.params.exclude = ['password']
 
 // configure auto-caching of queries by default (if false you can cache individual queries with 'cache: true')
 grails.hibernate.cache.queries = false
+
+checkfda.admin.default_username = 'admin'
+checkfda.admin.default_password = 'stbadmin2014'
 
 environments {
     development {

@@ -7,3 +7,6 @@ println "Reading custom settings file..."
 //dataSource.password = 'searchfa_pass'
 //dataSource.url = 'jdbc:mysql://mysql:3306/searchfda_db?useUnicode=true&autoReconnect=true'
 //openfdaapi.token = null
+
+//checkfda.admin.default_username = 'admin_user'
+//searchfda.admin.default_password = 'override_default_password'

@@ -5,10 +5,10 @@
   apt: pkg=python-mysqldb
 
 - name: Install a database
-  mysql_db: name={{searchfda_mysql_db}} state=present
+  mysql_db: name={{checkfda_mysql_db}} state=present
 
 - name: Configure MySQL User
-  mysql_user: name={{searchfda_mysql_username}} password={{searchfda_mysql_password}} priv=*.*:ALL state=present
+  mysql_user: name={{checkfda_mysql_username}} password={{checkfda_mysql_password}} priv=*.*:ALL state=present
 
 - name: Add webupd8 repo so we can install Oracle java
   apt_repository: repo='ppa:webupd8team/java'
@@ -48,7 +48,7 @@
   file: path=/var/lib/tomcat7/webapps/ROOT state=absent
 
 - name: Copy war file into Tomcat directory
-  copy: src=../target/{{searchfda_webapp_filename}} dest=/var/lib/tomcat7/webapps/{{searchfda_webapp_filename}} owner=tomcat7 group=tomcat7 mode=644
+  copy: src=../target/{{checkfda_webapp_filename}} dest=/var/lib/tomcat7/webapps/{{checkfda_webapp_filename}} owner=tomcat7 group=tomcat7 mode=644
 
 - name: Configure Tomcat JVM settings
   template: src=tomcat7.j2 dest=/etc/default/tomcat7 owner=root group=root mode=644

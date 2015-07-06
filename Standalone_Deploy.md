@@ -37,7 +37,7 @@ This process assumes you already can create a WAR file in the project using Grai
    If you are using Virtualenv:
 
    ```
-   mkvirtualenv -r requirements.txt searchfda
+   mkvirtualenv -r requirements.txt checkfda
    ```
 
    If you are not using Virtualenv:
@@ -63,7 +63,7 @@ grails compile && grails war target/ROOT.war    # Or copy the ROOT.war from anot
 # Stop any existing processes running on port 8080.
 
 # If you are using the virtualenv wrapper, enable the python virtualenv that you created in the configuration steps.
-workon searchfda
+workon checkfda
 
 vagrant up
 

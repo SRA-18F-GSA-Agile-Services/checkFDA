@@ -1,12 +1,14 @@
 oracle_java_version: 8
 mysql_connector_package_withversion: mysql-connector-java-5.1.22
 mysql_connector_package_sha256sum: 5546d284baac3011e14b265aaed99874d363fa514cc78dd8a40c4780ed0fdd41
-searchfda_mysql_username: searchfda_user
-searchfda_mysql_password: searchfda_pass
-searchfda_mysql_db: searchfda_db
-searchfda_db_create: create-drop
-searchfda_webapp_filename: ROOT.war
+checkfda_mysql_username: checkfda_user
+checkfda_mysql_password: checkfda_pass
+checkfda_mysql_db: checkfda_db
+checkfda_db_create: create-drop
+checkfda_webapp_filename: ROOT.war
 tomcat_javaopts: -Xms256m -Xmx1024m -XX:PermSize=512m -XX:MaxPermSize=512m
 # If you want to make the API token non-null, please add nested double and single quotation marks around it like this:
 # openfda_api_token: "'my_token'".
 openfda_api_token: 'null'
+checkfda_admin_default_username: override_default_username
+checkfda_admin_default_password: override_default_password

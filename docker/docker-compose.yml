@@ -6,9 +6,9 @@ mysql:
     - "3306:3306"
   environment:
     - MYSQL_ROOT_PASSWORD=sfda_root_pass
-    - MYSQL_DATABASE=searchfda_db
-    - MYSQL_USER=searchfda_user
-    - MYSQL_PASSWORD=searchfda_pass
+    - MYSQL_DATABASE=checkfda_db
+    - MYSQL_USER=checkfda_user
+    - MYSQL_PASSWORD=checkfda_pass
 
 tomcat:
   build: ./tomcat
@@ -20,4 +20,6 @@ tomcat:
   environment:
     - CATALINA_OPTS=-Xms256m -Xmx1024m
     - OPENFDA_API_TOKEN=null
-    - SEARCHFDA_DB_CREATE=create-drop
+    - CHECKFDA_DB_CREATE=create-drop
+    - CHECKFDA_ADMIN_DEFAULT_USERNAME=override_default_username
+    - CHECKFDA_ADMIN_DEFAULT_PASSWORD=override_default_password
