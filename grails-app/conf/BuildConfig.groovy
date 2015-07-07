@@ -79,13 +79,13 @@ codenarc.reports = {
     // uncomment this section if you want to generate xml report  
 	MyXmlReport('xml') {                    // The report name "MyXmlReport" is user-defined; Report type is 'xml'
 		outputFile = 'target/CodeNarcReport.xml'  // Set the 'outputFile' property of the (XML) Report
-		title = 'Search FDA XML Report'             // Set the 'title' property of the (XML) Report
+		title = 'checkFDA XML Report'             // Set the 'title' property of the (XML) Report
 	}
 	
 	
 	MyHtmlReport('html') {                  // Report type is 'html'
 		outputFile = 'target/CodeNarcReport.html'
-		title = 'Search FDA html Report'
+		title = 'checkFDA html Report'
 	}
 }
 codenarc.ruleSetFiles="file:test/CodeNarcRules.groovy"

@@ -5,7 +5,7 @@ import geb.Page
 class SearchPage extends Page {
     static at = {
         // title == getMessage("default.layout.app")
-        title == 'Search FDA'
+        title == 'checkFDA'
     }
 
     static url = 'search'

@@ -7,7 +7,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title><g:layoutTitle default="Search FDA"/></title>
+		<title><g:layoutTitle default="checkFDA"/></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<asset:javascript src="jquery.min.js" />
 		<asset:javascript src="semantic.min.js" />
