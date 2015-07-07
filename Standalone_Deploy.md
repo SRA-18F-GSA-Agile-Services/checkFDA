@@ -21,7 +21,7 @@ The requirements for docker deployment:
 
 1. Docker (https://docs.docker.com/installation/)
 2. Docker-Compose (https://docs.docker.com/compose/install/)
-3. SearchFDA WAR file.
+3. checkFDA WAR file.
 
 
 Deployment
@@ -61,7 +61,7 @@ The dependencies for deployment to Vagrant:
 1. Vagrant
 2. Python 2.7
 3. Ansible
-4. SearchFDA WAR file.
+4. checkFDA WAR file.
 
 Initial Configuration
 ---------------------

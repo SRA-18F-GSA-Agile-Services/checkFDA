@@ -5,8 +5,8 @@ println "Reading custom settings file..."
 //dataSource.dbCreate = 'create-drop' // one of 'create', 'create-drop', 'update', 'validate', ''
 //dataSource.username = 'searchfa_user'
 //dataSource.password = 'searchfa_pass'
-//dataSource.url = 'jdbc:mysql://mysql:3306/searchfda_db?useUnicode=true&autoReconnect=true'
+//dataSource.url = 'jdbc:mysql://mysql:3306/checkfda_db?useUnicode=true&autoReconnect=true'
 //openfdaapi.token = null
 
 //checkfda.admin.default_username = 'admin_user'
-//searchfda.admin.default_password = 'override_default_password'
+//checkfda.admin.default_password = 'override_default_password'
