@@ -76,16 +76,16 @@ class SearchController {
         [query: searchQuery.search, results: searchService.executeSearch(searchQuery.search) << [state:[name:state, latitude : dlat , longitude: dlng]] ]
     }
 
-	def renderCard(String json, String type) {
+	def renderCard(String json, String type, String query) {
 		Map element = JSON.parse(json)
 		if (type == 'recalls') {
-			render(template: '/layouts/cards/recall-alert', model: [recall: element])
+			render(template: '/layouts/cards/recall-alert', model: [recall: element, query: query])
 		} else if (type == 'labels') {
-			render(template: '/layouts/cards/drug-label', model: [label: element])
+			render(template: '/layouts/cards/drug-label', model: [label: element, query: query])
 		} else if (type == 'drugevents') {
-			render(template: '/layouts/cards/drug-event', model: [event: element])
+			render(template: '/layouts/cards/drug-event', model: [event: element, query: query])
 		} else if (type == 'deviceevents') {
-			render(template: '/layouts/cards/device-event', model: [event: element])
+			render(template: '/layouts/cards/device-event', model: [event: element, query: query])
 		}
 	}
 	/**
