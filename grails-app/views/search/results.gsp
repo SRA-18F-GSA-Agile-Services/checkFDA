@@ -76,7 +76,7 @@
 					<g:set var="deviceEvents" value="${ results.events.grep { it.dataset == 'device/event' } }" />
 					<g:set var="labels" value="${ results.labels.grep { it.openfda?.brand_name && it.openfda?.generic_name } }" />
 
-					<g:if test="${results}">
+					<g:if test="${ results && (recalls.size() > 0 || drugEvents.size() > 0 || deviceEvents.size() > 0 || labels.size() > 0)}">
 						<h1 class="ui page header"><g:message code="results.header" args="${ [currentRecalls.size() + results.events.size() + labels.size(), query] }" /></h1>
 						<div class="jumplinks">
 							<span><g:message code="results.jumplink" /></span>
