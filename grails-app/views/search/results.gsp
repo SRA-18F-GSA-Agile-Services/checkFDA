@@ -22,6 +22,10 @@
 			.card-table.events tr > td:nth-child(3) {
 				width: 4em;
 			}
+			.help.icon {
+				float: right;
+				cursor: pointer;
+			}
 		</style>
 	</head>
 	<body>
