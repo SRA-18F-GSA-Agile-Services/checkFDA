@@ -1,16 +1,64 @@
 Standalone Deployment
 =====================
 
-There are Vagrant and Ansible scripts in this project that will deploy the Search-FDA app to a local Vagrant Ubuntu 14.04 image.
-The ansible scripts could also be used to run against an existing off-the-shelf Ubuntu machine.
+There are two sets of deployment scripts available.
 
+The first set uses Docker and Docker-Compose to build two docker containers -- a Mysql database container and an application
+container. The application container will contain Tomcat and your war file.
+
+The second set of scripts uses Ansible and Vagrant to deploy the application on Tomcat to a local Vagrant instance, to show the
+steps for a bare metal install. See the Vagrant / Ansible section on this page for specific instructions.
+
+Both sets of scripts expect you to provide the WAR file from the grails project. Please see each section for details.
+
+DOCKER DEPLOYMENT
+=================
+
+Dependencies
+------------
+
+The requirements for docker deployment:
+
+1. Docker (https://docs.docker.com/installation/)
+2. Docker-Compose (https://docs.docker.com/compose/install/)
+3. SearchFDA WAR file.
+
+
+Deployment
+----------
+```
+# Build the war file and place it in the docker/tomcat folder.
+grails compile && grails war docker/tomcat/ROOT.war
+
+cd docker
+
+docker-compose up
+```
+
+Operations
+----------
+
+You can go to http://localhost:8888 or http://<docker-ip>:8888 to reach the app, depending upon whether your docker configuration
+uses localhost or a Docker IP address. If you are using Boot2Docker, you may need to find your boot2docker instance IP address.
+You can find it with the following command:
+
+```
+boot2docker ip
+```
+
+
+VAGRANT / ANSIBLE DEPLOYMENT
+============================
+There are Vagrant and Ansible scripts in this project that will deploy the Search-FDA app to a local Vagrant Ubuntu 14.04 image.
+The ansible scripts could also be used to run against an existing off-the-shelf Ubuntu machine. This ansible build deploys
+both a Mysql database back-end and Tomcat on the same machine.
 
 Dependencies
 ------------
 
 The dependencies for deployment to Vagrant:
 
-1. Vagrant (URL for Vagrant)
+1. Vagrant
 2. Python 2.7
 3. Ansible
 4. SearchFDA WAR file.
@@ -47,20 +95,20 @@ This process assumes you already can create a WAR file in the project using Grai
    ```
 
 
-Installation
-------------
+Deployment
+----------
 
 You will use Vagrant to create a standalone virtual machine. Vagrant will automatically run Ansible scripts
 to install a MySQL 5.6 database, Oracle Java 8, and Tomcat 7.
 
-It will then deploy the application to the Tomcat 7 container and run it on port 8080.
+It will then deploy the application to the Tomcat 7 container and run it on port 8888.
 
 Make sure to complete the initial configuration first!
 
 ```
-grails compile && grails war target/ROOT.war    # Or copy the ROOT.war from another location into the target/ directory.
+grails compile && grails war target/ROOT.war    # Or copy the ROOT.war from another location into the main project target/ directory.
 
-# Stop any existing processes running on port 8080.
+# Stop any existing processes running on port 8888.
 
 # If you are using the virtualenv wrapper, enable the python virtualenv that you created in the configuration steps.
 workon checkfda
@@ -74,7 +122,7 @@ deactivate
 Operations
 ----------
 
-Go to http://localhost:8080 to run the application.
+Go to http://localhost:8888 to run the application.
 
 If you need to access the Vagrant virtual machine, you can SSH into it. You will have sudo access:
 
