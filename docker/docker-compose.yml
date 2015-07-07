@@ -19,7 +19,9 @@ tomcat:
     - mysql
   environment:
     - CATALINA_OPTS=-Xms256m -Xmx1024m
-    - OPENFDA_API_TOKEN=null
+    # If you want to use an actual OpenFDA API token, please enclose it in single quotes, like this:
+    # OPENFDA_API_TOKEN='my_token'
+    - OPENFDA_API_TOKEN='my_token'
     - CHECKFDA_DB_CREATE=create-drop
     - CHECKFDA_ADMIN_DEFAULT_USERNAME=override_default_username
     - CHECKFDA_ADMIN_DEFAULT_PASSWORD=override_default_password
