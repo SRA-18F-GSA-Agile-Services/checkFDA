@@ -25,6 +25,10 @@
 			.ui.divider.section-divider {
 				margin-top: 4em;
 			}
+			.help.icon {
+				float: right;
+				cursor: pointer;
+			}
 		</style>
 	</head>
 	<body>
@@ -230,6 +234,7 @@
 		<script>
 
 		<g:applyCodec encodeAs="none">
+			var query = '${ query }';
 			var recalls = ${ results ? recalls as JSON : "[]" };
 			var labels = ${ results ? labels as JSON : "[]" };
 			var events = ${ results ? results.events as JSON : "[]" };

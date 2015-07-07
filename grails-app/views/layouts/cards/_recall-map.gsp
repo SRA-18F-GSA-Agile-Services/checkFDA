@@ -1,6 +1,9 @@
 <div class="ui fluid card" >
 	<div class="content">
-		<h2 class="header"><g:message code="widget.recall.map.header"/></h2>
+		<h2 class="header">
+			<i class="circular help icon" data-content="${ message(code: 'widget.recall.map.help', args: [query]) }"></i>
+			<g:message code="widget.recall.map.header"/>
+		</h2>
 		<div id="container" class="map"></div>
 	</div>
 </div>

@@ -23,7 +23,8 @@ function selectDetailCard(me, initializing) {
 		method: 'POST',
 		data: {
 			json: JSON.stringify(element),
-			type: type
+			type: type,
+			query: query
 		},
 		success: function(data) {
 			$('#' + type + '-card').html(data);
