@@ -132,7 +132,7 @@
 										</table>
 									</div>
 									<div id="drugevents-card"></div>
-									<div class="ui two cards">
+									<div class="ui two doubling cards">
 										<g:render template="/layouts/cards/event-gender" />
 										<g:render template="/layouts/cards/event-ages" />
 									</div>
