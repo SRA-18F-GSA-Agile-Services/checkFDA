@@ -11,39 +11,51 @@
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
 // }
 
-def loc = ['../UserConfig.groovy', 'webapps/ROOT/Jenkins.groovy'].grep { new File(it).exists() }.first();
-def localConfig = new ConfigSlurper(grailsSettings.grailsEnv).parse(new File(loc).toURI().toURL())
+grails.config.locations = ['file:../UserConfig.groovy', 'file:webapps/ROOT/Jenkins.groovy', 'file:conf/ServerConfig.groovy']
 
-grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
-grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
-grails.mime.use.accept.header = false
-grails.mime.types = [
-    all:           '*/*',
-    atom:          'application/atom+xml',
-    css:           'text/css',
-    csv:           'text/csv',
-    form:          'application/x-www-form-urlencoded',
-    html:          ['text/html','application/xhtml+xml'],
-    js:            'text/javascript',
-    json:          ['application/json', 'text/json'],
-    multipartForm: 'multipart/form-data',
-    rss:           'application/rss+xml',
-    text:          'text/plain',
-	csv: 			'text/csv',
-	pdf: 			'application/pdf',
-	rtf: 			'application/rtf',
-	excel: 			'application/vnd.ms-excel',
-	ods: 			'application/vnd.oasis.opendocument.spreadsheet',
-    xml:           ['text/xml', 'application/xml']
+// The ACCEPT header will not be used for content negotiation for user agents containing the following strings (defaults to the 4 major rendering engines)
+grails.mime.disable.accept.header.userAgents = ['Gecko', 'WebKit', 'Presto', 'Trident']
+grails.mime.types = [ // the first one is the default format
+					  all:           '*/*', // 'all' maps to '*' or the first available format in withFormat
+					  atom:          'application/atom+xml',
+					  css:           'text/css',
+					  csv:           'text/csv',
+					  form:          'application/x-www-form-urlencoded',
+					  html:          ['text/html','application/xhtml+xml'],
+					  js:            'text/javascript',
+					  json:          ['application/json', 'text/json'],
+					  multipartForm: 'multipart/form-data',
+					  rss:           'application/rss+xml',
+					  text:          'text/plain',
+					  hal:           ['application/hal+json','application/hal+xml'],
+					  xml:           ['text/xml', 'application/xml']
 ]
+
 
 // URL Mapping Cache Max Size, defaults to 5000
 //grails.urlmapping.cache.maxsize = 1000
-openfdaapi.token=localConfig.openfdaapi.token
 
-// The default codec used to encode data with ${}
-grails.views.default.codec = "none" // none, html, base64
-grails.views.gsp.encoding = "UTF-8"
+// Legacy setting for codec used to encode data with ${}
+grails.views.default.codec = "html"
+
+// GSP settings
+grails {
+	views {
+		gsp {
+			encoding = 'UTF-8'
+			htmlcodec = 'xml' // use xml escaping instead of HTML4 escaping
+			codecs {
+				expression = 'html' // escapes values inside ${}
+				scriptlet = 'html' // escapes output from scriptlets in GSPs
+				taglib = 'none' // escapes output from taglibs
+				staticparts = 'none' // escapes output from static template parts
+			}
+		}
+		// escapes all not-encoded output at final stage of outputting
+		filteringCodecForContentType.'text/html' = 'html'
+	}
+}
+
 grails.converters.encoding = "UTF-8"
 // enable Sitemesh preprocessing of GSP pages
 grails.views.gsp.sitemesh.preprocess = true
@@ -65,23 +77,20 @@ grails.exceptionresolver.params.exclude = ['password']
 // configure auto-caching of queries by default (if false you can cache individual queries with 'cache: true')
 grails.hibernate.cache.queries = false
 
+checkfda.admin.default_username = 'admin'
+checkfda.admin.default_password = 'stbadmin2014'
+
 environments {
     development {
 		checkfda.localData = true
         grails.logging.jul.usebridge = true
-    }
-    devdeploy {
-		checkfda.localData = false
-        grails.logging.jul.usebridge = false
+		grails.serverURL = 'http://localhost:8080'
     }
     production {
 		checkfda.localData = false
         grails.logging.jul.usebridge = false
+		grails.serverURL = 'https://checkfda.srarad.com'
     }
-	searchfdadev {
-		checkfda.localData = false
-		grails.logging.jul.usebridge = true
-	}
 }
 
 log4j = {
@@ -120,9 +129,9 @@ grails.plugin.springsecurity.providerNames = [
 
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.logout.postOnly = false
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.sra.searchfda.User'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.sra.searchfda.UserRole'
-grails.plugin.springsecurity.authority.className = 'com.sra.searchfda.Role'
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.sra.searchfda.domain.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.sra.searchfda.domain.UserRole'
+grails.plugin.springsecurity.authority.className = 'com.sra.searchfda.domain.Role'
 
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**':								['permitAll'],
@@ -131,5 +140,6 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/user/**':							['ROLE_ADMIN'],
 	'/role/**':							['ROLE_ADMIN'],
 	'/registrationCode/**':				['ROLE_ADMIN'],
-	'/securityInfo/**':					['ROLE_ADMIN']
+	'/securityInfo/**':					['ROLE_ADMIN'],
+	'/monitoring/**':					['ROLE_ADMIN']
 ]

@@ -1,0 +1,62 @@
+- name: Install MySQL
+  apt: pkg=mysql-server-5.6 state=latest update_cache=yes
+
+- name: Install MySQL python config library
+  apt: pkg=python-mysqldb
+
+- name: Install a database
+  mysql_db: name={{checkfda_mysql_db}} state=present
+
+- name: Configure MySQL User
+  mysql_user: name={{checkfda_mysql_username}} password={{checkfda_mysql_password}} priv=*.*:ALL state=present
+
+- name: Add webupd8 repo so we can install Oracle java
+  apt_repository: repo='ppa:webupd8team/java'
+
+- name: Set up Oracle Java debconf answers before running the installer
+  debconf: name=oracle-java{{oracle_java_version}}-installer question='shared/accepted-oracle-license-v1-1' vtype='boolean' value=true
+
+- name: Install Java
+  apt: pkg=oracle-java{{oracle_java_version}}-installer state=latest update_cache=yes
+
+- name: Install Tomcat 7
+  apt: pkg=tomcat7 state=latest update_cache=yes
+
+- name: Install unzip
+  apt: pkg=unzip state=latest update_cache=yes
+
+- name: Install mysql library zip into tmp directory
+  get_url: url=http://dev.mysql.com/get/Downloads/Connector-J/{{mysql_connector_package_withversion}}.zip dest=/tmp/mysql-connector-java-5.1.22.zip sha256sum={{mysql_connector_package_sha256sum}}
+
+- name: Unzip mysql libray and install the library into Tomcat lib directory
+  shell: >
+      cd /tmp &&
+      unzip {{mysql_connector_package_withversion}}.zip &&
+      rm {{mysql_connector_package_withversion}}.zip &&
+      cp {{mysql_connector_package_withversion}}/{{mysql_connector_package_withversion}}-bin.jar /usr/share/tomcat7/lib &&
+      chown root:tomcat7 /usr/share/tomcat7/lib/{{mysql_connector_package_withversion}}-bin.jar &&
+      chmod 0644 /usr/share/tomcat7/lib/{{mysql_connector_package_withversion}}-bin.jar &&
+      rm -rf /tmp/{{mysql_connector_package_withversion}}
+
+# - name: Create a WAR file which can be copied to the server.
+#   local_action: grails war target/ROOT.war
+
+- name: Stop Tomcat
+  service: name=tomcat7 state=stopped
+
+- name: Remove old Tomcat ROOT directory
+  file: path=/var/lib/tomcat7/webapps/ROOT state=absent
+
+- name: Copy war file into Tomcat directory
+  copy: src=../target/{{checkfda_webapp_filename}} dest=/var/lib/tomcat7/webapps/{{checkfda_webapp_filename}} owner=tomcat7 group=tomcat7 mode=644
+
+- name: Configure Tomcat JVM settings
+  template: src=tomcat7.j2 dest=/etc/default/tomcat7 owner=root group=root mode=644
+
+- name: Configure app
+  template: src=ServerConfig.groovy.j2 dest=/var/lib/tomcat7/conf/ServerConfig.groovy owner=tomcat7 group=tomcat7 mode=644
+
+- name: restart Tomcat
+  service: name=tomcat7 state=started
+
+

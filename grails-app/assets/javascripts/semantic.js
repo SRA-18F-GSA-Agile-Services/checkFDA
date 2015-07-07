@@ -3560,7 +3560,6 @@ $.fn.dropdown = function(parameters) {
   var
     $allModules    = $(this),
     $document      = $(document),
-    $window        = $(window),
 
     moduleSelector = $allModules.selector || '',
 
@@ -3594,6 +3593,7 @@ $.fn.dropdown = function(parameters) {
         moduleNamespace = 'module-' + namespace,
 
         $module         = $(this),
+        $context        = $(settings.context),
         $text           = $module.find(selector.text),
         $search         = $module.find(selector.search),
         $input          = $module.find(selector.input),
@@ -5583,10 +5583,13 @@ $.fn.dropdown = function(parameters) {
               hasInput     = ($input.length > 0),
               isAddition   = !module.has.value(value),
               currentValue = module.get.values(),
+              stringValue  = (typeof value == 'number')
+                ? value.toString()
+                : value,
               newValue
             ;
             if(hasInput) {
-              if(value == currentValue) {
+              if(stringValue == currentValue) {
                 module.verbose('Skipping value update already same value', value, currentValue);
                 if(!module.is.initialLoad()) {
                   return;
@@ -6128,17 +6131,40 @@ $.fn.dropdown = function(parameters) {
           },
           onScreen: function($subMenu) {
             var
-              $currentMenu = $subMenu || $menu,
-              onScreen
+              $currentMenu   = $subMenu || $menu,
+              canOpenDownward = true,
+              onScreen = {},
+              calculations
             ;
             $currentMenu.addClass(className.loading);
-            onScreen = ($.fn.visibility !== undefined)
-              ? $currentMenu.visibility('bottom visible')
-              : $window.scrollTop() + $window.height() >= $currentMenu.offset().top + $currentMenu.height()
-            ;
-            module.debug('Checking if menu can fit on screen', onScreen, $menu);
+            calculations = {
+              context: {
+                scrollTop : $context.scrollTop(),
+                height    : $context.outerHeight()
+              },
+              menu : {
+                offset: $currentMenu.offset(),
+                height: $currentMenu.outerHeight()
+              }
+            };
+            onScreen = {
+              above : (calculations.context.scrollTop) <= calculations.menu.offset.top - calculations.menu.height,
+              below : (calculations.context.scrollTop + calculations.context.height) >= calculations.menu.offset.top + calculations.menu.height
+            };
+            if(onScreen.below) {
+              module.verbose('Dropdown can fit in context downward', onScreen);
+              canOpenDownward = true;
+            }
+            else if(!onScreen.below && !onScreen.above) {
+              module.verbose('Dropdown cannot fit in either direction, favoring downward', onScreen);
+              canOpenDownward = true;
+            }
+            else {
+              module.verbose('Dropdown cannot fit below, opening upward', onScreen);
+              canOpenDownward = false;
+            }
             $currentMenu.removeClass(className.loading);
-            return onScreen;
+            return canOpenDownward;
           },
           inObject: function(needle, object) {
             var
@@ -6525,10 +6551,12 @@ $.fn.dropdown.settings = {
   on                     : 'click',    // what event should show menu action on item selection
   action                 : 'activate', // action on item selection (nothing, activate, select, combo, hide, function(){})
 
+
   apiSettings            : false,
   saveRemoteData         : true,      // Whether remote name/value pairs should be stored in sessionStorage to allow remote data to be restored on page refresh
   throttle               : 200,       // How long to wait after last user input to search remotely
 
+  context                : window,      // Context to use when determining if on screen
   direction              : 'auto',     // Whether dropdown should always open in one direction
   keepOnScreen           : true,       // Whether dropdown should check whether it is on screen before showing
 
@@ -6771,7 +6799,7 @@ $.fn.embed = function(parameters) {
         $window         = $(window),
         $module         = $(this),
         $placeholder    = $module.find(selector.placeholder),
-        $play           = $module.find(selector.play),
+        $icon           = $module.find(selector.icon),
         $embed          = $module.find(selector.embed),
 
         element         = this,
@@ -6809,7 +6837,7 @@ $.fn.embed = function(parameters) {
         refresh: function() {
           module.verbose('Refreshing selector cache');
           $placeholder = $module.find(selector.placeholder);
-          $play        = $module.find(selector.play);
+          $icon        = $module.find(selector.icon);
           $embed       = $module.find(selector.embed);
         },
 
@@ -6817,9 +6845,10 @@ $.fn.embed = function(parameters) {
           events: function() {
             if( module.has.placeholder() ) {
               module.debug('Adding placeholder events');
+              console.log($module, selector.placeholder);
               $module
                 .on('click' + eventNamespace, selector.placeholder, module.createAndShow)
-                .on('click' + eventNamespace, selector.play, module.createAndShow)
+                .on('click' + eventNamespace, selector.icon, module.createAndShow)
               ;
             }
           }
@@ -6851,6 +6880,7 @@ $.fn.embed = function(parameters) {
         createEmbed: function(url) {
           module.refresh();
           url = url || module.get.url();
+          console.log(url);
           $embed = $('<div/>')
             .addClass(className.embed)
             .html( module.generate.embed(url) )
@@ -6861,6 +6891,7 @@ $.fn.embed = function(parameters) {
         },
 
         createAndShow: function() {
+          console.log('cands');
           module.createEmbed();
           module.show();
         },
@@ -7304,7 +7335,7 @@ $.fn.embed.settings = {
   selector : {
     embed       : '.embed',
     placeholder : '.placeholder',
-    play        : '.play'
+    icon        : '.icon'
   },
 
   sources: {
@@ -14866,6 +14897,12 @@ $.fn.sticky = function(parameters) {
         },
 
         remove: {
+          lastScroll: function() {
+            delete module.lastScroll;
+          },
+          elementScroll: function(scroll) {
+            delete module.elementScroll;
+          },
           offset: function() {
             $module.css('margin-top', '');
           }
@@ -15155,6 +15192,7 @@ $.fn.sticky = function(parameters) {
           module.unfix();
           module.resetCSS();
           module.remove.offset();
+          module.remove.lastScroll();
         },
 
         resetCSS: function() {
@@ -15434,10 +15472,6 @@ $.fn.tab = function(parameters) {
         ? $(window)
         : $(this),
 
-    settings        = ( $.isPlainObject(parameters) )
-      ? $.extend(true, {}, $.fn.tab.settings, parameters)
-      : $.extend({}, $.fn.tab.settings),
-
     moduleSelector  = $allModules.selector || '',
     time            = new Date().getTime(),
     performance     = [],
@@ -15446,7 +15480,7 @@ $.fn.tab = function(parameters) {
     methodInvoked   = (typeof query == 'string'),
     queryArguments  = [].slice.call(arguments, 1),
 
-    module,
+    initializedHistory = false,
     returnedValue
   ;
 
@@ -15454,54 +15488,84 @@ $.fn.tab = function(parameters) {
     .each(function() {
       var
 
-        className          = settings.className,
-        metadata           = settings.metadata,
-        selector           = settings.selector,
-        error              = settings.error,
+        settings        = ( $.isPlainObject(parameters) )
+          ? $.extend(true, {}, $.fn.tab.settings, parameters)
+          : $.extend({}, $.fn.tab.settings),
 
-        eventNamespace     = '.' + settings.namespace,
-        moduleNamespace    = 'module-' + settings.namespace,
+        className       = settings.className,
+        metadata        = settings.metadata,
+        selector        = settings.selector,
+        error           = settings.error,
 
-        $module            = $(this),
+        eventNamespace  = '.' + settings.namespace,
+        moduleNamespace = 'module-' + settings.namespace,
 
-        cache              = {},
-        firstLoad          = true,
-        recursionDepth     = 0,
-
+        $module         = $(this),
         $context,
         $tabs,
+
+        cache           = {},
+        firstLoad       = true,
+        recursionDepth  = 0,
+        element         = this,
+        instance        = $module.data(moduleNamespace),
+
         activeTabPath,
         parameterArray,
-        historyEvent,
+        module,
 
-        element         = this,
-        instance        = $module.data(moduleNamespace)
+        historyEvent
+
       ;
 
       module = {
 
         initialize: function() {
           module.debug('Initializing tab menu item', $module);
-
           module.fix.callbacks();
-
           module.determineTabs();
+
           module.debug('Determining tabs', settings.context, $tabs);
-
-
           // set up automatic routing
           if(settings.auto) {
             module.set.auto();
           }
+          module.bind.events();
 
-          // attach events if navigation wasn't set to window
-          if( !$.isWindow( element ) ) {
-            module.debug('Attaching tab activation events to element', $module);
-            $module
-              .on('click' + eventNamespace, module.event.click)
-            ;
+          if(settings.history && !initializedHistory) {
+            module.initializeHistory();
+            initializedHistory = true;
           }
+
           module.instantiate();
+        },
+
+        instantiate: function () {
+          module.verbose('Storing instance of module', module);
+          instance = module;
+          $module
+            .data(moduleNamespace, module)
+          ;
+        },
+
+        destroy: function() {
+          module.debug('Destroying tabs', $module);
+          $module
+            .removeData(moduleNamespace)
+            .off(eventNamespace)
+          ;
+        },
+
+        bind: {
+          events: function() {
+            // if using $.tab dont add events
+            if( !$.isWindow( element ) ) {
+              module.debug('Attaching tab activation events to element', $module);
+              $module
+                .on('click' + eventNamespace, module.event.click)
+              ;
+            }
+          }
         },
 
         determineTabs: function() {
@@ -15513,7 +15577,7 @@ $.fn.tab = function(parameters) {
           if(settings.context === 'parent') {
             if($module.closest(selector.ui).length > 0) {
               $reference = $module.closest(selector.ui);
-              module.verbose('Using closest UI element for determining parent', $reference);
+              module.verbose('Using closest UI element as parent', $reference);
             }
             else {
               $reference = $module;
@@ -15528,7 +15592,6 @@ $.fn.tab = function(parameters) {
           else {
             $context = $('body');
           }
-
           // find tabs
           if(settings.childrenOnly) {
             $tabs = $context.children(selector.tabs);
@@ -15559,47 +15622,29 @@ $.fn.tab = function(parameters) {
         },
 
         initializeHistory: function() {
-          if(settings.history) {
-            module.debug('Initializing page state');
-            if( $.address === undefined ) {
-              module.error(error.state);
-              return false;
-            }
-            else {
-              if(settings.historyType == 'state') {
-                module.debug('Using HTML5 to manage state');
-                if(settings.path !== false) {
-                  $.address
-                    .history(true)
-                    .state(settings.path)
-                  ;
-                }
-                else {
-                  module.error(error.path);
-                  return false;
-                }
-              }
-              $.address
-                .bind('change', module.event.history.change)
-              ;
-            }
+          module.debug('Initializing page state');
+          if( $.address === undefined ) {
+            module.error(error.state);
+            return false;
           }
-        },
-
-        instantiate: function () {
-          module.verbose('Storing instance of module', module);
-          instance = module;
-          $module
-            .data(moduleNamespace, module)
-          ;
-        },
-
-        destroy: function() {
-          module.debug('Destroying tabs', $module);
-          $module
-            .removeData(moduleNamespace)
-            .off(eventNamespace)
-          ;
+          else {
+            if(settings.historyType == 'state') {
+              module.debug('Using HTML5 to manage state');
+              if(settings.path !== false) {
+                $.address
+                  .history(true)
+                  .state(settings.path)
+                ;
+              }
+              else {
+                module.error(error.path);
+                return false;
+              }
+            }
+            $.address
+              .bind('change', module.event.history.change)
+            ;
+          }
         },
 
         event: {
@@ -15709,13 +15754,10 @@ $.fn.tab = function(parameters) {
 
         changeTab: function(tabPath) {
           var
-            tabPath = (typeof tabPath == 'string')
-              ? tabPath.toLowerCase()
-              : tabPath,
             pushStateAvailable = (window.history && window.history.pushState),
             shouldIgnoreLoad   = (pushStateAvailable && settings.ignoreFirstLoad && firstLoad),
             remoteContent      = (settings.auto || $.isPlainObject(settings.apiSettings) ),
-            // only get default path if not remote content
+            // only add default path if not remote content
             pathArray = (remoteContent && !shouldIgnoreLoad)
               ? module.utilities.pathToArray(tabPath)
               : module.get.defaultPathArray(tabPath)
@@ -16045,6 +16087,9 @@ $.fn.tab = function(parameters) {
             if(pathName === undefined) {
               pathName = activeTabPath;
             }
+            if(typeof pathName == 'string') {
+              pathName = pathName.toLowerCase();
+            }
             return typeof pathName == 'string'
               ? pathName.split('/')
               : [pathName]
@@ -16227,9 +16272,6 @@ $.fn.tab = function(parameters) {
       }
     })
   ;
-  if(module && !methodInvoked) {
-    module.initializeHistory();
-  }
   return (returnedValue !== undefined)
     ? returnedValue
     : this

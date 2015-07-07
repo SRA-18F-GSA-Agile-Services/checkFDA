@@ -1,3 +1,13 @@
 /*******************************
     User Variable Overrides
 *******************************/
+.ui.navy.statistics .statistic > .value,
+.ui.statistics .navy.statistic > .value,
+.ui.navy.statistic > .value {
+  color: @navy;
+}
+.ui.inverted.navy.statistics .statistic > .value,
+.ui.statistics .inverted.navy.statistic > .value,
+.ui.inverted.navy.statistic > .value {
+  color: @lightNavy;
+}

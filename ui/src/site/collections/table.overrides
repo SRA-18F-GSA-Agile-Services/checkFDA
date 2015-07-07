@@ -1,3 +1,304 @@
 /*******************************
          Site Overrides
 *******************************/
+
+/*--------------
+      Red
+---------------*/
+
+.ui.table tr.red,
+.ui.table td.red {
+  box-shadow: @redBoxShadow;
+}
+.ui.table tr.red,
+.ui.table td.red {
+  background: @redBackground !important;
+  color: @redColor !important;
+}
+.ui.selectable.table tr.red:hover,
+.ui.selectable.table tr:hover td.red {
+  background: @redBackgroundHover !important;
+  color: @redColorHover !important;
+}
+.ui.table tr.active td.red,
+.ui.table tr.active td.red:hover,
+.ui.table tr.active:hover td.red {
+  background: @redBackgroundActive !important;
+  color: @redColorHover !important;
+}
+
+/*--------------
+      Orange
+---------------*/
+
+.ui.table tr.orange,
+.ui.table td.orange {
+  box-shadow: @orangeBoxShadow;
+}
+.ui.table tr.orange,
+.ui.table td.orange {
+  background: @orangeBackground !important;
+  color: @orangeColor !important;
+}
+.ui.selectable.table tr.orange:hover,
+.ui.selectable.table tr:hover td.orange {
+  background: @orangeBackgroundHover !important;
+  color: @orangeColorHover !important;
+}
+.ui.table tr.active td.orange,
+.ui.table tr.active td.orange:hover,
+.ui.table tr.active:hover td.orange {
+  background: @orangeBackgroundActive !important;
+  color: @orangeColorHover !important;
+}
+
+/*--------------
+      Yellow
+---------------*/
+
+.ui.table tr.yellow,
+.ui.table td.yellow {
+  box-shadow: @yellowBoxShadow;
+}
+.ui.table tr.yellow,
+.ui.table td.yellow {
+  background: @yellowBackground !important;
+  color: @yellowColor !important;
+}
+.ui.selectable.table tr.yellow:hover,
+.ui.selectable.table tr:hover td.yellow {
+  background: @yellowBackgroundHover !important;
+  color: @yellowColorHover !important;
+}
+.ui.table tr.active td.yellow,
+.ui.table tr.active td.yellow:hover,
+.ui.table tr.active:hover td.yellow {
+  background: @yellowBackgroundActive !important;
+  color: @yellowColorHover !important;
+}
+
+/*--------------
+      Olive
+---------------*/
+
+.ui.table tr.olive,
+.ui.table td.olive {
+  box-shadow: @oliveBoxShadow;
+}
+.ui.table tr.olive,
+.ui.table td.olive {
+  background: @oliveBackground !important;
+  color: @oliveColor !important;
+}
+.ui.selectable.table tr.olive:hover,
+.ui.selectable.table tr:hover td.olive {
+  background: @oliveBackgroundHover !important;
+  color: @oliveColorHover !important;
+}
+.ui.table tr.active td.olive,
+.ui.table tr.active td.olive:hover,
+.ui.table tr.active:hover td.olive {
+  background: @oliveBackgroundActive !important;
+  color: @oliveColorHover !important;
+}
+
+/*--------------
+      Green
+---------------*/
+
+.ui.table tr.green,
+.ui.table td.green {
+  box-shadow: @greenBoxShadow;
+}
+.ui.table tr.green,
+.ui.table td.green {
+  background: @greenBackground !important;
+  color: @greenColor !important;
+}
+.ui.selectable.table tr.green:hover,
+.ui.selectable.table tr:hover td.green {
+  background: @greenBackgroundHover !important;
+  color: @greenColorHover !important;
+}
+.ui.table tr.active td.green,
+.ui.table tr.active td.green:hover,
+.ui.table tr.active:hover td.green {
+  background: @greenBackgroundActive !important;
+  color: @greenColorHover !important;
+}
+
+/*--------------
+      Teal
+---------------*/
+
+.ui.table tr.teal,
+.ui.table td.teal {
+  box-shadow: @tealBoxShadow;
+}
+.ui.table tr.teal,
+.ui.table td.teal {
+  background: @tealBackground !important;
+  color: @tealColor !important;
+}
+.ui.selectable.table tr.teal:hover,
+.ui.selectable.table tr:hover td.teal {
+  background: @tealBackgroundHover !important;
+  color: @tealColorHover !important;
+}
+.ui.table tr.active td.teal,
+.ui.table tr.active td.teal:hover,
+.ui.table tr.active:hover td.teal {
+  background: @tealBackgroundActive !important;
+  color: @tealColorHover !important;
+}
+
+/*--------------
+      Blue
+---------------*/
+
+.ui.table tr.blue,
+.ui.table td.blue {
+  box-shadow: @blueBoxShadow;
+}
+.ui.table tr.blue,
+.ui.table td.blue {
+  background: @blueBackground !important;
+  color: @blueColor !important;
+}
+.ui.selectable.table tr.blue:hover,
+.ui.selectable.table tr:hover td.blue {
+  background: @blueBackgroundHover !important;
+  color: @blueColorHover !important;
+}
+.ui.table tr.active td.blue,
+.ui.table tr.active td.blue:hover,
+.ui.table tr.active:hover td.blue {
+  background: @blueBackgroundActive !important;
+  color: @blueColorHover !important;
+}
+
+/*--------------
+      Navy
+---------------*/
+
+.ui.table tr.navy,
+.ui.table td.navy {
+  box-shadow: @navyBoxShadow;
+}
+.ui.table tr.navy,
+.ui.table td.navy {
+  background: @navyBackground !important;
+  color: @navyColor !important;
+}
+.ui.selectable.table tr.navy:hover,
+.ui.selectable.table tr:hover td.navy {
+  background: @navyBackgroundHover !important;
+  color: @navyColorHover !important;
+}
+.ui.table tr.active td.navy,
+.ui.table tr.active td.navy:hover,
+.ui.table tr.active:hover td.navy {
+  background: @navyBackgroundActive !important;
+  color: @navyColorHover !important;
+}
+
+/*--------------
+      Violet
+---------------*/
+
+.ui.table tr.violet,
+.ui.table td.violet {
+  box-shadow: @violetBoxShadow;
+}
+.ui.table tr.violet,
+.ui.table td.violet {
+  background: @violetBackground !important;
+  color: @violetColor !important;
+}
+.ui.selectable.table tr.violet:hover,
+.ui.selectable.table tr:hover td.violet {
+  background: @violetBackgroundHover !important;
+  color: @violetColorHover !important;
+}
+.ui.table tr.active td.violet,
+.ui.table tr.active td.violet:hover,
+.ui.table tr.active:hover td.violet {
+  background: @violetBackgroundActive !important;
+  color: @violetColorHover !important;
+}
+
+/*--------------
+      Purple
+---------------*/
+
+.ui.table tr.purple,
+.ui.table td.purple {
+  box-shadow: @purpleBoxShadow;
+}
+.ui.table tr.purple,
+.ui.table td.purple {
+  background: @purpleBackground !important;
+  color: @purpleColor !important;
+}
+.ui.selectable.table tr.purple:hover,
+.ui.selectable.table tr:hover td.purple {
+  background: @purpleBackgroundHover !important;
+  color: @purpleColorHover !important;
+}
+.ui.table tr.active td.purple,
+.ui.table tr.active td.purple:hover,
+.ui.table tr.active:hover td.purple {
+  background: @purpleBackgroundActive !important;
+  color: @purpleColorHover !important;
+}
+
+/*--------------
+      Pink
+---------------*/
+
+.ui.table tr.pink,
+.ui.table td.pink {
+  box-shadow: @pinkBoxShadow;
+}
+.ui.table tr.pink,
+.ui.table td.pink {
+  background: @pinkBackground !important;
+  color: @pinkColor !important;
+}
+.ui.selectable.table tr.pink:hover,
+.ui.selectable.table tr:hover td.pink {
+  background: @pinkBackgroundHover !important;
+  color: @pinkColorHover !important;
+}
+.ui.table tr.active td.pink,
+.ui.table tr.active td.pink:hover,
+.ui.table tr.active:hover td.pink {
+  background: @pinkBackgroundActive !important;
+  color: @pinkColorHover !important;
+}
+
+/*--------------
+      Brown
+---------------*/
+
+.ui.table tr.brown,
+.ui.table td.brown {
+  box-shadow: @brownBoxShadow;
+}
+.ui.table tr.brown,
+.ui.table td.brown {
+  background: @brownBackground !important;
+  color: @brownColor !important;
+}
+.ui.selectable.table tr.brown:hover,
+.ui.selectable.table tr:hover td.brown {
+  background: @brownBackgroundHover !important;
+  color: @brownColorHover !important;
+}
+.ui.table tr.active td.brown,
+.ui.table tr.active td.brown:hover,
+.ui.table tr.active:hover td.brown {
+  background: @brownBackgroundActive !important;
+  color: @brownColorHover !important;
+}
+

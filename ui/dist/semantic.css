@@ -611,13 +611,13 @@ p:last-child {
 --------------------*/
 
 a {
-  color: #003152;
+  color: #2185d0;
   text-decoration: none;
 }
 
 a:hover {
-  color: #002239;
-  text-decoration: none;
+  color: #065d9e;
+  text-decoration: underline;
 }
 
 /*******************************
@@ -669,105 +669,301 @@ input::selection {
          Site Overrides
 *******************************/
 
-.content {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+.ui.container {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-.content .heading.main {
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 1;
-  -ms-flex: 0 1;
-  flex: 0 1;
-}
-
-.content .landing {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1 0;
-  -ms-flex: 1 0;
-  flex: 1 0;
-}
-
-.content .footer {
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 1;
-  -ms-flex: 0 1;
-  flex: 0 1;
-}
-
-/* General */
-
-.content {
-  width: 100%;
-  height: 100%;
-  max-width: 968px;
-  margin: 0 auto;
-}
-
-.content .landing {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
+.ui.container .main {
+  background-color: #ffffff;
+  margin: 0 !important;
   min-height: 200px;
+}
+
+.ui.container .main.landing {
   background: url("themes/check-fda/assets/images/landing-splash.jpg") 50% 33% no-repeat;
   background-size: cover;
 }
 
-.content .landing .search {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.content .landing .search .container {
+.ui.container .main.landing .search .column {
   background-color: rgba(0, 0, 0, 0.65);
   border: 1px solid #000000;
   padding: 30px;
-  text-align: center;
 }
 
-.content .landing .search .container .guidance {
+.ui.container .main.landing .search .column .guidance {
   padding-top: 0.71425em;
   line-height: 1.4285em;
   color: #ffffff;
-}
-
-.content .results .search {
-  margin: 20px;
   text-align: center;
 }
 
-.search {
-  width: 100%;
+.ui.container .main.results,
+.ui.container .main.styleguide {
+  padding: 40px;
+}
+
+.ui.container .main .column.error {
+  width: 50%;
+  text-align: center !important;
+}
+
+.ui.container .main .ui.page.header {
+  font-size: 2.5em;
+}
+
+.ui.container .main > section {
+  margin-top: 3em;
+}
+
+.ui.container > .header,
+.ui.container > .footer {
+  min-height: 138px;
+  background-color: #003152;
+}
+
+.ui.container > .header a.logo,
+.ui.container > .footer a.logo {
+  display: block;
+  margin: 40px;
+  width: 287px;
+  height: 55px;
+  background: url("themes/check-fda/assets/images/logo.png") 0 0 no-repeat;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .search .input {
-  min-width: 458px;
+  width: 100%;
 }
 
-/* Footer */
+.search.results {
+  padding: 0 40px 40px;
+}
 
-.footer {
-  min-height: 138px;
-  background-color: #003152;
+.jumplinks {
+  margin-top: -0.5em;
+}
+
+.jumplinks span {
+  display: block;
+}
+
+.jumplinks a {
+  display: inline-block;
+  margin: 0.25em 0;
+  padding: 0 0.5em;
+  border-left: 1px solid rgba(34, 36, 38, 0.15);
+}
+
+.jumplinks a:first-of-type {
+  padding-left: 0;
+  border: none;
+}
+
+h1.large.header + h2.medium.header {
+  margin-top: 0 !important;
+}
+
+/* Recalls */
+
+.hidden-cards > .card {
+  display: none;
+}
+
+.ui.fluid.card.recall:last-child,
+.ui.fluid.card.druglabel:last-child,
+.ui.fluid.card.drugevent:last-child,
+.ui.fluid.card.deviceevent:last-child {
+  margin-bottom: 1em !important;
+}
+
+.ui.fluid.card.recall .extra.content span,
+.ui.fluid.card.druglabel .extra.content span,
+.ui.fluid.card.drugevent .extra.content span,
+.ui.fluid.card.deviceevent .extra.content span {
+  margin-right: 1em;
+}
+
+.ui.fluid.card.recall .extra.content .icon,
+.ui.fluid.card.druglabel .extra.content .icon,
+.ui.fluid.card.drugevent .extra.content .icon,
+.ui.fluid.card.deviceevent .extra.content .icon {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.ui.fluid.card.recall .ui.medium.header,
+.ui.fluid.card.druglabel .ui.medium.header,
+.ui.fluid.card.drugevent .ui.medium.header,
+.ui.fluid.card.deviceevent .ui.medium.header {
+  margin: 1rem 0 0.5rem;
+}
+
+.ui.fluid.card.recall .ui.medium.header.nomargin,
+.ui.fluid.card.druglabel .ui.medium.header.nomargin,
+.ui.fluid.card.drugevent .ui.medium.header.nomargin,
+.ui.fluid.card.deviceevent .ui.medium.header.nomargin {
+  margin-top: 0;
+}
+
+.ui.fluid.card.recall .ui.small.header,
+.ui.fluid.card.druglabel .ui.small.header,
+.ui.fluid.card.drugevent .ui.small.header,
+.ui.fluid.card.deviceevent .ui.small.header {
+  margin: 1rem 0 0.5rem;
+}
+
+.ui.fluid.card.recall .ui.small.header .generic,
+.ui.fluid.card.druglabel .ui.small.header .generic,
+.ui.fluid.card.drugevent .ui.small.header .generic,
+.ui.fluid.card.deviceevent .ui.small.header .generic {
+  font-weight: normal;
+  color: rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+}
+
+.ui.fluid.card.recall .ui.small.header.nomargin,
+.ui.fluid.card.druglabel .ui.small.header.nomargin,
+.ui.fluid.card.drugevent .ui.small.header.nomargin,
+.ui.fluid.card.deviceevent .ui.small.header.nomargin {
+  margin-top: 0;
+}
+
+.ui.fluid.card.recall .ui.sub.header,
+.ui.fluid.card.druglabel .ui.sub.header,
+.ui.fluid.card.drugevent .ui.sub.header,
+.ui.fluid.card.deviceevent .ui.sub.header {
+  font-weight: normal;
+  margin-top: -0.5em;
+  font-size: 1em;
+  text-transform: none;
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.ui.fluid.card.recall .ui.tiny.header,
+.ui.fluid.card.druglabel .ui.tiny.header,
+.ui.fluid.card.drugevent .ui.tiny.header,
+.ui.fluid.card.deviceevent .ui.tiny.header {
+  margin: 1rem 0 0.5rem;
+  font-weight: normal !important;
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.card-table-wrapper {
+  max-height: 25em;
+  overflow-y: auto;
+  margin-bottom: 1em;
+  border-radius: 0.28571429rem;
+  box-shadow: 0px 1px 3px 0px #d4d4d5, 0px 0px 0px 1px #d4d4d5;
+}
+
+.card-table {
+  table-layout: fixed;
+  width: 100%;
+  white-space: nowrap;
+  border: none !important;
+}
+
+.card-table tr {
+  cursor: pointer;
+}
+
+.card-table.recalls tr > th:nth-child(1),
+.card-table.recalls tr > td:nth-child(1) {
+  width: 4em;
+  text-align: center;
+}
+
+.card-table.recalls tr > th:nth-child(2),
+.card-table.recalls tr > td:nth-child(2) {
+  width: 10em;
+}
+
+.card-table.recalls tr > th abbr,
+.card-table.recalls tr > td abbr,
+.card-table.recalls tr > th span,
+.card-table.recalls tr > td span {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.card-table.recalls tr > th abbr,
+.card-table.recalls tr > td abbr {
+  border-bottom-color: #dcddde;
+}
+
+.card-table.labels tr > th:nth-child(1),
+.card-table.labels tr > td:nth-child(1) {
+  width: 8em;
+}
+
+.card-table.labels .icon {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.card-table.deviceevents tr > th:nth-child(1),
+.card-table.drugevents tr > th:nth-child(1),
+.card-table.deviceevents tr > td:nth-child(1),
+.card-table.drugevents tr > td:nth-child(1) {
+  width: 8em;
+}
+
+.card-table.deviceevents .icon,
+.card-table.drugevents .icon,
+.card-table.deviceevents .reactions,
+.card-table.drugevents .reactions,
+.card-table.deviceevents .brandname,
+.card-table.drugevents .brandname {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.card-table.deviceevents tr > th:nth-child(2),
+.card-table.deviceevents tr > td:nth-child(2) {
+  width: 15em;
+}
+
+.card-table.deviceevents tr > th:nth-child(3),
+.card-table.deviceevents tr > td:nth-child(3) {
+  width: 8em;
+}
+
+.card-table.drugevents tr > th:nth-child(2),
+.card-table.drugevents tr > td:nth-child(2) {
+  width: 8em;
+}
+
+.card-table.drugevents tr > th:nth-child(3),
+.card-table.drugevents tr > td:nth-child(3) {
+  width: 5em;
+}
+
+.overflow {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Drug Labels */
+
+.druglabel > .content > .ui.header {
+  margin-top: 0;
+}
+
+.ui.sticky.fixed.top {
+  top: 1em !important;
+}
+
+.siderail ul {
+  padding-left: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.siderail .center {
+  text-align: center;
+}
+
+.siderail .professional {
+  display: block;
+  margin-top: 1em;
 }
 /*!
  * # Semantic UI 2.0.0 - Button
@@ -1160,10 +1356,6 @@ input::selection {
 
 .ui.inverted.vertical.buttons .button:first-child {
   margin-top: 0em;
-}
-
-.ui.inverted.buttons .button:hover {
-  position: relative;
 }
 
 /* States */
@@ -1718,14 +1910,14 @@ input::selection {
 .ui.toggle.buttons .active.button,
 .ui.buttons .button.toggle.active,
 .ui.button.toggle.active {
-  background-color: #21ba45 !important;
+  background-color: #75c043 !important;
   box-shadow: none !important;
   text-shadow: none;
   color: #ffffff !important;
 }
 
 .ui.button.toggle.active:hover {
-  background-color: #13ae38 !important;
+  background-color: #67bb2f !important;
   text-shadow: none;
   color: #ffffff !important;
 }
@@ -2743,7 +2935,7 @@ input::selection {
 
 .ui.green.buttons .button,
 .ui.green.button {
-  background-color: #21ba45;
+  background-color: #75c043;
   color: #ffffff;
   text-shadow: none;
   background-image: none;
@@ -2755,21 +2947,21 @@ input::selection {
 
 .ui.green.buttons .button:hover,
 .ui.green.button:hover {
-  background-color: #13ae38;
+  background-color: #67bb2f;
   color: #ffffff;
   text-shadow: none;
 }
 
 .ui.green.buttons .button:focus,
 .ui.green.button:focus {
-  background-color: #09a92f;
+  background-color: #5eb921;
   color: #ffffff;
   text-shadow: none;
 }
 
 .ui.green.buttons .button:active,
 .ui.green.button:active {
-  background-color: #198f35;
+  background-color: #5e9c34;
   color: #ffffff;
   text-shadow: none;
 }
@@ -2778,7 +2970,7 @@ input::selection {
 .ui.green.buttons .active.button:active,
 .ui.green.active.button,
 .ui.green.button .active.button:active {
-  background-color: #0fb335;
+  background-color: #66c029;
   color: #ffffff;
   text-shadow: none;
 }
@@ -2794,27 +2986,27 @@ input::selection {
 .ui.basic.green.buttons .button:hover,
 .ui.basic.green.button:hover {
   background: transparent !important;
-  box-shadow: 0px 0px 0px 2px #13ae38 inset !important;
-  color: #13ae38 !important;
+  box-shadow: 0px 0px 0px 2px #67bb2f inset !important;
+  color: #67bb2f !important;
 }
 
 .ui.basic.green.buttons .button:focus,
 .ui.basic.green.button:focus {
   background: transparent !important;
-  box-shadow: 0px 0px 0px 2px #09a92f inset !important;
+  box-shadow: 0px 0px 0px 2px #5eb921 inset !important;
 }
 
 .ui.basic.green.buttons .active.button,
 .ui.basic.green.active.button {
   background: transparent !important;
-  box-shadow: 0px 0px 0px 2px #0fb335 inset !important;
-  color: #198f35 !important;
+  box-shadow: 0px 0px 0px 2px #66c029 inset !important;
+  color: #5e9c34 !important;
 }
 
 .ui.basic.green.buttons .button:active,
 .ui.basic.green.button:active {
-  box-shadow: 0px 0px 0px 2px #198f35 inset !important;
-  color: #198f35 !important;
+  box-shadow: 0px 0px 0px 2px #5e9c34 inset !important;
+  color: #5e9c34 !important;
 }
 
 .ui.buttons > .basic.green.button:not(:first-child) {
@@ -2826,8 +3018,8 @@ input::selection {
 .ui.inverted.green.buttons .button,
 .ui.inverted.green.button {
   background-color: transparent;
-  box-shadow: 0px 0px 0px 2px #2ecc40 inset !important;
-  color: #2ecc40;
+  box-shadow: 0px 0px 0px 2px #44ae0a inset !important;
+  color: #44ae0a;
 }
 
 .ui.inverted.green.buttons .button:hover,
@@ -2844,22 +3036,22 @@ input::selection {
 
 .ui.inverted.green.buttons .button:hover,
 .ui.inverted.green.button:hover {
-  background-color: #1ec231;
+  background-color: #389e01;
 }
 
 .ui.inverted.green.buttons .button:focus,
 .ui.inverted.green.button:focus {
-  background-color: #12c025;
+  background-color: #338f00;
 }
 
 .ui.inverted.green.buttons .active.button,
 .ui.inverted.green.active.button {
-  background-color: #18c82c;
+  background-color: #389f00;
 }
 
 .ui.inverted.green.buttons .button:active,
 .ui.inverted.green.button:active {
-  background-color: #25a233;
+  background-color: #317e07;
 }
 
 /* Inverted Basic */
@@ -2875,29 +3067,29 @@ input::selection {
 .ui.inverted.green.basic.buttons .button:hover,
 .ui.inverted.green.buttons .basic.button:hover,
 .ui.inverted.green.basic.button:hover {
-  box-shadow: 0px 0px 0px 2px #1ec231 inset !important;
-  color: #2ecc40 !important;
+  box-shadow: 0px 0px 0px 2px #389e01 inset !important;
+  color: #44ae0a !important;
 }
 
 .ui.inverted.green.basic.buttons .button:focus,
 .ui.inverted.green.basic.buttons .button:focus,
 .ui.inverted.green.basic.button:focus {
-  box-shadow: 0px 0px 0px 2px #12c025 inset !important;
-  color: #2ecc40 !important;
+  box-shadow: 0px 0px 0px 2px #338f00 inset !important;
+  color: #44ae0a !important;
 }
 
 .ui.inverted.green.basic.buttons .active.button,
 .ui.inverted.green.buttons .basic.active.button,
 .ui.inverted.green.basic.active.button {
-  box-shadow: 0px 0px 0px 2px #18c82c inset !important;
-  color: #2ecc40 !important;
+  box-shadow: 0px 0px 0px 2px #389f00 inset !important;
+  color: #44ae0a !important;
 }
 
 .ui.inverted.green.basic.buttons .button:active,
 .ui.inverted.green.buttons .basic.button:active,
 .ui.inverted.green.basic.button:active {
-  box-shadow: 0px 0px 0px 2px #25a233 inset !important;
-  color: #2ecc40 !important;
+  box-shadow: 0px 0px 0px 2px #317e07 inset !important;
+  color: #44ae0a !important;
 }
 
 /*--- Orange ---*/
@@ -2987,8 +3179,8 @@ input::selection {
 .ui.inverted.orange.buttons .button,
 .ui.inverted.orange.button {
   background-color: transparent;
-  box-shadow: 0px 0px 0px 2px #ff851b inset !important;
-  color: #ff851b;
+  box-shadow: 0px 0px 0px 2px #ff9e37 inset !important;
+  color: #ff9e37;
 }
 
 .ui.inverted.orange.buttons .button:hover,
@@ -3005,22 +3197,22 @@ input::selection {
 
 .ui.inverted.orange.buttons .button:hover,
 .ui.inverted.orange.button:hover {
-  background-color: #ff7701;
+  background-color: #ff921e;
 }
 
 .ui.inverted.orange.buttons .button:focus,
 .ui.inverted.orange.button:focus {
-  background-color: #f17000;
+  background-color: #ff8a0e;
 }
 
 .ui.inverted.orange.buttons .active.button,
 .ui.inverted.orange.active.button {
-  background-color: #ff7701;
+  background-color: #ff921e;
 }
 
 .ui.inverted.orange.buttons .button:active,
 .ui.inverted.orange.button:active {
-  background-color: #e76b00;
+  background-color: #ff8504;
 }
 
 /* Inverted Basic */
@@ -3036,29 +3228,29 @@ input::selection {
 .ui.inverted.orange.basic.buttons .button:hover,
 .ui.inverted.orange.buttons .basic.button:hover,
 .ui.inverted.orange.basic.button:hover {
-  box-shadow: 0px 0px 0px 2px #ff7701 inset !important;
-  color: #ff851b !important;
+  box-shadow: 0px 0px 0px 2px #ff921e inset !important;
+  color: #ff9e37 !important;
 }
 
 .ui.inverted.orange.basic.buttons .button:focus,
 .ui.inverted.orange.basic.buttons .button:focus,
 .ui.inverted.orange.basic.button:focus {
-  box-shadow: 0px 0px 0px 2px #f17000 inset !important;
-  color: #ff851b !important;
+  box-shadow: 0px 0px 0px 2px #ff8a0e inset !important;
+  color: #ff9e37 !important;
 }
 
 .ui.inverted.orange.basic.buttons .active.button,
 .ui.inverted.orange.buttons .basic.active.button,
 .ui.inverted.orange.basic.active.button {
-  box-shadow: 0px 0px 0px 2px #ff7701 inset !important;
-  color: #ff851b !important;
+  box-shadow: 0px 0px 0px 2px #ff921e inset !important;
+  color: #ff9e37 !important;
 }
 
 .ui.inverted.orange.basic.buttons .button:active,
 .ui.inverted.orange.buttons .basic.button:active,
 .ui.inverted.orange.basic.button:active {
-  box-shadow: 0px 0px 0px 2px #e76b00 inset !important;
-  color: #ff851b !important;
+  box-shadow: 0px 0px 0px 2px #ff8504 inset !important;
+  color: #ff9e37 !important;
 }
 
 /*--- Pink ---*/
@@ -4282,7 +4474,7 @@ input::selection {
 
 .ui.positive.buttons .button,
 .ui.positive.button {
-  background-color: #21ba45 !important;
+  background-color: #75c043 !important;
   color: #ffffff;
   text-shadow: none;
   background-image: none;
@@ -4294,21 +4486,21 @@ input::selection {
 
 .ui.positive.buttons .button:hover,
 .ui.positive.button:hover {
-  background-color: #13ae38 !important;
+  background-color: #67bb2f !important;
   color: #ffffff;
   text-shadow: none;
 }
 
 .ui.positive.buttons .button:focus,
 .ui.positive.button:focus {
-  background-color: #09a92f !important;
+  background-color: #5eb921 !important;
   color: #ffffff;
   text-shadow: none;
 }
 
 .ui.positive.buttons .button:active,
 .ui.positive.button:active {
-  background-color: #198f35 !important;
+  background-color: #5e9c34 !important;
   color: #ffffff;
   text-shadow: none;
 }
@@ -4316,7 +4508,7 @@ input::selection {
 .ui.positive.buttons .active.button,
 .ui.positive.active.button,
 .ui.positive.buttons .active.button:active {
-  background-color: #0fb335;
+  background-color: #66c029;
   color: #ffffff;
   text-shadow: none;
 }
@@ -4383,11 +4575,6 @@ input::selection {
   font-size: 0em;
   vertical-align: baseline;
   margin: 0em 0.25em 0em 0em;
-}
-
-.ui.buttons > .button:hover,
-.ui.buttons > .active.button {
-  position: relative;
 }
 
 .ui.buttons:not(.basic):not(.inverted) {
@@ -4482,6 +4669,165 @@ input::selection {
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.navy.buttons .button,
+.ui.navy.button {
+  background-color: #003152;
+  color: #ffffff;
+  text-shadow: none;
+  background-image: none;
+}
+
+.ui.navy.button {
+  box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+
+.ui.navy.buttons .button:hover,
+.ui.navy.button:hover {
+  background-color: #002239;
+  color: #ffffff;
+  text-shadow: none;
+}
+
+.ui.navy.buttons .button:focus,
+.ui.navy.button:focus {
+  background-color: #001929;
+  color: #ffffff;
+  text-shadow: none;
+}
+
+.ui.navy.buttons .button:active,
+.ui.navy.button:active {
+  background-color: #00131f;
+  color: #ffffff;
+  text-shadow: none;
+}
+
+.ui.navy.buttons .active.button,
+.ui.navy.buttons .active.button:active,
+.ui.navy.active.button,
+.ui.navy.button .active.button:active {
+  background-color: #002239;
+  color: #ffffff;
+  text-shadow: none;
+}
+
+/* Basic */
+
+.ui.basic.navy.buttons .button,
+.ui.basic.navy.button {
+  box-shadow: 0px 0px 0px 1px rgba(34, 36, 38, 0.15) inset !important;
+  color: #ffffff !important;
+}
+
+.ui.basic.navy.buttons .button:hover,
+.ui.basic.navy.button:hover {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px 2px #002239 inset !important;
+  color: #002239 !important;
+}
+
+.ui.basic.navy.buttons .button:focus,
+.ui.basic.navy.button:focus {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px 2px #001929 inset !important;
+}
+
+.ui.basic.navy.buttons .active.button,
+.ui.basic.navy.active.button {
+  background: transparent !important;
+  box-shadow: 0px 0px 0px 2px #002239 inset !important;
+  color: #00131f !important;
+}
+
+.ui.basic.navy.buttons .button:active,
+.ui.basic.navy.button:active {
+  box-shadow: 0px 0px 0px 2px #00131f inset !important;
+  color: #00131f !important;
+}
+
+.ui.buttons > .basic.navy.button:not(:first-child) {
+  margin-left: -2px;
+}
+
+/* Inverted */
+
+.ui.inverted.navy.buttons .button,
+.ui.inverted.navy.button {
+  background-color: transparent;
+  box-shadow: 0px 0px 0px 2px #5881b2 inset !important;
+  color: #5881b2;
+}
+
+.ui.inverted.navy.buttons .button:hover,
+.ui.inverted.navy.button:hover,
+.ui.inverted.navy.buttons .button:focus,
+.ui.inverted.navy.button:focus,
+.ui.inverted.navy.buttons .button.active,
+.ui.inverted.navy.button.active,
+.ui.inverted.navy.buttons .button:active,
+.ui.inverted.navy.button:active {
+  box-shadow: none !important;
+  color: #ffffff;
+}
+
+.ui.inverted.navy.buttons .button:hover,
+.ui.inverted.navy.button:hover {
+  background-color: #4073b1;
+}
+
+.ui.inverted.navy.buttons .button:focus,
+.ui.inverted.navy.button:focus {
+  background-color: #316bb1;
+}
+
+.ui.inverted.navy.buttons .active.button,
+.ui.inverted.navy.active.button {
+  background-color: #3a73b7;
+}
+
+.ui.inverted.navy.buttons .button:active,
+.ui.inverted.navy.button:active {
+  background-color: #446893;
+}
+
+/* Inverted Basic */
+
+.ui.inverted.navy.basic.buttons .button,
+.ui.inverted.navy.buttons .basic.button,
+.ui.inverted.navy.basic.button {
+  background-color: transparent;
+  box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+  color: #ffffff !important;
+}
+
+.ui.inverted.navy.basic.buttons .button:hover,
+.ui.inverted.navy.buttons .basic.button:hover,
+.ui.inverted.navy.basic.button:hover {
+  box-shadow: 0px 0px 0px 2px #4073b1 inset !important;
+  color: #5881b2 !important;
+}
+
+.ui.inverted.navy.basic.buttons .button:focus,
+.ui.inverted.navy.basic.buttons .button:focus,
+.ui.inverted.navy.basic.button:focus {
+  box-shadow: 0px 0px 0px 2px #316bb1 inset !important;
+  color: #5881b2 !important;
+}
+
+.ui.inverted.navy.basic.buttons .active.button,
+.ui.inverted.navy.buttons .basic.active.button,
+.ui.inverted.navy.basic.active.button {
+  box-shadow: 0px 0px 0px 2px #3a73b7 inset !important;
+  color: #5881b2 !important;
+}
+
+.ui.inverted.navy.basic.buttons .button:active,
+.ui.inverted.navy.buttons .basic.button:active,
+.ui.inverted.navy.basic.button:active {
+  box-shadow: 0px 0px 0px 2px #446893 inset !important;
+  color: #5881b2 !important;
+}
 /*!
  * # Semantic UI 2.0.0 - Container
  * http://github.com/semantic-org/semantic-ui/
@@ -4613,6 +4959,35 @@ input::selection {
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+}
+
+.ui.container .header,
+.ui.container .footer {
+  -webkit-box-flex: 0;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+}
+
+.ui.container .main {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  width: 100%;
+}
 /*!
  * # Semantic UI 2.0.0 - Divider
  * http://github.com/semantic-org/semantic-ui/
@@ -6538,11 +6913,11 @@ a.ui.orange.header:hover {
 /* Inverted */
 
 .ui.inverted.orange.header {
-  color: #ff851b !important;
+  color: #ff9e37 !important;
 }
 
 a.ui.inverted.orange.header:hover {
-  color: #ff7701 !important;
+  color: #ff921e !important;
 }
 
 /*--- Olive ---*/
@@ -6596,25 +6971,25 @@ a.ui.inverted.yellow.header:hover {
 /*--- Green ---*/
 
 .ui.green.header {
-  color: #21ba45 !important;
+  color: #75c043 !important;
 }
 
 a.ui.green.header:hover {
-  color: #13ae38 !important;
+  color: #67bb2f !important;
 }
 
 .ui.green.dividing.header {
-  border-bottom: 2px solid #21ba45;
+  border-bottom: 2px solid #75c043;
 }
 
 /* Inverted */
 
 .ui.inverted.green.header {
-  color: #2ecc40 !important;
+  color: #44ae0a !important;
 }
 
 a.ui.inverted.green.header:hover {
-  color: #1ec231 !important;
+  color: #389e01 !important;
 }
 
 /*--- Teal ---*/
@@ -6965,21 +7340,26 @@ a.ui.inverted.grey.header:hover {
          Site Overrides
 *******************************/
 
-.ui.header.main {
-  min-height: 138px;
-  background-color: #003152;
-  margin: 0;
-  padding: 40px;
+.ui.navy.header {
+  color: #003152 !important;
 }
 
-.ui.header.main > a.logo {
-  display: block;
-  width: 287px;
-  height: 55px;
-  background: url("themes/check-fda/assets/images/logo.png") 0 0 no-repeat;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
+a.ui.navy.header:hover {
+  color: #002239 !important;
+}
+
+.ui.navy.dividing.header {
+  border-bottom: 2px solid #003152;
+}
+
+/* Inverted */
+
+.ui.inverted.navy.header {
+  color: #5881b2 !important;
+}
+
+a.ui.inverted.navy.header:hover {
+  color: #4073b1 !important;
 }
 /*!
  * # Semantic UI 2.0.0 - Icon
@@ -7223,7 +7603,7 @@ i.orange.icon {
 }
 
 i.inverted.orange.icon {
-  color: #ff851b !important;
+  color: #ff9e37 !important;
 }
 
 i.inverted.bordered.orange.icon,
@@ -7267,16 +7647,16 @@ i.inverted.circular.olive.icon {
 /* Green */
 
 i.green.icon {
-  color: #21ba45 !important;
+  color: #75c043 !important;
 }
 
 i.inverted.green.icon {
-  color: #2ecc40 !important;
+  color: #44ae0a !important;
 }
 
 i.inverted.bordered.green.icon,
 i.inverted.circular.green.icon {
-  background-color: #21ba45 !important;
+  background-color: #75c043 !important;
   color: #ffffff !important;
 }
 
@@ -10289,6 +10669,20 @@ i.icon.bed:before {
 /*******************************
          Site Overrides
 *******************************/
+
+i.navy.icon {
+  color: #003152 !important;
+}
+
+i.inverted.navy.icon {
+  color: #5881b2 !important;
+}
+
+i.inverted.bordered.navy.icon,
+i.inverted.circular.navy.icon {
+  background-color: #003152 !important;
+  color: #ffffff !important;
+}
 /*!
  * # Semantic UI 2.0.0 - Image
  * http://github.com/semantic-org/semantic-ui/
@@ -11822,22 +12216,22 @@ a.ui.olive.label:hover:before {
 }
 
 .ui.olive.ribbon.label {
-  border-color: #198f35 !important;
+  border-color: #5e9c34 !important;
 }
 
 /*--- Green ---*/
 
 .ui.green.labels .label,
 .ui.green.label {
-  background-color: #21ba45 !important;
-  border-color: #21ba45 !important;
+  background-color: #75c043 !important;
+  border-color: #75c043 !important;
   color: #ffffff !important;
 }
 
 .ui.labels .green.label:before,
 .ui.green.labels .label:before,
 .ui.green.label:before {
-  background-color: #21ba45 !important;
+  background-color: #75c043 !important;
 }
 
 .ui.green.corner.label,
@@ -11847,19 +12241,19 @@ a.ui.olive.label:hover:before {
 
 a.ui.green.labels .label:hover,
 a.ui.green.label:hover {
-  background-color: #13ae38 !important;
-  border-color: #13ae38 !important;
+  background-color: #67bb2f !important;
+  border-color: #67bb2f !important;
   color: #ffffff !important;
 }
 
 .ui.labels a.green.label:hover:before,
 .ui.green.labels a.label:hover:before,
 a.ui.green.label:hover:before {
-  background-color: #13ae38 !important;
+  background-color: #67bb2f !important;
 }
 
 .ui.green.ribbon.label {
-  border-color: #198f35 !important;
+  border-color: #5e9c34 !important;
 }
 
 /*--- Teal ---*/
@@ -12368,6 +12762,41 @@ a.ui.black.label:hover:before {
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.navy.labels .label,
+.ui.navy.label {
+  background-color: #003152 !important;
+  border-color: #003152 !important;
+  color: #ffffff !important;
+}
+
+.ui.labels .navy.label:before,
+.ui.navy.labels .label:before,
+.ui.navy.label:before {
+  background-color: #003152 !important;
+}
+
+.ui.navy.corner.label,
+.ui.navy.corner.label:hover {
+  background-color: transparent !important;
+}
+
+a.ui.navy.labels .label:hover,
+a.ui.navy.label:hover {
+  background-color: #002239 !important;
+  border-color: #002239 !important;
+  color: #ffffff !important;
+}
+
+.ui.labels a.navy.label:hover:before,
+.ui.navy.labels a.label:hover:before,
+a.ui.navy.label:hover:before {
+  background-color: #002239 !important;
+}
+
+.ui.navy.ribbon.label {
+  border-color: #00131f !important;
+}
 /*!
  * # Semantic UI 2.0.0 - List
  * http://github.com/semantic-org/semantic-ui/
@@ -12419,7 +12848,7 @@ ol.ui.list li,
   table-layout: fixed;
   list-style-type: none;
   list-style-position: outside;
-  padding: 0.28571429em 0em;
+  padding: 0.21428571em 0em;
   line-height: 1.14285714em;
 }
 
@@ -12456,6 +12885,15 @@ ol.ui.list ol,
   clear: both;
   margin: 0em;
   padding: 0.75em 0em 0.25em 0.5em;
+}
+
+/* Child Item */
+
+ul.ui.list ul li,
+ol.ui.list ol li,
+.ui.list .list > .item {
+  padding: 0.14285714em 0em;
+  line-height: inherit;
 }
 
 /* Icon */
@@ -12528,37 +12966,6 @@ ol.ui.list ol,
   padding-left: 0em;
 }
 
-/* Item Link */
-
-.ui.list .list > a.item,
-.ui.list > a.item {
-  cursor: pointer;
-  color: rgba(0, 0, 0, 0.87);
-}
-
-.ui.list .list > a.item:hover,
-.ui.list > a.item:hover {
-  color: #002239;
-}
-
-/* Linked Item Icons */
-
-.ui.list .list > a.item i.icon,
-.ui.list > a.item i.icon {
-  color: rgba(0, 0, 0, 0.4);
-}
-
-/* Linking Content */
-
-.ui.list .item a:not(.ui) {
-  cursor: pointer;
-  color: rgba(0, 0, 0, 0.87) !important;
-}
-
-.ui.list .item a:not(.ui):hover {
-  color: #002239 !important;
-}
-
 /* Header */
 
 .ui.list .list > .item .header,
@@ -12570,10 +12977,52 @@ ol.ui.list ol,
   color: rgba(0, 0, 0, 0.87);
 }
 
+/* Description */
+
 .ui.list .list > .item .description,
 .ui.list > .item .description {
   display: block;
   color: rgba(0, 0, 0, 0.7);
+}
+
+/* Child Link */
+
+.ui.list > .item a,
+.ui.list .list > .item a {
+  cursor: pointer;
+}
+
+/* Linking Item */
+
+.ui.list .list > a.item,
+.ui.list > a.item {
+  cursor: pointer;
+  color: #2185d0;
+}
+
+.ui.list .list > a.item:hover,
+.ui.list > a.item:hover {
+  color: #065d9e;
+}
+
+/* Linked Item Icons */
+
+.ui.list .list > a.item i.icon,
+.ui.list > a.item i.icon {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/* Header Link */
+
+.ui.list .list > .item a.header,
+.ui.list > .item a.header {
+  cursor: pointer;
+  color: #2185d0 !important;
+}
+
+.ui.list .list > .item a.header:hover,
+.ui.list > .item a.header:hover {
+  color: #065d9e !important;
 }
 
 /* Floated Content */
@@ -12601,7 +13050,7 @@ ol.ui.list ol,
   background-color: transparent;
   list-style-type: none;
   list-style-position: outside;
-  padding: 0.28571429em 0em;
+  padding: 0.21428571em 0em;
   line-height: 1.14285714em;
 }
 
@@ -12663,8 +13112,8 @@ ol.ui.list ol,
 
 .ui.horizontal.list > .item:first-child,
 .ui.horizontal.list > .item:last-child {
-  padding-top: 0.28571429em;
-  padding-bottom: 0.28571429em;
+  padding-top: 0.21428571em;
+  padding-bottom: 0.21428571em;
 }
 
 /* Horizontal List */
@@ -12741,18 +13190,17 @@ ol.ui.list ol,
 
 .ui.inverted.list .list > a.item:hover,
 .ui.inverted.list > a.item:hover {
-  color: #002239;
+  color: #065d9e;
 }
 
 /* Linking Content */
 
 .ui.inverted.list .item a:not(.ui) {
-  cursor: pointer;
   color: rgba(255, 255, 255, 0.9) !important;
 }
 
 .ui.inverted.list .item a:not(.ui):hover {
-  color: #002239 !important;
+  color: #065d9e !important;
 }
 
 /*-------------------
@@ -12936,7 +13384,7 @@ ol.ui.list ol,
 
 ul.ui.list,
 .ui.bulleted.list {
-  margin-left: 1rem;
+  margin-left: 1.25rem;
 }
 
 ul.ui.list li,
@@ -12956,7 +13404,7 @@ ul.ui.list li:before,
   position: absolute;
   top: auto;
   left: auto;
-  margin-left: -1rem;
+  margin-left: -1.25rem;
   content: '•';
   opacity: 1;
   color: inherit;
@@ -12965,7 +13413,7 @@ ul.ui.list li:before,
 
 ul.ui.list ul,
 .ui.bulleted.list .list {
-  padding-left: 1rem;
+  padding-left: 1.25rem;
 }
 
 /* Horizontal Bulleted */
@@ -12977,7 +13425,7 @@ ul.ui.horizontal.bulleted.list,
 
 ul.ui.horizontal.bulleted.list li,
 .ui.horizontal.bulleted.list > .item {
-  margin-left: 1.5rem;
+  margin-left: 1.75rem;
 }
 
 ul.ui.horizontal.bulleted.list li:first-child,
@@ -13102,9 +13550,8 @@ ol.ui.horizontal.list li:before,
   padding-left: 0em;
 }
 
-.ui.divided.bulleted.list .list > .item:not(.horizontal),
 .ui.divided.bulleted.list > .item:not(.horizontal) {
-  padding-left: 1rem;
+  padding-left: 1.25rem;
 }
 
 /* Divided Ordered */
@@ -13121,7 +13568,7 @@ ol.ui.horizontal.list li:before,
 .ui.divided.ordered.list .item .list {
   margin-left: 0em;
   margin-right: 0em;
-  padding-bottom: 0.28571429em;
+  padding-bottom: 0.21428571em;
 }
 
 .ui.divided.ordered.list .item .list > .item {
@@ -13182,8 +13629,8 @@ ol.ui.horizontal.list li:before,
 
 .ui.celled.list > .item:first-child,
 .ui.celled.list > .item:last-child {
-  padding-top: 0.28571429em;
-  padding-bottom: 0.28571429em;
+  padding-top: 0.21428571em;
+  padding-bottom: 0.21428571em;
 }
 
 /* Sub Menu */
@@ -13204,13 +13651,13 @@ ol.ui.horizontal.list li:before,
 
 .ui.celled.bulleted.list .list > .item,
 .ui.celled.bulleted.list > .item {
-  padding-left: 1rem;
+  padding-left: 1.25rem;
 }
 
 .ui.celled.bulleted.list .item .list {
-  margin-left: -1rem;
-  margin-right: -1rem;
-  padding-bottom: 0.28571429em;
+  margin-left: -1.25rem;
+  margin-right: -1.25rem;
+  padding-bottom: 0.21428571em;
 }
 
 /* Celled Ordered */
@@ -13227,7 +13674,7 @@ ol.ui.horizontal.list li:before,
 .ui.celled.ordered.list .item .list {
   margin-left: 0em;
   margin-right: 0em;
-  padding-bottom: 0.28571429em;
+  padding-bottom: 0.21428571em;
 }
 
 .ui.celled.ordered.list .list > .item {
@@ -13273,8 +13720,13 @@ ol.ui.horizontal.list li:before,
 --------------------*/
 
 .ui.relaxed.list:not(.horizontal) > .item {
-  padding-top: 0.57142857em;
-  padding-bottom: 0.57142857em;
+  padding-top: 0.42857143em;
+  padding-bottom: 0.42857143em;
+}
+
+.ui.relaxed.list:not(.horizontal) .list > .item {
+  padding-top: 0.21428571em;
+  padding-bottom: 0.21428571em;
 }
 
 .ui.horizontal.relaxed.list > .item {
@@ -13285,8 +13737,13 @@ ol.ui.horizontal.list li:before,
 /* Very Relaxed */
 
 .ui[class*="very relaxed"].list:not(.horizontal) > .item {
-  padding-top: 1.14285714em;
-  padding-bottom: 1.14285714em;
+  padding-top: 0.85714286em;
+  padding-bottom: 0.85714286em;
+}
+
+.ui[class*="very relaxed"].list:not(.horizontal) .list > .item {
+  padding-top: 0.28571429em;
+  padding-bottom: 0.28571429em;
 }
 
 .ui.horizontal[class*="very relaxed"].list .list > .item,
@@ -14640,7 +15097,7 @@ ol.ui.horizontal.list li:before,
 --------------------*/
 
 .ui.basic.segment {
-  background-color: none transparent;
+  background: none transparent;
   box-shadow: none;
   border: none;
   border-radius: 0px;
@@ -14709,11 +15166,11 @@ ol.ui.horizontal.list li:before,
 /* Green */
 
 .ui.green.segment:not(.inverted) {
-  border-top: 2px solid #21ba45;
+  border-top: 2px solid #75c043;
 }
 
 .ui.inverted.green.segment {
-  background-color: #21ba45 !important;
+  background-color: #75c043 !important;
   color: #ffffff !important;
 }
 
@@ -14949,6 +15406,15 @@ ol.ui.horizontal.list li:before,
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.navy.segment:not(.inverted) {
+  border-top: 2px solid #003152;
+}
+
+.ui.inverted.navy.segment {
+  background-color: #003152 !important;
+  color: #ffffff !important;
+}
 /*!
  * # Semantic UI 2.0.0 - Step
  * http://github.com/semantic-org/semantic-ui/
@@ -15248,11 +15714,24 @@ ol.ui.horizontal.list li:before,
 
 @media only screen and (max-width: 767px) {
   .ui.steps {
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
     overflow: visible;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
   }
 
   .ui.steps .step {
-    display: block;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     border-radius: 0em;
     padding: 1.14285714em 2em;
   }
@@ -15269,7 +15748,20 @@ ol.ui.horizontal.list li:before,
   /* Arrow */
 
   .ui.steps .step:after {
-    display: none;
+    display: none !important;
+  }
+
+  /* Content */
+
+  .ui.steps .step .content {
+    text-align: center;
+  }
+
+  /* Icon */
+
+  .ui.steps .step > .icon,
+  .ui.ordered.steps .step:before {
+    margin: 0em 0em 1rem 0em;
   }
 }
 
@@ -15309,7 +15801,7 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.steps .step.active .title {
-  color: #003152;
+  color: #2185d0;
 }
 
 .ui.ordered.steps .step.active:before,
@@ -15342,7 +15834,7 @@ ol.ui.horizontal.list li:before,
 
 .ui.steps .step.completed > .icon:before,
 .ui.ordered.steps .step.completed:before {
-  color: #21ba45;
+  color: #75c043;
 }
 
 /* Disabled */
@@ -15375,6 +15867,10 @@ ol.ui.horizontal.list li:before,
 
 @media only screen and (max-width: 992px) {
   .ui[class*="tablet stackable"].steps {
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
     overflow: visible;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -15383,7 +15879,14 @@ ol.ui.horizontal.list li:before,
     flex-direction: column;
   }
 
+  /* Steps */
+
   .ui[class*="tablet stackable"].steps .step {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     border-radius: 0em;
     padding: 1.14285714em 2em;
   }
@@ -15400,7 +15903,20 @@ ol.ui.horizontal.list li:before,
   /* Arrow */
 
   .ui[class*="tablet stackable"].steps .step:after {
-    display: none;
+    display: none !important;
+  }
+
+  /* Content */
+
+  .ui[class*="tablet stackable"].steps .step .content {
+    text-align: center;
+  }
+
+  /* Icon */
+
+  .ui[class*="tablet stackable"].steps .step > .icon,
+  .ui[class*="tablet stackable"].ordered.steps .step:before {
+    margin: 0em 0em 1rem 0em;
   }
 }
 
@@ -15600,11 +16116,11 @@ ol.ui.horizontal.list li:before,
 /* Link */
 
 .ui.breadcrumb a {
-  color: #003152;
+  color: #2185d0;
 }
 
 .ui.breadcrumb a:hover {
-  color: #002239;
+  color: #065d9e;
 }
 
 /* Icon Divider */
@@ -15982,27 +16498,27 @@ ol.ui.horizontal.list li:before,
 /* Error Placeholder */
 
 .ui.form .error ::-webkit-input-placeholder {
-  color: #b93937;
+  color: #bf4d4b;
 }
 
 .ui.form .error ::-ms-input-placeholder {
-  color: #b93937;
+  color: #bf4d4b;
 }
 
 .ui.form .error ::-moz-placeholder {
-  color: #b93937;
+  color: #bf4d4b;
 }
 
 .ui.form .error :focus::-webkit-input-placeholder {
-  color: #a63331;
+  color: #b2413f;
 }
 
 .ui.form .error :focus::-ms-input-placeholder {
-  color: #a63331;
+  color: #b2413f;
 }
 
 .ui.form .error :focus::-moz-placeholder {
-  color: #a63331;
+  color: #b2413f;
 }
 
 /*--------------------
@@ -16093,12 +16609,12 @@ ol.ui.horizontal.list li:before,
 .ui.form .field.error label,
 .ui.form .fields.error .field .input,
 .ui.form .field.error .input {
-  color: #922d2b;
+  color: #9f3a38;
 }
 
 .ui.form .fields.error .field .corner.label,
 .ui.form .field.error .corner.label {
-  border-color: #922d2b;
+  border-color: #9f3a38;
   color: #ffffff;
 }
 
@@ -16130,7 +16646,7 @@ ol.ui.horizontal.list li:before,
 .ui.form .field.error input[type="url"] {
   background: #fff6f6;
   border-color: #e0b4b4;
-  color: #922d2b;
+  color: #9f3a38;
   border-radius: 0.28571429rem;
   box-shadow: none;
 }
@@ -16150,7 +16666,7 @@ ol.ui.horizontal.list li:before,
 .ui.form .field.error input[type="url"]:focus {
   background: #fff6f6;
   border-color: #e0b4b4;
-  color: #922d2b;
+  color: #9f3a38;
   -webkit-appearance: none;
   box-shadow: none;
 }
@@ -16171,7 +16687,7 @@ ol.ui.horizontal.list li:before,
 .ui.form .field.error .ui.dropdown .text,
 .ui.form .field.error .ui.dropdown .item {
   background: #fff6f6;
-  color: #922d2b;
+  color: #9f3a38;
 }
 
 .ui.form .fields.error .field .ui.dropdown,
@@ -16192,7 +16708,7 @@ ol.ui.horizontal.list li:before,
 .ui.form .fields.error .field .ui.multiple.selection.dropdown > .label,
 .ui.form .field.error .ui.multiple.selection.dropdown > .label {
   background-color: #eacbcb;
-  color: #922d2b;
+  color: #9f3a38;
 }
 
 /* Hover */
@@ -16224,7 +16740,7 @@ ol.ui.horizontal.list li:before,
 .ui.form .field.error .checkbox:not(.toggle):not(.slider) label,
 .ui.form .fields.error .field .checkbox:not(.toggle):not(.slider) .box,
 .ui.form .field.error .checkbox:not(.toggle):not(.slider) .box {
-  color: #922d2b;
+  color: #9f3a38;
 }
 
 .ui.form .fields.error .field .checkbox:not(.toggle):not(.slider) label:before,
@@ -16239,7 +16755,7 @@ ol.ui.horizontal.list li:before,
 .ui.form .field.error .checkbox label:after,
 .ui.form .fields.error .field .checkbox .box:after,
 .ui.form .field.error .checkbox .box:after {
-  color: #922d2b;
+  color: #9f3a38;
 }
 
 /*--------------------
@@ -16492,6 +17008,12 @@ ol.ui.horizontal.list li:before,
 /* Swap to full width on mobile */
 
 @media only screen and (max-width: 767px) {
+  .ui.form .fields {
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+
   .ui.form .two.fields > .fields,
   .ui.form .two.fields > .field,
   .ui.form .three.fields > .fields,
@@ -18335,7 +18857,7 @@ ol.ui.horizontal.list li:before,
 .ui.grid > .green.row,
 .ui.grid > .green.column,
 .ui.grid > .row > .green.column {
-  background-color: #21ba45 !important;
+  background-color: #75c043 !important;
   color: #ffffff;
 }
 
@@ -18811,6 +19333,22 @@ ol.ui.horizontal.list li:before,
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.grid > .row > .navy.column {
+  margin-top: -1rem;
+  margin-bottom: -1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* Navy */
+
+.ui.grid > .navy.row,
+.ui.grid > .navy.column,
+.ui.grid > .row > .navy.column {
+  background-color: #003152 !important;
+  color: #ffffff;
+}
 /*
  * # Semantic - Menu
  * http://github.com/semantic-org/semantic-ui/
@@ -19761,7 +20299,8 @@ Floated Menu / Item
 -----------------------*/
 
 .ui.secondary.pointing.menu {
-  margin: 0em;
+  margin-left: 0em;
+  margin-right: 0em;
   border-bottom: 2px solid rgba(34, 36, 38, 0.15);
 }
 
@@ -19773,7 +20312,7 @@ Floated Menu / Item
   -ms-flex-item-align: end;
   align-self: flex-end;
   margin: 0em 0em -2px;
-  padding: 0.85714286em 1em;
+  padding: 0.85714286em 1.14285714em;
   border-bottom-width: 2px;
   -webkit-transition: color 0.1s ease;
   transition: color 0.1s ease;
@@ -20090,7 +20629,7 @@ Floated Menu / Item
   min-width: 6em;
 }
 
-.ui.labeled.icon.menu:not(.vetical) .item {
+.ui.labeled.icon.menu:not(.vertical) .item {
   padding-left: 1.71428571em;
   padding-right: 1.71428571em;
 }
@@ -20171,8 +20710,8 @@ Floated Menu / Item
 
 .ui.menu .green.active.item,
 .ui.green.menu .active.item {
-  border-color: #21ba45 !important;
-  color: #21ba45 !important;
+  border-color: #75c043 !important;
+  color: #75c043 !important;
 }
 
 .ui.menu .teal.active.item,
@@ -20407,7 +20946,7 @@ Floated Menu / Item
 /* Green */
 
 .ui.inverted.green.menu {
-  background-color: #21ba45;
+  background-color: #75c043;
 }
 
 .ui.inverted.green.menu .item:before {
@@ -20847,7 +21386,7 @@ Floated Menu / Item
 
 /* Tabular Attached */
 
-.ui.top.attached.menu:not(.tabular) {
+.ui.top.attached.menu:not(.fixed):not(.tabular) {
   border-bottom: none;
 }
 
@@ -20908,6 +21447,24 @@ Floated Menu / Item
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.menu .navy.active.item,
+.ui.navy.menu .active.item {
+  border-color: #003152 !important;
+  color: #003152 !important;
+}
+
+.ui.inverted.navy.menu {
+  background-color: #003152;
+}
+
+.ui.inverted.navy.menu .item:before {
+  background-color: rgba(34, 36, 38, 0.1);
+}
+
+.ui.inverted.navy.menu .active.item {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
 /*!
  * # Semantic UI 2.0.0 - Message
  * http://github.com/semantic-org/semantic-ui/
@@ -21203,7 +21760,7 @@ Floated Menu / Item
 
 .ui.positive.message {
   background-color: #fcfff5;
-  color: #1d571e;
+  color: #2c662d;
 }
 
 .ui.positive.message,
@@ -21219,7 +21776,7 @@ Floated Menu / Item
 
 .ui.negative.message {
   background-color: #fff6f6;
-  color: #922d2b;
+  color: #9f3a38;
 }
 
 .ui.negative.message,
@@ -21235,12 +21792,12 @@ Floated Menu / Item
 
 .ui.info.message {
   background-color: #f8ffff;
-  color: #0e566d;
+  color: #276f86;
 }
 
 .ui.info.message,
 .ui.attached.info.message {
-  box-shadow: 0px 0px 0px 1px #9ecad3 inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  box-shadow: 0px 0px 0px 1px #a9d5de inset, 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
 
 .ui.info.message .header {
@@ -21251,7 +21808,7 @@ Floated Menu / Item
 
 .ui.warning.message {
   background-color: #fffaf3;
-  color: #664917;
+  color: #573a08;
 }
 
 .ui.warning.message,
@@ -21267,7 +21824,7 @@ Floated Menu / Item
 
 .ui.error.message {
   background-color: #fff6f6;
-  color: #922d2b;
+  color: #9f3a38;
 }
 
 .ui.error.message,
@@ -21283,7 +21840,7 @@ Floated Menu / Item
 
 .ui.success.message {
   background-color: #fcfff5;
-  color: #1d571e;
+  color: #2c662d;
 }
 
 .ui.success.message,
@@ -21433,6 +21990,20 @@ Floated Menu / Item
 /*******************************
     User Variable Overrides
 *******************************/
+
+.ui.attached.message {
+  margin: 0 -1px -2px;
+  top: -1px;
+}
+
+.ui.navy.message {
+  background-color: #d3e7ff;
+  color: #003152;
+}
+
+.ui.navy.message .header {
+  color: #002239;
+}
 /*!
  * # Semantic UI 2.0.0 - Table
  * http://github.com/semantic-org/semantic-ui/
@@ -21762,7 +22333,7 @@ Floated Menu / Item
 .ui.table tr.positive,
 .ui.table td.positive {
   background: #fcfff5 !important;
-  color: #1d571e !important;
+  color: #2c662d !important;
 }
 
 /*--------------
@@ -21777,7 +22348,7 @@ Floated Menu / Item
 .ui.table tr.negative,
 .ui.table td.negative {
   background: #fff6f6 !important;
-  color: #922d2b !important;
+  color: #9f3a38 !important;
 }
 
 /*--------------
@@ -21792,7 +22363,7 @@ Floated Menu / Item
 .ui.table tr.error,
 .ui.table td.error {
   background: #fff6f6 !important;
-  color: #922d2b !important;
+  color: #9f3a38 !important;
 }
 
 /*--------------
@@ -21807,7 +22378,7 @@ Floated Menu / Item
 .ui.table tr.warning,
 .ui.table td.warning {
   background: #fffaf3 !important;
-  color: #664917 !important;
+  color: #573a08 !important;
 }
 
 /*--------------
@@ -21955,13 +22526,13 @@ Floated Menu / Item
 .ui.selectable.table tr.error:hover,
 .ui.selectable.table tr:hover td.error {
   background: #ffe7e7 !important;
-  color: #862928 !important;
+  color: #943634 !important;
 }
 
 .ui.selectable.table tr.warning:hover,
 .ui.selectable.table tr:hover td.warning {
   background: #fff4e4 !important;
-  color: #5a4014 !important;
+  color: #493107 !important;
 }
 
 .ui.selectable.table tr.active:hover,
@@ -21973,13 +22544,13 @@ Floated Menu / Item
 .ui.selectable.table tr.positive:hover,
 .ui.selectable.table tr:hover td.positive {
   background: #f7ffe6 !important;
-  color: #194c1a !important;
+  color: #275b28 !important;
 }
 
 .ui.selectable.table tr.negative:hover,
 .ui.selectable.table tr:hover td.negative {
   background: #ffe7e7 !important;
-  color: #862928 !important;
+  color: #943634 !important;
 }
 
 /*--------------
@@ -22096,11 +22667,11 @@ Floated Menu / Item
 /* Green */
 
 .ui.green.table {
-  border-top: 0.2em solid #21ba45;
+  border-top: 0.2em solid #75c043;
 }
 
 .ui.inverted.green.table {
-  background-color: #21ba45 !important;
+  background-color: #75c043 !important;
   color: #ffffff !important;
 }
 
@@ -22632,6 +23203,342 @@ Floated Menu / Item
 /*******************************
          Site Overrides
 *******************************/
+
+/*--------------
+      Red
+---------------*/
+
+.ui.table tr.red,
+.ui.table td.red {
+  box-shadow: 0px 0px 0px #d12323 inset;
+}
+
+.ui.table tr.red,
+.ui.table td.red {
+  background: #ffe8e6 !important;
+  color: #db2828 !important;
+}
+
+.ui.selectable.table tr.red:hover,
+.ui.selectable.table tr:hover td.red {
+  background: #ffdad7 !important;
+  color: #d12323 !important;
+}
+
+.ui.table tr.active td.red,
+.ui.table tr.active td.red:hover,
+.ui.table tr.active:hover td.red {
+  background: #ffc2bd !important;
+  color: #d12323 !important;
+}
+
+/*--------------
+      Orange
+---------------*/
+
+.ui.table tr.orange,
+.ui.table td.orange {
+  box-shadow: 0px 0px 0px #f1680e inset;
+}
+
+.ui.table tr.orange,
+.ui.table td.orange {
+  background: #ffedde !important;
+  color: #f2711c !important;
+}
+
+.ui.selectable.table tr.orange:hover,
+.ui.selectable.table tr:hover td.orange {
+  background: #ffe5cf !important;
+  color: #f1680e !important;
+}
+
+.ui.table tr.active td.orange,
+.ui.table tr.active td.orange:hover,
+.ui.table tr.active:hover td.orange {
+  background: #ffd7b5 !important;
+  color: #f1680e !important;
+}
+
+/*--------------
+      Yellow
+---------------*/
+
+.ui.table tr.yellow,
+.ui.table td.yellow {
+  box-shadow: 0px 0px 0px #a67605 inset;
+}
+
+.ui.table tr.yellow,
+.ui.table td.yellow {
+  background: #fff8db !important;
+  color: #b58105 !important;
+}
+
+.ui.selectable.table tr.yellow:hover,
+.ui.selectable.table tr:hover td.yellow {
+  background: #fff5cc !important;
+  color: #a67605 !important;
+}
+
+.ui.table tr.active td.yellow,
+.ui.table tr.active td.yellow:hover,
+.ui.table tr.active:hover td.yellow {
+  background: #fff0b2 !important;
+  color: #a67605 !important;
+}
+
+/*--------------
+      Olive
+---------------*/
+
+.ui.table tr.olive,
+.ui.table td.olive {
+  box-shadow: 0px 0px 0px #80af1c inset;
+}
+
+.ui.table tr.olive,
+.ui.table td.olive {
+  background: #fbfdef !important;
+  color: #8abc1e !important;
+}
+
+.ui.selectable.table tr.olive:hover,
+.ui.selectable.table tr:hover td.olive {
+  background: #f8fbe1 !important;
+  color: #80af1c !important;
+}
+
+.ui.table tr.active td.olive,
+.ui.table tr.active td.olive:hover,
+.ui.table tr.active:hover td.olive {
+  background: #f2f8cb !important;
+  color: #80af1c !important;
+}
+
+/*--------------
+      Green
+---------------*/
+
+.ui.table tr.green,
+.ui.table td.green {
+  box-shadow: 0px 0px 0px #1caf2d inset;
+}
+
+.ui.table tr.green,
+.ui.table td.green {
+  background: #e5f9e7 !important;
+  color: #1ebc30 !important;
+}
+
+.ui.selectable.table tr.green:hover,
+.ui.selectable.table tr:hover td.green {
+  background: #d9f6dc !important;
+  color: #1caf2d !important;
+}
+
+.ui.table tr.active td.green,
+.ui.table tr.active td.green:hover,
+.ui.table tr.active:hover td.green {
+  background: #c4f1c8 !important;
+  color: #1caf2d !important;
+}
+
+/*--------------
+      Teal
+---------------*/
+
+.ui.table tr.teal,
+.ui.table td.teal {
+  box-shadow: 0px 0px 0px #0f9595 inset;
+}
+
+.ui.table tr.teal,
+.ui.table td.teal {
+  background: #e1f7f7 !important;
+  color: #10a3a3 !important;
+}
+
+.ui.selectable.table tr.teal:hover,
+.ui.selectable.table tr:hover td.teal {
+  background: #d5f4f4 !important;
+  color: #0f9595 !important;
+}
+
+.ui.table tr.active td.teal,
+.ui.table tr.active td.teal:hover,
+.ui.table tr.active:hover td.teal {
+  background: #c1eeee !important;
+  color: #0f9595 !important;
+}
+
+/*--------------
+      Blue
+---------------*/
+
+.ui.table tr.blue,
+.ui.table td.blue {
+  box-shadow: 0px 0px 0px #1f7dc3 inset;
+}
+
+.ui.table tr.blue,
+.ui.table td.blue {
+  background: #dff0ff !important;
+  color: #2185d0 !important;
+}
+
+.ui.selectable.table tr.blue:hover,
+.ui.selectable.table tr:hover td.blue {
+  background: #d0e9ff !important;
+  color: #1f7dc3 !important;
+}
+
+.ui.table tr.active td.blue,
+.ui.table tr.active td.blue:hover,
+.ui.table tr.active:hover td.blue {
+  background: #b6ddff !important;
+  color: #1f7dc3 !important;
+}
+
+/*--------------
+      Navy
+---------------*/
+
+.ui.table tr.navy,
+.ui.table td.navy {
+  box-shadow: 0px 0px 0px #002843 inset;
+}
+
+.ui.table tr.navy,
+.ui.table td.navy {
+  background: #d3e7ff !important;
+  color: #003152 !important;
+}
+
+.ui.selectable.table tr.navy:hover,
+.ui.selectable.table tr:hover td.navy {
+  background: #c4dfff !important;
+  color: #002843 !important;
+}
+
+.ui.table tr.active td.navy,
+.ui.table tr.active td.navy:hover,
+.ui.table tr.active:hover td.navy {
+  background: #aad1ff !important;
+  color: #002843 !important;
+}
+
+/*--------------
+      Violet
+---------------*/
+
+.ui.table tr.violet,
+.ui.table td.violet {
+  box-shadow: 0px 0px 0px #5e32bd inset;
+}
+
+.ui.table tr.violet,
+.ui.table td.violet {
+  background: #eae7ff !important;
+  color: #6435c9 !important;
+}
+
+.ui.selectable.table tr.violet:hover,
+.ui.selectable.table tr:hover td.violet {
+  background: #ddd8ff !important;
+  color: #5e32bd !important;
+}
+
+.ui.table tr.active td.violet,
+.ui.table tr.active td.violet:hover,
+.ui.table tr.active:hover td.violet {
+  background: #c6beff !important;
+  color: #5e32bd !important;
+}
+
+/*--------------
+      Purple
+---------------*/
+
+.ui.table tr.purple,
+.ui.table td.purple {
+  box-shadow: 0px 0px 0px #9930bc inset;
+}
+
+.ui.table tr.purple,
+.ui.table td.purple {
+  background: #f6e7ff !important;
+  color: #a333c8 !important;
+}
+
+.ui.selectable.table tr.purple:hover,
+.ui.selectable.table tr:hover td.purple {
+  background: #f0d8ff !important;
+  color: #9930bc !important;
+}
+
+.ui.table tr.active td.purple,
+.ui.table tr.active td.purple:hover,
+.ui.table tr.active:hover td.purple {
+  background: #e7beff !important;
+  color: #9930bc !important;
+}
+
+/*--------------
+      Pink
+---------------*/
+
+.ui.table tr.pink,
+.ui.table td.pink {
+  box-shadow: 0px 0px 0px #de2c90 inset;
+}
+
+.ui.table tr.pink,
+.ui.table td.pink {
+  background: #ffe3fb !important;
+  color: #e03997 !important;
+}
+
+.ui.selectable.table tr.pink:hover,
+.ui.selectable.table tr:hover td.pink {
+  background: #ffd4f9 !important;
+  color: #de2c90 !important;
+}
+
+.ui.table tr.active td.pink,
+.ui.table tr.active td.pink:hover,
+.ui.table tr.active:hover td.pink {
+  background: #ffbaf5 !important;
+  color: #de2c90 !important;
+}
+
+/*--------------
+      Brown
+---------------*/
+
+.ui.table tr.brown,
+.ui.table td.brown {
+  box-shadow: 0px 0px 0px #9a603b inset;
+}
+
+.ui.table tr.brown,
+.ui.table td.brown {
+  background: #f1e2d3 !important;
+  color: #a5673f !important;
+}
+
+.ui.selectable.table tr.brown:hover,
+.ui.selectable.table tr:hover td.brown {
+  background: #eddac7 !important;
+  color: #9a603b !important;
+}
+
+.ui.table tr.active td.brown,
+.ui.table tr.active td.brown:hover,
+.ui.table tr.active:hover td.brown {
+  background: #e7ceb4 !important;
+  color: #9a603b !important;
+}
 /*!
  * # Semantic UI 2.0.0 - Ad
  * http://github.com/semantic-org/semantic-ui/
@@ -23259,7 +24166,7 @@ Floated Menu / Item
 
 .ui.cards > .card > .content > a.header:hover,
 .ui.card > .content > a.header:hover {
-  color: #002239;
+  color: #065d9e;
 }
 
 /* Meta */
@@ -23379,7 +24286,7 @@ Floated Menu / Item
 
 .ui.cards > .card > .extra a:not(.ui):hover,
 .ui.card > .extra a:not(.ui):hover {
-  color: #002239;
+  color: #065d9e;
 }
 
 /*******************************
@@ -23487,13 +24394,13 @@ a.ui.card:hover,
 .ui.green.cards > .card,
 .ui.cards > .green.card,
 .ui.green.card {
-  box-shadow: 0px 0px 0px 1px #d4d4d5, 0px 2px 0px 0px #21ba45, 0px 1px 3px 0px #d4d4d5;
+  box-shadow: 0px 0px 0px 1px #d4d4d5, 0px 2px 0px 0px #75c043, 0px 1px 3px 0px #d4d4d5;
 }
 
 .ui.green.cards > .card:hover,
 .ui.cards > .green.card:hover,
 .ui.green.card:hover {
-  box-shadow: 0px 0px 0px 1px #d4d4d5, 0px 2px 0px 0px #13ae38, 0px 1px 3px 0px #bcbdbd;
+  box-shadow: 0px 0px 0px 1px #d4d4d5, 0px 2px 0px 0px #67bb2f, 0px 1px 3px 0px #bcbdbd;
 }
 
 /* Teal */
@@ -23969,6 +24876,18 @@ a.ui.card:hover,
 /*******************************
     User Variable Overrides
 *******************************/
+
+.ui.navy.cards > .card,
+.ui.cards > .navy.card,
+.ui.navy.card {
+  box-shadow: 0px 0px 0px 1px #d4d4d5, 0px 2px 0px 0px #003152, 0px 1px 3px 0px #d4d4d5;
+}
+
+.ui.navy.cards > .card:hover,
+.ui.cards > .navy.card:hover,
+.ui.navy.card:hover {
+  box-shadow: 0px 0px 0px 1px #d4d4d5, 0px 2px 0px 0px #002239, 0px 1px 3px 0px #bcbdbd;
+}
 /*!
  * # Semantic UI 2.0.0 - Comment
  * http://github.com/semantic-org/semantic-ui/
@@ -24091,7 +25010,7 @@ a.ui.card:hover,
 }
 
 .ui.comments .comment a.author:hover {
-  color: #002239;
+  color: #065d9e;
 }
 
 /*--------------
@@ -24822,7 +25741,7 @@ a.ui.card:hover,
 }
 
 .ui.items > .item > .content > a.header:hover {
-  color: #002239;
+  color: #065d9e;
 }
 
 /* Meta */
@@ -25056,7 +25975,7 @@ a.ui.card:hover,
 
 .ui.items a.item:hover .content .header,
 .ui.link.items > .item:hover .content .header {
-  color: #002239;
+  color: #065d9e;
 }
 
 /*--------------
@@ -25463,7 +26382,7 @@ a.ui.card:hover,
 .ui.green.statistics .statistic > .value,
 .ui.statistics .green.statistic > .value,
 .ui.green.statistic > .value {
-  color: #21ba45;
+  color: #75c043;
 }
 
 .ui.teal.statistics .statistic > .value,
@@ -25531,7 +26450,7 @@ a.ui.card:hover,
 .ui.inverted.orange.statistics .statistic > .value,
 .ui.statistics .inverted.orange.statistic > .value,
 .ui.inverted.orange.statistic > .value {
-  color: #ff851b;
+  color: #ff9e37;
 }
 
 .ui.inverted.yellow.statistics .statistic > .value,
@@ -25549,7 +26468,7 @@ a.ui.card:hover,
 .ui.inverted.green.statistics .statistic > .value,
 .ui.statistics .inverted.green.statistic > .value,
 .ui.inverted.green.statistic > .value {
-  color: #2ecc40;
+  color: #44ae0a;
 }
 
 .ui.inverted.teal.statistics .statistic > .value,
@@ -25725,6 +26644,18 @@ a.ui.card:hover,
 /*******************************
     User Variable Overrides
 *******************************/
+
+.ui.navy.statistics .statistic > .value,
+.ui.statistics .navy.statistic > .value,
+.ui.navy.statistic > .value {
+  color: #003152;
+}
+
+.ui.inverted.navy.statistics .statistic > .value,
+.ui.statistics .inverted.navy.statistic > .value,
+.ui.inverted.navy.statistic > .value {
+  color: #5881b2;
+}
 /*!
  * # Semantic UI 2.0.0 - Accordion
  * http://github.com/semantic-org/semantic-ui/
@@ -26935,6 +27866,7 @@ body.dimmable > .dimmer {
 }
 
 .ui.dropdown .menu > .input {
+  width: auto;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -27703,7 +28635,7 @@ select.ui.dropdown {
 .ui.dropdown.error,
 .ui.dropdown.error > .text,
 .ui.dropdown.error > .default.text {
-  color: #922d2b;
+  color: #9f3a38;
 }
 
 .ui.selection.dropdown.error {
@@ -27721,7 +28653,7 @@ select.ui.dropdown {
 }
 
 .ui.dropdown.error > .menu > .item {
-  color: #922d2b;
+  color: #9f3a38;
 }
 
 .ui.multiple.selection.error.dropdown > .label {
@@ -28334,10 +29266,8 @@ select.ui.dropdown {
 }
 
 /*--------------
-  Placeholder
+   Placeholder
 ---------------*/
-
-/* Placeholder Image */
 
 .ui.embed > .placeholder {
   position: absolute;
@@ -28351,10 +29281,8 @@ select.ui.dropdown {
 }
 
 /*--------------
-      Play
+      Icon
 ---------------*/
-
-/* Play Icon */
 
 .ui.embed > .icon {
   cursor: pointer;
@@ -28419,12 +29347,12 @@ select.ui.dropdown {
      Active
 ---------------*/
 
-.ui.active.embed .play,
-.ui.active.embed .placeholder {
+.ui.active.embed > .icon,
+.ui.active.embed > .placeholder {
   display: none;
 }
 
-.ui.active.embed .embed {
+.ui.active.embed > .embed {
   display: block;
 }
 
@@ -29719,7 +30647,7 @@ a.ui.nag {
 ---------------*/
 
 .ui.progress.success .bar {
-  background-color: #21ba45 !important;
+  background-color: #75c043 !important;
 }
 
 .ui.progress.success .bar,
@@ -29855,7 +30783,7 @@ a.ui.nag {
 }
 
 .ui.inverted.progress.success > .label {
-  color: #21ba45;
+  color: #75c043;
 }
 
 .ui.inverted.progress.warning > .label {
@@ -29942,7 +30870,7 @@ a.ui.nag {
 }
 
 .ui.orange.inverted.progress .bar {
-  background-color: #ff851b;
+  background-color: #ff9e37;
 }
 
 /* Yellow */
@@ -29968,11 +30896,11 @@ a.ui.nag {
 /* Green */
 
 .ui.green.progress .bar {
-  background-color: #21ba45;
+  background-color: #75c043;
 }
 
 .ui.green.inverted.progress .bar {
-  background-color: #2ecc40;
+  background-color: #44ae0a;
 }
 
 /* Teal */
@@ -30106,6 +31034,14 @@ a.ui.nag {
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.navy.progress .bar {
+  background-color: #003152;
+}
+
+.ui.navy.inverted.progress .bar {
+  background-color: #5881b2;
+}
 /*!
  * # Semantic UI 2.0.0 - Rating
  * http://github.com/semantic-org/semantic-ui/
@@ -30534,7 +31470,7 @@ a.ui.nag {
 
 .ui.search > .results .result .price {
   float: right;
-  color: #21ba45;
+  color: #75c043;
 }
 
 /*--------------
@@ -32130,7 +33066,7 @@ html.ios body {
 .ui.table tr.positive,
 .ui.table td.positive {
   background: #fcfff5 !important;
-  color: #1d571e !important;
+  color: #2c662d !important;
 }
 
 /*--------------
@@ -32145,7 +33081,7 @@ html.ios body {
 .ui.table tr.negative,
 .ui.table td.negative {
   background: #fff6f6 !important;
-  color: #922d2b !important;
+  color: #9f3a38 !important;
 }
 
 /*--------------
@@ -32160,7 +33096,7 @@ html.ios body {
 .ui.table tr.error,
 .ui.table td.error {
   background: #fff6f6 !important;
-  color: #922d2b !important;
+  color: #9f3a38 !important;
 }
 
 /*--------------
@@ -32175,7 +33111,7 @@ html.ios body {
 .ui.table tr.warning,
 .ui.table td.warning {
   background: #fffaf3 !important;
-  color: #664917 !important;
+  color: #573a08 !important;
 }
 
 /*--------------
@@ -32323,13 +33259,13 @@ html.ios body {
 .ui.selectable.table tr.error:hover,
 .ui.selectable.table tr:hover td.error {
   background: #ffe7e7 !important;
-  color: #862928 !important;
+  color: #943634 !important;
 }
 
 .ui.selectable.table tr.warning:hover,
 .ui.selectable.table tr:hover td.warning {
   background: #fff4e4 !important;
-  color: #5a4014 !important;
+  color: #493107 !important;
 }
 
 .ui.selectable.table tr.active:hover,
@@ -32341,13 +33277,13 @@ html.ios body {
 .ui.selectable.table tr.positive:hover,
 .ui.selectable.table tr:hover td.positive {
   background: #f7ffe6 !important;
-  color: #194c1a !important;
+  color: #275b28 !important;
 }
 
 .ui.selectable.table tr.negative:hover,
 .ui.selectable.table tr:hover td.negative {
   background: #ffe7e7 !important;
-  color: #862928 !important;
+  color: #943634 !important;
 }
 
 /*--------------
@@ -32464,11 +33400,11 @@ html.ios body {
 /* Green */
 
 .ui.green.table {
-  border-top: 0.2em solid #21ba45;
+  border-top: 0.2em solid #75c043;
 }
 
 .ui.inverted.green.table {
-  background-color: #21ba45 !important;
+  background-color: #75c043 !important;
   color: #ffffff !important;
 }
 
@@ -33000,6 +33936,342 @@ html.ios body {
 /*******************************
          Site Overrides
 *******************************/
+
+/*--------------
+      Red
+---------------*/
+
+.ui.table tr.red,
+.ui.table td.red {
+  box-shadow: 0px 0px 0px #d12323 inset;
+}
+
+.ui.table tr.red,
+.ui.table td.red {
+  background: #ffe8e6 !important;
+  color: #db2828 !important;
+}
+
+.ui.selectable.table tr.red:hover,
+.ui.selectable.table tr:hover td.red {
+  background: #ffdad7 !important;
+  color: #d12323 !important;
+}
+
+.ui.table tr.active td.red,
+.ui.table tr.active td.red:hover,
+.ui.table tr.active:hover td.red {
+  background: #ffc2bd !important;
+  color: #d12323 !important;
+}
+
+/*--------------
+      Orange
+---------------*/
+
+.ui.table tr.orange,
+.ui.table td.orange {
+  box-shadow: 0px 0px 0px #f1680e inset;
+}
+
+.ui.table tr.orange,
+.ui.table td.orange {
+  background: #ffedde !important;
+  color: #f2711c !important;
+}
+
+.ui.selectable.table tr.orange:hover,
+.ui.selectable.table tr:hover td.orange {
+  background: #ffe5cf !important;
+  color: #f1680e !important;
+}
+
+.ui.table tr.active td.orange,
+.ui.table tr.active td.orange:hover,
+.ui.table tr.active:hover td.orange {
+  background: #ffd7b5 !important;
+  color: #f1680e !important;
+}
+
+/*--------------
+      Yellow
+---------------*/
+
+.ui.table tr.yellow,
+.ui.table td.yellow {
+  box-shadow: 0px 0px 0px #a67605 inset;
+}
+
+.ui.table tr.yellow,
+.ui.table td.yellow {
+  background: #fff8db !important;
+  color: #b58105 !important;
+}
+
+.ui.selectable.table tr.yellow:hover,
+.ui.selectable.table tr:hover td.yellow {
+  background: #fff5cc !important;
+  color: #a67605 !important;
+}
+
+.ui.table tr.active td.yellow,
+.ui.table tr.active td.yellow:hover,
+.ui.table tr.active:hover td.yellow {
+  background: #fff0b2 !important;
+  color: #a67605 !important;
+}
+
+/*--------------
+      Olive
+---------------*/
+
+.ui.table tr.olive,
+.ui.table td.olive {
+  box-shadow: 0px 0px 0px #80af1c inset;
+}
+
+.ui.table tr.olive,
+.ui.table td.olive {
+  background: #fbfdef !important;
+  color: #8abc1e !important;
+}
+
+.ui.selectable.table tr.olive:hover,
+.ui.selectable.table tr:hover td.olive {
+  background: #f8fbe1 !important;
+  color: #80af1c !important;
+}
+
+.ui.table tr.active td.olive,
+.ui.table tr.active td.olive:hover,
+.ui.table tr.active:hover td.olive {
+  background: #f2f8cb !important;
+  color: #80af1c !important;
+}
+
+/*--------------
+      Green
+---------------*/
+
+.ui.table tr.green,
+.ui.table td.green {
+  box-shadow: 0px 0px 0px #1caf2d inset;
+}
+
+.ui.table tr.green,
+.ui.table td.green {
+  background: #e5f9e7 !important;
+  color: #1ebc30 !important;
+}
+
+.ui.selectable.table tr.green:hover,
+.ui.selectable.table tr:hover td.green {
+  background: #d9f6dc !important;
+  color: #1caf2d !important;
+}
+
+.ui.table tr.active td.green,
+.ui.table tr.active td.green:hover,
+.ui.table tr.active:hover td.green {
+  background: #c4f1c8 !important;
+  color: #1caf2d !important;
+}
+
+/*--------------
+      Teal
+---------------*/
+
+.ui.table tr.teal,
+.ui.table td.teal {
+  box-shadow: 0px 0px 0px #0f9595 inset;
+}
+
+.ui.table tr.teal,
+.ui.table td.teal {
+  background: #e1f7f7 !important;
+  color: #10a3a3 !important;
+}
+
+.ui.selectable.table tr.teal:hover,
+.ui.selectable.table tr:hover td.teal {
+  background: #d5f4f4 !important;
+  color: #0f9595 !important;
+}
+
+.ui.table tr.active td.teal,
+.ui.table tr.active td.teal:hover,
+.ui.table tr.active:hover td.teal {
+  background: #c1eeee !important;
+  color: #0f9595 !important;
+}
+
+/*--------------
+      Blue
+---------------*/
+
+.ui.table tr.blue,
+.ui.table td.blue {
+  box-shadow: 0px 0px 0px #1f7dc3 inset;
+}
+
+.ui.table tr.blue,
+.ui.table td.blue {
+  background: #dff0ff !important;
+  color: #2185d0 !important;
+}
+
+.ui.selectable.table tr.blue:hover,
+.ui.selectable.table tr:hover td.blue {
+  background: #d0e9ff !important;
+  color: #1f7dc3 !important;
+}
+
+.ui.table tr.active td.blue,
+.ui.table tr.active td.blue:hover,
+.ui.table tr.active:hover td.blue {
+  background: #b6ddff !important;
+  color: #1f7dc3 !important;
+}
+
+/*--------------
+      Navy
+---------------*/
+
+.ui.table tr.navy,
+.ui.table td.navy {
+  box-shadow: 0px 0px 0px #002843 inset;
+}
+
+.ui.table tr.navy,
+.ui.table td.navy {
+  background: #d3e7ff !important;
+  color: #003152 !important;
+}
+
+.ui.selectable.table tr.navy:hover,
+.ui.selectable.table tr:hover td.navy {
+  background: #c4dfff !important;
+  color: #002843 !important;
+}
+
+.ui.table tr.active td.navy,
+.ui.table tr.active td.navy:hover,
+.ui.table tr.active:hover td.navy {
+  background: #aad1ff !important;
+  color: #002843 !important;
+}
+
+/*--------------
+      Violet
+---------------*/
+
+.ui.table tr.violet,
+.ui.table td.violet {
+  box-shadow: 0px 0px 0px #5e32bd inset;
+}
+
+.ui.table tr.violet,
+.ui.table td.violet {
+  background: #eae7ff !important;
+  color: #6435c9 !important;
+}
+
+.ui.selectable.table tr.violet:hover,
+.ui.selectable.table tr:hover td.violet {
+  background: #ddd8ff !important;
+  color: #5e32bd !important;
+}
+
+.ui.table tr.active td.violet,
+.ui.table tr.active td.violet:hover,
+.ui.table tr.active:hover td.violet {
+  background: #c6beff !important;
+  color: #5e32bd !important;
+}
+
+/*--------------
+      Purple
+---------------*/
+
+.ui.table tr.purple,
+.ui.table td.purple {
+  box-shadow: 0px 0px 0px #9930bc inset;
+}
+
+.ui.table tr.purple,
+.ui.table td.purple {
+  background: #f6e7ff !important;
+  color: #a333c8 !important;
+}
+
+.ui.selectable.table tr.purple:hover,
+.ui.selectable.table tr:hover td.purple {
+  background: #f0d8ff !important;
+  color: #9930bc !important;
+}
+
+.ui.table tr.active td.purple,
+.ui.table tr.active td.purple:hover,
+.ui.table tr.active:hover td.purple {
+  background: #e7beff !important;
+  color: #9930bc !important;
+}
+
+/*--------------
+      Pink
+---------------*/
+
+.ui.table tr.pink,
+.ui.table td.pink {
+  box-shadow: 0px 0px 0px #de2c90 inset;
+}
+
+.ui.table tr.pink,
+.ui.table td.pink {
+  background: #ffe3fb !important;
+  color: #e03997 !important;
+}
+
+.ui.selectable.table tr.pink:hover,
+.ui.selectable.table tr:hover td.pink {
+  background: #ffd4f9 !important;
+  color: #de2c90 !important;
+}
+
+.ui.table tr.active td.pink,
+.ui.table tr.active td.pink:hover,
+.ui.table tr.active:hover td.pink {
+  background: #ffbaf5 !important;
+  color: #de2c90 !important;
+}
+
+/*--------------
+      Brown
+---------------*/
+
+.ui.table tr.brown,
+.ui.table td.brown {
+  box-shadow: 0px 0px 0px #9a603b inset;
+}
+
+.ui.table tr.brown,
+.ui.table td.brown {
+  background: #f1e2d3 !important;
+  color: #a5673f !important;
+}
+
+.ui.selectable.table tr.brown:hover,
+.ui.selectable.table tr:hover td.brown {
+  background: #eddac7 !important;
+  color: #9a603b !important;
+}
+
+.ui.table tr.active td.brown,
+.ui.table tr.active td.brown:hover,
+.ui.table tr.active:hover td.brown {
+  background: #e7ceb4 !important;
+  color: #9a603b !important;
+}
 /*!
  * # Semantic UI 2.0.0 - Transition
  * http://github.com/semantic-org/semantic-ui/

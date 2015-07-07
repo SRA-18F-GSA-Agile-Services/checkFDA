@@ -1,7 +1,3 @@
-// MySQL
-def fileloc = ['../UserConfig.groovy', 'webapps/ROOT/Jenkins.groovy'].grep { new File(it).exists() }.first();
-def dbConfig = new ConfigSlurper(grailsSettings.grailsEnv).parse(new File(fileloc).toURI().toURL())
-
 dataSource {
     pooled = true
     driverClassName = "org.h2.Driver"
@@ -11,7 +7,9 @@ dataSource {
 hibernate {
     cache.use_second_level_cache = true
     cache.use_query_cache = false
-    cache.region.factory_class = 'net.sf.ehcache.hibernate.EhCacheRegionFactory'
+    cache.region.factory_class = 'org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory'
+	singleSession = true // configure OSIV singleSession mode
+	flush.mode = 'manual' // OSIV session flush mode outside of transactional context
 }
 // environment specific settings
 // MySQL
@@ -48,45 +46,15 @@ environments {
 			url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
 		}
     }
-	searchfdadev {
-		dataSource {
-			dbCreate = "create-drop"
-			url = 'jdbc:mysql://searchfda.crctz8nageky.us-east-1.rds.amazonaws.com:8080/searchfda-dev?useUnicode=true&autoReconnect=true'
-			pooled = true
-			driverClassName = "com.mysql.jdbc.Driver"
-			dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
-			username=dbConfig.rds.username
-			password=dbConfig.rds.password 
-	
-			properties {
-				maxActive = 50
-				maxIdle = 25
-				minIdle = 1
-				initialSize = 1
-		   
-				numTestsPerEvictionRun = 3
-				maxWait = 10000
-		   
-				testOnBorrow = true
-				testWhileIdle = true
-				testOnReturn = true
-		   
-				validationQuery = "select now()"
-		   
-				minEvictableIdleTimeMillis = 1000 * 60 * 5
-				timeBetweenEvictionRunsMillis = 1000 * 60 * 5
-			 }
-		}
-	}
     production {
 		dataSource {
 			dbCreate = "create-drop"
-			url = 'jdbc:mysql://searchfda.crctz8nageky.us-east-1.rds.amazonaws.com:8080/searchfda?useUnicode=true&autoReconnect=true'
 			pooled = true
 			driverClassName = "com.mysql.jdbc.Driver"
 			dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
-			username=dbConfig.rds.username
-			password=dbConfig.rds.password 
+			url = ""
+			username = ""
+			password = ""
 	
 			properties {
 				maxActive = 50

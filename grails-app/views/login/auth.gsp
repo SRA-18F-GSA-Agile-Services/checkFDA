@@ -12,7 +12,7 @@
 	<body>
 		<div class="ui segment">
 			<div class="ui header"><g:message code="springSecurity.login.header"/></div>
-	
+
 			<g:if test="${flash.message}">
 				<div class="ui negative message">
 					<i class="close icon"></i>
@@ -21,7 +21,7 @@
 					</div>
 				</div>
 			</g:if>
-	
+
 			<form action="${postUrl}" method="POST" autocomplete="off" class="ui form">
 				<div class="two fields">
 					<div class="field">

@@ -1,3 +1,15 @@
 /*******************************
          Site Overrides
 *******************************/
+
+i.navy.icon {
+  color: @navy !important;
+}
+i.inverted.navy.icon {
+  color: @lightNavy !important;
+}
+i.inverted.bordered.navy.icon,
+i.inverted.circular.navy.icon {
+  background-color: @navy !important;
+  color: @white !important;
+}

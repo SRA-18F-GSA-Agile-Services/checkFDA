@@ -1,3 +1,16 @@
 /*******************************
     User Variable Overrides
 *******************************/
+
+.ui.attached.message {
+	margin: 0 -1px -2px;
+	top: -1px;
+}
+
+.ui.navy.message {
+  background-color: @navyBackground;
+  color: @navyTextColor;
+}
+.ui.navy.message .header {
+  color: @navyHeaderColor;
+}

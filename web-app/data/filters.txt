@@ -1,0 +1,28 @@
+#this filter file specifies the json attributes we do want delivered to the server
+#they take the form <group>.att1.att2... where <group> is the group name which is
+#either recalls, events, or labels
+events.patient.sequence_number_outcome
+events.patient.patientsex
+events.patient.patientonsetage
+events.patient.sequence_number_treatment
+recalls.product_type
+recalls.classification
+recalls.product_description
+recalls.recall_initiation_date
+recalls.recalling_firm
+recalls.reason_for_recall
+recalls.status
+recalls.distribution_pattern
+recalls.recall_number
+labels.effective_time
+labels.openfda.brand_name
+labels.openfda.generic_name
+labels.purpose
+labels.indications_and_usage
+labels.dosage_and_administration
+labels.active_ingredient
+labels.inactive_ingredient
+labels.warnings
+labels.pregnancy_or_breast_feeding
+labels.keep_out_of_reach_of_children
+labels.openfda.manufacturer_name

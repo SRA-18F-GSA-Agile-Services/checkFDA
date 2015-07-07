@@ -1,21 +1,24 @@
 <div class="card">
 	<div class="content">
-		<h2 class="header">Drug Event Patient Gender Distribution</h2>
+		<h2 class="header">
+			<i class="circular help icon" data-content="${ message(code: 'widget.event.gender.help', args: [query]) }"></i>
+			<g:message code="widget.event.gender.header"/>
+		</h2>
 		<div id="gender"></div>
 	</div>
 </div>
 <script>
 	var genders = {
-		0: 'Unknown',
-		1: 'Male',
-		2: 'Female'
+		0: '<g:message code="gender.unknown"/>',
+		1: '<g:message code="gender.male"/>',
+		2: '<g:message code="gender.female"/>'
 	};
 	$(function() {
-		var drugEvents = $.grep(results.events, function(event) {
+		var drugEvents = $.grep(events, function(event) {
 			return !$.isArray(event.patient);
 		});
 		var genderMap = drugEvents.reduce(function(map, cur) {
-			var gender = genders[cur.patient.patientsex];
+			var gender = genders[cur.patient.patientsex] || genders[0];
 			if (!map[gender]) {
 				map[gender] = 0;
 			}
@@ -29,10 +32,25 @@
 		}, []);
 		var chart = c3.generate({
 			bindto: '#gender',
-		    data: {
-		        columns: columns,
-		        type : 'pie'
-		    }
+			data: {
+				columns: columns,
+				type : 'pie',
+				colors: {
+					Unknown: '<g:message code="color.lightGrey"/>',
+					Male:    '<g:message code="color.lightBlue"/>',
+					Female:  '<g:message code="color.lightPink"/>'
+				},
+				onclick: function(d, element) {
+					var filterSet = filterSets['drugevents'];
+					filterSet.addFilter(function(item) {
+						return genders[item.patient.patientsex];
+					}, d.name, 'Sex', Object.keys(genderMap));
+					filterSet.rerender();
+				}
+			},
+			legend: {
+				position: 'right'
+			}
 		});
 	});
 </script>

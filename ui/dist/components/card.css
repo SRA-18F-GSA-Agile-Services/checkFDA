@@ -311,7 +311,7 @@
 }
 .ui.cards > .card > .content > a.header:hover,
 .ui.card > .content > a.header:hover {
-  color: #002239;
+  color: #065d9e;
 }
 
 /* Meta */
@@ -424,7 +424,7 @@
 }
 .ui.cards > .card > .extra a:not(.ui):hover,
 .ui.card > .extra a:not(.ui):hover {
-  color: #002239;
+  color: #065d9e;
 }
 
 
@@ -525,12 +525,12 @@ a.ui.card:hover,
 .ui.green.cards > .card,
 .ui.cards > .green.card,
 .ui.green.card {
-  box-shadow: 0px 0px 0px 1px #d4d4d5, 0px 2px 0px 0px #21ba45, 0px 1px 3px 0px #d4d4d5;
+  box-shadow: 0px 0px 0px 1px #d4d4d5, 0px 2px 0px 0px #75c043, 0px 1px 3px 0px #d4d4d5;
 }
 .ui.green.cards > .card:hover,
 .ui.cards > .green.card:hover,
 .ui.green.card:hover {
-  box-shadow: 0px 0px 0px 1px #d4d4d5, 0px 2px 0px 0px #13ae38, 0px 1px 3px 0px #bcbdbd;
+  box-shadow: 0px 0px 0px 1px #d4d4d5, 0px 2px 0px 0px #67bb2f, 0px 1px 3px 0px #bcbdbd;
 }
 
 /* Teal */
@@ -938,3 +938,13 @@ a.ui.card:hover,
     User Variable Overrides
 *******************************/
 
+.ui.navy.cards > .card,
+.ui.cards > .navy.card,
+.ui.navy.card {
+  box-shadow: 0px 0px 0px 1px #d4d4d5, 0px 2px 0px 0px #003152, 0px 1px 3px 0px #d4d4d5;
+}
+.ui.navy.cards > .card:hover,
+.ui.cards > .navy.card:hover,
+.ui.navy.card:hover {
+  box-shadow: 0px 0px 0px 1px #d4d4d5, 0px 2px 0px 0px #002239, 0px 1px 3px 0px #bcbdbd;
+}

@@ -19,3 +19,8 @@
 
 /* Active */
 @activeBackgroundColor: @backgroundColor;
+
+@navyTextColor: @invertedTextColor;
+@navyTextShadow: @invertedTextShadow;
+@lightNavyTextColor: @invertedTextColor;
+@lightNavyTextShadow: @invertedTextShadow;

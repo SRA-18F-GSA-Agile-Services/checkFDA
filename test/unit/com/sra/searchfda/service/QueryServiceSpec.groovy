@@ -1,6 +1,6 @@
 package com.sra.searchfda.service
 
-import com.sra.searchfda.Query
+import com.sra.searchfda.domain.Query
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
 import spock.lang.Specification
@@ -11,19 +11,13 @@ class QueryServiceSpec extends Specification {
 
     def "test save search query"() {
         given:
-
-        String search = "ice cream"
-        long lat = 34.5
-        long lng = -12.6
+        Query query = new Query(search: "ice cream", lat: 34.5, lng: -12.6)
 
         when:
-        def query = service.saveSearchQuery(search, lat, lng)
+        def result = service.saveSearchQuery(query)
 
         then:
-
-        query
-        query.search == search
-        query.lat == lat
-        query.lng == lng
+        result == query
+        result.id
     }
 }

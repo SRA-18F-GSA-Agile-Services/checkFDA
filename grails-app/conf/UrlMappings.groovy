@@ -10,6 +10,7 @@ class UrlMappings {
 		"/controllers"(view:"/index")
 		"/health"(controller:"home",action:"health")
 		"/results"(controller:"search",action:"results")
+		"/styleguide"(view:'/styleguide')
 		"500"(view:'/error')
 		"404"(view:'/404')
 	}

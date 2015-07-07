@@ -12,6 +12,10 @@
 		<asset:javascript src="jquery.min.js" />
 		<asset:javascript src="semantic.min.js" />
 		<asset:javascript src="jquery.blockUI.min.js" />
+		<asset:javascript src="d3.v3.min.js" />
+		<asset:javascript src="d3-tip.js" />
+		<asset:javascript src="topojson.v1.min.js" />
+		<asset:javascript src="datamaps.usa.min.js" />
 		<asset:stylesheet href="semantic.min.css" />
 		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.3/d3-tip.min.js"></script>
@@ -22,15 +26,17 @@
 	</head>
 
 	<body>
-		<div class="content">
-			<div class="ui header main">
-				<a href="${createLink(uri: '/')}" class="logo">checkFDA</a>
-			</div>
-
+		<div class="ui container">
 			<g:layoutBody/>
-		</div>
 
-		<g:javascript library="application"/>
+			<div class="footer">
+				<!-- <g:message code="default.layout.app" /> ${grailsApplication.metadata['app.version']} -->
+			</div>
+		</div>
+		<g:render template="/layouts/location-request-alert" />
+
+		<asset:javascript src="application.js" />
+
 		<script>
 			var activeMenu = function(id) {
 				if ($('.menu-' + id).is('a')) {
@@ -50,6 +56,23 @@
 				});
 				$('#nav > ul > li > a').click(function() {
 					$('#nav li').removeClass('active');
+				});
+				$('.ui.modal').modal({
+					closable  : false,
+					selector: {
+						close: '.close.icon'
+					},
+					onDeny    : function() {
+						saveUserResponse (locationKey,'No');
+						search();
+					},
+					onApprove : function() {
+						saveUserResponse (locationKey,'Yes');
+						getLocation();
+					}
+				});
+				$('.close.icon').click(function() {
+					search();
 				});
 			});
 

@@ -873,7 +873,8 @@ Floated Menu / Item
 -----------------------*/
 
 .ui.secondary.pointing.menu {
-  margin: 0em;
+  margin-left: 0em;
+  margin-right: 0em;
   border-bottom: 2px solid rgba(34, 36, 38, 0.15);
 }
 .ui.secondary.pointing.menu .item {
@@ -884,7 +885,7 @@ Floated Menu / Item
       -ms-flex-item-align: end;
           align-self: flex-end;
   margin: 0em 0em -2px;
-  padding: 0.85714286em 1em;
+  padding: 0.85714286em 1.14285714em;
   border-bottom-width: 2px;
   -webkit-transition: color 0.1s ease;
           transition: color 0.1s ease;
@@ -1161,7 +1162,7 @@ Floated Menu / Item
 .ui.labeled.icon.menu .item {
   min-width: 6em;
 }
-.ui.labeled.icon.menu:not(.vetical) .item {
+.ui.labeled.icon.menu:not(.vertical) .item {
   padding-left: 1.71428571em;
   padding-right: 1.71428571em;
 }
@@ -1237,8 +1238,8 @@ Floated Menu / Item
 }
 .ui.menu .green.active.item,
 .ui.green.menu .active.item {
-  border-color: #21ba45 !important;
-  color: #21ba45 !important;
+  border-color: #75c043 !important;
+  color: #75c043 !important;
 }
 .ui.menu .teal.active.item,
 .ui.teal.menu .active.item {
@@ -1442,7 +1443,7 @@ Floated Menu / Item
 
 /* Green */
 .ui.inverted.green.menu {
-  background-color: #21ba45;
+  background-color: #75c043;
 }
 .ui.inverted.green.menu .item:before {
   background-color: rgba(34, 36, 38, 0.1);
@@ -1819,7 +1820,7 @@ Floated Menu / Item
 }
 
 /* Tabular Attached */
-.ui.top.attached.menu:not(.tabular) {
+.ui.top.attached.menu:not(.fixed):not(.tabular) {
   border-bottom: none;
 }
 .ui.attached.tabular.menu {
@@ -1876,3 +1877,17 @@ Floated Menu / Item
          Site Overrides
 *******************************/
 
+.ui.menu .navy.active.item,
+.ui.navy.menu .active.item {
+  border-color: #003152 !important;
+  color: #003152 !important;
+}
+.ui.inverted.navy.menu {
+  background-color: #003152;
+}
+.ui.inverted.navy.menu .item:before {
+  background-color: rgba(34, 36, 38, 0.1);
+}
+.ui.inverted.navy.menu .active.item {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}

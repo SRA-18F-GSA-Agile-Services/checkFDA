@@ -1,3 +1,17 @@
 /*******************************
          Site Overrides
 *******************************/
+.ui.grid > .row > .navy.column {
+  margin-top: -(@rowSpacing / 2);
+  margin-bottom: -(@rowSpacing / 2);
+  padding-top: (@rowSpacing / 2);
+  padding-bottom: (@rowSpacing / 2);
+}
+
+/* Navy */
+.ui.grid > .navy.row,
+.ui.grid > .navy.column,
+.ui.grid > .row > .navy.column {
+  background-color: @navy !important;
+  color: @white;
+}
