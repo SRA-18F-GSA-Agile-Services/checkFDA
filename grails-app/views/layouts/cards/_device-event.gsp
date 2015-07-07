@@ -1,5 +1,6 @@
 <div class="ui fluid card deviceevent">
 	<div class="content">
+		<i class="circular help icon" data-content="${ message(code: 'widget.device.event.help', args: [query]) }"></i>
 		<div class="extra content">
 			<g:if test="${ event.date_received }">
 				<span data-content="${ message(code: 'widget.device.event.receivedate') }">
