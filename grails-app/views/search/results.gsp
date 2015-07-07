@@ -22,6 +22,9 @@
 			.card-table.events tr > td:nth-child(3) {
 				width: 4em;
 			}
+			.ui.divider.section-divider {
+				margin-top: 4em;
+			}
 		</style>
 	</head>
 	<body>
@@ -85,7 +88,7 @@
 
 					<g:if test="${results}">
 						<g:if test="${ recalls.size() != 0 }">
-							<div class="ui divider"></div>
+							<div class="ui divider section-divider"></div>
 							<section id="recalls">
 								<h1 id="recalls-header" class="ui large header">
 									<g:message code="widget.results.recall.header" args="${ [query, currentRecalls.size()] }" />
@@ -112,7 +115,7 @@
 						</g:if>
 
 						<g:if test="${ results.events.size() != 0 }">
-							<div class="ui divider"></div>
+							<div class="ui divider section-divider"></div>
 							<section id="events">
 								<h1 class="ui large header">
 									<g:message code="widget.results.event.header" args="${ [query, results.events.size()] }"/>
@@ -159,7 +162,7 @@
 						</g:if>
 
 						<g:if test="${ labels.size() != 0 }">
-							<div class="ui divider"></div>
+							<div class="ui divider section-divider"></div>
 							<section id="labels">
 								<h1 id="labels-header" class="ui large header">
 									<g:message code="widget.results.label.header" args="${ [query, labels.size()] }" />
