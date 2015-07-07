@@ -243,7 +243,6 @@
 		<script>
 
 		<g:applyCodec encodeAs="none">
-			var query = '${ query }';
 			var recalls = ${ results ? recalls as JSON : "[]" };
 			var labels = ${ results ? labels as JSON : "[]" };
 			var events = ${ results ? results.events as JSON : "[]" };
