@@ -7,6 +7,9 @@ function addRowListeners(tableIdentifier) {
 function selectFirstCard(tableIdentifier) {
 	if ($(tableIdentifier + ' tr:visible').length) {
 		selectDetailCard($(tableIdentifier + ' tr:visible').first(), true);
+	} else {
+		var type = $(tableIdentifier).attr('id');
+		$('#' + type + '-card').html('');
 	}
 }
 
