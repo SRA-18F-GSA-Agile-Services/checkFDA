@@ -29,3 +29,6 @@
 .legend.Mixed {
 	background-color: #F2711C;
 }
+.main.results.position { 
+	position: relative;
+}
