@@ -14,10 +14,10 @@ class OpenFDAService {
 	static long lastQuery=0 //when did our last query take place
 	final long millis=1000*60/240 //how long we have to wait between queries
 
-	Object lock=new Object() //force the threads to move through in single file
+	final Object lock=new Object() //force the threads to move through in single file
 
-	def String query(String datasetUri, String query, int limit=100, int skip=0) {
-		def queryMap = [search: query, limit: limit, skip: skip]
+	String query(String datasetUri, String query, int limit=100, int skip=0) {
+		Map queryMap = [search: query, limit: limit, skip: skip]
 
 		String apiToken = grailsApplication.config.openfdaapi.token //get api token from our config
 

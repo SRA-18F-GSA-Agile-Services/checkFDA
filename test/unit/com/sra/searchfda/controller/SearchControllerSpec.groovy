@@ -71,7 +71,7 @@ class SearchControllerSpec extends Specification {
 		String recall = recalls.results[0] as JSON
 
 		when:
-		def result = controller.renderCard(recall, 'recalls')
+		controller.renderCard(recall, 'recalls')
 
 		then:
 		controller.response.text.size() != 0
@@ -84,7 +84,7 @@ class SearchControllerSpec extends Specification {
 		String label = labels.results[0] as JSON
 
 		when:
-		def result = controller.renderCard(label, 'labels')
+		controller.renderCard(label, 'labels')
 
 		then:
 		controller.response.text.size() != 0
@@ -112,7 +112,7 @@ class SearchControllerSpec extends Specification {
 		List expectedAddress
 		
 		when:
-		String result = controller.reverseGeocode (lat, lng)
+		controller.reverseGeocode (lat, lng)
 
 		then:
 		1 * geocodingService.getAddresses(new Point(latitude: lat, longitude: lng) ) >> expectedAddress
@@ -125,7 +125,7 @@ class SearchControllerSpec extends Specification {
 		String event = events.results[0] as JSON
 
 		when:
-		def result = controller.renderCard(event, 'drugevents')
+		controller.renderCard(event, 'drugevents')
 
 		then:
 		controller.response.text.size() != 0
@@ -138,7 +138,7 @@ class SearchControllerSpec extends Specification {
 		String event = events.results[0] as JSON
 
 		when:
-		def result = controller.renderCard(event, 'deviceevents')
+		controller.renderCard(event, 'deviceevents')
 
 		then:
 		controller.response.text.size() != 0
