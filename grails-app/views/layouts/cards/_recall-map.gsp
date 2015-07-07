@@ -26,11 +26,7 @@
 			return map;
 		}, {});
 		var stateColorsMap = Object.keys(stateValuesMap).reduce(function(states, key) {
-			if(stateValuesMap[key].status.length > 1){
-				stateValuesMap[key].fillKey = "Mixed"
-			}else {
-				stateValuesMap[key].fillKey= stateValuesMap[key].status[0]
-			}
+			stateValuesMap[key].fillKey = 'Ongoing';
 			if(results.state.name == key){
 				userLocation =[{ name:results.state.name,
 								latitude: results.state.latitude , 
@@ -57,8 +53,6 @@
 				defaultFill: '<g:message code="widget.recall.map.Defualt.color"/>'//'#ABDDA4'
 */
 				Ongoing    : '<g:message code="color.red"/>',
-				Pending    : '<g:message code="color.yellow"/>',
-				Mixed      : '<g:message code="color.orange"/>',
 				Home       : '<g:message code="color.green"/>',
 				defaultFill: '<g:message code="color.lightGrey"/>'
 			},
@@ -71,13 +65,13 @@
 	            highlightOnHover: true,
 	            popupOnHover: true,
 	            popupTemplate: function(geo, data) {
-		            var html = '<div class="hoverinfo popupInfo" ><h4>' + geo.properties.name + '</h4>' ;
-		            if(data){ 
+		            var html = '<div class="hoverinfo popupInfo"><h4>' + geo.properties.name + '</h4>' ;
+		            if(data) {
 			            html +=	'<div class="ui red message maphover"><i class="<g:message code="widget.recall.alert.Ongoing.icon"/> icon"></i> Ongoing: ' + ((data.Ongoing)? data.Ongoing : '0')  + '</div>'+
 								'<div class="ui attached yellow message maphover"><i class="<g:message code="widget.recall.alert.Pending.icon"/> icon"></i> Pending: ' + ((data.Pending)? data.Pending : '0') +'</div>'+
-	                   			'<h4>Total Recalls : ' + data.recalls  +'</h4>';                   		   
+	                   			'<h4>Total Recalls : ' + data.recalls  +'</h4>'; 
 		            } else {
-			            html +='<h4>Total Recalls : 0</h4>';	 	
+			            html +='<h4>Total Recalls : 0</h4>';
 			        }
 			        return html+ '</div>';
 	            }
@@ -100,8 +94,7 @@
 	        },
 		 });
 		 map.labels({fontSize: 11 }) 
-		 map.addPlugin("customLegend", addMapLegend);	    
-		 map.customLegend({})
+		 map.addPlugin("customLegend", addMapLegend);
 		 if(userLocation){
 			 map.bubbles(userLocation,  {
 			    popupTemplate:function (geo, data) { 
