@@ -72,21 +72,21 @@
 					<g:set var="deviceEvents" value="${ results.events.grep { it.dataset == 'device/event' } }" />
 					<g:set var="labels" value="${ results.labels.grep { it.openfda?.brand_name && it.openfda?.generic_name } }" />
 
-					<h1 class="ui page header"><g:message code="results.header" args="${ [currentRecalls.size() + results.events.size() + labels.size(), query] }" /></h1>
-					<div class="jumplinks">
-						<span><g:message code="results.jumplink" /></span>
-						<g:if test="${ recalls.size() != 0 }">
-							<a href="#recalls"><g:message code="results.jumplink.recalls" args="${ [currentRecalls.size()] }" /></a>
-						</g:if>
-						<g:if test="${ results.events.size() != 0 }">
-							<a href="#events"><g:message code="results.jumplink.events" args="${ [results.events.size()] }" /></a>
-						</g:if>
-						<g:if test="${ labels.size() != 0 }">
-							<a href="#labels"><g:message code="results.jumplink.labels" args="${ [labels.size()] }" /></a>
-						</g:if>
-					</div>
-
 					<g:if test="${results}">
+						<h1 class="ui page header"><g:message code="results.header" args="${ [currentRecalls.size() + results.events.size() + labels.size(), query] }" /></h1>
+						<div class="jumplinks">
+							<span><g:message code="results.jumplink" /></span>
+							<g:if test="${ recalls.size() != 0 }">
+								<a href="#recalls"><g:message code="results.jumplink.recalls" args="${ [currentRecalls.size()] }" /></a>
+							</g:if>
+							<g:if test="${ results.events.size() != 0 }">
+								<a href="#events"><g:message code="results.jumplink.events" args="${ [results.events.size()] }" /></a>
+							</g:if>
+							<g:if test="${ labels.size() != 0 }">
+								<a href="#labels"><g:message code="results.jumplink.labels" args="${ [labels.size()] }" /></a>
+							</g:if>
+						</div>
+
 						<g:if test="${ recalls.size() != 0 }">
 							<div class="ui divider section-divider"></div>
 							<section id="recalls">
@@ -180,6 +180,14 @@
 							</section>
 						</g:if>
 					</g:if>
+					<g:else>
+						<h3 class="ui header icon">
+							<i class="lightning icon"></i>
+							<div class="content">
+								<g:message code="results.empty" args="${ [query] }" />
+							</div>
+						</h3>
+					</g:else>
 				</div>
 				<div id="siderail-wrapper" class="five wide column">
 					<div class="ui sticky">
