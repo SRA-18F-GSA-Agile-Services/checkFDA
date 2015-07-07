@@ -1,6 +1,5 @@
 <div class="ui fluid card druglabel">
 	<div class="content">
-		<i class="circular help icon" data-content="${ message(code: 'widget.drug.label.help', args: [query]) }"></i>
 		<div class="extra content">
 			<span data-content="${ message(code: 'widget.drug.label.calendar') }">
 				<i class="icon calendar outline"></i> ${ new Date().parse('yyyyMMdd', label.effective_time).format('M/d/yyyy') }

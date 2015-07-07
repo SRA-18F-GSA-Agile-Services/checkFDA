@@ -25,6 +25,9 @@
 			.ui.divider.section-divider {
 				margin-top: 4em;
 			}
+			.ui.divider.invisible {
+				border: none!important;
+			}
 			.help.icon {
 				float: right;
 				cursor: pointer;
@@ -94,6 +97,7 @@
 						<g:if test="${ recalls.size() != 0 }">
 							<div class="ui divider section-divider"></div>
 							<section id="recalls">
+								<i class="circular help icon" data-content="${ message(code: 'widget.recall.alert.help', args: [query]) }"></i>
 								<h1 id="recalls-header" class="ui large header">
 									<g:message code="widget.results.recall.header" args="${ [query, currentRecalls.size()] }" />
 								</h1>
@@ -121,6 +125,7 @@
 						<g:if test="${ results.events.size() != 0 }">
 							<div class="ui divider section-divider"></div>
 							<section id="events">
+								<i class="circular help icon" data-content="${ message(code: 'widget.drug.event.help', args: [query]) }"></i>
 								<h1 class="ui large header">
 									<g:message code="widget.results.event.header" args="${ [query, results.events.size()] }"/>
 								</h1>
@@ -145,7 +150,10 @@
 									</div>
 								</g:if>
 
+								<div class="ui invisible divider"></div>
+
 								<g:if test="${ results.events.grep { it.dataset == 'device/event' }.size() > 0 }">
+									<i class="circular help icon" data-content="${ message(code: 'widget.device.event.help', args: [query]) }"></i>
 									<h2 id="deviceevents-header" class="ui medium header">
 										<g:message code="widget.results.event.device.header" args="${ [deviceEvents.size()] }" />
 									</h2>
@@ -168,6 +176,7 @@
 						<g:if test="${ labels.size() != 0 }">
 							<div class="ui divider section-divider"></div>
 							<section id="labels">
+								<i class="circular help icon" data-content="${ message(code: 'widget.drug.label.help', args: [query]) }"></i>
 								<h1 id="labels-header" class="ui large header">
 									<g:message code="widget.results.label.header" args="${ [query, labels.size()] }" />
 								</h1>

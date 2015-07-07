@@ -1,6 +1,5 @@
 <div class="ui fluid card drugevent">
 	<div class="content">
-		<i class="circular help icon" data-content="${ message(code: 'widget.drug.event.help', args: [query]) }"></i>
 		<div class="extra content">
 			<g:if test="${ event.receivedate }">
 				<span data-content="${ message(code: 'widget.drug.event.receivedate') }">
